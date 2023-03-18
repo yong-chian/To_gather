@@ -1,6 +1,7 @@
 class Activity < ApplicationRecord
   belongs_to :user
   has_one :meeting_location
+  has_many_attached :photos
 
   validates :name, presence: true
   validates :description, presence: true
