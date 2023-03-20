@@ -1,0 +1,17 @@
+<div>
+  <% @activities.each do |activity| %>
+  <br>
+    <div class="">
+      <% activity.photos.each do |photo| %>
+      <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+        <p>
+        <br>
+        <%= link_to "Show this activity", activity, class: "btn btn-primary" %>
+      </p>
+      <%= render activity %>
+      <% end %>
+      <br>
+    </div>
+  <% end %>
+    </div>
+</div>
