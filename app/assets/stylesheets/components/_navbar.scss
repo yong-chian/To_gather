@@ -1,12 +1,21 @@
-.navbar-lewagon {
+.navbar-togather {
   justify-content: space-between;
-  background: white;
+  background: F5F0E7;
 }
 
-.navbar-lewagon .navbar-collapse {
+.navbar-togather .navbar-collapse {
   flex-grow: 0;
 }
 
-.navbar-lewagon .navbar-brand img {
+.navbar-togather .navbar-brand img {
   width: 40px;
+}
+
+.nav-link {
+  color: #EC481F;
+  font-family: 'Source Serif Pro', sans-serif;
+}
+
+#navbarSupportedContent .nav-item {
+  text-align: center;
 }
