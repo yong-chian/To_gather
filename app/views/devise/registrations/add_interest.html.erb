@@ -1,0 +1,15 @@
+<div class="container" data-controller="interest">
+  <div class="row justify-content-center">
+    <div class="col-sm-8 text-center">
+      <h3>Select your interests:</h3>
+      <% @interests.each do |interest| %>
+        <div class="d-flex flex-wrap justify-content-center pt-4">
+          <div data-action="click->interest#disable">
+            <i class="fas fa-hiking"></i>
+            <small><%= interest.name %></small>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

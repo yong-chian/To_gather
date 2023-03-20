@@ -5,6 +5,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_account_update_params, only: [:update]
   def add_interest
     @current_user
+    @interests = Interest.all
   end
   # GET /resource/sign_up
   # def new
