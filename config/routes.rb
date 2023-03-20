@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: "users/registrations" }
   devise_scope :user do
     get "users/add_interest", to: "users/registrations#add_interest"
+    patch "users/update_interest", to: "users/registrations#update_interest"
   end
   # devise_for :users, path_names: { add_interest: "add_interest" }
   root to: "pages#home"
