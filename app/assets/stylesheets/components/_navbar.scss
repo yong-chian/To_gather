@@ -1,3 +1,9 @@
+//Logo Font and Color//
+.navbar-brand {
+  font-family: 'Lemon';
+  color: #EC481F;
+}
+
 .navbar-togather {
   justify-content: space-between;
   background: F5F0E7;
@@ -7,15 +13,13 @@
   flex-grow: 0;
 }
 
-.navbar-togather .navbar-brand img {
-  width: 40px;
-}
-
+//Font and Color for "About Us","Find Activity" & "Share Moments"//
 .nav-link {
   color: #EC481F;
   font-family: 'Source Serif Pro', sans-serif;
 }
 
-#navbarSupportedContent .nav-item {
-  text-align: center;
+//Avatar img circle//
+.navbar-togather .navbar-brand img {
+  width: 40px;
 }
