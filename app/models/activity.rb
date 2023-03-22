@@ -9,4 +9,5 @@ class Activity < ApplicationRecord
   validates :max_capacity, presence: true
   validates :meeting_location, presence: true
   validates :name, uniqueness: true
+  has_many :bookings
 end

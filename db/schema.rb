@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_18_065153) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_22_130415) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -57,6 +57,20 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_18_065153) do
     t.index ["user_id"], name: "index_activities_on_user_id"
   end
 
+  create_table "bookings", force: :cascade do |t|
+    t.date "booking_date", null: false
+    t.string "user_name", null: false
+    t.integer "number_of_pax", null: false
+    t.text "status", null: false
+    t.text "comment"
+    t.bigint "user_id", null: false
+    t.bigint "activity_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["activity_id"], name: "index_bookings_on_activity_id"
+    t.index ["user_id"], name: "index_bookings_on_user_id"
+  end
+
   create_table "interests", force: :cascade do |t|
     t.string "name"
     t.string "icon"
@@ -94,6 +108,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_18_065153) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "activities", "users"
+  add_foreign_key "bookings", "activities"
+  add_foreign_key "bookings", "users"
   add_foreign_key "user_interests", "interests"
   add_foreign_key "user_interests", "users"
 end
