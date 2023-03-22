@@ -1,7 +1,13 @@
+.navbar {
+  background-color: $yellow-orange;
+}
+
+
 //Logo Font and Color//
 .navbar-brand {
   font-family: 'Lemon';
-  color: #EC481F;
+  font-size: xx-large;
+  color: $red;
 }
 
 .navbar-togather {
@@ -15,11 +21,16 @@
 
 //Font and Color for "About Us","Find Activity" & "Share Moments"//
 .nav-link {
-  color: #EC481F;
+  color: $red;
   font-family: 'Source Serif Pro', sans-serif;
 }
 
 //Avatar img circle//
 .navbar-togather .navbar-brand img {
   width: 40px;
+}
+
+//Individual link// 
+.nav-item {
+  padding-left: 1rem;
 }
