@@ -6,11 +6,15 @@ Rails.application.routes.draw do
     get "users/add_interest", to: "users/registrations#add_interest"
     patch "users/update_interest", to: "users/registrations#update_interest"
   end
-  # devise_for :users, path_names: { add_interest: "add_interest" }
   root to: "pages#home"
+  get "/about", to: "pages#about"
+  get "/contact_us", to: "pages#contact_us"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
   # root "articles#index"
-  resources :activities
+  resources :activities do
+    resources :bookings, only: [:index, :show, :new, :create, :edit, :update]
+    resources :bookings, only: [:destroy], as: :booking_destroy
+  end
 end
