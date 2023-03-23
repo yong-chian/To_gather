@@ -28,9 +28,4 @@
 </div>
 
 <h1>New booking</h1>
-<%= simple_form_for [@activity, @booking] do |f| %>
-  <%= f.input :booking_date %>
-  <%= f.input :number_of_pax %>
-  <%= f.input :comment, placeholder: "Add a comment" %>
-  <%= f.submit "Submit booking", class: "btn btn-primary" %>
-<% end %>
+<%= render "/bookings/form", activity: @activity, booking: @booking %>

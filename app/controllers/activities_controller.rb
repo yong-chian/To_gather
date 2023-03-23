@@ -1,11 +1,14 @@
 class ActivitiesController < ApplicationController
+  before_action :set_activity, only: %i[show edit update destroy]
+
   def index
     @activities = policy_scope(Activity)
   end
 
   def show
-    @activity = Activity.find(params[:id])
-    authorize(@activity)
+    @bookings = @activity.bookings
+    # @reviews = Review.where(booking_id: @bookings.pluck(:id))
+    @booking = Booking.new
   end
 
   def new
@@ -14,7 +17,7 @@ class ActivitiesController < ApplicationController
   end
 
   def create
-    @activity = Activity.new(experience_params)
+    @activity = Activity.new(activity_params)
     @activity.user = current_user
 
     authorize(@activity)
@@ -43,6 +46,11 @@ class ActivitiesController < ApplicationController
   end
 
   private
+
+  def set_activity
+    @activity = Activity.find(params[:id])
+    authorize(@activity)
+  end
 
   def activity_params
     params.require(:activity).permit(:name, :description, :price, :max_capacity, :availability, :meeting_location, :minimum_age, :policies, photos: [])

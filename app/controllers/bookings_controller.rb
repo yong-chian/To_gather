@@ -3,7 +3,8 @@ class BookingsController < ApplicationController
 
   def index
     @bookings = policy_scope(Booking.where(user_id: current_user))
-    @myhostings = policy_scope(Booking.joins(:experience).where(experience: { user_id: current_user.id })) #will user.bookings_as_host list out all my hostings?
+    @myhostings = policy_scope(Booking.joins(:activity).where(activity: { user_id: current_user.id }))
+    #will user.bookings_as_host list out all my hostings? TODO
   end
 
   def show
@@ -18,7 +19,7 @@ class BookingsController < ApplicationController
 
   def create
     @booking = Booking.new(booking_params)
-    #number of bookings with the experience and sum of the pax
+    #number of bookings with the activity and sum of the pax
     #if capacity < number_of_pax + (existing bookings pax) => fail
     #aggregate function
     @booking.user = current_user
@@ -44,7 +45,7 @@ class BookingsController < ApplicationController
     @booking = Booking.find(params[:id])
     authorize(@booking)
     if @booking.update(booking_params)
-      redirect_to activity_booking_path(@experience, @booking), notice: "Booking was successfully updated."
+      redirect_to activity_booking_path(@activity, @booking), notice: "Booking was successfully updated."
     else
       render :edit, status: :unprocessable_entity
     end
@@ -54,7 +55,7 @@ class BookingsController < ApplicationController
     @booking = Booking.find(params[:id])
     authorize(@booking)
     @booking.destroy
-    redirect_to experience_path(@experience), notice: "Booking was successfully destroyed."
+    redirect_to activity_path(@activity), notice: "Booking was successfully destroyed."
   end
 
   private
