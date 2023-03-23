@@ -1,0 +1,28 @@
+/*activity card*/
+.activity-card {
+
+    width: 381px;
+    height: 488px;
+    left: 0px;
+    top: 8px;
+    background: rgb(189, 226, 26);
+    border-radius: 5px;
+
+}
+
+.activity-card img {
+    display: block;
+    margin: auto;
+    width: 100%;
+}
+
+// <i class="fa-solid fa-calendar-days"></i>//
+.circle-icon {
+    background: white;
+    padding: 10px;
+    border-radius: 50%;
+}
+
+.fa-calendar-days {
+    font-size: 36px;
+}
