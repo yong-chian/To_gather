@@ -16,7 +16,7 @@
     width: 100%;
 }
 
-// <i class="fa-solid fa-calendar-days"></i>//
+// HTML = <i class="fa-solid fa-calendar-days"></i>//
 .circle-icon {
     background: white;
     padding: 10px;
@@ -25,4 +25,9 @@
 
 .fa-calendar-days {
     font-size: 36px;
+}
+
+//Heart shape
+.activity-card .fa-heart {
+    color: #D23333;
 }

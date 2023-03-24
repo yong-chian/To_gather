@@ -12,6 +12,16 @@
     padding-bottom: 29px;
 }
 
+.footer-p1 {
+    margin-left: -20px;
+    font-size: 14px;
+}
+
+.footer-p2 {
+    font-size: 12px;
+}
+
+
 .footer-link {
     text-decoration: none;
     color: $yellow;
@@ -19,8 +29,5 @@
 
 h4 {
     font-family: $body-font;
+    font-size: 20px;
 }
-
-// .footer .fa-heart {
-//     color: #D23333;
-// }
