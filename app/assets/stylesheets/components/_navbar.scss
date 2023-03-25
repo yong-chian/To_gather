@@ -1,12 +1,36 @@
-.navbar-lewagon {
-  justify-content: space-between;
-  background: white;
+.navbar {
+  background-color: $yellow-orange;
 }
 
-.navbar-lewagon .navbar-collapse {
+
+//Logo Font and Color//
+.navbar-brand {
+  font-family: 'Lemon';
+  font-size: xx-large;
+  color: $red;
+}
+
+.navbar-togather {
+  justify-content: space-between;
+  background: F5F0E7;
+}
+
+.navbar-togather .navbar-collapse {
   flex-grow: 0;
 }
 
-.navbar-lewagon .navbar-brand img {
+//Font and Color for "About Us","Find Activity" & "Share Moments"//
+.nav-link {
+  color: $red;
+  font-family: 'Source Serif Pro', sans-serif;
+}
+
+//Avatar img circle//
+.navbar-togather .navbar-brand img {
   width: 40px;
+}
+
+//Individual link// 
+.nav-item {
+  padding-left: 1rem;
 }
