@@ -1,0 +1,42 @@
+<div id="<%= dom_id booking %>">
+  <p>
+    <strong>Name:</strong>
+    <%= booking.activity.name %>
+  </p>
+
+   <p>
+    <strong>Description:</strong>
+    <%= booking.activity.description %>
+  </p>
+
+   <p>
+    <strong>Price:</strong>
+    <%= booking.activity.price %>
+  </p>
+
+  <p>
+    <strong>User:</strong>
+    <%= booking.user_name %>
+  </p>
+
+  <p>
+    <strong>Booking Date:</strong>
+    <%= "#{booking.start_time} to #{booking.end_time}" %>
+  </p>
+
+  <p>
+    <strong>Number of Pax:</strong>
+    <%= booking.number_of_pax %>
+  </p>
+
+  <p>
+    <strong>Booking Status:</strong>
+    <%= booking.status %>
+  </p>
+
+    <p>
+    <strong>Comment:</strong>
+    <%= booking.comment %>
+  </p>
+
+</div>
