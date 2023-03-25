@@ -1,16 +1,32 @@
-.btn {
+/*Primary Button */
+.btn-primary {
     font-family: 'IM Fell Great Primer', "sans-serif";
-    ;
     background: $red;
     border-radius: 30px;
     color: $white;
 }
 
-// .cancel_button {
-//     color: #FF8D23;
-//     font-family: 'Source Serif Pro', sans-serif;
-// }
+/* Button Edit */
+//<%= link_to "Edit+", "#", class: "btn-link" %>//
+.btn-link {
+    position: absolute;
+    left: 0%;
+    right: 0%;
+    top: 0%;
+    bottom: 31.58%;
 
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+    display: flex;
+    align-items: center;
+    color: $red;
+}
 
-
-/* Rectangle 66 */
+/* Cancel Booking */
+.btn-warning {
+    color: $white;
+    border-radius: 5px;
+}
