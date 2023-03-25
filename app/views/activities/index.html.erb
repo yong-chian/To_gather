@@ -3,15 +3,10 @@
   <br>
     <div class="">
       <% activity.photos.each do |photo| %>
-      <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-        <p>
-        <br>
-        <%= link_to "Show this activity", activity, class: "btn btn-primary" %>
-      </p>
-      <%= render activity %>
+        <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
       <% end %>
-      <br>
+      <%= link_to "Show this activity", activity_path(activity), class: "btn btn-primary" %>
+      <%= render activity %>
     </div>
   <% end %>
-    </div>
 </div>

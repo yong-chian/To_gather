@@ -1,15 +1,9 @@
-<div class="container" data-controller="interest">
-  <div class="row justify-content-center">
-    <div class="col-sm-8 text-center">
-      <h3>Select your interests:</h3>
-      <% @interests.each do |interest| %>
-        <div class="d-flex flex-wrap justify-content-center pt-4">
-          <div data-action="click->interest#disable">
-            <i class="fas fa-hiking"></i>
-            <small><%= interest.name %></small>
-          </div>
-        </div>
-      <% end %>
-    </div>
-  </div>
+
+<div class="container">
+  <h3>Select your interests:</h3>
+  <%= simple_form_for @user, url:  users_update_interest_path do |f| %>
+    <%= f.association "interests", as: :check_boxes, multiple: true, collection: Interest.all, include_hidden:false %>
+    <%= f.submit class: 'btn btn-primary text-dark fw-bold' %>
+  <% end %>
+  <a href="/">Back</a>
 </div>

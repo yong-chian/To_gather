@@ -1,0 +1,9 @@
+<div class="centered-form">
+  <%= simple_form_for([activity, booking]), data: { controller: "flatpickr" } do |f| %>
+    <%= f.input :start_time, as: :string, input_html: { data: { flatpickr_target: "startTime" } } %>
+    <%= f.input :end_time, as: :string, input_html: { data: { flatpickr_target: "endTime" } } %>
+    <%= f.input :number_of_pax, as: :integer %>
+    <%= f.text_field :comment, placeholder: "Add a comment" %>
+    <%= f.submit "Submit", class: "btn btn-success", onclick: "console.log('submit button clicked')" %>
+  <% end %>
+</div>
