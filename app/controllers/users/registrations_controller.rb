@@ -4,12 +4,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
   def add_interest
-    @current_user
+    @user = current_user
     @interests = Interest.all
   end
   # GET /resource/sign_up
   # def new
-  #   super
+  #   super\
   # end
 
   # POST /resource
@@ -24,9 +24,17 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # PUT /resource
   # def update
-  #   super
   # end
 
+  def update_interest
+    interests = params["user"]["interest_ids"] # array of selected interest ids
+    interests.each do |interest_id|
+      unless current_user.interests.exists?(id: interest_id.to_i)
+        UserInterest.create(user: current_user, interest_id: interest_id.to_i)
+      end
+    end
+    redirect_to root_path, notice: "Interests have been updated"
+  end
   # DELETE /resource
   # def destroy
   #   super
