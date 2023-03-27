@@ -31,7 +31,7 @@
                                                         class: "password-field", 
                                                         type: "password"
                                                         }, id: "password-field" %>
-                                                        <i class="far fa-eye toggle-password"></i>
+                                                        <%# <i class="far fa-eye toggle-password"></i>
                                                     <script>
                                                         function togglePasswordVisibility() {
                                                             const passwordField = document.querySelector(".password-field");
@@ -47,7 +47,7 @@
                                                                 eyeIcon.classList.add("fa-eye-slash");
                                                             }
                                                         }
-                                                    </script>
+                                                    </script> %>
 
                                             <%= f.input :remember_me, as: :boolean if
                                                 devise_mapping.rememberable? %>
