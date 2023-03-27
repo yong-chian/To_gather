@@ -9,3 +9,65 @@
     margin-left: -120px;
     margin-right: -120px;
 }
+
+.login-form {
+    padding-right: 200px;
+}
+
+.form-control {
+    margin-right: 800px;
+    border-radius: 30px;
+    background-color: $white;
+}
+
+.center {
+    text-align: center;
+    width: 835px;
+}
+
+.btn-login {
+    width: 288px;
+    height: 60px;
+    left: 803px;
+    top: 539px;
+    font-weight: 600;
+    font-size: 25px;
+}
+
+.checkbox {
+    background-color: $white;
+}
+
+.forgot-password {
+    text-decoration: none;
+    color: #9A9A9A;
+}
+
+.registerable {
+    text-decoration: none;
+    color: $black;
+}
+
+.password-field {
+    padding-right: 30px;
+    /* add padding to the right of the input field */
+}
+
+.toggle-password {
+    position: absolute;
+    /* position the eye icon absolutely */
+    top: 85%;
+    /* position the eye icon in the middle of the input field vertically */
+    right: 40px;
+    /* position the eye icon 10px from the right of the input field */
+    transform: translateY(-50%);
+    /* center the eye icon vertically */
+    cursor: pointer;
+    color: #ccc;
+    font-size: 20px;
+}
+
+
+.toggle-password:hover {
+    color: #333;
+}
