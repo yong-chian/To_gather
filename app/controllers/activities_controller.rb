@@ -6,7 +6,7 @@ class ActivitiesController < ApplicationController
   end
 
   def show
-    @bookings = @activity.bookings
+    # @bookings = @activity.bookings
     # @reviews = Review.where(booking_id: @bookings.pluck(:id))
     @booking = Booking.new
   end
@@ -20,8 +20,14 @@ class ActivitiesController < ApplicationController
     @activity = Activity.new(activity_params)
     @activity.user = current_user
 
-    authorize(@activity)
+    availabilities = availability_params[:availabilities_start_time].split(", ")
+    availabilities.map { |time| @activity.availabilities.build(
+      start_time: time,
+      end_time: time
+      )
+    }
 
+    authorize(@activity)
     if @activity.save!
       redirect_to activity_path(@activity), notice: "Activity was successfully created."
     else
@@ -34,7 +40,7 @@ class ActivitiesController < ApplicationController
 
   def update
     if @activity.update(activity_params)
-      redirect_to activity_path(@experience), notice: "Activity was successfully updated."
+      redirect_to activity_path(@activity), notice: "Activity was successfully updated."
     else
       render :edit, status: :unprocessable_entity
     end
@@ -53,6 +59,10 @@ class ActivitiesController < ApplicationController
   end
 
   def activity_params
-    params.require(:activity).permit(:name, :description, :price, :max_capacity, :availability, :meeting_location, :minimum_age, :policies, photos: [])
+    params.require(:activity).permit(:name, :description, :price, :max_capacity, :meeting_location, :minimum_age, :policies, photos: [])
+  end
+
+  def availability_params
+    params.require(:activity).permit(:availabilities_start_time)
   end
 end
