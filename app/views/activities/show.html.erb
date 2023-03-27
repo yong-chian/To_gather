@@ -1,4 +1,5 @@
 <%= render "activity", activity: @activity %>
+<p>Amount: <%= humanized_money_with_symbol(@activity.price) %></p>
 
 <% @activity.photos.each do |photo| %>
   <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>

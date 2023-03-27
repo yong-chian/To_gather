@@ -1,19 +1,21 @@
-<div class="container">
-  <% @activities.each do |activity| %>
-    <div class="row">
-      <div class="col-6 col-md-4">
-        <div class="card">
-          <% activity.photos.each do |photo| %>
-            <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill , class: "card-img-top" %>
-          <% end %>
-          <div class="card-body">
-            <%= render activity %>
-            <%= link_to "More details", activity_path(activity), class: "btn btn-primary" %>
+  <div class="container">
+    <% @activities.each do |activity| %>
+      <div class="row">
+        <div class="col-6 col-md-4">
+          <div class="card">
+            <% activity.photos.each do |photo| %>
+              <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill , class: "card-img-top" %>
+            <% end %>
+            <div class="card-body">
+              <%= render activity %>
+              <p>Amount: <%= humanized_money_with_symbol(activity.price) %></p>
+              <%= link_to "More details", activity_path(activity), class: "btn btn-primary" %>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>
 
 
