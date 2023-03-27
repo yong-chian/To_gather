@@ -47,7 +47,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_27_124000) do
     t.string "description"
     t.integer "price"
     t.integer "max_capacity"
-    t.date "availability"
     t.string "meeting_location"
     t.integer "minimum_age"
     t.string "policies"
@@ -57,19 +56,26 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_27_124000) do
     t.index ["user_id"], name: "index_activities_on_user_id"
   end
 
+  create_table "availabilities", force: :cascade do |t|
+    t.datetime "start_time", null: false
+    t.datetime "end_time", null: false
+    t.bigint "activity_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["activity_id"], name: "index_availabilities_on_activity_id"
+  end
+
   create_table "bookings", force: :cascade do |t|
     t.string "user_name", null: false
     t.integer "number_of_pax", null: false
     t.text "status", null: false
     t.text "comment"
     t.bigint "user_id", null: false
-    t.bigint "activity_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "completed", default: false, null: false
-    t.datetime "start_time", null: false
-    t.datetime "end_time", null: false
-    t.index ["activity_id"], name: "index_bookings_on_activity_id"
+    t.bigint "availability_id"
+    t.index ["availability_id"], name: "index_bookings_on_availability_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
 
@@ -127,7 +133,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_27_124000) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "activities", "users"
-  add_foreign_key "bookings", "activities"
+  add_foreign_key "availabilities", "activities"
   add_foreign_key "bookings", "users"
   add_foreign_key "host_reviews", "bookings"
   add_foreign_key "participant_reviews", "bookings"
