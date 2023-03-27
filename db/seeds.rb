@@ -48,6 +48,7 @@ test_user19 = User.create(email: "test18@gmail.com", password: "123456r", first_
 image1_url = "https://res.cloudinary.com/ddk4z9ypx/image/upload/v1679717906/9bda435e-03e5-4f8a-beab-9b4193fefc13_eqik7p.jpg"
 
 activity_1 = Activity.create(
+  sku: "Cycle",
   name: "How to Cycle for Beginners",
   description: "3-hour beginner-friendly indoor cycling sessions guided by Coach John with 10 years experience.",
   price: 50,
@@ -62,6 +63,7 @@ activity_1.save!
 
 image2_url = "https://res.cloudinary.com/ddk4z9ypx/image/upload/e_art:refresh/v1679715220/image-asset_m0sp3q.jpg"
 activity_2 = Activity.create(
+  sku: "Yoga",
   name: "Yoga Flow",
   description: "Gentle yoga practice with fluid movements and breath awareness.",
   price: 8,
@@ -77,6 +79,7 @@ activity_2.save!
 
 image3_url = "https://res.cloudinary.com/ddk4z9ypx/image/upload/c_scale,e_art:refresh,w_1170/v1679714865/aurelia-dubois-6J0MUsmS4fQ-unsplash_t8o5xh.jpg"
 activity_3 = Activity.create(
+  sku: "Soap-making",
   name: "Organic Soap-making",
   description: "Create your own handmade soap using natural ingredients and essential oils!",
   price: 80,
@@ -92,6 +95,7 @@ activity_3.save!
 
 image4_url = "https://res.cloudinary.com/ddk4z9ypx/image/upload/c_scale,e_art:refresh,w_1170/v1679719646/Peranakan-dishes_rohnte.jpg"
 activity_4 = Activity.create(
+  sku: "Cooking",
   name: "Peranankan Cooking Course",
   description: "Learn to cook 3 traditional Peranakan dishes with authentic ingredients in our cozy home. The dishes include Ayam Buah Keluak, Babi Pongteh and Kueh Lapis.",
   price: 100,
@@ -108,6 +112,7 @@ activity_4.save!
 image5_url = "https://res.cloudinary.com/ddk4z9ypx/image/upload/c_scale,e_art:refresh,w_1170/v1679719737/bc22ea20-84a0-11ea-bdf5-3ea9c00cb2c0_amgdrd.jpg"
 
 activity_5 = Activity.create(
+  sku: "Tuition",
   name: "Chinese Tuition",
   description: "Tailored Chinese language coaching for all orimary levels and ages.",
   price: 25,
@@ -123,6 +128,7 @@ activity_5.save!
 
 image6_url = "https://res.cloudinary.com/ddk4z9ypx/image/upload/c_scale,e_art:refresh,w_1170/v1679719911/E417767AE8C6CC63B601C2F474916F4E_f5d9j7.jpg"
 activity_6 = Activity.create(
+  sku: "Analysis",
   name: "Data Analysis 101",
   description: "Introduction to data analysis concepts and tools for beginners.",
   price: 50,
@@ -140,6 +146,7 @@ activity_6.save!
 image7_url = "https://res.cloudinary.com/ddk4z9ypx/image/upload/c_scale,e_art:refresh,w_1170/v1679719984/photo-1633869284807-d35bbe7d8719_tibjma.jpg"
 
 activity_7 = Activity.create(
+  sku: "Mooncake",
   name: "Mooncake Making",
   description: "Learn to make traditional mooncakes with various fillings and designs.",
   price: 90,
@@ -155,6 +162,7 @@ activity_7.save!
 
 image8_url = "https://res.cloudinary.com/ddk4z9ypx/image/upload/c_scale,e_art:refresh,w_1170/v1679720766/photo-1679110667877-408593fab0f6_glolqa.jpg"
 activity_8 = Activity.create(
+  sku: "Plant",
   name: "Green Fingers: Introducing How to Plant 101",
   description: "Join me to discover gardening basics, plant care, and sustainable practices!",
   price: 10,
@@ -170,6 +178,7 @@ activity_8.save!
 
 image9_url = "https://res.cloudinary.com/ddk4z9ypx/image/upload/c_scale,e_art:refresh,w_1170/v1679720813/photo-1597957539973-39539651d40e_zfwygy.jpg"
 activity_9 = Activity.create(
+  sku: "Painting",
   name: "Watercolour Painting",
   description: "Explore watercolour techniques to create beautiful and vibrant paintings with your family members or friends.",
   price: 40,
@@ -186,6 +195,7 @@ activity_9.save!
 # Activities for H2 - Browse Other Options
 image10_url = "https://res.cloudinary.com/ddk4z9ypx/image/upload/c_scale,e_art:refresh,w_1170/v1679720907/photo-1678731527227-8ded27d0a303_fxtjvl.jpg"
 activity_10 = Activity.create(
+  sku: "Basketball",
   name: "Basketball for Children",
   description: "Fun basketball program for kids from 6 years old onwards to learn and develop skills." ,
   price: 10,
@@ -202,6 +212,7 @@ activity_10.save!
 image11_url = "https://res.cloudinary.com/ddk4z9ypx/image/upload/c_scale,e_art:refresh,w_1170/v1679720325/f7f8e635697ba19e9b09f926cad92d4f--bird-watching-singapore_czv1tz.jpg"
 
 activity_11 = Activity.create(
+  sku: "Art",
   name: "Art of Bird Watching",
   description: "Discover the art of birdwatching through guided observation!.",
   price: 30,
@@ -218,6 +229,7 @@ activity_11.save!
 image12_url = "https://res.cloudinary.com/ddk4z9ypx/image/upload/c_scale,e_art:refresh,w_1170/v1679720473/photo-1660099789632-ed5fae6189af_hwqji8.jpg"
 
 activity_12 = Activity.create(
+  sku: "Mahjong",
   name: "Mahjong with Pros",
   description: "Learn and play Mahjong with experienced players for all levels." ,
   price: 60,
@@ -234,6 +246,7 @@ activity_12.save!
 image13_url = "https://res.cloudinary.com/ddk4z9ypx/image/upload/c_scale,e_art:refresh,w_1170/v1679720573/EPC-0350-2rec-web_lyjdge.webp"
 
 activity_13 = Activity.create(
+  sku: "Workshop",
   name: "Perfume Making Workshop",
   description: "Create custom scents using high-quality ingredients and expert guidance.",
   price: 80,
@@ -249,6 +262,7 @@ activity_13.save!
 
 image14_url = "https://res.cloudinary.com/ddk4z9ypx/image/upload/c_scale,e_art:refresh,w_1170/v1679719737/bc22ea20-84a0-11ea-bdf5-3ea9c00cb2c0_amgdrd.jpg"
 activity_14 = Activity.create(
+  sku: "Maths",
   name: "Maths Tuition",
   description: "Effective maths coaching for students to improve understanding and performance.",
   price: 30,
@@ -265,6 +279,7 @@ activity_14.save!
 image15_url = "https://res.cloudinary.com/ddk4z9ypx/image/upload/c_scale,e_art:refresh,w_1170/v1679720974/photo-1675495277087-10598bf7bcd1_wp0qrh.jpg"
 
 activity_15 = Activity.create(
+  sku: "Code",
   name: "How To Code 101",
   description: "Introduction to coding concepts and skills for beginners. Notes will be provided!" ,
   price: 88,
@@ -281,6 +296,7 @@ activity_15.save!
 image16_url = "https://res.cloudinary.com/ddk4z9ypx/image/upload/v1679721433/meg-wagener-vuXTB1lR3AY-unsplash_xldwsn.jpg"
 
 activity_16 = Activity.create(
+  sku: "Knitting",
   name: "Knitting Class",
   description: "Discover the art of knitting and create beautiful handmade pieces with various patterns and yarns. Invite your friends along!",
   price: 20,
@@ -297,6 +313,7 @@ activity_16.save!
 image17_url = "https://res.cloudinary.com/ddk4z9ypx/image/upload/c_scale,e_art:refresh,w_1170/v1679714826/oleg-ivanov-iB_h6EFRiKY-unsplash_vkxphf.jpg"
 
 activity_17 = Activity.create(
+  sku: "Guitar",
   name: "Learn Guitar!",
   description: "Learn to play guitar with chord progressions and strumming techniques.",
   price: 70,
@@ -313,6 +330,7 @@ activity_17.save!
 image18_url = "https://res.cloudinary.com/ddk4z9ypx/image/upload/c_scale,e_art:refresh,w_1170/v1679720205/easy-thai-recipes-for-beginners_unl1u4.jpg"
 
 activity_18 = Activity.create(
+  sku: "Thai Cooking",
   name: "Thai Cuisine Cooking Class",
   description: "Experience the bold and complex flavors of Thai cuisine with authentic recipes.",
   price: 120,
