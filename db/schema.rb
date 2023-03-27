@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_23_133041) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_27_125059) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -57,6 +57,17 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_23_133041) do
     t.index ["user_id"], name: "index_activities_on_user_id"
   end
 
+  create_table "booking_payments", force: :cascade do |t|
+    t.string "sku"
+    t.string "name"
+    t.bigint "category_id", null: false
+    t.string "photo_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "price_cents", default: 0, null: false
+    t.index ["category_id"], name: "index_booking_payments_on_category_id"
+  end
+
   create_table "bookings", force: :cascade do |t|
     t.string "user_name", null: false
     t.integer "number_of_pax", null: false
@@ -71,6 +82,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_23_133041) do
     t.datetime "end_time", null: false
     t.index ["activity_id"], name: "index_bookings_on_activity_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "interests", force: :cascade do |t|
@@ -110,6 +127,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_23_133041) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "activities", "users"
+  add_foreign_key "booking_payments", "categories"
   add_foreign_key "bookings", "activities"
   add_foreign_key "bookings", "users"
   add_foreign_key "user_interests", "interests"

@@ -10,6 +10,9 @@ Rails.application.routes.draw do
   get "/about", to: "pages#about"
   get "/contact_us", to: "pages#contact_us"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+#payment stripe
+  # root 'booking_payment#index'
+  
 
   # Defines the root path route ("/")
   # root "articles#index"
@@ -18,4 +21,6 @@ Rails.application.routes.draw do
     resources :bookings, only: [:destroy], as: :booking_destroy
   end
   resources :bookings, only: :index
+  resources :booking_payment, only: [:index, :show]
 end
+

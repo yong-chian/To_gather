@@ -325,3 +325,18 @@ activity_18 = Activity.create(
   file = URI.open(image18_url)
 activity_18.photos.attach(io: file, filename: "#{activity_18.name}.png", content_type: "image/png")
 activity_18.save!
+
+#payment-booking
+
+puts 'Creating categories...'
+first_name = Category.create!(name: 'geek')
+last_name = Category.create!(name: 'kids')
+
+puts 'Creating booking-payments...'
+BookingPayment.create!(sku: 'original-teddy-bear', name: 'Teddy bear', category: kids, photo_url: 'http://onehdwallpaper.com/wp-content/uploads/2015/07/Teddy-Bears-HD-Images.jpg')
+
+BookingPayment.create!(sku: 'jean-mimi', name: 'Jean-Michel - Le Wagon', category: geek, photo_url: 'https://pbs.twimg.com/media/B_AUcKeU4AE6ZcG.jpg:large')
+BookingPayment.create!(sku: 'octocat',   name: 'Octocat -  GitHub',      category: geek, photo_url: 'https://cdn-ak.f.st-hatena.com/images/fotolife/s/suzumidokoro/20160413/20160413220730.jpg')
+puts 'Finished!'
+
+
