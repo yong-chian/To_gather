@@ -3,7 +3,7 @@ class BookingsController < ApplicationController
 
   def index
     @bookings = policy_scope(Booking.where(user_id: current_user))
-    @myhostings = policy_scope(Booking.joins(:activity).where(activity: { user_id: current_user.id }))
+    @my_hostings = policy_scope(user.bookings_as_host)
     #will user.bookings_as_host list out all my hostings? TODO
   end
 
@@ -24,7 +24,7 @@ class BookingsController < ApplicationController
     #aggregate function
     @booking.user = current_user
     @booking.user_name = "#{current_user.first_name} #{current_user.last_name}"
-    @booking.activity = @activity
+    @booking.availability = Availability.find(params[:booking][:availability].to_i)
     @booking.status = "Pending"
 
     authorize(@booking)
@@ -65,6 +65,6 @@ class BookingsController < ApplicationController
   end
 
   def booking_params
-    params.require(:booking).permit(:booking_date, :number_of_pax, :status, :comment, :completed)
+    params.require(:booking).permit(:start_time, :end_time, :number_of_pax, :status, :comment, :completed)
   end
 end

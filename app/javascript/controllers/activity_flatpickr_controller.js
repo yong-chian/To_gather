@@ -3,11 +3,14 @@ import flatpickr from "flatpickr";
 
 // Connects to data-controller="flatpickr"
 export default class extends Controller {
-  static targets = [ "startTime"]
+  static targets = [ "availabilities" ]
 
   connect() {
     console.log("hello")
-    flatpickr(this.startTimeTarget, {})
-    // flatpickr(this.endTimeTarget, {})
+    flatpickr(this.availabilitiesTarget, {
+      mode: 'multiple',
+      dateFormat:'Y-m-d',
+      minDate: 'today'
+    })
   }
 }
