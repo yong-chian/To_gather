@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row">
+    <div class="col"></div>
+    <div class="col-5">
+      <h1>My favourites!</h1>
+      <% counter = 1 %>
+      <% @favorites.each do |favorite| %>
+        <div>
+          <%= "#{counter}. #{favorite.favoritable.name}" %>
+        </div>
+
+        <div>
+          <%= favorite.favoritable.description %>
+        </div>
+
+        <div>
+          #TODO SHOW PHOTOS
+        </div>
+
+
+        <% counter += 1 %>
+        <%= link_to "Show this activity", favorite.favoritable %>
+      <% end %>
+    </div>
+  </div>
+</div>

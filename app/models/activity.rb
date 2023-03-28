@@ -11,4 +11,5 @@ class Activity < ApplicationRecord
   has_many :availabilities
   has_many :bookings, through: :availabilities
   attribute :availabilities_start_time
+  acts_as_favoritable
 end

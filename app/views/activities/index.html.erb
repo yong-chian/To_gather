@@ -1,9 +1,12 @@
 <div>
   <% @activities.each do |activity| %>
   <br>
-    <div class="">
+    <div class="activity-card" data-controller="favorite">
       <% activity.photos.each do |photo| %>
         <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+      <% end %>
+      <%= link_to favorite_activity_path(activity), data: {turbo_method: :post, action: "click->favorite#update"} do %>
+        <i class="fa-heart <%= current_user.favorited?(activity) ? "fa-solid" : "fa-regular" %>" data-favorite-target="bookmark"></i>
       <% end %>
       <%= link_to "Show this activity", activity_path(activity), class: "btn btn-primary" %>
       <%= render activity %>
