@@ -9,13 +9,14 @@ Rails.application.routes.draw do
   root to: "pages#home"
   get "/about", to: "pages#about"
   get "/contact_us", to: "pages#contact_us"
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
-  # Defines the root path route ("/")
-  # root "articles#index"
   resources :activities do
-    resources :bookings, only: [:show, :new, :create, :edit, :update]
+    resources :bookings, only: [:show, :new, :create, :edit, :update] do
+      resources :host_reviews, only: [:new, :create, :show, :edit, :update, :destroy]
+      resources :participant_reviews, only: [:new, :create, :show, :edit, :update, :destroy]
+    end
     resources :bookings, only: [:destroy], as: :booking_destroy
   end
+
   resources :bookings, only: :index
 end

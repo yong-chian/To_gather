@@ -1,0 +1,24 @@
+<h1>Edit Host Review</h1>
+
+<%= form_for [@booking, @host_review] do |f| %>
+  <% if @host_review.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@host_review.errors.count, "error") %> prohibited this review from being saved:</h2>
+
+      <ul>
+      <% @host_review.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :user_rating %>
+    <%= f.select :user_rating, options_for_select([1, 2, 3, 4, 5], @host_review.user_rating) %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Update Review" %>
+  </div>
+<% end %>
