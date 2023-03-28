@@ -20,6 +20,12 @@
   <p>No reviews yet.</p>
 <% end %>
 
+<%= form_with url: orders_path do %>
+  <%= hidden_field_tag 'activity_id', @activity.id %>
+  <%= submit_tag 'Purchase', class: 'btn btn-primary' %>
+<% end %>
+
+
 <div>
   <% if policy(@activity).edit? %>
     <%= link_to "Edit this activity", edit_activity_path(@activity) %>

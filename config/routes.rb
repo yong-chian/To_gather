@@ -18,4 +18,5 @@ Rails.application.routes.draw do
     resources :bookings, only: [:destroy], as: :booking_destroy
   end
   resources :bookings, only: :index
+  resources :orders, only: [:show, :create]
 end

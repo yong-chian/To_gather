@@ -12,56 +12,56 @@ config.default_currency = :sgd
 # Set default bank object
 #
 # Example:
-config.default_bank = SgCentralBank.new
+# config.default_bank = SgCentralBank.new
 
 # Add exchange rates to current money bank object.
 # (The conversion rate refers to one direction only)
 #
 # Example:
-config.add_rate "SGD", "USD", 1.24515
-config.add_rate "USD", "SGD", 0.803115
+# config.add_rate "SGD", "USD", 1.24515
+# config.add_rate "USD", "SGD", 0.803115
 
 # To handle the inclusion of validations for monetized fields
 # The default value is true
-#
-config.include_validations = true
+# #
+# config.include_validations = true
 
 # Default ActiveRecord migration configuration values for columns:
+# #
+# config.amount_column = { 
+#   prefix: '',           # column name prefix
+#   postfix: '_cents',    # column name  postfix
+#   column_name: nil,     # full column name (overrides prefix, postfix and accessor name)
+#   type: :integer,       # column type
+#   present: true,        # column will be created
+#   null: false,          # other options will be treated as column options
+#   default: 0
+# }
 #
-config.amount_column = { 
-  prefix: '',           # column name prefix
-  postfix: '_cents',    # column name  postfix
-  column_name: nil,     # full column name (overrides prefix, postfix and accessor name)
-  type: :integer,       # column type
-  present: true,        # column will be created
-  null: false,          # other options will be treated as column options
-  default: 0
-}
-#
-config.currency_column = { 
-  prefix: '',
-  postfix: '_currency',
-  column_name: nil,
-  type: :string,
-  present: true,
-  null: false,
-  default: 'USD'
-}
+# config.currency_column = { 
+#   prefix: '',
+#   postfix: '_currency',
+#   column_name: nil,
+#   type: :string,
+#   present: true,
+#   null: false,
+#   default: 'USD'
+# }
 
   # Register a custom currency
   #
   # Example:
-config.register_currency = {
-  priority:            1,
-  iso_code:            "SGD4",
-  name:                "Sgd with subunit of 4 digits",
-  symbol:              "$",
-  symbol_first:        true,
-  subunit:             "Subcent",
-  subunit_to_unit:     10000,
-  thousands_separator: ".",
-  decimal_mark:        ","
-}
+# config.register_currency = {
+#   priority:            1,
+#   iso_code:            "SGD4",
+#   name:                "Sgd with subunit of 4 digits",
+#   symbol:              "$",
+#   symbol_first:        true,
+#   subunit:             "Subcent",
+#   subunit_to_unit:     10000,
+#   thousands_separator: ".",
+#   decimal_mark:        ","
+# }
 
 
 # Specify a rounding mode
@@ -75,9 +75,9 @@ config.register_currency = {
 # BigDecimal::ROUND_CEILING,
 # BigDecimal::ROUND_FLOOR
 
-set to BigDecimal::ROUND_HALF_EVEN by default
+# set to BigDecimal::ROUND_HALF_EVEN by default
 
-config.rounding_mode = BigDecimal::ROUND_HALF_UP
+# config.rounding_mode = BigDecimal::ROUND_HALF_UP
 
 end
 
