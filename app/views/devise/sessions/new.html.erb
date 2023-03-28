@@ -1,70 +1,66 @@
 
 <head>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 </head>
+
 <div></div>
+
 <div class="row">
     <div class="row" style="margin-left: 0px;">
-        <div class="col-md-6 col-lg-1 offset-lg-0 screen" style="margin-right: 8px;padding-right: 308px;"></div>
-
-        <div class="col-md-6 offset-lg-5 login-form"
-            style="padding-bottom: 26px;padding-left: 264px;padding-right: 0px;padding-top: 0px;margin-left: 48px;">
+        <div class="col-md-6 col-lg-1 offset-lg-0 login-screen" style="margin-right: 8px;padding-right: 308px;">
+        </div>
+        <div class="col-md-6 offset-lg-5 login-form" style="padding-bottom: 26px;padding-left: 264px;padding-right: 0px;padding-top: 0px;margin-left: 48px;">
             <section class="py-4 py-xl-5">
                 <div class="container">
                     <div class="row mb-5">
                         <div class="col-md-8 col-xl-6 text-center mx-auto">
-                            <h3 class="footer-logo">ToGather</h3>
-                        </div>
-                    </div>
-                    <div class="row d-flex justify-content-center">
-                        <div class="col-md-6 col-xl-4">
-                            <div class="card-login mb-5">
-                                <div class="card-body-login d-flex flex-column align-items-center">
-                                    <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name),
-                                        data: { turbo: :false }) do |f| %>
-                                        <div class="form-inputs">
-                                            <%= f.input :email, required: false, autofocus: true, input_html: {
-                                                autocomplete: "email" , placeholder: "Example@example.com" } %>
-                                            <%= f.input :password, required: false, input_html: {
-                                                        autocomplete: "current-password", 
-                                                        placeholder: "Enter password", 
-                                                        class: "password-field", 
-                                                        type: "password"
-                                                        }, id: "password-field" %>
-                                                        <%# <i class="far fa-eye toggle-password"></i>
-                                                    <script>
-                                                        function togglePasswordVisibility() {
-                                                            const passwordField = document.querySelector(".password-field");
-                                                            const eyeIcon = document.querySelector(".toggle-password");
-
-                                                            if (passwordField.type === "password") {
-                                                                passwordField.type = "text";
-                                                                eyeIcon.classList.remove("fa-eye-slash");
-                                                                eyeIcon.classList.add("fa-eye");
-                                                            } else {
-                                                                passwordField.type = "password";
-                                                                eyeIcon.classList.remove("fa-eye");
-                                                                eyeIcon.classList.add("fa-eye-slash");
-                                                            }
-                                                        }
-                                                    </script> %>
-
-                                            <%= f.input :remember_me, as: :boolean if
-                                                devise_mapping.rememberable? %>
-                                        </div>
-
-                                        <div class="form-actions center">
-                                            <%= f.button :submit, "Log in" , class: "btn btn-primary btn-login" %>
-                                        </div>
-                                        <% end %><br />
-
-                                            <%= render "devise/shared/links" %>
-                                </div>
-
-                            </div>
+                        <h3 class="footer-logo">ToGather</h3>
                         </div>
                     </div>
                 </div>
+            
+                <div class="card-body-login d-flex flex-column align-items-center">
+                    <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name),
+                    data: { turbo: :false }) do |f| %>
+                    <div class="login-form-inputs">
+                    <%= f.input :email, required: false, autofocus: true, input_html: {
+                    autocomplete: "email" , placeholder: "Example@example.com", class: "login-email-field"  } %>
+                    <%= f.input :password, required: false, input_html: {
+                    autocomplete: "current-password", 
+                    placeholder: "Enter password", 
+                    class: "password-field", 
+                    type: "password"
+                    }, id: "password-field" %>
+
+                    <%= f.input :remember_me, as: :boolean if
+                    devise_mapping.rememberable? %>
+                </div>
+
+                <div class="form-actions center">
+                    <%= f.button :submit, "Log in" , class: "btn btn-primary login-btn-login" %>
+                </div>
+                    <% end %>
+                    <br />
+                <%= render "devise/shared/links" %>
             </section>
         </div>
     </div>
+</div>
+
+<%# <i class="far fa-eye toggle-password"></i>
+<script>
+function togglePasswordVisibility() {
+const passwordField = document.querySelector(".password-field");
+const eyeIcon = document.querySelector(".toggle-password");
+
+if (passwordField.type === "password") {
+passwordField.type = "text";
+eyeIcon.classList.remove("fa-eye-slash");
+eyeIcon.classList.add("fa-eye");
+} else {
+passwordField.type = "password";
+eyeIcon.classList.remove("fa-eye");
+eyeIcon.classList.add("fa-eye-slash");
+}
+}
+</script> %>
