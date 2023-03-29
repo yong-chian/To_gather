@@ -10,7 +10,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-# ActiveRecord::Schema[7.0].define(version: 2023_03_28_145209) do
 ActiveRecord::Schema[7.0].define(version: 2023_03_28_181221) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,6 +53,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_28_181221) do
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "sku"
     t.integer "price_cents", default: 0, null: false
     t.index ["user_id"], name: "index_activities_on_user_id"
   end
@@ -77,7 +77,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_28_181221) do
     t.datetime "updated_at", null: false
     t.boolean "completed", default: false, null: false
     t.bigint "availability_id"
-    t.string "sku"
     t.index ["availability_id"], name: "index_bookings_on_availability_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
@@ -162,6 +161,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_28_181221) do
   add_foreign_key "availabilities", "activities"
   add_foreign_key "bookings", "users"
   add_foreign_key "faqs", "activities"
+  add_foreign_key "orders", "activities"
+  add_foreign_key "orders", "users"
   add_foreign_key "user_interests", "interests"
   add_foreign_key "user_interests", "users"
 end

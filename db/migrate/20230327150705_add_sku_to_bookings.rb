@@ -1,5 +1,5 @@
-class AddSkuToBookings < ActiveRecord::Migration[7.0]
+class AddSkuToActivities < ActiveRecord::Migration[7.0]
   def change
-    add_column :bookings, :sku, :string
+    add_column :activities, :sku, :string
   end
 end
