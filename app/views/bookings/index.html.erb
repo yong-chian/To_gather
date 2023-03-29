@@ -1,1 +1,37 @@
 #TODO show bookings
+<h1 class="text-black"><%="#{current_user.first_name} #{current_user.last_name}"%></h1>
+<h3 class="text-black">These are your bookings</h3>
+
+<% counter = 1 %>
+<% @bookings.each do |booking| %>
+  <div>
+    <h3>Booking <%= counter %></h3>
+    <p><strong>Activity Name:</strong> <%= booking.availability.activity.name %></p>
+    <p><strong>Booking Date:</strong> <%= "#{booking.availability.start_time} to #{booking.availability.end_time}" %></p>
+    <p><strong>Number of Pax:</strong> <%= booking.number_of_pax %></p>
+    <p><strong>Booking Status:</strong> <%= booking.status %></p>
+  </div>
+  <% counter += 1 %>
+  <%= link_to "Show this booking", activity_booking_path(booking.availability.activity, booking), class: "btn btn-primary" if policy(booking).show? %>
+<% end %>
+
+<h3 class="text-black">These are your activity's bookings</h3>
+
+<% counter = 1 %>
+<% @my_hostings.each do |booking| %>
+  <div>
+    <h3>Booking <%= counter %></h3>
+    <p><strong>Booking Id:</strong> <%= booking.id %></p>
+    <p><strong>Activity Name:</strong> <%= booking.availability.activity.name %></p>
+    <p><strong>User Name:</strong> <%= booking.user_name %></p>
+    <p><strong>Booking Date:</strong> <%= "#{booking.availability.start_time} to #{booking.availability.end_time}" %></p>
+    <p><strong>Number of Pax:</strong> <%= booking.number_of_pax %></p>
+    <p><strong>Booking Status:</strong> <%= booking.status %></p>
+    <p><strong>Comment:</strong> <%= booking.comment %></p>
+  </div>
+  <%= link_to "Show this booking", activity_booking_path(booking.availability.activity, booking), class: "btn btn-primary" if policy(booking).show? %>
+  <%# <%= link_to "Destroy this booking", activity_booking_destroy_path(booking.availability.activity, booking), data: { turbo_method: :delete, turbo_confirm: "Are you sure?"} if policy(booking).destroy? %>
+  <% counter += 1 %>
+<% end %>
+
+<%# add a button to look into each booking %>

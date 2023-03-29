@@ -3,8 +3,7 @@ class BookingsController < ApplicationController
 
   def index
     @bookings = policy_scope(Booking.where(user_id: current_user))
-    @my_hostings = policy_scope(user.bookings_as_host)
-    #will user.bookings_as_host list out all my hostings? TODO
+    @my_hostings = current_user.bookings_as_host
   end
 
   def show
