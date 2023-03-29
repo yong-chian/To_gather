@@ -31,4 +31,8 @@ class ActivityPolicy < ApplicationPolicy
   def destroy?
     user.admin? || record.user == user
   end
+
+  def toggle_favorite?
+    return true
+  end
 end

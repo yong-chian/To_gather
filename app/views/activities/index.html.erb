@@ -6,6 +6,10 @@
             <% activity.photos.each do |photo| %>
               <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill , class: "card-img-top" %>
             <% end %>
+            <%= link_to favorite_activity_path(activity), data: {turbo_method: :post, action: "click->favorite#update"} do %>
+            <i class="fa-heart <%= current_user.favorited?(activity) ? "fa-solid" : "fa-regular" %>" data-favorite-target="bookmark"></i>
+      <% end %>
+        <i class="fa-heart <%= current_user.favorited?(activity) ? "fa-solid" : "fa-regular" %>" data-favorite-target="bookmark"></i>
             <div class="card-body">
               <%= render activity %>
               <p>Amount: <%= humanized_money_with_symbol(activity.price) %></p>
@@ -16,6 +20,6 @@
       </div>
     <% end %>
   </div>
-</div>
+<div>
 
 

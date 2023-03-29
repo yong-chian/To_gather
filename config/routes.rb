@@ -23,4 +23,16 @@ Rails.application.routes.draw do
   end
   resources :bookings, only: :index
   resources :orders, only: [:show, :create]
+  resources :activities, only: :index do
+    member do
+      post 'favorite', to: "activities#toggle_favorite"
+    end
+  end
+  resources :favorites, only: [:index]
+
+  # resources :users, only: :index do
+  #   member do
+  #     post 'favorite', to: "users#toggle_favorite"
+  #   end
+  # end
 end

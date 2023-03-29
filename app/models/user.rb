@@ -10,4 +10,5 @@ class User < ApplicationRecord
   has_many :activities
   has_many :bookings_as_host, through: :activities, source: :bookings
   has_many :orders
+  acts_as_favoritor
 end
