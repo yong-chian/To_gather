@@ -22,7 +22,8 @@
                 <i class="fa-heart <%= current_user.favorited?(activity) ? "fa-solid" : "fa-regular" %>" data-favorite-target="bookmark"></i>
               <% end %>
               <%= render activity %>
-              <%= link_to "Show this activity", activity_path(activity), class: "btn btn-primary" %>
+              <p>Amount: <%= humanized_money_with_symbol(activity.price) %></p>
+              <%= link_to "More details", activity_path(activity), class: "btn btn-primary" %>
             </div>
           <% end %>
         <% else %>
