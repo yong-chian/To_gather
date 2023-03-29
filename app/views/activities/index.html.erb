@@ -1,15 +1,34 @@
-<div>
-  <% @activities.each do |activity| %>
-  <br>
-    <div class="activity-card" data-controller="favorite">
-      <% activity.photos.each do |photo| %>
-        <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-sm-8 my-3">
+      <%= form_with url: activities_path, method: :get, class: "d-flex" do %>
+        <%= text_field_tag :query,
+            params[:query],
+            class: "form-control",
+            placeholder: "Type a keyword"
+          %>
+        <%= submit_tag "Search", name: "", class: "btn btn-primary mx-3 " %>
       <% end %>
-      <%= link_to favorite_activity_path(activity), data: {turbo_method: :post, action: "click->favorite#update"} do %>
-        <i class="fa-heart <%= current_user.favorited?(activity) ? "fa-solid" : "fa-regular" %>" data-favorite-target="bookmark"></i>
-      <% end %>
-      <%= link_to "Show this activity", activity_path(activity), class: "btn btn-primary" %>
-      <%= render activity %>
+
+      <div id="activities">
+        <% if @activities.any? %>
+          <% @activities.each do |activity| %>
+          <br>
+            <div class="activity-card" data-controller="favorite">
+              <% activity.photos.each do |photo| %>
+                <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+              <% end %>
+              <%= link_to favorite_activity_path(activity), data: {turbo_method: :post, action: "click->favorite#update"} do %>
+                <i class="fa-heart <%= current_user.favorited?(activity) ? "fa-solid" : "fa-regular" %>" data-favorite-target="bookmark"></i>
+              <% end %>
+              <%= render activity %>
+              <%= link_to "Show this activity", activity_path(activity), class: "btn btn-primary" %>
+            </div>
+          <% end %>
+        <% else %>
+          <em>Sorry, no activities found.</em>
+        <% end %>
+      </div>
     </div>
-  <% end %>
+  </div>
 </div>
