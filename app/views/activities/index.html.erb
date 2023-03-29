@@ -1,15 +1,24 @@
+  <div class="container">
+    <% @activities.each do |activity| %>
+      <div class="row">
+        <div class="col-6 col-md-4">
+          <div class="card">
+            <% activity.photos.each do |photo| %>
+              <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill , class: "card-img-top" %>
+            <% end %>
+            <%= link_to favorite_activity_path(activity), data: {turbo_method: :post, action: "click->favorite#update"} do %>
+            <i class="fa-heart <%= current_user.favorited?(activity) ? "fa-solid" : "fa-regular" %>" data-favorite-target="bookmark"></i>
+      <% end %>
+      <%#%
+        <i class="fa-heart <%= current_user.favorited?(activity) ? "fa-solid" : "fa-regular" " data-favorite-target="bookmark"></i>%>
+            <div class="card-body">
+              <%= render activity %>
+              <p>Amount: <%= humanized_money_with_symbol(activity.price) %></p>
+              <%= link_to "More details", activity_path(activity), class: "btn btn-primary" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
 <div>
-  <% @activities.each do |activity| %>
-  <br>
-    <div class="activity-card" data-controller="favorite">
-      <% activity.photos.each do |photo| %>
-        <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-      <% end %>
-      <%= link_to favorite_activity_path(activity), data: {turbo_method: :post, action: "click->favorite#update"} do %>
-        <i class="fa-heart <%= current_user.favorited?(activity) ? "fa-solid" : "fa-regular" %>" data-favorite-target="bookmark"></i>
-      <% end %>
-      <%= link_to "Show this activity", activity_path(activity), class: "btn btn-primary" %>
-      <%= render activity %>
-    </div>
-  <% end %>
-</div>

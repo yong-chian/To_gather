@@ -1,10 +1,10 @@
 class Activity < ApplicationRecord
   belongs_to :user
   has_many_attached :photos
-
+  monetize :price_cents
   validates :name, presence: true
   validates :description, presence: true
-  validates :price, presence: true
+  validates :price_cents, numericality: { greater_than_or_equal_to: 0 }
   validates :max_capacity, presence: true
   validates :meeting_location, presence: true
   validates :name, uniqueness: true
@@ -14,3 +14,4 @@ class Activity < ApplicationRecord
   acts_as_favoritable
   has_many :faqs
 end
+
