@@ -36,17 +36,3 @@
 
 <h1>New booking</h1>
 <%= render "/bookings/form", activity: @activity, booking: @booking %>
-
-<h2>Host Reviews</h2>
-<% @activity.bookings.each do |booking| %>
-  <% if booking.host_review %>
-    <%= render partial: "reviews/host_review", locals: { review: booking.host_review } %>
-  <% end %>
-<% end %>
-
-<h2>Participant Reviews</h2>
-<% @activity.bookings.each do |booking| %>
-  <% if booking.participant_review %>
-    <%= render partial: "reviews/participant_review", locals: { review: booking.participant_review } %>
-  <% end %>
-<% end %>
