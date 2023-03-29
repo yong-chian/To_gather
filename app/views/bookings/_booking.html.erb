@@ -1,17 +1,17 @@
 <div id="<%= dom_id booking %>">
   <p>
     <strong>Name:</strong>
-    <%= booking.activity.name %>
+    <%= booking.availability.activity.name %>
   </p>
 
    <p>
     <strong>Description:</strong>
-    <%= booking.activity.description %>
+    <%= booking.availability.activity.description %>
   </p>
 
    <p>
     <strong>Price:</strong>
-    <%= booking.activity.price %>
+    <%= booking.availability.activity.price %>
   </p>
 
   <p>
@@ -21,7 +21,7 @@
 
   <p>
     <strong>Booking Date:</strong>
-    <%= "#{booking.start_time} to #{booking.end_time}" %>
+    <%= "#{booking.availability.start_time} to #{booking.availability.end_time}" %>
   </p>
 
   <p>

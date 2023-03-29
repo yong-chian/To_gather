@@ -1,5 +1,5 @@
 class ActivitiesController < ApplicationController
-  before_action :set_activity, only: %i[show edit update destroy]
+  before_action :set_activity, only: %i[show edit update destroy toggle_favorite]
 
   def index
     @activities = policy_scope(Activity)
@@ -49,6 +49,10 @@ class ActivitiesController < ApplicationController
   def destroy
     @activity.destroy
     redirect_to activities_path, notice: "Activity was successfully destroyed."
+  end
+
+  def toggle_favorite
+    current_user.favorited?(@activity) ? current_user.unfavorite(@activity) : current_user.favorite(@activity)
   end
 
   private
