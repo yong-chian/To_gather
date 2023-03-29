@@ -1,4 +1,5 @@
 <%= render "activity", activity: @activity %>
+<p>Amount: <%= humanized_money_with_symbol(@activity.price) %></p>
 
 <% @activity.photos.each do |photo| %>
   <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
@@ -18,6 +19,12 @@
 <% else %>
   <p>No reviews yet.</p>
 <% end %>
+
+<%= form_with url: orders_path do %>
+  <%= hidden_field_tag 'activity_id', @activity.id %>
+  <%= submit_tag 'Purchase', class: 'btn btn-primary' %>
+<% end %>
+
 
 <div>
   <% if policy(@activity).edit? %>

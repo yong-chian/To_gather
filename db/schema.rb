@@ -53,6 +53,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_28_181221) do
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "sku"
+    t.integer "price_cents", default: 0, null: false
     t.index ["user_id"], name: "index_activities_on_user_id"
   end
 
@@ -130,6 +132,19 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_28_181221) do
     t.index ["booking_id"], name: "index_participant_reviews_on_booking_id"
   end
 
+  create_table "orders", force: :cascade do |t|
+    t.string "state"
+    t.string "activity_sku"
+    t.integer "amount_cents", default: 0, null: false
+    t.string "checkout_session_id"
+    t.bigint "user_id", null: false
+    t.bigint "activity_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["activity_id"], name: "index_orders_on_activity_id"
+    t.index ["user_id"], name: "index_orders_on_user_id"
+  end
+
   create_table "user_interests", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "interest_id", null: false
@@ -165,6 +180,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_28_181221) do
   add_foreign_key "faqs", "activities"
   add_foreign_key "host_reviews", "bookings"
   add_foreign_key "participant_reviews", "bookings"
+  add_foreign_key "orders", "activities"
+  add_foreign_key "orders", "users"
   add_foreign_key "user_interests", "interests"
   add_foreign_key "user_interests", "users"
 end
