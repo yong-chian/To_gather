@@ -1,9 +1,8 @@
 class HostReviewsController < ApplicationController
   before_action :set_booking
-  before_action :set_host_review, only: [:show, :edit, :update, :destroy]
+  before_action :set_host_review, only: [show, :edit, :update, :destroy]
 
   def index
-    @booking = Booking.find(params[:booking_id])
     @host_reviews = @booking.host_reviews
   end
 
@@ -50,10 +49,10 @@ class HostReviewsController < ApplicationController
   end
 
   def set_host_review
-    @host_review = @booking.host_review
+    @host_review = @booking.host_reviews.find(params[:id])
   end
 
   def host_review_params
-    params.require(:host_review).permit(:user_rating)
+    params.require(:host_review).permit(:user_rating, :comment, :guest_id)
   end
 end
