@@ -9,12 +9,7 @@
 # migrations use external dependencies or application code.
 #
 # It's strongly recommended that you check this file into your version control system.
-
-<<<<<<< HEAD
-ActiveRecord::Schema[7.0].define(version: 2023_03_27_124000) do
-=======
 ActiveRecord::Schema[7.0].define(version: 2023_03_28_181221) do
->>>>>>> master
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -83,14 +78,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_28_181221) do
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
 
-<<<<<<< HEAD
   create_table "host_reviews", force: :cascade do |t|
     t.bigint "booking_id", null: false
     t.integer "user_rating"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["booking_id"], name: "index_host_reviews_on_booking_id"
-=======
   create_table "faqs", force: :cascade do |t|
     t.string "question"
     t.string "answer"
@@ -116,7 +109,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_28_181221) do
     t.index ["favoritor_id", "favoritor_type"], name: "fk_favorites"
     t.index ["favoritor_type", "favoritor_id"], name: "index_favorites_on_favoritor"
     t.index ["scope"], name: "index_favorites_on_scope"
->>>>>>> master
   end
 
   create_table "interests", force: :cascade do |t|
@@ -167,12 +159,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_28_181221) do
   add_foreign_key "activities", "users"
   add_foreign_key "availabilities", "activities"
   add_foreign_key "bookings", "users"
-<<<<<<< HEAD
   add_foreign_key "host_reviews", "bookings"
   add_foreign_key "participant_reviews", "bookings"
-=======
   add_foreign_key "faqs", "activities"
->>>>>>> master
   add_foreign_key "user_interests", "interests"
   add_foreign_key "user_interests", "users"
 end
