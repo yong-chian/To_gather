@@ -11,10 +11,7 @@ Rails.application.routes.draw do
   get "/contact_us", to: "pages#contact_us"
 
   resources :activities do
-    resources :bookings, only: [:show, :new, :create, :edit, :update] do
-      resources :host_reviews, only: [:new, :create, :show, :edit, :update, :destroy]
-      resources :participant_reviews, only: [:new, :create, :show, :edit, :update, :destroy]
-    end
+    resources :bookings, only: [:show, :new, :create, :edit, :update]
     resources :bookings, only: [:destroy], as: :booking_destroy
   end
 

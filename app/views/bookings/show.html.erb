@@ -47,14 +47,3 @@
     <%= link_to "Book other activities", activities_path %>
   <% end %>
 </div>
-
-
-<% if @booking.host_review %>
-  <h2>Host Review</h2>
-  <%= render partial: "reviews/host_review", locals: { review: @booking.host_review } %>
-<% end %>
-
-<% if @booking.participant_review %>
-  <h2>Participant Review</h2>
-  <%= render partial: "reviews/participant_review", locals: { review: @booking.participant_review } %>
-<% end %>
