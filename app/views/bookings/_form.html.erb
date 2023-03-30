@@ -3,6 +3,6 @@
     <%= f.input :availability, collection: activity.availabilities.map { |a| [a.start_time, a.id] }, input_html: { data: {flatpickr_target: "startTime" } } %>
     <%= f.input :number_of_pax, as: :integer %>
     <%= f.text_field :comment, placeholder: "Add a comment" %>
-    <%= f.submit "Submit", class: "btn btn-success", onclick: "console.log('submit button clicked')" %>
+    <%= f.submit "Book Now", class: "btn btn-success", onclick: "console.log('submit button clicked')" %>
   <% end %>
 </div>
