@@ -8,11 +8,19 @@
 require "open-uri"
 
 puts "Cleaning up database..."
+Booking.destroy_all
+Availability.destroy_all
 Activity.destroy_all
 User.destroy_all
 puts "Database cleaned"
 puts "Creating test user..."
-User.destroy_all
+test_user = User.new(
+  first_name: "John",
+  last_name: "Doe",
+  phone_no: "88888888",
+  email: "johndoe@example.com",
+  password: "password"
+)
 test_user = User.new(
   first_name: "John",
   last_name: "Doe",
@@ -25,9 +33,9 @@ puts "Test user created!"
 
 
 #other 18 Users that created the Activities, will add in user_name after that
-test_user2 = User.create(email: "test1@gmail.com", password: "123456a", first_name: "Samantha", last_name: "Tan", home_address: "759160", phone_no: "12345678")
+test_user2 = User.create(email: "test1@gmail.com", password: "123456a", first_name: "Jane", last_name: "Smith", home_address: "759160", phone_no: "12345678")
 test_user3 = User.create(email: "test2@gmail.com", password: "123456b", first_name: "Michelle", home_address: "759160", last_name: "Lim", phone_no: "12345678")
-test_user4 = User.create(email: "test3@gmail.com", password: "123456c", first_name: "Emily", home_address: "759160", last_name: "Cheong", phone_no: "12345678")
+test_user4 = User.create(email: "test3@gmail.com", password: "123456c", first_name: "Aisyah", home_address: "759160", last_name: "N", phone_no: "12345678")
 test_user5 = User.create(email: "test4@gmail.com", password: "123456d", first_name: "Christopher", home_address: "759160", last_name: "Ng", phone_no: "12345678")
 test_user6 = User.create(email: "test5@gmail.com", password: "123456e", first_name: "Sarah", last_name: "Yeo", phone_no: "12345678")
 test_user7 = User.create(email: "test6@gmail.com", password: "123456f", first_name: "Jamie", last_name: "Koh", phone_no: "12345678")
@@ -44,20 +52,51 @@ test_user17 = User.create(email: "test16@gmail.com", password: "123456p", first_
 test_user18 = User.create(email: "test17@gmail.com", password: "123456q", first_name: "Fiona", last_name: "Sim", phone_no: "12345678")
 test_user19 = User.create(email: "test18@gmail.com", password: "123456r", first_name: "Jared", last_name: "Koh", phone_no: "12345678")
 
+# TODO: Created interests
+Interest.create!(name: "Arts and Crafts")
+Interest.create!(name: "Book Clubs")
+Interest.create!(name: "Cultural Celebrations")
+Interest.create!(name: "Charity Drives")
+Interest.create!(name: "Cooking")
+Interest.create!(name: "Education")
+Interest.create!(name: "Fund-raising Events")
+Interest.create!(name: "Gardening")
+Interest.create!(name: "Technology")
+Interest.create!(name: "Music")
+Interest.create!(name: "Sports & Wellness")
+Interest.create!(name: "SG Heritage Tours")
+Interest.create!(name: "Social Clubs")
+Interest.create!(name: "Professional Development")
+
+p "Created #{Interest.count} interests"
+
+# TODO: Created activities
 # Activities for H2 - What's Popular Near You
 image1_url = "https://res.cloudinary.com/ddk4z9ypx/image/upload/v1679717906/9bda435e-03e5-4f8a-beab-9b4193fefc13_eqik7p.jpg"
 
 activity_1 = Activity.create(
-  name: "How to Cycle for Beginners",
-  description: "3-hour beginner-friendly indoor cycling sessions guided by Coach John with 10 years experience.",
-  price: 50,
-  max_capacity: 5,
-  meeting_location: "Yishun",
+  name: "Mahjong with Pros",
+  description: "Learn and play Mahjong with experienced players for all levels." ,
+  price: 60,
+  max_capacity: 4,
+  meeting_location: "Yio Chu Kang",
   minimum_age: 0,
   policies: "Please inform us for rescheduling in the event you are unwell",
-  user: test_user)
+  user: test_user,
+)
 file = URI.open(image1_url)
 activity_1.photos.attach(io: file, filename: "#{activity_1.name}.png", content_type: "image/png")
+availabilities = []
+date = Date.today
+30.times do
+  availabilities << date.strftime("%Y-%m-%d")
+  date += 1.day
+end
+availabilities.map { |time| activity_1.availabilities.build(
+  start_time: time,
+  end_time: time
+  )
+}
 activity_1.save!
 
 image2_url = "https://res.cloudinary.com/ddk4z9ypx/image/upload/e_art:refresh/v1679715220/image-asset_m0sp3q.jpg"
@@ -66,14 +105,26 @@ activity_2 = Activity.create(
   description: "Gentle yoga practice with fluid movements and breath awareness.",
   price: 8,
   max_capacity: 10,
-  availability: "17-04-2023",
   meeting_location: "Yishun",
   minimum_age: 0,
   policies: "Nil",
-  user: test_user2)
+  user: test_user2,
+)
 file = URI.open(image2_url)
 activity_2.photos.attach(io: file, filename: "#{activity_2.name}.png", content_type: "image/png")
+availabilities = []
+date = Date.today
+30.times do
+  availabilities << date.strftime("%Y-%m-%d")
+  date += 1.day
+end
+availabilities.map { |time| activity_2.availabilities.build(
+  start_time: time,
+  end_time: time
+  )
+}
 activity_2.save!
+
 
 image3_url = "https://res.cloudinary.com/ddk4z9ypx/image/upload/c_scale,e_art:refresh,w_1170/v1679714865/aurelia-dubois-6J0MUsmS4fQ-unsplash_t8o5xh.jpg"
 activity_3 = Activity.create(
@@ -81,13 +132,24 @@ activity_3 = Activity.create(
   description: "Create your own handmade soap using natural ingredients and essential oils!",
   price: 80,
   max_capacity: 5,
-  availability: "17-04-2023",
   meeting_location: "Khatib",
   minimum_age: 0,
   policies: "Nil",
-  user: test_user3)
+  user: test_user3,
+)
 file = URI.open(image3_url)
 activity_3.photos.attach(io: file, filename: "#{activity_3.name}.png", content_type: "image/png")
+availabilities = []
+date = Date.today
+30.times do
+  availabilities << date.strftime("%Y-%m-%d")
+  date += 1.day
+end
+availabilities.map { |time| activity_3.availabilities.build(
+  start_time: time,
+  end_time: time
+  )
+}
 activity_3.save!
 
 image4_url = "https://res.cloudinary.com/ddk4z9ypx/image/upload/c_scale,e_art:refresh,w_1170/v1679719646/Peranakan-dishes_rohnte.jpg"
@@ -96,29 +158,50 @@ activity_4 = Activity.create(
   description: "Learn to cook 3 traditional Peranakan dishes with authentic ingredients in our cozy home. The dishes include Ayam Buah Keluak, Babi Pongteh and Kueh Lapis.",
   price: 100,
   max_capacity: 5,
-  availability: "17-04-2023",
   meeting_location: "Khatib",
   minimum_age: 0,
   policies: "Nil",
-  user: test_user4)
+  user: test_user4,
+)
 file = URI.open(image4_url)
 activity_4.photos.attach(io: file, filename: "#{activity_4.name}.png", content_type: "image/png")
+availabilities = []
+date = Date.today
+30.times do
+  availabilities << date.strftime("%Y-%m-%d")
+  date += 1.day
+end
+availabilities.map { |time| activity_4.availabilities.build(
+  start_time: time,
+  end_time: time
+  )
+}
 activity_4.save!
 
 image5_url = "https://res.cloudinary.com/ddk4z9ypx/image/upload/c_scale,e_art:refresh,w_1170/v1679719737/bc22ea20-84a0-11ea-bdf5-3ea9c00cb2c0_amgdrd.jpg"
-
 activity_5 = Activity.create(
   name: "Chinese Tuition",
   description: "Tailored Chinese language coaching for all orimary levels and ages.",
   price: 25,
   max_capacity: 1,
-  availability: "17-04-2023",
   meeting_location: "Yishun",
   minimum_age: 0,
   policies: "Nil",
-  user: test_user5)
+  user: test_user5,
+)
 file = URI.open(image5_url)
 activity_5.photos.attach(io: file, filename: "#{activity_5.name}.png", content_type: "image/png")
+availabilities = []
+date = Date.today
+30.times do
+  availabilities << date.strftime("%Y-%m-%d")
+  date += 1.day
+end
+availabilities.map { |time| activity_5.availabilities.build(
+  start_time: time,
+  end_time: time
+  )
+}
 activity_5.save!
 
 image6_url = "https://res.cloudinary.com/ddk4z9ypx/image/upload/c_scale,e_art:refresh,w_1170/v1679719911/E417767AE8C6CC63B601C2F474916F4E_f5d9j7.jpg"
@@ -127,14 +210,24 @@ activity_6 = Activity.create(
   description: "Introduction to data analysis concepts and tools for beginners.",
   price: 50,
   max_capacity: 5,
-  availability: "17-04-2023",
   meeting_location: "Khatib",
   minimum_age: 0,
   policies: "Nil",
-  user: test_user6)
-
+  user: test_user6,
+)
 file = URI.open(image6_url)
 activity_6.photos.attach(io: file, filename: "#{activity_6.name}.png", content_type: "image/png")
+availabilities = []
+date = Date.today
+30.times do
+  availabilities << date.strftime("%Y-%m-%d")
+  date += 1.day
+end
+availabilities.map { |time| activity_6.availabilities.build(
+  start_time: time,
+  end_time: time
+  )
+}
 activity_6.save!
 
 image7_url = "https://res.cloudinary.com/ddk4z9ypx/image/upload/c_scale,e_art:refresh,w_1170/v1679719984/photo-1633869284807-d35bbe7d8719_tibjma.jpg"
@@ -144,13 +237,24 @@ activity_7 = Activity.create(
   description: "Learn to make traditional mooncakes with various fillings and designs.",
   price: 90,
   max_capacity: 5,
-  availability: "17-04-2023",
   meeting_location: "Yishun",
   minimum_age: 0,
   policies: "Nil",
-  user: test_user7)
+  user: test_user7,
+)
 file = URI.open(image7_url)
 activity_7.photos.attach(io: file, filename: "#{activity_7.name}.png", content_type: "image/png")
+availabilities = []
+date = Date.today
+30.times do
+  availabilities << date.strftime("%Y-%m-%d")
+  date += 1.day
+end
+availabilities.map { |time| activity_7.availabilities.build(
+  start_time: time,
+  end_time: time
+  )
+}
 activity_7.save!
 
 image8_url = "https://res.cloudinary.com/ddk4z9ypx/image/upload/c_scale,e_art:refresh,w_1170/v1679720766/photo-1679110667877-408593fab0f6_glolqa.jpg"
@@ -159,13 +263,24 @@ activity_8 = Activity.create(
   description: "Join me to discover gardening basics, plant care, and sustainable practices!",
   price: 10,
   max_capacity: 5,
-  availability: "17-04-2023",
   meeting_location: "Khatib",
   minimum_age: 0,
   policies: "Nil",
-  user: test_user8)
+  user: test_user8,
+)
 file = URI.open(image8_url)
 activity_8.photos.attach(io: file, filename: "#{activity_8.name}.png", content_type: "image/png")
+availabilities = []
+date = Date.today
+30.times do
+  availabilities << date.strftime("%Y-%m-%d")
+  date += 1.day
+end
+availabilities.map { |time| activity_8.availabilities.build(
+  start_time: time,
+  end_time: time
+  )
+}
 activity_8.save!
 
 image9_url = "https://res.cloudinary.com/ddk4z9ypx/image/upload/c_scale,e_art:refresh,w_1170/v1679720813/photo-1597957539973-39539651d40e_zfwygy.jpg"
@@ -174,13 +289,24 @@ activity_9 = Activity.create(
   description: "Explore watercolour techniques to create beautiful and vibrant paintings with your family members or friends.",
   price: 40,
   max_capacity: 6,
-  availability: "17-04-2023",
   meeting_location: "Yishun",
   minimum_age: "0",
   policies: "Nil",
-  user: test_user9)
+  user: test_user9,
+)
 file = URI.open(image9_url)
 activity_9.photos.attach(io: file, filename: "#{activity_9.name}.png", content_type: "image/png")
+availabilities = []
+date = Date.today
+30.times do
+  availabilities << date.strftime("%Y-%m-%d")
+  date += 1.day
+end
+availabilities.map { |time| activity_9.availabilities.build(
+  start_time: time,
+  end_time: time
+  )
+}
 activity_9.save!
 
 # Activities for H2 - Browse Other Options
@@ -190,13 +316,24 @@ activity_10 = Activity.create(
   description: "Fun basketball program for kids from 6 years old onwards to learn and develop skills." ,
   price: 10,
   max_capacity: 10,
-  availability: "17-04-2023" ,
   meeting_location: "Bishan Park",
   minimum_age: 6,
   policies: "Please inform us for rescheduling in the event you are unwell",
-  user: test_user10)
+  user: test_user10,
+)
 file = URI.open(image10_url)
 activity_10.photos.attach(io: file, filename: "#{activity_10.name}.png", content_type: "image/png")
+availabilities = []
+date = Date.today
+30.times do
+  availabilities << date.strftime("%Y-%m-%d")
+  date += 1.day
+end
+availabilities.map { |time| activity_10.availabilities.build(
+  start_time: time,
+  end_time: time
+  )
+}
 activity_10.save!
 
 image11_url = "https://res.cloudinary.com/ddk4z9ypx/image/upload/c_scale,e_art:refresh,w_1170/v1679720325/f7f8e635697ba19e9b09f926cad92d4f--bird-watching-singapore_czv1tz.jpg"
@@ -206,29 +343,51 @@ activity_11 = Activity.create(
   description: "Discover the art of birdwatching through guided observation!.",
   price: 30,
   max_capacity: 3,
-  availability: "17-04-2023" ,
   meeting_location: "Canberra",
   minimum_age: 0,
   policies: "Please inform us for rescheduling in the event you are unwell",
-  user: test_user11)
+  user: test_user11,
+)
 file = URI.open(image11_url)
 activity_11.photos.attach(io: file, filename: "#{activity_11.name}.png", content_type: "image/png")
+availabilities = []
+date = Date.today
+30.times do
+  availabilities << date.strftime("%Y-%m-%d")
+  date += 1.day
+end
+availabilities.map { |time| activity_11.availabilities.build(
+  start_time: time,
+  end_time: time
+  )
+}
 activity_11.save!
 
 image12_url = "https://res.cloudinary.com/ddk4z9ypx/image/upload/c_scale,e_art:refresh,w_1170/v1679720473/photo-1660099789632-ed5fae6189af_hwqji8.jpg"
 
 activity_12 = Activity.create(
-  name: "Mahjong with Pros",
-  description: "Learn and play Mahjong with experienced players for all levels." ,
-  price: 60,
-  max_capacity: 4,
-  availability: "17-04-2023",
-  meeting_location: "Yio Chu Kang",
+  name: "How to Cycle for Beginners",
+  description: "3-hour beginner-friendly indoor cycling sessions guided by Coach John with 10 years experience.",
+  price: 50,
+  max_capacity: 5,
+  meeting_location: "Yishun",
   minimum_age: 0,
   policies: "Please inform us for rescheduling in the event you are unwell",
-  user: test_user12)
+  user: test_user12,
+)
 file = URI.open(image12_url)
 activity_12.photos.attach(io: file, filename: "#{activity_12.name}.png", content_type: "image/png")
+availabilities = []
+date = Date.today
+30.times do
+  availabilities << date.strftime("%Y-%m-%d")
+  date += 1.day
+end
+availabilities.map { |time| activity_12.availabilities.build(
+  start_time: time,
+  end_time: time
+  )
+}
 activity_12.save!
 
 image13_url = "https://res.cloudinary.com/ddk4z9ypx/image/upload/c_scale,e_art:refresh,w_1170/v1679720573/EPC-0350-2rec-web_lyjdge.webp"
@@ -238,13 +397,24 @@ activity_13 = Activity.create(
   description: "Create custom scents using high-quality ingredients and expert guidance.",
   price: 80,
   max_capacity: 4,
-  availability: "17-04-2023",
   meeting_location: "Ang Mo Kio",
   minimum_age: 0,
   policies: "Please inform us for rescheduling in the event you are unwell",
-  user: test_user13)
+  user: test_user13,
+)
 file = URI.open(image13_url)
 activity_13.photos.attach(io: file, filename: "#{activity_13.name}.png", content_type: "image/png")
+availabilities = []
+date = Date.today
+30.times do
+  availabilities << date.strftime("%Y-%m-%d")
+  date += 1.day
+end
+availabilities.map { |time| activity_13.availabilities.build(
+  start_time: time,
+  end_time: time
+  )
+}
 activity_13.save!
 
 image14_url = "https://res.cloudinary.com/ddk4z9ypx/image/upload/c_scale,e_art:refresh,w_1170/v1679719737/bc22ea20-84a0-11ea-bdf5-3ea9c00cb2c0_amgdrd.jpg"
@@ -253,13 +423,24 @@ activity_14 = Activity.create(
   description: "Effective maths coaching for students to improve understanding and performance.",
   price: 30,
   max_capacity: 1,
-  availability: "17-04-2023",
   meeting_location: "Bishan",
   minimum_age: 0,
   policies: "Please inform us for rescheduling in the event you are unwell",
-  user: test_user14)
+  user: test_user14,
+)
 file = URI.open(image14_url)
 activity_14.photos.attach(io: file, filename: "#{activity_14.name}.png", content_type: "image/png")
+availabilities = []
+date = Date.today
+30.times do
+  availabilities << date.strftime("%Y-%m-%d")
+  date += 1.day
+end
+availabilities.map { |time| activity_14.availabilities.build(
+  start_time: time,
+  end_time: time
+  )
+}
 activity_14.save!
 
 image15_url = "https://res.cloudinary.com/ddk4z9ypx/image/upload/c_scale,e_art:refresh,w_1170/v1679720974/photo-1675495277087-10598bf7bcd1_wp0qrh.jpg"
@@ -269,13 +450,24 @@ activity_15 = Activity.create(
   description: "Introduction to coding concepts and skills for beginners. Notes will be provided!" ,
   price: 88,
   max_capacity: 5,
-  availability: "17-04-2023",
   meeting_location: "Yio Chu Kang",
   minimum_age: 0,
   policies: "Please bring your own laptop.",
-  user: test_user15)
+  user: test_user15,
+)
 file = URI.open(image15_url)
 activity_15.photos.attach(io: file, filename: "#{activity_15.name}.png", content_type: "image/png")
+availabilities = []
+date = Date.today
+30.times do
+  availabilities << date.strftime("%Y-%m-%d")
+  date += 1.day
+end
+availabilities.map { |time| activity_15.availabilities.build(
+  start_time: time,
+  end_time: time
+  )
+}
 activity_15.save!
 
 image16_url = "https://res.cloudinary.com/ddk4z9ypx/image/upload/v1679721433/meg-wagener-vuXTB1lR3AY-unsplash_xldwsn.jpg"
@@ -285,13 +477,24 @@ activity_16 = Activity.create(
   description: "Discover the art of knitting and create beautiful handmade pieces with various patterns and yarns. Invite your friends along!",
   price: 20,
   max_capacity: 10,
-  availability: "17-04-2023",
   meeting_location: "Bishan",
   minimum_age: 0,
   policies: "Please inform us for rescheduling in the event you are unwell",
-  user: test_user16)
+  user: test_user16,
+)
 file = URI.open(image16_url)
 activity_16.photos.attach(io: file, filename: "#{activity_16.name}.png", content_type: "image/png")
+availabilities = []
+date = Date.today
+30.times do
+  availabilities << date.strftime("%Y-%m-%d")
+  date += 1.day
+end
+availabilities.map { |time| activity_16.availabilities.build(
+  start_time: time,
+  end_time: time
+  )
+}
 activity_16.save!
 
 image17_url = "https://res.cloudinary.com/ddk4z9ypx/image/upload/c_scale,e_art:refresh,w_1170/v1679714826/oleg-ivanov-iB_h6EFRiKY-unsplash_vkxphf.jpg"
@@ -301,13 +504,24 @@ activity_17 = Activity.create(
   description: "Learn to play guitar with chord progressions and strumming techniques.",
   price: 70,
   max_capacity: 1,
-  availability: "17-04-2023",
   meeting_location: "Admiralty",
   minimum_age: 0,
   policies: "You can bring your own guitar or use the teacher's guitar ranging from classical, acoustic to electric",
-  user: test_user17)
+  user: test_user17,
+)
 file = URI.open(image17_url)
 activity_17.photos.attach(io: file, filename: "#{activity_17.name}.png", content_type: "image/png")
+availabilities = []
+date = Date.today
+30.times do
+  availabilities << date.strftime("%Y-%m-%d")
+  date += 1.day
+end
+availabilities.map { |time| activity_17.availabilities.build(
+  start_time: time,
+  end_time: time
+  )
+}
 activity_17.save!
 
 image18_url = "https://res.cloudinary.com/ddk4z9ypx/image/upload/c_scale,e_art:refresh,w_1170/v1679720205/easy-thai-recipes-for-beginners_unl1u4.jpg"
@@ -317,11 +531,79 @@ activity_18 = Activity.create(
   description: "Experience the bold and complex flavors of Thai cuisine with authentic recipes.",
   price: 120,
   max_capacity: 4,
-  availability: "17-04-2023",
   meeting_location: "Khatib",
   minimum_age: 0,
   policies: "Please inform us for rescheduling in the event you are unwell",
-  user: test_user18)
+  user: test_user18,
+)
   file = URI.open(image18_url)
 activity_18.photos.attach(io: file, filename: "#{activity_18.name}.png", content_type: "image/png")
 activity_18.save!
+activity_18.validate!
+availabilities = []
+date = Date.today
+30.times do
+  availabilities << date.strftime("%Y-%m-%d")
+  date += 1.day
+end
+availabilities.map { |time| activity_18.availabilities.build(
+  start_time: time,
+  end_time: time
+  )
+}
+activity_18.save!
+
+p "Created #{Activity.count} activities"
+
+# # TODO: Created booking
+# booking_1 = Booking.create!(
+#   user_name: "Jane Smith",
+#   number_of_pax: 2,
+#   status: "Confirmed",
+#   comment: "Looking forward to it",
+#   user: test_user2,
+#   completed: false
+# )
+# # find an availability to link with the booking
+# availability_1 = Availability.first
+
+# # link the booking with the availability
+# booking_1.availability = availability_1
+
+# # save the booking
+# booking_1.save!
+
+# # booking_2 = Booking.create!(
+# #   user_name: "Michelle Lim",
+# #   number_of_pax: 3,
+# #   status: "Confirmed",
+# #   comment: "3 adults",
+# #   user: test_user3,
+# #   completed: false
+# # )
+# # availability = Availability.first
+# # booking_2.availabilities = availability_1
+# # booking_2.save!
+
+# # p "Created #{Booking.count} bookings"
+
+
+# # TODO: Participant Reviews for Each Activity
+# ParticipantReview.create(content: "It was fun learning about the history of mahjong!", activity_rating: 4.8, booking_id: 1)
+# ParticipantReview.create(content: "I enjoyed bonding with my neighbours and learning how to play better", activity_rating: 3.0, booking_id: 1)
+# ParticipantReview.create(content: "It was interesting to learn about how what my Chinese friends are always up to", activity_rating: 2.0, booking_id: 1)
+# ParticipantReview.create(content: "It was exciting to challenge with the pros", activity_rating: 4.8, booking_id: 1)
+
+# # # TODO: Created FAQs
+# # faqs =      [["What time does it start and what time does it end?", "It is 3 hour duration"],
+# #              ["Hi, can I book for 2 pax?", "Please kindly make another booking."],
+# #             ]
+
+# # faqs.each do |faq|
+# # Activity.create(question: faqs[0], answer: faqs[1])
+# # end
+# # # TODO: Existing Bookings (Linked to next section)
+
+# # # # TODO: Host Reviews for Each Booking
+# # # Host_review.create(user_rating: 4.5, booking_id: 1)
+# # # Host_review.create(user_rating: 2, booking_id: 2)
