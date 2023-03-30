@@ -1,8 +1,11 @@
 <div class="centered-form">
   <%= simple_form_for([activity, booking],  data: { controller: "flatpickr" }) do |f| %>
-    <%= f.input :availability, collection: activity.availabilities.map { |a| [a.start_time, a.id] }, input_html: { data: {flatpickr_target: "startTime" } } %>
-    <%= f.input :number_of_pax, as: :integer %>
-    <%= f.text_field :comment, placeholder: "Add a comment" %>
-    <%= f.submit "Book Now", class: "btn btn-success", onclick: "console.log('submit button clicked')" %>
+    <%= f.input :availability, collection: activity.availabilities.map { |a| [a.start_time, a.id] }, input_html: { data: {flatpickr_target: "startTime" }, class:"calender-availability-field" }%>
+    <%= f.input :number_of_pax, as: :integer, input_html: { class:"number-of-pax-field" } %>
+    <%= f.text_field :comment, placeholder: "Add a comment", class: "booking-comment-field" %>
+    <br>
+    <%= f.submit "Book Now", class: "btn btn-primary btn-book-now", onclick: "console.log('submit button clicked')" %>
   <% end %>
 </div>
+
+

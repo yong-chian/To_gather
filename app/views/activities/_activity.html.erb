@@ -13,15 +13,18 @@
     <%= activity.description %>
   </p>
 
-  <%# remove the price and place it at index to  %>
-  <%# <p>
-    <strong>Price: $</strong>
+  <%# change money to be humanized symbol. Previous code :<strong>Price: $</strong>
     <%= activity.price %>
+  <p>
+  <strong>Amount:</strong> 
+  <%= humanized_money_with_symbol(activity.price) %>
+  </p>    
   
   <p>
     <strong>Meeting Location:</strong>
     <%= activity.meeting_location %>
   </p>
+
   <p>
     <strong>Policies:</strong>
     <%= activity.policies %>
