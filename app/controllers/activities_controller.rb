@@ -2,7 +2,11 @@ class ActivitiesController < ApplicationController
   before_action :set_activity, only: %i[show edit update destroy toggle_favorite]
 
   def index
-    @activities = policy_scope(Activity)
+    if params[:query].present?
+      @activities = policy_scope(Activity.where("name ILIKE ?", "%#{params[:query]}%"))
+    else
+      @activities = policy_scope(Activity)
+    end
   end
 
   def show
