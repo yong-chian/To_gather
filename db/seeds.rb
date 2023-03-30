@@ -21,13 +21,6 @@ test_user = User.new(
   email: "johndoe@example.com",
   password: "password"
 )
-test_user = User.new(
-  first_name: "John",
-  last_name: "Doe",
-  phone_no: "88888888",
-  email: "johndoe@example.com",
-  password: "password"
-)
 test_user.save!
 puts "Test user created!"
 
@@ -72,8 +65,7 @@ p "Created #{Interest.count} interests"
 
 # TODO: Created activities
 # Activities for H2 - What's Popular Near You
-image1_url = "https://res.cloudinary.com/ddk4z9ypx/image/upload/v1679717906/9bda435e-03e5-4f8a-beab-9b4193fefc13_eqik7p.jpg"
-
+image1_url = "https://res.cloudinary.com/ddk4z9ypx/image/upload/c_scale,e_art:refresh,w_1170/v1679720473/photo-1660099789632-ed5fae6189af_hwqji8.jpg"
 activity_1 = Activity.create(
   name: "Mahjong with Pros",
   description: "Learn and play Mahjong with experienced players for all levels." ,
@@ -363,7 +355,7 @@ availabilities.map { |time| activity_11.availabilities.build(
 }
 activity_11.save!
 
-image12_url = "https://res.cloudinary.com/ddk4z9ypx/image/upload/c_scale,e_art:refresh,w_1170/v1679720473/photo-1660099789632-ed5fae6189af_hwqji8.jpg"
+image12_url = "https://res.cloudinary.com/ddk4z9ypx/image/upload/v1679717906/9bda435e-03e5-4f8a-beab-9b4193fefc13_eqik7p.jpg"
 
 activity_12 = Activity.create(
   name: "How to Cycle for Beginners",
@@ -538,6 +530,17 @@ activity_18 = Activity.create(
 )
   file = URI.open(image18_url)
 activity_18.photos.attach(io: file, filename: "#{activity_18.name}.png", content_type: "image/png")
+availabilities = []
+date = Date.today
+30.times do
+  availabilities << date.strftime("%Y-%m-%d")
+  date += 1.day
+end
+availabilities.map { |time| activity_18.availabilities.build(
+  start_time: time,
+  end_time: time
+  )
+}
 activity_18.save!
 activity_18.validate!
 availabilities = []
