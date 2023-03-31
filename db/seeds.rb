@@ -626,8 +626,9 @@ p "Created #{Activity.count} activities"
 
 # # # TODO: Created FAQs
 faqs = [
-  ["What time does it start and what time does it end?", "It is 3 hour duration"],
+  ["What is the price for 2 more children", "It will be standard flat rate."],
   ["Hi, can I book for 2 pax?", "Please kindly make another booking."]
+  ["What is the price for student?", "Hi, the price rate will be similar - there is no discount at the moment but do check back!"]
 ]
 
 Activity.all.each do |activity|
