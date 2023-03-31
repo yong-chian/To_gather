@@ -1,8 +1,15 @@
-
-<div class="container">
+<div class="container" data-controller="interest">
   <h3>Select your interests:</h3>
   <%= simple_form_for @user, url:  users_update_interest_path do |f| %>
-    <%= f.association "interests", as: :check_boxes, multiple: true, collection: Interest.all, include_hidden:false %>
+    <% Interest.all.each do |interest| %>
+      <div class="form-check">
+        <%= f.check_box :interest_ids, { multiple: true, class: 'form-check-input', id: interest.id }, interest.id, nil %>
+        <%= f.label interest.id, class: 'form-check-label' do %>
+          <span class="icon"><%= interest.icon.html_safe %></span>
+          <span class="interest-name"><%= interest.name %></span>
+        <% end %>
+      </div>
+    <% end %>
     <%= f.submit class: 'btn btn-primary text-dark fw-bold' %>
   <% end %>
   <a href="/">Back</a>

@@ -1,6 +1,6 @@
 class ParticipantReviewsController < ApplicationController
   before_action :set_booking, only: %i[new create show edit update destroy]
-  before_action :set_participant_review, only: [:show]
+  before_action :set_participant_review, only: [:show, :edit, :update]
 
   def index
     #code to display all reviews for an activity or a booking
@@ -12,6 +12,7 @@ class ParticipantReviewsController < ApplicationController
   end
 
   def new
+    @activity = Activity.find(@booking.activity_id)
     @participant_review = ParticipantReview.new(booking: @booking)
     authorize(@participant_review)
   end
@@ -63,6 +64,7 @@ class ParticipantReviewsController < ApplicationController
 
   def set_participant_review
     @participant_review = ParticipantReview.find(params[:id])
+    authorize(@participant_review)
   end
 
   def participant_review_params

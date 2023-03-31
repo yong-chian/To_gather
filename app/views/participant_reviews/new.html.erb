@@ -1,25 +1,28 @@
-<h1>Leave a Review</h1>
-<%= form_for([@booking, @participant_review]) do |f| %>
-  <% if @participant_review.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@participant_review.errors.count, "error") %> prohibited this participant_review from being saved:</h2>
-      <ul>
-      <% @participant_review.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+<div class="container">
+  <h1>Leave a Review</h1>
+    <%= form_for([@booking, @participant_review]) do |f| %>
+      <% if @participant_review.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@participant_review.errors.count, "error") %> prohibited this participant_review from being saved:</h2>
+          <ul>
+          <% @participant_review.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
 
-  <div class="form-group">
-    <%= f.label :activity_rating %>
-    <%= f.number_field :activity_rating, class: "form-control", min: 1, max: 5 %>
-  </div>
+      <div class="form-group">
+        <%= f.label :activity_rating %>
+        <%= f.number_field :activity_rating, class: "form-control", min: 1, max: 5 %>
+      </div>
 
-  <div class="form-group">
-    <%= f.label :comment %>
-    <%= f.text_area :content, class: "form-control", rows: 3 %>
-  </div>
+      <div class="form-group">
+        <%= f.label :comment %>
+        <%= f.text_area :content, class: "form-control", rows: 3 %>
+      </div>
 
-  <%= f.submit "Submit Review", class: "btn btn-primary" %>
-<% end %>
+      <%= f.submit "Submit Review", class: "btn btn-primary" %>
+      <%= link_to 'Cancel', activity_booking_path(@activity, @booking), class: 'btn-ghost' %>
+    <% end %>
+</div>

@@ -1,8 +1,10 @@
-<h1>Review</h1>
+<div class="container">
+  <h1>Review</h1>
 
-<p><strong>Rating:</strong> <%= @participant_review.activity_rating %></p>
-<p><strong>Description:</strong> <%= @participant_review.content %></p>
-<p><strong>User:</strong> <%= @participant_review.user_name %></p>
+  <p><strong>Rating:</strong> <%= @participant_review.activity_rating %></p>
+  <p><strong>Description:</strong> <%= @participant_review.content %></p>
+  <p><strong>User:</strong> <%= @participant_review.user_name %></p>
 
-<%= link_to 'Edit', edit_booking_participant_review_path(@booking, @participant_review) %>
-<%= link_to 'Back', activity_booking_path(@participant_review.activity, @booking) %>
+  <%= link_to 'Edit', edit_booking_participant_review_path(@booking, @participant_review) %>
+  <%= link_to 'Back', activity_booking_path(@participant_review.activity, @booking) %>
+</div>
