@@ -1,0 +1,11 @@
+
+<% counter = 1 %>
+<% @participant_reviews.each do |review| %>
+  <div>
+    <h3>Review <%= counter %></h3>
+    <p><strong>Rating:</strong> <%= review.activity_rating %></p>
+  <p><strong>Description:</strong> <%= review.content %></p>
+  <p><strong>User:</strong> <%= review.user_name %></p>
+  </div>
+  <% counter += 1 %>
+<% end %>

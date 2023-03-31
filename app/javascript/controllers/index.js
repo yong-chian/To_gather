@@ -15,3 +15,6 @@ application.register("flatpickr", FlatpickrController)
 
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
+
+import InterestController from "./interest_controller"
+application.register("interest", InterestController)

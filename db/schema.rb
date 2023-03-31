@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_28_181221) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_30_143706) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -77,6 +77,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_28_181221) do
     t.datetime "updated_at", null: false
     t.boolean "completed", default: false, null: false
     t.bigint "availability_id"
+    t.bigint "activity_id"
+    t.index ["activity_id"], name: "index_bookings_on_activity_id"
     t.index ["availability_id"], name: "index_bookings_on_availability_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
@@ -142,6 +144,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_28_181221) do
     t.integer "activity_rating"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "user_name", null: false
+    t.bigint "activity_id"
+    t.index ["activity_id"], name: "index_participant_reviews_on_activity_id"
     t.index ["booking_id"], name: "index_participant_reviews_on_booking_id"
   end
 

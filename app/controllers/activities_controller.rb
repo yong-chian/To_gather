@@ -10,8 +10,8 @@ class ActivitiesController < ApplicationController
   end
 
   def show
-    # @bookings = @activity.bookings
-    # @reviews = Review.where(booking_id: @bookings.pluck(:id))
+    @bookings = @activity.bookings
+    @participant_reviews = ParticipantReview.where(booking_id: @bookings.pluck(:id))
     @booking = Booking.new
   end
 
