@@ -50,7 +50,6 @@ test_user18 = User.create(email: "test17@gmail.com", password: "123456q", first_
 test_user19 = User.create(email: "test18@gmail.com", password: "123456r", first_name: "Jared", last_name: "Koh", phone_no: "12345678")
 
 # TODO: Created interests
-# TODO: Created interests
 Interest.create!(name: "Arts and Crafts", icon:'<i class="fas fa-palette"></i>')
 Interest.create!(name: "Book Clubs", icon:'<i class="fas fa-book-open"></i>')
 Interest.create!(name: "Cultural Celebrations", icon:'<i class="fas fa-theater-masks"></i>')
@@ -70,8 +69,6 @@ p "Created #{Interest.count} interests"
 
 # TODO: Created activities
 # Activities for H2 - What's Popular Near You
-
-image1_url = "https://res.cloudinary.com/ddk4z9ypx/image/upload/c_scale,e_art:refresh,w_1170/v1679720473/photo-1660099789632-ed5fae6189af_hwqji8.jpg"
 activity_1 = Activity.create(
   name: "Mahjong with Pros",
   description: "Learn and play Mahjong with experienced players for all levels." ,
@@ -82,9 +79,14 @@ activity_1 = Activity.create(
   policies: "Please inform us for rescheduling in the event you are unwell",
   user: test_user
 )
+image_urls_1 = ["https://res.cloudinary.com/ddk4z9ypx/image/upload/c_scale,e_art:refresh,w_1170/v1679720473/photo-1660099789632-ed5fae6189af_hwqji8.jpg",
+                "https://res.cloudinary.com/ddk4z9ypx/image/upload/v1680256999/MAHJONG-8-800x511_pb9nd0.jpg",
+                "https://res.cloudinary.com/ddk4z9ypx/image/upload/v1680256996/4651e7bd-6533-4aac-996e-b9f920d822ac_n4nik4.webp"]
 
-file = URI.open(image1_url)
-activity_1.photos.attach(io: file, filename: "#{activity_1.name}.png", content_type: "image/png")
+image_urls_1.each do |url|
+  file = URI.open(url)
+  activity_1.photos.attach(io: file, filename: "#{activity_1.name}.png", content_type: "image/png")
+end
 
 availabilities = []
 date = Date.today
@@ -191,8 +193,6 @@ review_4 = ParticipantReview.new(
 )
 review_4.save!
 
-
-image2_url = "https://res.cloudinary.com/ddk4z9ypx/image/upload/e_art:refresh/v1679715220/image-asset_m0sp3q.jpg"
 activity_2 = Activity.create(
   name: "Yoga Flow",
   description: "Gentle yoga practice with fluid movements and breath awareness.",
@@ -204,8 +204,14 @@ activity_2 = Activity.create(
   user: test_user2
 )
 
-file = URI.open(image2_url)
+image_urls_2 = ["https://res.cloudinary.com/ddk4z9ypx/image/upload/v1680283374/dylan-gillis-YJdCZba0TYE-unsplash_b1vben.jpg",
+  "https://res.cloudinary.com/ddk4z9ypx/image/upload/v1680283409/yoga-in-singapore-freedom-yoga-900x643_fcn6l3.png"]
+
+image_urls_2.each do |url|
+file = URI.open(url)
 activity_2.photos.attach(io: file, filename: "#{activity_2.name}.png", content_type: "image/png")
+end
+
 availabilities = []
 date = Date.today
 
@@ -223,8 +229,6 @@ end
 
 activity_2.save!
 
-
-image3_url = "https://res.cloudinary.com/ddk4z9ypx/image/upload/c_scale,e_art:refresh,w_1170/v1679714865/aurelia-dubois-6J0MUsmS4fQ-unsplash_t8o5xh.jpg"
 activity_3 = Activity.create(
   name: "Organic Soap-making",
   description: "Create your own handmade soap using natural ingredients and essential oils!",
@@ -236,10 +240,13 @@ activity_3 = Activity.create(
   user: test_user3,
 )
 
-file = URI.open(image3_url)
-activity_3.photos.attach(io: file, filename: "#{activity_3.name}.png", content_type: "image/png")
-availabilities = []
-date = Date.today
+image_urls_3 = ["https://res.cloudinary.com/ddk4z9ypx/image/upload/c_scale,e_art:refresh,w_1170/v1679714865/aurelia-dubois-6J0MUsmS4fQ-unsplash_t8o5xh.jpg",
+                "https://res.cloudinary.com/ddk4z9ypx/image/upload/v1680283142/image-3-1024x683_vrkdry.jpg"]
+
+image_urls_3.each do |url|
+  file = URI.open(url)
+  activity_3.photos.attach(io: file, filename: "#{activity_3.name}.png", content_type: "image/png")
+end
 
 30.times do
   availabilities << date.strftime("%Y-%m-%d")
@@ -255,7 +262,6 @@ end
 
 activity_3.save!
 
-image4_url = "https://res.cloudinary.com/ddk4z9ypx/image/upload/c_scale,e_art:refresh,w_1170/v1679719646/Peranakan-dishes_rohnte.jpg"
 activity_4 = Activity.create(
   name: "Peranakan Cooking Course",
   description: "Learn to cook 3 traditional Peranakan dishes with authentic ingredients in our cozy home. The dishes include Ayam Buah Keluak, Babi Pongteh and Kueh Lapis.",
@@ -267,8 +273,13 @@ activity_4 = Activity.create(
   user: test_user4
 )
 
-file = URI.open(image4_url)
+image_urls_4 = ["https://res.cloudinary.com/ddk4z9ypx/image/upload/v1680283197/0630-0656_peranakan-food-cooking-class-singapore-pelago3-medium_zmz7qk.jpg",
+  "https://res.cloudinary.com/ddk4z9ypx/image/upload/c_scale,e_art:refresh,w_1170/v1679719646/Peranakan-dishes_rohnte.jpg"]
+
+image_urls_4.each do |url|
+file = URI.open(url)
 activity_4.photos.attach(io: file, filename: "#{activity_4.name}.png", content_type: "image/png")
+end
 
 availabilities = []
 date = Date.today
@@ -286,7 +297,6 @@ end
 
 activity_4.save!
 
-image5_url = "https://res.cloudinary.com/ddk4z9ypx/image/upload/c_scale,e_art:refresh,w_1170/v1679719737/bc22ea20-84a0-11ea-bdf5-3ea9c00cb2c0_amgdrd.jpg"
 activity_5 = Activity.create(
   name: "Chinese Tuition",
   description: "Tailored Chinese language coaching for all orimary levels and ages.",
@@ -297,8 +307,14 @@ activity_5 = Activity.create(
   policies: "Nil",
   user: test_user5
 )
-file = URI.open(image5_url)
+
+image_urls_5 = ["https://res.cloudinary.com/ddk4z9ypx/image/upload/v1680283753/Dyslexia-Awareness-Singapore-child-reading-dyslexia_wgbnlq.jpg",
+                "https://res.cloudinary.com/ddk4z9ypx/image/upload/v1680283901/HK_Connected-Learning_Hero_570x770-1_ldaaew.jpg"]
+
+image_urls_5.each do |url|
+file = URI.open(url)
 activity_5.photos.attach(io: file, filename: "#{activity_5.name}.png", content_type: "image/png")
+end
 
 availabilities = []
 date = Date.today
@@ -316,10 +332,9 @@ end
 
 activity_5.save!
 
-image6_url = "https://res.cloudinary.com/ddk4z9ypx/image/upload/c_scale,e_art:refresh,w_1170/v1679719911/E417767AE8C6CC63B601C2F474916F4E_f5d9j7.jpg"
 activity_6 = Activity.create(
-  name: "Data Analysis 101",
-  description: "Introduction to data analysis concepts and tools for beginners.",
+  name: "Let's Bake Together Old School Favourites!",
+  description: "Introduction to basic baking techniques",
   price: 50,
   max_capacity: 5,
   meeting_location: "Khatib",
@@ -327,9 +342,13 @@ activity_6 = Activity.create(
   policies: "Nil",
   user: test_user6
 )
+image_urls_6 = ["https://res.cloudinary.com/ddk4z9ypx/image/upload/v1680287405/Old_School_Cakes_ALL_Original_mfnoa2.jpg",
+                "https://res.cloudinary.com/ddk4z9ypx/image/upload/v1680287412/baking-classes-singapore-6_j6cuyo.jpg"]
 
-file = URI.open(image6_url)
+image_urls_6.each do |url|
+file = URI.open(url)
 activity_6.photos.attach(io: file, filename: "#{activity_6.name}.png", content_type: "image/png")
+end
 
 availabilities = []
 date = Date.today
@@ -347,8 +366,6 @@ end
 
 activity_6.save!
 
-image7_url = "https://res.cloudinary.com/ddk4z9ypx/image/upload/c_scale,e_art:refresh,w_1170/v1679719984/photo-1633869284807-d35bbe7d8719_tibjma.jpg"
-
 activity_7 = Activity.create(
   name: "Mooncake Making",
   description: "Learn to make traditional mooncakes with various fillings and designs.",
@@ -359,8 +376,14 @@ activity_7 = Activity.create(
   policies: "Nil",
   user: test_user7
 )
-file = URI.open(image7_url)
+
+image_urls_7 = ["https://res.cloudinary.com/ddk4z9ypx/image/upload/c_scale,e_art:refresh,w_1170/v1679719984/photo-1633869284807-d35bbe7d8719_tibjma.jpg",
+                "https://res.cloudinary.com/ddk4z9ypx/image/upload/v1680284857/download_2_vg7nec.jpg"]
+
+image_urls_7.each do |url|
+file = URI.open(url)
 activity_7.photos.attach(io: file, filename: "#{activity_7.name}.png", content_type: "image/png")
+end
 
 availabilities = []
 date = Date.today
@@ -378,7 +401,6 @@ end
 
 activity_7.save!
 
-image8_url = "https://res.cloudinary.com/ddk4z9ypx/image/upload/c_scale,e_art:refresh,w_1170/v1679720766/photo-1679110667877-408593fab0f6_glolqa.jpg"
 activity_8 = Activity.create(
   name: "Green Fingers: Introducing How to Plant 101",
   description: "Join me to discover gardening basics, plant care, and sustainable practices!",
@@ -390,10 +412,13 @@ activity_8 = Activity.create(
   user: test_user8
 )
 
-file = URI.open(image8_url)
-activity_8.photos.attach(io: file, filename: "#{activity_8.name}.png", content_type: "image/png")
-availabilities = []
-date = Date.today
+image_urls_8 = ["https://res.cloudinary.com/ddk4z9ypx/image/upload/v1680285046/0112-0300_the-plant-story-singapore-pelago4_eleymq.jpg",
+                "https://res.cloudinary.com/ddk4z9ypx/image/upload/v1680285114/download_3_rs2x9q.jpg"]
+
+image_urls_8.each do |url|
+  file = URI.open(url)
+  activity_8.photos.attach(io: file, filename: "#{activity_8.name}.png", content_type: "image/png")
+end
 
 30.times do
   availabilities << date.strftime("%Y-%m-%d")
@@ -407,7 +432,6 @@ availabilities.map { |time| activity_8.availabilities.build(
 }
 activity_8.save!
 
-image9_url = "https://res.cloudinary.com/ddk4z9ypx/image/upload/c_scale,e_art:refresh,w_1170/v1679720813/photo-1597957539973-39539651d40e_zfwygy.jpg"
 activity_9 = Activity.create(
   name: "Watercolour Painting",
   description: "Explore watercolour techniques to create beautiful and vibrant paintings with your family members or friends.",
@@ -419,8 +443,13 @@ activity_9 = Activity.create(
   user: test_user9
 )
 
-file = URI.open(image9_url)
+image_urls_9 = ["https://res.cloudinary.com/ddk4z9ypx/image/upload/v1680285814/watercolour-painting-classes-singapore-12_szlqd0.png",
+                "https://res.cloudinary.com/ddk4z9ypx/image/upload/v1680285823/watercolour-painting-classes-singapore-11_xcm6dz.png"]
+
+image_urls_9.each do |url|
+file = URI.open(url)
 activity_9.photos.attach(io: file, filename: "#{activity_9.name}.png", content_type: "image/png")
+end
 
 availabilities = []
 date = Date.today
@@ -439,7 +468,7 @@ end
 activity_9.save!
 
 # Activities for H2 - Browse Other Options
-image10_url = "https://res.cloudinary.com/ddk4z9ypx/image/upload/c_scale,e_art:refresh,w_1170/v1679720907/photo-1678731527227-8ded27d0a303_fxtjvl.jpg"
+
 activity_10 = Activity.create(
   name: "Basketball for Children",
   description: "Fun basketball program for kids from 6 years old onwards to learn and develop skills." ,
@@ -450,8 +479,13 @@ activity_10 = Activity.create(
   policies: "Please inform us for rescheduling in the event you are unwell",
   user: test_user10
 )
-file = URI.open(image10_url)
+image_urls_10 = ["https://res.cloudinary.com/ddk4z9ypx/image/upload/v1680285454/SG_Basketball_Trial_Class_xx6ock.jpg",
+                  "https://res.cloudinary.com/ddk4z9ypx/image/upload/v1680285462/IMG_1112_egt9pi.jpg"]
+
+image_urls_10.each do |url|
+file = URI.open(url)
 activity_10.photos.attach(io: file, filename: "#{activity_10.name}.png", content_type: "image/png")
+end
 
 availabilities = []
 date = Date.today
@@ -469,8 +503,6 @@ end
 
 activity_10.save!
 
-image11_url = "https://res.cloudinary.com/ddk4z9ypx/image/upload/c_scale,e_art:refresh,w_1170/v1679720325/f7f8e635697ba19e9b09f926cad92d4f--bird-watching-singapore_czv1tz.jpg"
-
 activity_11 = Activity.create(
   name: "Art of Bird Watching",
   description: "Discover the art of birdwatching through guided observation!.",
@@ -481,8 +513,15 @@ activity_11 = Activity.create(
   policies: "Please inform us for rescheduling in the event you are unwell",
   user: test_user11
 )
-file = URI.open(image11_url)
+
+image_urls_11 = ["https://res.cloudinary.com/ddk4z9ypx/image/upload/v1680284664/ricemedia-heartland-bird-uncle-9_vwfwjn.jpg",
+                "https://res.cloudinary.com/ddk4z9ypx/image/upload/v1680284647/download_1_qadgun.jpg",
+                "https://res.cloudinary.com/ddk4z9ypx/image/upload/v1680284671/e45ba262750474788e4c37b0e303dd12-scaled_pky4sh.jpg"]
+
+image_urls_11.each do |url|
+file = URI.open(url)
 activity_11.photos.attach(io: file, filename: "#{activity_11.name}.png", content_type: "image/png")
+end
 
 availabilities = []
 date = Date.today
@@ -500,8 +539,6 @@ end
 
 activity_11.save!
 
-image12_url = "https://res.cloudinary.com/ddk4z9ypx/image/upload/v1679717906/9bda435e-03e5-4f8a-beab-9b4193fefc13_eqik7p.jpg"
-
 activity_12 = Activity.create(
   name: "How to Cycle for Beginners",
   description: "3-hour beginner-friendly indoor cycling sessions guided by Coach John with 10 years experience.",
@@ -512,8 +549,14 @@ activity_12 = Activity.create(
   policies: "Please inform us for rescheduling in the event you are unwell",
   user: test_user12
 )
-file = URI.open(image12_url)
+
+image_urls_12 = ["https://res.cloudinary.com/ddk4z9ypx/image/upload/v1680285919/e-cycling-lesson-01_bp9k15.jpg",
+                "https://res.cloudinary.com/ddk4z9ypx/image/upload/v1680285928/46-1024x768_vnthcp.jpg"]
+
+image_urls_12.each do |url|
+file = URI.open(url)
 activity_12.photos.attach(io: file, filename: "#{activity_12.name}.png", content_type: "image/png")
+end
 
 availabilities = []
 date = Date.today
@@ -531,8 +574,6 @@ end
 
 activity_12.save!
 
-image13_url = "https://res.cloudinary.com/ddk4z9ypx/image/upload/c_scale,e_art:refresh,w_1170/v1679720573/EPC-0350-2rec-web_lyjdge.webp"
-
 activity_13 = Activity.create(
   name: "Perfume Making Workshop",
   description: "Create custom scents using high-quality ingredients and expert guidance.",
@@ -543,8 +584,13 @@ activity_13 = Activity.create(
   policies: "Please inform us for rescheduling in the event you are unwell",
   user: test_user13
 )
-file = URI.open(image13_url)
+image_urls_13 = ["https://res.cloudinary.com/ddk4z9ypx/image/upload/v1680286763/1-4_nqtqse.webp",
+                 "https://res.cloudinary.com/ddk4z9ypx/image/upload/v1680286791/download_5_m2un1d.jpg"]
+
+image_urls_13.each do |url|
+file = URI.open(url)
 activity_13.photos.attach(io: file, filename: "#{activity_13.name}.png", content_type: "image/png")
+end
 
 availabilities = []
 date = Date.today
@@ -562,7 +608,6 @@ end
 
 activity_13.save!
 
-image14_url = "https://res.cloudinary.com/ddk4z9ypx/image/upload/c_scale,e_art:refresh,w_1170/v1679719737/bc22ea20-84a0-11ea-bdf5-3ea9c00cb2c0_amgdrd.jpg"
 activity_14 = Activity.create(
   name: "Maths Tuition",
   description: "Effective maths coaching for students to improve understanding and performance.",
@@ -574,8 +619,13 @@ activity_14 = Activity.create(
   user: test_user14
 )
 
-file = URI.open(image14_url)
+image_urls_14 = ["https://res.cloudinary.com/ddk4z9ypx/image/upload/v1680284347/Caring-primary-school-maths-tuition_ufd3tn.jpg",
+                 "https://res.cloudinary.com/ddk4z9ypx/image/upload/v1680284504/Pri-Math_xsaria.png"]
+
+image_urls_14.each do |url|
+file = URI.open(url)
 activity_14.photos.attach(io: file, filename: "#{activity_14.name}.png", content_type: "image/png")
+end
 
 availabilities = []
 date = Date.today
@@ -593,8 +643,6 @@ end
 
 activity_14.save!
 
-image15_url = "https://res.cloudinary.com/ddk4z9ypx/image/upload/c_scale,e_art:refresh,w_1170/v1679720974/photo-1675495277087-10598bf7bcd1_wp0qrh.jpg"
-
 activity_15 = Activity.create(
   name: "How To Code 101",
   description: "Introduction to coding concepts and skills for beginners. Notes will be provided!" ,
@@ -605,8 +653,13 @@ activity_15 = Activity.create(
   policies: "Please bring your own laptop.",
   user: test_user15
 )
-file = URI.open(image15_url)
+image_urls_15 = ["https://res.cloudinary.com/ddk4z9ypx/image/upload/c_scale,e_art:refresh,w_1170/v1679720974/photo-1675495277087-10598bf7bcd1_wp0qrh.jpg",
+                 "https://res.cloudinary.com/ddk4z9ypx/image/upload/v1680286441/Online_or_Offline_Preface_Coding_Private_Course_for_Adults_mr3uby.jpg"]
+
+image_urls_15.each do |url|
+file = URI.open(url)
 activity_15.photos.attach(io: file, filename: "#{activity_15.name}.png", content_type: "image/png")
+end
 
 availabilities = []
 date = Date.today
@@ -624,8 +677,6 @@ end
 
 activity_15.save!
 
-image16_url = "https://res.cloudinary.com/ddk4z9ypx/image/upload/v1679721433/meg-wagener-vuXTB1lR3AY-unsplash_xldwsn.jpg"
-
 activity_16 = Activity.create(
   name: "Knitting Class",
   description: "Discover the art of knitting and create beautiful handmade pieces with various patterns and yarns. Invite your friends along!",
@@ -636,8 +687,14 @@ activity_16 = Activity.create(
   policies: "Please inform us for rescheduling in the event you are unwell",
   user: test_user16
 )
-file = URI.open(image16_url)
+image_urls_16 = ["https://res.cloudinary.com/ddk4z9ypx/image/upload/v1680283070/pexels-alex-green-5693380-scaled-735x471_gxzkcl.jpg",
+                "https://res.cloudinary.com/ddk4z9ypx/image/upload/v1680283073/crotchet-artists-group-shot-1040x585-1_ugrka3.webp",
+                "https://res.cloudinary.com/ddk4z9ypx/image/upload/v1679721433/meg-wagener-vuXTB1lR3AY-unsplash_xldwsn.jpg"]
+
+image_urls_16.each do |url|
+file = URI.open(url)
 activity_16.photos.attach(io: file, filename: "#{activity_16.name}.png", content_type: "image/png")
+end
 
 availabilities = []
 date = Date.today
@@ -655,8 +712,6 @@ end
 
 activity_16.save!
 
-image17_url = "https://res.cloudinary.com/ddk4z9ypx/image/upload/c_scale,e_art:refresh,w_1170/v1679714826/oleg-ivanov-iB_h6EFRiKY-unsplash_vkxphf.jpg"
-
 activity_17 = Activity.create(
   name: "Learn Guitar!",
   description: "Learn to play guitar with chord progressions and strumming techniques.",
@@ -667,8 +722,13 @@ activity_17 = Activity.create(
   policies: "You can bring your own guitar or use the teacher's guitar ranging from classical, acoustic to electric",
   user: test_user17
 )
-file = URI.open(image17_url)
+image_urls_17 = ["https://res.cloudinary.com/ddk4z9ypx/image/upload/v1679714826/oleg-ivanov-iB_h6EFRiKY-unsplash_vkxphf.jpg",
+                 "https://res.cloudinary.com/ddk4z9ypx/image/upload/v1680288361/stella1-1024x576_mksswm.jpg"]
+
+image_urls_17.each do |url|
+file = URI.open(url)
 activity_17.photos.attach(io: file, filename: "#{activity_17.name}.png", content_type: "image/png")
+end
 
 availabilities = []
 date = Date.today
@@ -686,21 +746,26 @@ end
 
 activity_17.save!
 
-image18_url = "https://res.cloudinary.com/ddk4z9ypx/image/upload/c_scale,e_art:refresh,w_1170/v1679720205/easy-thai-recipes-for-beginners_unl1u4.jpg"
-
 activity_18 = Activity.create(
-  name: "Thai Cuisine Cooking Class",
-  description: "Experience the bold and complex flavors of Thai cuisine with authentic recipes.",
-  price: 120,
+  name: "Social Support for Elderly!",
+  description: "We are seeking for like-minded people to join us to deliver food to elderly staying nearby.",
+  price: 0,
   max_capacity: 4,
   meeting_location: "Khatib",
   minimum_age: 0,
   policies: "Please inform us for rescheduling in the event you are unwell",
   user: test_user18
 )
-file = URI.open(image18_url)
+image_urls_18 = ["https://res.cloudinary.com/ddk4z9ypx/image/upload/v1680287085/7.-Image-by-TOUCH-Community-Services_h12x8y.jpg",
+                "https://res.cloudinary.com/ddk4z9ypx/image/upload/v1680287090/ME7_kozwmf.jpg",
+                "https://res.cloudinary.com/ddk4z9ypx/image/upload/v1680287096/Rini_3_mcvfpq.jpg"]
+
+image_urls_18.each do |url|
+file = URI.open(url)
 activity_18.photos.attach(io: file, filename: "#{activity_18.name}.png", content_type: "image/png")
-aavailabilities = []
+end
+
+availabilities = []
 date = Date.today
 30.times do
   availabilities << date.strftime("%Y-%m-%d")
