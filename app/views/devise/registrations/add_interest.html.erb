@@ -1,4 +1,4 @@
-<div class="container" data-controller="interest">
+<div class="container">
   <h3>Select your interests:</h3>
   <%= simple_form_for @user, url:  users_update_interest_path do |f| %>
     <% Interest.all.each do |interest| %>

@@ -1,9 +1,33 @@
-<%= render "activity", activity: @activity %>
-<p>Amount: <%= humanized_money_with_symbol(@activity.price) %></p>
+<div class="activity-details">
+  <h2 class="activity-title"><%= @activity.name %></h2>
+  <p class="activity-price">Price: <%= humanized_money_with_symbol(@activity.price) %></p>
+  <%= render "activity", activity: @activity %>
+</div>
 
-<% @activity.photos.each do |photo| %>
-  <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-<% end %>
+<div class="activity-photos">
+  <h2 class="activity-photo-title">Photos</h2>
+  <% @activity.photos.each do |photo| %>
+    <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+  <% end %>
+</div>
+
+
+<div class="faqs">
+  <h2>FAQs from the Community</h2>
+  <% activity = Activity.find(1) %>
+  <ul class="faqs-list">
+    <% activity.faqs.each do |faq| %>
+      <li>
+        <div class="question">
+          <strong>Question:</strong> <%= faq.question %>
+        </div>
+        <div class="answer">
+          <strong>Answer:</strong> <%= faq.answer %>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+</div>
 
 <h2>Reviews</h2>
 <% if @participant_reviews.present? %>
