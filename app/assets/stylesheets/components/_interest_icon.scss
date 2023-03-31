@@ -2,7 +2,6 @@
 // SPORT
 // </button>
 
-
 .btn-circle.btn-xl {
     width: 150px;
     height: 150px;
@@ -17,7 +16,11 @@
     font-family: 'Lemon';
 }
 
+.form-check-label {
+  display: flex;
+  align-items: center;
+}
+
 .interest-name {
-  display: inline-block;
   margin-left: 10px;
 }
