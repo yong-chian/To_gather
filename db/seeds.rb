@@ -624,6 +624,19 @@ activity_18.save!
 
 p "Created #{Activity.count} activities"
 
+# # # TODO: Created FAQs
+faqs = [
+  ["What time does it start and what time does it end?", "It is 3 hour duration"],
+  ["Hi, can I book for 2 pax?", "Please kindly make another booking."]
+]
+
+Activity.all.each do |activity|
+  faqs.each do |faq|
+    activity.faqs.create(question: faq[0], answer: faq[1])
+  end
+end
+
+
 # # TODO: Created booking
 # booking_1 = Booking.create!(
 #   user_name: "Jane Smith",
@@ -662,16 +675,6 @@ p "Created #{Activity.count} activities"
 # ParticipantReview.create(content: "I enjoyed bonding with my neighbours and learning how to play better", activity_rating: 3.0, booking_id: 1)
 # ParticipantReview.create(content: "It was interesting to learn about how what my Chinese friends are always up to", activity_rating: 2.0, booking_id: 1)
 # ParticipantReview.create(content: "It was exciting to challenge with the pros", activity_rating: 4.8, booking_id: 1)
-
-# # # TODO: Created FAQs
-# # faqs =      [["What time does it start and what time does it end?", "It is 3 hour duration"],
-# #              ["Hi, can I book for 2 pax?", "Please kindly make another booking."],
-# #             ]
-
-# # faqs.each do |faq|
-# # Activity.create(question: faqs[0], answer: faqs[1])
-# # end
-# # # TODO: Existing Bookings (Linked to next section)
 
 # # # # TODO: Host Reviews for Each Booking
 # # # Host_review.create(user_rating: 4.5, booking_id: 1)

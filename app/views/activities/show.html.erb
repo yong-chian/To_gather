@@ -5,6 +5,23 @@
   <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
 <% end %>
 
+<div class="faqs">
+  <h2>FAQs from the Community</h2>
+  <% activity = Activity.find(1) %>
+  <ul class="faqs-list">
+    <% activity.faqs.each do |faq| %>
+      <li>
+        <div class="question">
+          <strong>Question:</strong> <%= faq.question %>
+        </div>
+        <div class="answer">
+          <strong>Answer:</strong> <%= faq.answer %>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+</div>
+
 <h2>Reviews</h2>
 <% if @reviews.present? %>
   <% @reviews.each do |review| %>
