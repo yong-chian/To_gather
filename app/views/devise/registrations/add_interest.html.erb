@@ -5,7 +5,7 @@
       <div class="form-check">
         <%= f.check_box :interest_ids, { multiple: true, class: 'form-check-input', id: interest.id }, interest.id, nil %>
         <%= f.label interest.id, class: 'form-check-label' do %>
-          <%= interest.icon.html_safe %>
+          <span class="icon"><%= interest.icon.html_safe %></span>
           <span class="interest-name"><%= interest.name %></span>
         <% end %>
       </div>
