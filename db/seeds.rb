@@ -8,7 +8,11 @@
 require "open-uri"
 
 puts "Cleaning up database..."
+UserInterest.destroy_all
+Interest.destroy_all
+ParticipantReview.destroy_all
 Booking.destroy_all
+Faq.destroy_all
 Availability.destroy_all
 Activity.destroy_all
 User.destroy_all
@@ -97,6 +101,96 @@ availabilities.each do |time|
 end
 
 activity_1.save!
+
+selected_availability = activity_1.availabilities[1]
+booking_1 = Booking.new(
+  user_id: test_user2.id,
+  availability_id: selected_availability.id,
+  activity_id: selected_availability.activity_id,
+  user_name: "Jane Smith",
+  number_of_pax: 2,
+  status: "Confirmed",
+  comment: "Looking forward to it",
+  completed: true
+)
+booking_1.save!
+
+selected_availability2 = activity_1.availabilities[2]
+booking_2 = Booking.new(
+  user_id: test_user3.id,
+  availability_id: selected_availability.id,
+  activity_id: selected_availability.activity_id,
+  user_name: "Michelle Lim",
+  number_of_pax: 3,
+  status: "Confirmed",
+  comment: "3 adults",
+  completed: true
+)
+booking_2.save!
+
+selected_availability3 = activity_1.availabilities[3]
+booking_3 = Booking.new(
+  user_id: test_user4.id,
+  availability_id: selected_availability.id,
+  activity_id: selected_availability.activity_id,
+  user_name: "Aisyah N",
+  number_of_pax: 4,
+  status: "Confirmed",
+  comment: "",
+  completed: true
+)
+booking_3.save!
+
+selected_availability4 = activity_1.availabilities[3]
+booking_4 = Booking.new(
+  user_id: test_user5.id,
+  availability_id: selected_availability.id,
+  activity_id: selected_availability.activity_id,
+  user_name: "Christopher Ng",
+  number_of_pax: 2,
+  status: "Confirmed",
+  comment: "",
+  completed: true
+)
+booking_4.save!
+
+
+review_1 = ParticipantReview.new(
+  booking_id: booking_1.id,
+  activity_id: booking_1.activity_id,
+  user_name: "Jane Smith",
+  content: "It was fun learning about the history of mahjong!",
+  activity_rating: 4
+)
+review_1.save!
+
+review_2 = ParticipantReview.new(
+  booking_id: booking_2.id,
+  activity_id: booking_2.activity_id,
+  user_name: "Michelle Lim",
+  content: "I enjoyed bonding with my neighbours and learning how to play better",
+  activity_rating: 3
+)
+review_2.save!
+
+review_3 = ParticipantReview.new(
+  booking_id: booking_3.id,
+  activity_id: booking_3.activity_id,
+  user_name: "Aisyah N",
+  content: "It was interesting to learn about how what my Chinese friends are always up to",
+  activity_rating: 5
+)
+review_3.save!
+
+review_4 = ParticipantReview.new(
+  booking_id: booking_4.id,
+  activity_id: booking_4.activity_id,
+  user_name: "Christopher Ng",
+  content: "It was exciting to challenge with the pros",
+  activity_rating: 4
+)
+review_4.save!
+
 
 image2_url = "https://res.cloudinary.com/ddk4z9ypx/image/upload/e_art:refresh/v1679715220/image-asset_m0sp3q.jpg"
 activity_2 = Activity.create(
@@ -638,45 +732,68 @@ Activity.all.each do |activity|
 end
 
 
-# # TODO: Created booking
-# booking_1 = Booking.create!(
-#   user_name: "Jane Smith",
-#   number_of_pax: 2,
-#   status: "Confirmed",
-#   comment: "Looking forward to it",
-#   user: test_user2,
-#   completed: false
-# )
-# # find an availability to link with the booking
-# availability_1 = Availability.first
+# TODO: Created booking
+booking_1 = Booking.create(
+  user_name: "Jane Smith",
+  number_of_pax: 2,
+  status: "Confirmed",
+  comment: "Looking forward to it",
+  completed: false
+)
+# find an availability to link with the booking
+activity_1 = Activity.first
+availability_1 = Availability.first
+user_1 = User.second
 
-# # link the booking with the availability
-# booking_1.availability = availability_1
+# link the booking with the availability
+booking_1.availability = availability_1
+booking_1.activity = activity_1
+booking_1.user = user_1
 
-# # save the booking
-# booking_1.save!
+# save the booking
+booking_1.save!
 
-# # booking_2 = Booking.create!(
-# #   user_name: "Michelle Lim",
-# #   number_of_pax: 3,
-# #   status: "Confirmed",
-# #   comment: "3 adults",
-# #   user: test_user3,
-# #   completed: false
-# # )
-# # availability = Availability.first
-# # booking_2.availabilities = availability_1
-# # booking_2.save!
+booking_2 = Booking.create(
+  user_name: "Michelle Lim",
+  number_of_pax: 3,
+  status: "Confirmed",
+  comment: "3 adults",
+  completed: false
+)
+availability_2 = Availability.second
+activity_2 = Activity.first
+user_2 = User.third
 
-# # p "Created #{Booking.count} bookings"
+booking_2.availability = availability_2
+booking_2.activity = activity_2
+booking_2.user = user_2
 
+booking_2.save!
 
-# # TODO: Participant Reviews for Each Activity
-# ParticipantReview.create(content: "It was fun learning about the history of mahjong!", activity_rating: 4.8, booking_id: 1)
-# ParticipantReview.create(content: "I enjoyed bonding with my neighbours and learning how to play better", activity_rating: 3.0, booking_id: 1)
-# ParticipantReview.create(content: "It was interesting to learn about how what my Chinese friends are always up to", activity_rating: 2.0, booking_id: 1)
-# ParticipantReview.create(content: "It was exciting to challenge with the pros", activity_rating: 4.8, booking_id: 1)
+p "Created #{Booking.count} bookings"
 
-# # # # TODO: Host Reviews for Each Booking
-# # # Host_review.create(user_rating: 4.5, booking_id: 1)
-# # # Host_review.create(user_rating: 2, booking_id: 2)
+# TODO: Participant Reviews for Each Activity
+review_1 = ParticipantReview.create(content: "It was fun learning about the history of mahjong!", activity_rating: 4, user_name: "Jane Smith")
+review_1.activity = activity_1
+review_1.booking = booking_1
+review_1.save!
+
+review_2 = ParticipantReview.create(content: "I enjoyed bonding with my neighbours and learning how to play better", activity_rating: 3, user_name: "Michelle Lim")
+review_2.activity = activity_1
+review_2.booking = booking_1
+review_2.save!
+
+review_3 = ParticipantReview.create(content: "It was interesting to learn about how what my Chinese friends are always up to", activity_rating: 2, user_name: "Jamie Koh")
+review_3.activity = activity_1
+review_3.booking = booking_1
+review_3.save!
+
+review_4 = ParticipantReview.create(content: "It was exciting to challenge with the pros", activity_rating: 4, user_name: "Evonne Li")
+review_4.activity = activity_1
+review_4.booking = booking_1
+review_4.save!
+
+p "Created #{ParticipantReview.count} participant_reviews"
+# # # TODO: Host Reviews for Each Booking
+# # Host_review.create(user_rating: 4.5, booking_id: 1)
+# # Host_review.create(user_rating: 2, booking_id: 2)

@@ -14,9 +14,8 @@
 
 <div class="faqs">
   <h2>FAQs from the Community</h2>
-  <% activity = Activity.find(1) %>
   <ul class="faqs-list">
-    <% activity.faqs.each do |faq| %>
+    <% @activity.faqs.each do |faq| %>
       <li>
         <div class="question">
           <strong>Question:</strong> <%= faq.question %>
