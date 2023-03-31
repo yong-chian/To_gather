@@ -733,65 +733,65 @@ end
 
 
 # TODO: Created booking
-booking_1 = Booking.create(
-  user_name: "Jane Smith",
-  number_of_pax: 2,
-  status: "Confirmed",
-  comment: "Looking forward to it",
-  completed: false
-)
-# find an availability to link with the booking
-activity_1 = Activity.first
-availability_1 = Availability.first
-user_1 = User.second
+# booking_1 = Booking.create(
+#   user_name: "Jane Smith",
+#   number_of_pax: 2,
+#   status: "Confirmed",
+#   comment: "Looking forward to it",
+#   completed: false
+# )
+# # find an availability to link with the booking
+# activity_1 = Activity.first
+# availability_1 = Availability.first
+# user_1 = User.second
 
 # link the booking with the availability
-booking_1.availability = availability_1
-booking_1.activity = activity_1
-booking_1.user = user_1
+# booking_1.availability = availability_1
+# booking_1.activity = activity_1
+# booking_1.user = user_1
 
-# save the booking
-booking_1.save!
+# # save the booking
+# booking_1.save!
 
-booking_2 = Booking.create(
-  user_name: "Michelle Lim",
-  number_of_pax: 3,
-  status: "Confirmed",
-  comment: "3 adults",
-  completed: false
-)
-availability_2 = Availability.second
-activity_2 = Activity.first
-user_2 = User.third
+# booking_2 = Booking.create(
+#   user_name: "Michelle Lim",
+#   number_of_pax: 3,
+#   status: "Confirmed",
+#   comment: "3 adults",
+#   completed: false
+# )
+# availability_2 = Availability.second
+# activity_2 = Activity.first
+# user_2 = User.third
 
-booking_2.availability = availability_2
-booking_2.activity = activity_2
-booking_2.user = user_2
+# booking_2.availability = availability_2
+# booking_2.activity = activity_2
+# booking_2.user = user_2
 
-booking_2.save!
+# booking_2.save!
 
 p "Created #{Booking.count} bookings"
 
 # TODO: Participant Reviews for Each Activity
-review_1 = ParticipantReview.create(content: "It was fun learning about the history of mahjong!", activity_rating: 4, user_name: "Jane Smith")
-review_1.activity = activity_1
-review_1.booking = booking_1
-review_1.save!
+# review_1 = ParticipantReview.create(content: "It was fun learning about the history of mahjong!", activity_rating: 4, user_name: "Jane Smith")
+# review_1.activity = activity_1
+# review_1.booking = booking_1
+# review_1.save!
 
-review_2 = ParticipantReview.create(content: "I enjoyed bonding with my neighbours and learning how to play better", activity_rating: 3, user_name: "Michelle Lim")
-review_2.activity = activity_1
-review_2.booking = booking_1
-review_2.save!
+# review_2 = ParticipantReview.create(content: "I enjoyed bonding with my neighbours and learning how to play better", activity_rating: 3, user_name: "Michelle Lim")
+# review_2.activity = activity_1
+# review_2.booking = booking_1
+# review_2.save!
 
-review_3 = ParticipantReview.create(content: "It was interesting to learn about how what my Chinese friends are always up to", activity_rating: 2, user_name: "Jamie Koh")
-review_3.activity = activity_1
-review_3.booking = booking_1
-review_3.save!
+# review_3 = ParticipantReview.create(content: "It was interesting to learn about how what my Chinese friends are always up to", activity_rating: 2, user_name: "Jamie Koh")
+# review_3.activity = activity_1
+# review_3.booking = booking_1
+# review_3.save!
 
-review_4 = ParticipantReview.create(content: "It was exciting to challenge with the pros", activity_rating: 4, user_name: "Evonne Li")
-review_4.activity = activity_1
-review_4.booking = booking_1
-review_4.save!
+# review_4 = ParticipantReview.create(content: "It was exciting to challenge with the pros", activity_rating: 4, user_name: "Evonne Li")
+# review_4.activity = activity_1
+# review_4.booking = booking_1
+# review_4.save!
 
 p "Created #{ParticipantReview.count} participant_reviews"
 # # # TODO: Host Reviews for Each Booking
