@@ -24,6 +24,7 @@ class OrdersController < ApplicationController
     end
 
     def show
+        # success_url: order_url(order)
         @order = current_user.orders.find(params[:id])
     end
 end
