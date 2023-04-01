@@ -1,34 +1,40 @@
 <div id="<%= dom_id activity %>" class="activity-card col-sm-4">
-  <div class="activity-image-container" data-controller="favorite">
-              <% activity.photos.each do |photo| %>
-              <div class="activity-card-image" style = "background-image: url(<%= cl_image_path photo.key %>)"></div>
 
-              <% end %>
-              <%= link_to favorite_activity_path(activity), data: {turbo_method: :post, action: "click->favorite#update"} do %>
-                <i class="fa-heart <%= current_user.favorited?(activity) ? "fa-solid" : "fa-regular" %>" data-favorite-target="bookmark"></i>
-              <% end %>
+  <div class="activity-image-container">
+    <% activity.photos.each do |photo| %>
+      <div class="activity-card-image" style = "background-image: url(<%= cl_image_path photo.key %>)"></div>
+    <% end %>
   </div>
+
   <div class="activity-details">
+
     <p class="activity-host">
       <strong>Host name:</strong>
       <%= activity.user.first_name %>
     </p>
+
     <h2 class="activity-name"><%= activity.name %></h2>
+
     <p class="activity-description"><%= activity.description %></p>
+
     <p class="activity-meeting-location">
-      <strong>Meeting Location:</strong>
-      <%= activity.meeting_location %>
+      <strong>Meeting Location:</strong> <%= activity.meeting_location %>
     </p>
+
     <p class="activity-policies">
-      <strong>Policies:</strong>
-      <%= activity.policies %>
+      <strong>Policies:</strong> <%= activity.policies %>
     </p>
+
     <p class="activity-price">
-      <strong>Price:</strong>
-      <p>Price: <%= humanized_money_with_symbol(activity.price) %></p>
+      <strong>Price:</strong> <%= humanized_money_with_symbol(activity.price) %></p>
     </p>
-    <div class="activity-buttons">
+    <div class="activity-buttons" data-controller="favorite">
+
       <%= link_to "View Activity", activity_path(activity), class: "btn btn-primary" %>
+
+      <%= link_to favorite_activity_path(activity), data: {turbo_method: :post, action: "click->favorite#update"} do %>
+        <i class="fa-heart <%= current_user.favorited?(activity) ? "fa-solid" : "fa-regular" %>" data-favorite-target="bookmark"></i>
+      <% end %>
     </div>
   </div>
 </div>
