@@ -15,4 +15,12 @@ class Activity < ApplicationRecord
   has_many :faqs
   has_many :bookings, dependent: :destroy
   has_many :participant_reviews, through: :bookings
+
+  include PgSearch::Model
+
+  pg_search_scope :search_by_name_and_description,
+    against: [ :name, :description ],
+    using: {
+      tsearch: { prefix: true } # <-- now `mahj` will return something!
+    }
 end

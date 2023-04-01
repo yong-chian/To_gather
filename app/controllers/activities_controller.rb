@@ -3,7 +3,7 @@ class ActivitiesController < ApplicationController
 
   def index
     if params[:query].present?
-      @activities = policy_scope(Activity.where("name ILIKE ?", "%#{params[:query]}%"))
+      @activities = policy_scope(Activity.search_by_name_and_description(params[:query]))
     else
       @activities = policy_scope(Activity)
     end
