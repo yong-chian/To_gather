@@ -1,5 +1,9 @@
 <h1>Hi, thank you for booking! Please check out.</h1>
 <%= render @booking %>
+<%= form_with url: orders_path do %>
+  <%= hidden_field_tag 'activity_id', @activity.id %>
+  <%= submit_tag 'Checkout', class: 'btn btn-primary' %>
+<% end %>
 <div>
   <% if !@booking.completed || Date.today < @booking.booking_date %>
     <% if @booking.status == "Pending"%>

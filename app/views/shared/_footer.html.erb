@@ -13,7 +13,7 @@
       <div class="col-12 col-lg-4 mb-32 mb-md-0 footer-p1">
         <div>
           <h4 class="footer-logo">ToGather</h4>
-          <p class="tw-text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          <p class="tw-text-sm">Welcome to Togather, a community-driven website that connects neighbors through shared activities and moments. Our platform is designed to help you create meaningful connections with the people who live near you, fostering a sense of community and belonging.</p>
           <a href="#"><i class="fab fa-github"></i></a>
           <a href="#"><i class="fab fa-instagram"></i></a>
           <a href="#"><i class="fab fa-facebook"></i></a>
@@ -24,7 +24,7 @@
       <div class="col-6 col-lg-2 mb-32 mb-md-0 offset-lg-1 footer-p2">
         <h4 class="tw-text-base text-uppercase font-weight-bold mb-1">Company</h4>
         <div class="py-1">
-          <%= link_to "About Us", "#", class: "footer-link" %>
+          <%= link_to "About Us", contact_us_path, class: "footer-link" %>
         </div>
         <div class="py-1">
           <%= link_to "Legal Information", "#", class: "footer-link" %>
@@ -39,13 +39,13 @@
       <div class="col-6 col-lg-2 mb-32 mb-md-0 footer-p2">
         <h4 class="tw-text-base text-uppercase font-weight-bold mb-1">Help center</h4>
         <div class="py-1">
-          <%= link_to "Find activity", "#", class: "footer-link" %>
+          <%= link_to "Find activity", activities_path, class: "footer-link" %>
         </div>
         <div class="py-1">
           <%= link_to "How To Host?", "#", class: "footer-link" %>
         </div>
         <div class="py-1">
-          <%= link_to "Host an Activity", "#", class: "footer-link" %>
+          <%= link_to "Host an Activity", new_activity_path(@activity), class: "footer-link" %>
         </div>
         <div class="py-1">
           <%= link_to "FAQs", "#", class: "footer-link" %>
@@ -54,13 +54,13 @@
       <div class="col-12 col-lg-3 footer-p2">
         <h4 class="tw-text-base text-uppercase font-weight-bold mb-1">Contact Info</h4>
         <div class="py-1">
-          <%= link_to "Phone: 1234567890", "#", class: "footer-link" %>
+          <%= link_to "Phone: 63552828", "#", class: "footer-link" %>
         </div>
         <div class="py-1">
-          <%= link_to "Email: company@email.com", "#", class: "footer-link" %>
+          <%= link_to "Email: Togather@email.com", "#", class: "footer-link" %>
         </div>
         <div class="py-1">
-          <%= link_to "Location: 100 Smart Street, LA, USA", "#", class: "footer-link" %>
+          <%= link_to "Location: 20 Collyer Quay #23-01 Singpore 049319 ", "#", class: "footer-link" %>
         </div>
         </div>
       </div>

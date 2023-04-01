@@ -1,32 +1,16 @@
 /*activity card*/
 .activity-card {
-
-    width: 400px;
-    height: 286pxpx;
-    left: 0px;
-    top: 8px;
     background: rgb(233, 234, 231);
     border-radius: 5px;
     padding: 10px;
-    ;
 
 }
 
-.activity-card img {
-    display: block;
-    margin: auto;
-    width: 100%;
-}
+.activity-card-image {
+    height: 300px;
 
-// HTML = <i class="fa-solid fa-calendar-days"></i>//
-.circle-icon {
-    background: white;
-    padding: 10px;
-    border-radius: 50%;
-}
+    background-size: cover;
 
-.fa-calendar-days {
-    font-size: 36px;
 }
 
 //Heart shape
