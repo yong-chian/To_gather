@@ -7,24 +7,15 @@
             class: "form-control",
             placeholder: "Type a keyword"
           %>
-        <%= submit_tag "Search", name: "", class: "btn btn-primary mx-3 " %>
+        <%= submit_tag "Search", name: "", class: "btn btn-primary mx-3"%>
       <% end %>
 
-      <div id="activities">
+      <div class="activities">
         <% if @activities.any? %>
           <% @activities.each do |activity| %>
           <br>
-            <div class="activity-card" data-controller="favorite">
-              <% activity.photos.each do |photo| %>
-                <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-              <% end %>
-              <%= link_to favorite_activity_path(activity), data: {turbo_method: :post, action: "click->favorite#update"} do %>
-                <i class="fa-heart <%= current_user.favorited?(activity) ? "fa-solid" : "fa-regular" %>" data-favorite-target="bookmark"></i>
-              <% end %>
               <%= render activity %>
-              <p>Amount: <%= humanized_money_with_symbol(activity.price) %></p>
-              <%= link_to "More details", activity_path(activity), class: "btn btn-primary" %>
-            </div>
+
           <% end %>
         <% else %>
           <em>Sorry, no activities found.</em>
