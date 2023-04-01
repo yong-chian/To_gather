@@ -18,7 +18,7 @@
         </div>
         <div class="container">
             <div class="row">
-               <% @activities.shuffle.each do |activity| %>
+               <% @activities_near_you.shuffle.each do |activity| %>
                 <%= render "activities/activity", activity: activity %>
                <% end %>
 
@@ -32,14 +32,6 @@
         <div class="container">
             <div class="row">
                <div class="row">
-               <% @activities.shuffle.each do |activity| %>
-                <%= render "activities/activity", activity: activity %>
-               <% end %>
-            </div>
-        </div>
-        <div class="container">
-            <div class="row">
-              <div class="row">
                <% @activities.shuffle.each do |activity| %>
                 <%= render "activities/activity", activity: activity %>
                <% end %>
