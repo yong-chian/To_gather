@@ -2,8 +2,8 @@
   <div class="activity-image-container" data-controller="favorite">
               <% activity.photos.each do |photo| %>
               <div class="activity-card-image" style = "background-image: url(<%= cl_image_path photo.key %>)"></div>
-
               <% end %>
+              
               <%= link_to favorite_activity_path(activity), data: {turbo_method: :post, action: "click->favorite#update"} do %>
                 <i class="fa-heart <%= current_user.favorited?(activity) ? "fa-solid" : "fa-regular" %>" data-favorite-target="bookmark"></i>
               <% end %>
@@ -13,8 +13,11 @@
       <strong>Host name:</strong>
       <%= activity.user.first_name %>
     </p>
+    
     <h2 class="activity-name"><%= activity.name %></h2>
+
     <p class="activity-description"><%= activity.description %></p>
+
     <p class="activity-meeting-location">
       <strong>Meeting Location:</strong>
       <%= activity.meeting_location %>

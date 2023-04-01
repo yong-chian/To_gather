@@ -1,4 +1,4 @@
-<div class="centered-form">
+<div class=form-inputs"centered-form">
   <%= simple_form_for(activity, data: { controller: "activity-flatpickr" }) do |f| %>
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
@@ -35,12 +35,12 @@
     <%= f.input :policies %>
   </div>
 
-   <div class="form-inputs">
+   <div class="form-inputs ">
     <%= f.input :photos, as: :file, input_html: { multiple: true } %>
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit,class: "btn-success" %>
+  <div class="form-actions ">
+    <%= f.button :submit,class: "btn-primary" %>
   </div>
 
 <% end %>
