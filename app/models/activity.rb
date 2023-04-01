@@ -8,10 +8,19 @@ class Activity < ApplicationRecord
   validates :max_capacity, presence: true
   validates :meeting_location, presence: true
   validates :name, uniqueness: true
-  has_many :availabilities
-  has_many :bookings, through: :availabilities
+  has_many :availabilities, dependent: :destroy
+  has_many :bookings, through: :availabilities, dependent: :destroy
   attribute :availabilities_start_time
   acts_as_favoritable
   has_many :faqs
-end
+  has_many :bookings, dependent: :destroy
+  has_many :participant_reviews, through: :bookings
 
+  include PgSearch::Model
+
+  pg_search_scope :search_by_name_and_description,
+    against: [ :name, :description ],
+    using: {
+      tsearch: { prefix: true } # <-- now `mahj` will return something!
+    }
+end

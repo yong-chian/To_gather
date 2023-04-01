@@ -1,61 +1,21 @@
 <div class="container">
-  <div class="row">
-    <div class="col-md-12"></div>
-    <%= form_with url: activities_path, method: :get, class: "d-flex" do %>
-      <%= text_field_tag :query,
-          params[:query],
-          class: "form-control",
-          placeholder: "Type a keyword"
-        %>
-      <%= submit_tag "Search", name: "", class: "btn btn-primary mx-3 " %>
-    <% end %>
-  </div>
+  <div class="row justify-content-center">
+    <div class="col-sm-8 my-3">
+      <%= form_with url: activities_path, method: :get, class: "d-flex" do %>
+        <%= text_field_tag :query,
+            params[:query],
+            class: "form-control",
+            placeholder: "Type a keyword"
+          %>
+        <%= submit_tag "Search", name: "", class: "btn btn-primary mx-3"%>
+      <% end %>
 
-  <div class="row">
-        <div class="col-sm-4"></div>
-        <div id="activities">
-          <% if @activities.any? %>
-            <% @activities.each do |activity| %>
-              <br>
-              <div class="activity-card" data-controller="favorite">
-                <% activity.photos.each do |photo| %>
-                  <%= cl_image_tag photo.key %>
-                <% end %>
-                <%= link_to favorite_activity_path(activity), data: {turbo_method: :post, action: "click->favorite#update"} do %>
-                  <i class="fa-heart <%= current_user.favorited?(activity) ? "fa-solid" : "fa-regular" %>" data-favorite-target="bookmark"></i>
-                <% end %>
-                <p>
-                  <strong>Host name:</strong>
-                  <%= activity.user.first_name %>
-                </p>
-                <p>
-                  <strong>Name:</strong>
-                  <%= activity.name %>
-                </p>
-                <p>
-                  <strong>Description:</strong>
-                  <%= activity.description %>
-                </p>
-                <p>
-                  <strong>Amount:</strong> 
-                  <%= humanized_money_with_symbol(activity.price) %>
-                </p>    
-                  
-                <p>
-                  <strong>Meeting Location:</strong>
-                  <%= activity.meeting_location %>
-                </p>
+      <div class="activities">
+        <% if @activities.any? %>
+          <% @activities.each do |activity| %>
+          <br>
+              <%= render activity %>
 
-                <p>
-                  <strong>Policies:</strong>
-                  <%= activity.policies %>
-                </p>
-                
-                <%= link_to "More details", activity_path(activity), class: "btn btn-primary" %>
-              </div>
-            <% end %>
-          <% else %>
-            <em>Sorry, no activities found.</em>
           <% end %>
         </div>
   </div>
