@@ -13,16 +13,16 @@
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
           <li class="nav-item active">
-            <%= link_to "About Us", "#", class: "nav-link" %>
+            <%= link_to "About Us", about_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
-            <%= link_to "Find activity", "#", class: "nav-link" %>
+            <%= link_to "Find activity", activities_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
             <%= link_to "Share Moments", "#", class: "nav-link" %>
           </li>
           <li class="nav-item">
-            <%= button_to "Host an activity", "#", class: "btn btn-primary" %>
+            <%= link_to "Host an activity", new_activity_path(@activity), class: "btn btn-primary" %>
           </li>
           
           <li class="nav-item dropdown">
