@@ -1,8 +1,10 @@
 <div id="<%= dom_id activity %>" class="activity-card col-sm-4">
 
-  <div class="activity-image-container">
-    <div class="activity-card-image" style = "background-image: url(<%= cl_image_path activity.photos&.first.key %>)"></div>
-  </div>
+<div class="activity-image-container">
+
+    <div class="activity-card-image" style="background-image: url(<%= cl_image_path activity.photos.sample.key %>)"></div>
+
+</div>
 
   <div class="activity-details">
 
