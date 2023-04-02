@@ -15,6 +15,8 @@ class Activity < ApplicationRecord
   has_many :faqs
   has_many :bookings, dependent: :destroy
   has_many :participant_reviews, through: :bookings
+  geocoded_by :meeting_location
+  after_validation :geocode, if: :will_save_change_to_meeting_location?
 
   include PgSearch::Model
 
