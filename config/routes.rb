@@ -27,6 +27,7 @@ Rails.application.routes.draw do
   end
 
   resources :favorites, only: [:index]
+  resources :chatrooms, only: :show
 
   # resources :users, only: :index do
   #   member do
