@@ -18,3 +18,6 @@ application.register("hello", HelloController)
 
 import InterestController from "./interest_controller"
 application.register("interest", InterestController)
+
+import MapController from "./map_controller"
+application.register("map", MapController)
