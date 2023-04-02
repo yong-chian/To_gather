@@ -5,73 +5,79 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
     <title>Untitled</title>
 </head>
-
 <body>
-    <div>
-        <div class="top-banner-image" style="margin-left: 300px">
-          <img src="https://hivelife.com/wp-content/uploads/2020/03/Haji-Lane-Hive-Life-Banner.jpg">
-        </div>
-    </div>
-    <div style="margin-top: 99px;">
-        <div class="container">
-            <h1>What is popular near you</h1>
-        </div>
-        <div class="container">
-            <div class="row">
-               <% @activities.shuffle.each do |activity| %>
-                <%= render "activities/activity", activity: activity %>
-               <% end %>
+  <div data-controller="map"
+        id='map'
+        data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
+        data-map-markers-value="<%= @markers.to_json %>"
+        style='width: 100%; height: 300px;'>
+  </div>
+  <div>
+      <div class="top-banner-image" style="margin-left: 300px">
 
-            </div>
-        </div>
-    </div>
-    <div style="margin-top: 40px;">
-        <div class="container">
-            <h1 style="padding-left: 0px;">Browse all options</h1>
-        </div>
-        <div class="container">
-            <div class="row">
-               <div class="row">
-               <% @activities.each do |activity| %>
-                <%= render "activities/activity", activity: activity %>
-               <% end %>
-            </div>
-        </div>
-        <div class="container">
-            <div class="row">
+        <img src="https://hivelife.com/wp-content/uploads/2020/03/Haji-Lane-Hive-Life-Banner.jpg">
+      </div>
+  </div>
+  <div style="margin-top: 99px;">
+      <div class="container">
+          <h1>What is popular near you</h1>
+      </div>
+      <div class="container">
+          <div class="row">
+              <% @activities.shuffle.each do |activity| %>
+              <%= render "activities/activity", activity: activity %>
+              <% end %>
+
+          </div>
+      </div>
+  </div>
+  <div style="margin-top: 40px;">
+      <div class="container">
+          <h1 style="padding-left: 0px;">Browse all options</h1>
+      </div>
+      <div class="container">
+          <div class="row">
               <div class="row">
-               <% @activities.each do |activity| %>
-                <%= render "activities/activity", activity: activity %>
-               <% end %>
-            </div>
-        </div>
-    </div>
-    <div>
-        <div class="container">
-            <section class="py-4 py-xl-5">
-                <div class="container">
-                    <div class="container-banner-image1 text-white bg-dark border rounded border-0 p-4 p-md-5" style="margin-left: -10px;margin-right: -12px;; background: url('https://www.psd.gov.sg/images/default-source/challenge-library/ideas/deep-dive/singapore-together-citizen-engagement-projects/deep_dive_thumb.jpg'), rgb(58,138,218);">
-                        <h2 class="fw-bold text-white mb-3">Build a community with us!</h2>
-                        <p class="mb-4">Earn extra just by hosting activities!</p>
-                        <div class="my-3"><a class="btn btn-primary btn-lg me-2" role="button" href="#">Button</a></div>
-                    </div>
-                </div>
-            </section>
-        </div>
-    </div>
-    <div style="padding-bottom: 0px;margin-bottom: 82px;">
-        <div class="container">
+              <% @activities.each do |activity| %>
+              <%= render "activities/activity", activity: activity %>
+              <% end %>
+          </div>
+      </div>
+      <div class="container">
+          <div class="row">
             <div class="row">
-                <div class="col-md-6" style="padding-left: 40px;">
-                    <h1>Discover moments shared by ToGatherers!</h1>
-                    <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.</p><a class="btn btn-primary btn-lg me-2" role="button" href="#">Button</a>
-                </div>
-                <div class="col-md-6">
-                    <picture><img width="" height="275" src="https://www.cf.org.sg/wp-content/uploads/2022/03/Assisting-individuals-with-disabilities-min.jpg" style="padding-left: 0px; margin-left: 223px;"></picture>
-                </div>
-            </div>
-        </div>
-    </div>
+              <% @activities.each do |activity| %>
+              <%= render "activities/activity", activity: activity %>
+              <% end %>
+          </div>
+      </div>
+  </div>
+  <div>
+      <div class="container">
+          <section class="py-4 py-xl-5">
+              <div class="container">
+                  <div class="container-banner-image1 text-white bg-dark border rounded border-0 p-4 p-md-5" style="margin-left: -10px;margin-right: -12px;; background: url('https://www.psd.gov.sg/images/default-source/challenge-library/ideas/deep-dive/singapore-together-citizen-engagement-projects/deep_dive_thumb.jpg'), rgb(58,138,218);">
+                      <h2 class="fw-bold text-white mb-3">Build a community with us!</h2>
+                      <p class="mb-4">Earn extra just by hosting activities!</p>
+                      <div class="my-3"><a class="btn btn-primary btn-lg me-2" role="button" href="#">Button</a></div>
+                  </div>
+              </div>
+          </section>
+      </div>
+  </div>
+  <div style="padding-bottom: 0px;margin-bottom: 82px;">
+      <div class="container">
+          <div class="row">
+              <div class="col-md-6" style="padding-left: 40px;">
+                  <h1>Discover moments shared by ToGatherers!</h1>
+                  <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.</p><a class="btn btn-primary btn-lg me-2" role="button" href="#">Button</a>
+              </div>
+              <div class="col-md-6">
+                  <picture><img width="" height="275" src="https://www.cf.org.sg/wp-content/uploads/2022/03/Assisting-individuals-with-disabilities-min.jpg" style="padding-left: 0px; margin-left: 223px;"></picture>
+              </div>
+          </div>
+      </div>
+  </div>
 </body>
 
 </html>
