@@ -1,7 +1,9 @@
-<div id="<%= dom_id activity %>" class="activity-card col-sm-4">
+<div id="<%= dom_id activity %>" class="activity-card col-sm-3">
 
   <div class="activity-image-container">
-    <div class="activity-card-image" style = "background-image: url(<%= cl_image_path activity.photos.first.key %>)"></div>
+
+    <div class="activity-card-image" style="background-image: url(<%= cl_image_path activity.photos.sample.key %>)"></div>
+
   </div>
 
   <div class="activity-details">
@@ -10,7 +12,6 @@
       <strong>Host name:</strong>
       <%= activity.user.first_name %>
     </p>
-
 
     <h2 class="activity-name"><%= activity.name %></h2>
 
@@ -27,7 +28,8 @@
     <p class="activity-price">
       <strong>Price:</strong> <%= humanized_money_with_symbol(activity.price) %></p>
     </p>
-    <div class="activity-buttons" data-controller="favorite">
+
+    <div class="activity-buttons">
 
       <%= link_to "View Activity", activity_path(activity), class: "btn btn-primary" %>
       <% if user_signed_in? %>
@@ -37,5 +39,7 @@
       <% else %>
       <% end %>
     </div>
+
   </div>
+
 </div>

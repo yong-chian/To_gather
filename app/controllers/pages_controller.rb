@@ -2,9 +2,9 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :home ]
 
   def home
-    @activities = Activity.all.sample(3)
-    @map_activities = Activity.all
-    @markers = @map_activities.geocoded.map do |activity|
+    @activities_near_you = Activity.all.sample(3) #too add geo location
+    @activities = Activity.all
+    @markers = @activities.geocoded.map do |activity|
       {
         lat: activity.latitude,
         lng: activity.longitude,
