@@ -1,6 +1,9 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-togather">
   <div class="container-fluid">
-    <%= link_to "ToGather", root_path, class: "navbar-brand"  %>
+    <%= link_to root_path, class: "navbar-brand" do %>
+      <%= "ToGather" %>
+    <% end %>
+    
     <%# do %>
       <%# <%= image_tag "ToGather.png" %>
     <%# <% end %>
@@ -26,7 +29,7 @@
           </li>
 
           <li class="nav-item dropdown">
-            <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <a class="nav-link" href="#" data-bs-toggle="dropdown"><%= current_user.first_name %></a>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <%= link_to "Action", "#", class: "dropdown-item" %>
               <%= link_to "Another action", "#", class: "dropdown-item" %>
@@ -42,3 +45,4 @@
     </div>
   </div>
 </div>
+
