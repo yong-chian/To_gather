@@ -1,10 +1,45 @@
+<div id="myModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <p>This is a popup message!</p>
+  </div>
+</div>
+
+<script>
+  // Get the modal
+  var modal = document.getElementById("myModal");
+
+  // Get the <span> element that closes the modal
+  var span = document.getElementsByClassName("close")[0];
+
+  // When the user clicks the button, open the modal
+  function showPopup() {
+    modal.style.display = "block";
+  }
+
+  // When the user clicks on <span> (x), close the modal
+  span.onclick = function () {
+    modal.style.display = "none";
+  }
+
+  // When the user clicks anywhere outside of the modal, close it
+  window.onclick = function (event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
+</script>
+
+
+
+
 <div id="<%= dom_id activity %>" class="activity-card col-sm-3">
 
-  <div class="activity-image-container">
-
-    <div class="activity-card-image" style="background-image: url(<%= cl_image_path activity.photos.sample.key %>)"></div>
-
+<div class="activity-image-container">
+  <div class="activity-card-image" style="background-image: url(<%= cl_image_path activity.photos.sample.key %>)">
+    <i class="fa fa-calendar" aria-hidden="true" onclick="showPopup()"></i>
   </div>
+</div>
 
   <div class="activity-details">
 
@@ -32,12 +67,7 @@
     <div class="activity-buttons">
 
       <%= link_to "View Activity", activity_path(activity), class: "btn btn-primary" %>
-      <% if user_signed_in? %>
-          <%= link_to favorite_activity_path(activity), data: {turbo_method: :post, action: "click->favorite#update"} do %>
-            <i class="fa-heart <%= current_user.favorited?(activity) ? "fa-solid" : "fa-regular" %>" data-favorite-target="bookmark"></i>
-          <% end %>
-      <% else %>
-      <% end %>
+
     </div>
 
   </div>
