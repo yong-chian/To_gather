@@ -5,16 +5,16 @@ class OrderPolicy < ApplicationPolicy
             scope.all
         end
     end
-    
+
     def new?
-        return create?
+      return create?
     end
 
     def create?
-        return true
+      return true
     end
 
     def show?
-        return true
+      return true
     end
 end

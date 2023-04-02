@@ -33,7 +33,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
         UserInterest.create(user: current_user, interest_id: interest_id.to_i)
       end
     end
-    redirect_to root_path, notice: "Interests have been updated"
+    respond_to do |format|
+      format.html { redirect_to root_path, notice: "Interests have been updated" }
+      format.text { render partial: "update_interest", formats: [:html]}
+    end
+
+
   end
   # DELETE /resource
   # def destroy
