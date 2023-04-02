@@ -1,31 +1,31 @@
-<div class="container" data-controller="interest">
-  <div  >
-    <%= simple_form_for(@user, url: users_update_interest_path, data: { interest_target: "form"}) do |f| %>
-      <%= f.association "interests", as: :check_boxes, multiple: true, collection: Interest.all, include_hidden:false %>
-      <%= f.submit class: 'btn btn-primary text-dark fw-bold' %>
-    <% end %>
-  </div>
-
-
-  <div class="row justify-content-center">
-    <div class="col-sm-8 text-center">
-      <h3>Select your interests:</h3>
-      <% @interests.each do |interest| %>
-        <div class="d-flex flex-wrap justify-content-center pt-4">
-          <button
-           data-interest-target="item"
-           data-action="click->interest#disable"
-           data-interest-id-param="<%= interest.id %>"
-           id="interest-<%= interest.id %>"
-           >
-            <small><%= interest.name %></small>
-            <%= interest.icon.html_safe %>
-          </button>
-        </div>
+<div class="interest-body">
+  <div class="container" data-controller="interest">
+    <div class="d-none">
+      <%= simple_form_for(@user, url: users_update_interest_path, data: { interest_target: "form"}) do |f| %>
+        <%= f.association "interests", as: :check_boxes, multiple: true, collection: Interest.all, include_hidden:false %>
+        <%= f.submit class: 'btn btn-primary text-dark fw-bold' %>
       <% end %>
-      <button data-interest-target="button" data-action="click->interest#submit">
-        submit
-      </button>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-sm-8 text-center">
+        <h3>Select your interests:</h3>
+          <div class="d-flex flex-wrap justify-content-center pt-4">
+            <% @interests.each do |interest| %>
+              <div class="interest-clickable"
+                data-interest-target="item"
+                data-action="click->interest#disable"
+                data-interest-id-param="<%= interest.id %>"
+                id="interest-<%= interest.id %>"
+                >
+                  <small><%= interest.name %></small>
+                  <%= interest.icon.html_safe %>
+              </div>
+            <% end %>
+          </div>
+        <button class="btn btn-primary" data-interest-target="button" data-action="click->interest#submit">
+          submit
+        </button>
+      </div>
     </div>
   </div>
 </div>
