@@ -26,9 +26,11 @@ Rails.application.routes.draw do
     resources :payments, only: :new
   end
 
+  resources :chatrooms, only: :show do
+    resources :messages, only: :create
+  end
+  
   resources :favorites, only: [:index]
-  resources :chatrooms, only: :show
-
   # resources :users, only: :index do
   #   member do
   #     post 'favorite', to: "users#toggle_favorite"
