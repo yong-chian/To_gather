@@ -7,6 +7,12 @@
 </head>
 <body>
     <div>
+        <div data-controller="map"
+          id='map'
+          data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
+          data-map-markers-value="<%= @markers.to_json %>"
+          style='width: 100%; height: 300px;'>
+        </div>
         <div class="top-banner-image" style="margin-left: 300px">
           <img src="https://hivelife.com/wp-content/uploads/2020/03/Haji-Lane-Hive-Life-Banner.jpg">
         </div>
