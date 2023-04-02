@@ -1,6 +1,6 @@
 <%# <div class="footer">
   <div class="footer-links">
-
+   
   </div> %>
   <%# <div class="footer-copyright">
     This footer is made with <i class="fas fa-heart"></i> at Le Wagon
@@ -13,16 +13,11 @@
       <div class="col-12 col-lg-4 mb-32 mb-md-0 footer-p1">
         <div>
           <h4 class="footer-logo">ToGather</h4>
-          <p class="tw-text-sm">Welcome to Togather, a community-driven website that connects neighbors through shared activities and moments. Our platform is designed to help you create meaningful connections with the people who live near you, fostering a sense of community and belonging.</p>
-          <a href="#"><i class="fab fa-github"></i></a>
-          <a href="#"><i class="fab fa-instagram"></i></a>
-          <a href="#"><i class="fab fa-facebook"></i></a>
-          <a href="#"><i class="fab fa-twitter"></i></a>
-          <a href="#"><i class="fab fa-linkedin"></i></a>
-        </div>
+          <p class="tw-text-sm">Welcome to <strong>ToGather</strong>, a community-driven website that connects neighbors through shared activities and moments. Our platform is designed to help you create meaningful connections with the people who live near you, fostering a sense of community and belonging.</p>
+        </div>           
       </div>
       <div class="col-6 col-lg-2 mb-32 mb-md-0 offset-lg-1 footer-p2">
-        <h4 class="tw-text-base text-uppercase font-weight-bold mb-1">Company</h4>
+        <h4 class="tw-text-base text-uppercase font-weight-bold mb-1 title-head">Company</h4>
         <div class="py-1">
           <%= link_to "About Us", contact_us_path, class: "footer-link" %>
         </div>
@@ -37,15 +32,15 @@
         </div>
       </div>
       <div class="col-6 col-lg-2 mb-32 mb-md-0 footer-p2">
-        <h4 class="tw-text-base text-uppercase font-weight-bold mb-1">Help center</h4>
+        <h4 class="tw-text-base text-uppercase font-weight-bold mb-1">Help Center</h4>
         <div class="py-1">
-          <%= link_to "Find activity", activities_path, class: "footer-link" %>
+          <%= link_to "Find Activity", activities_path, class: "footer-link" %>
         </div>
         <div class="py-1">
           <%= link_to "How To Host?", "#", class: "footer-link" %>
         </div>
         <div class="py-1">
-          <%= link_to "Host an Activity", new_activity_path(@activity), class: "footer-link" %>
+          <%= link_to "Host An Activity", new_activity_path(@activity), class: "footer-link" %>
         </div>
         <div class="py-1">
           <%= link_to "FAQs", "#", class: "footer-link" %>
@@ -62,12 +57,17 @@
         <div class="py-1">
           <%= link_to "Location: 20 Collyer Quay #23-01 Singpore 049319 ", "#", class: "footer-link" %>
         </div>
-        </div>
+          <a href="#"><i class="fab fa-github text-white"></i></a>
+          <a href="#"><i class="fab fa-instagram text-white"></i></a>
+          <a href="#"><i class="fab fa-facebook text-white"></i></a>
+          <a href="#"><i class="fab fa-twitter text-white"></i></a>
+          <a href="#"><i class="fab fa-linkedin text-white"></i></a>
       </div>
     </div>
   </div>
 
-  <div class="footer-container text-center pt-3 pb-4">
+  <div class="text-center pt-3 pb-4 tw-bg-black" id="js-copyright">
+  
     <span class="tw-text-xs">© 2023 ToGather | All rights reserved</span>
   </div>
 </div>
