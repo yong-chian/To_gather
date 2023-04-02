@@ -7,9 +7,7 @@ export default class extends Controller {
 
   connect() {
     console.log("hello")
-    flatpickr(this.startTimeTarget, {
-      mode: 'multiple'
-    })
+    flatpickr(this.startTimeTarget, {})
     // flatpickr(this.endTimeTarget, {})
   }
 }
