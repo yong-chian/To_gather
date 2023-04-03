@@ -7,12 +7,23 @@ class ActivitiesController < ApplicationController
     else
       @activities = policy_scope(Activity)
     end
+    @markers = @activities.geocoded.map do |activity|
+      {
+        lat: activity.latitude,
+        lng: activity.longitude,
+        info_window: render_to_string(partial: "popup", locals: {activity: activity}),
+      }
+    end
   end
 
   def show
     @bookings = @activity.bookings
     @participant_reviews = ParticipantReview.where(booking_id: @bookings.pluck(:id))
     @booking = Booking.new
+    @marker = [{
+      lat: @activity.latitude,
+      lng: @activity.longitude
+    }]
   end
 
   def new

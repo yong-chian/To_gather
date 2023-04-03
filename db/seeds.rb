@@ -74,7 +74,7 @@ activity_1 = Activity.create(
   description: "Learn and play Mahjong with experienced players for all levels." ,
   price: 60,
   max_capacity: 4,
-  meeting_location: "Yio Chu Kang",
+  meeting_location: "Yio Chu Kang, Singapore",
   minimum_age: 0,
   policies: "Please inform us for rescheduling in the event you are unwell",
   user: test_user
@@ -198,7 +198,7 @@ activity_2 = Activity.create(
   description: "Gentle yoga practice with fluid movements and breath awareness.",
   price: 8,
   max_capacity: 10,
-  meeting_location: "Yishun",
+  meeting_location: "Yishun, Singapore",
   minimum_age: 0,
   policies: "Nil",
   user: test_user2
@@ -234,7 +234,7 @@ activity_3 = Activity.create(
   description: "Create your own handmade soap using natural ingredients and essential oils!",
   price: 80,
   max_capacity: 5,
-  meeting_location: "Khatib",
+  meeting_location: "Khatib, Singapore",
   minimum_age: 0,
   policies: "Nil",
   user: test_user3,
@@ -267,7 +267,7 @@ activity_4 = Activity.create(
   description: "Learn to cook 3 traditional Peranakan dishes with authentic ingredients in our cozy home. The dishes include Ayam Buah Keluak, Babi Pongteh and Kueh Lapis.",
   price: 100,
   max_capacity: 5,
-  meeting_location: "Khatib",
+  meeting_location: "Khatib, Singapore",
   minimum_age: 0,
   policies: "Nil",
   user: test_user4
@@ -302,7 +302,7 @@ activity_5 = Activity.create(
   description: "Tailored Chinese language coaching for all orimary levels and ages.",
   price: 25,
   max_capacity: 1,
-  meeting_location: "Yishun",
+  meeting_location: "Yishun, Singapore",
   minimum_age: 0,
   policies: "Nil",
   user: test_user5
@@ -337,7 +337,7 @@ activity_6 = Activity.create(
   description: "Introduction to basic baking techniques",
   price: 50,
   max_capacity: 5,
-  meeting_location: "Khatib",
+  meeting_location: "Khatib, Singapore",
   minimum_age: 0,
   policies: "Nil",
   user: test_user6
@@ -371,7 +371,7 @@ activity_7 = Activity.create(
   description: "Learn to make traditional mooncakes with various fillings and designs.",
   price: 90,
   max_capacity: 5,
-  meeting_location: "Yishun",
+  meeting_location: "Yishun, Singapore",
   minimum_age: 0,
   policies: "Nil",
   user: test_user7
@@ -406,7 +406,7 @@ activity_8 = Activity.create(
   description: "Join me to discover gardening basics, plant care, and sustainable practices!",
   price: 10,
   max_capacity: 5,
-  meeting_location: "Khatib",
+  meeting_location: "Khatib, Singapore",
   minimum_age: 0,
   policies: "Nil",
   user: test_user8
@@ -437,7 +437,7 @@ activity_9 = Activity.create(
   description: "Explore watercolour techniques to create beautiful and vibrant paintings with your family members or friends.",
   price: 40,
   max_capacity: 6,
-  meeting_location: "Yishun",
+  meeting_location: "Yishun, Singapore",
   minimum_age: "0",
   policies: "Nil",
   user: test_user9
@@ -474,7 +474,7 @@ activity_10 = Activity.create(
   description: "Fun basketball program for kids from 6 years old onwards to learn and develop skills." ,
   price: 10,
   max_capacity: 10,
-  meeting_location: "Bishan Park",
+  meeting_location: "Bishan Park, Singapore",
   minimum_age: 6,
   policies: "Please inform us for rescheduling in the event you are unwell",
   user: test_user10
@@ -508,7 +508,7 @@ activity_11 = Activity.create(
   description: "Discover the art of birdwatching through guided observation!.",
   price: 30,
   max_capacity: 3,
-  meeting_location: "Canberra",
+  meeting_location: "Canberra, Singapore",
   minimum_age: 0,
   policies: "Please inform us for rescheduling in the event you are unwell",
   user: test_user11
@@ -544,7 +544,7 @@ activity_12 = Activity.create(
   description: "3-hour beginner-friendly indoor cycling sessions guided by Coach John with 10 years experience.",
   price: 50,
   max_capacity: 5,
-  meeting_location: "Yishun",
+  meeting_location: "Yishun, Singapore",
   minimum_age: 0,
   policies: "Please inform us for rescheduling in the event you are unwell",
   user: test_user12
@@ -579,7 +579,7 @@ activity_13 = Activity.create(
   description: "Create custom scents using high-quality ingredients and expert guidance.",
   price: 80,
   max_capacity: 4,
-  meeting_location: "Ang Mo Kio",
+  meeting_location: "Ang Mo Kio, Singapore",
   minimum_age: 0,
   policies: "Please inform us for rescheduling in the event you are unwell",
   user: test_user13
@@ -613,7 +613,7 @@ activity_14 = Activity.create(
   description: "Effective maths coaching for students to improve understanding and performance.",
   price: 30,
   max_capacity: 1,
-  meeting_location: "Bishan",
+  meeting_location: "Bishan, Singapore",
   minimum_age: 0,
   policies: "Please inform us for rescheduling in the event you are unwell",
   user: test_user14
@@ -648,7 +648,7 @@ activity_15 = Activity.create(
   description: "Introduction to coding concepts and skills for beginners. Notes will be provided!" ,
   price: 88,
   max_capacity: 5,
-  meeting_location: "Yio Chu Kang",
+  meeting_location: "Yio Chu Kang, Singapore",
   minimum_age: 0,
   policies: "Please bring your own laptop.",
   user: test_user15
@@ -682,7 +682,7 @@ activity_16 = Activity.create(
   description: "Discover the art of knitting and create beautiful handmade pieces with various patterns and yarns. Invite your friends along!",
   price: 20,
   max_capacity: 10,
-  meeting_location: "Bishan",
+  meeting_location: "Bishan, Singapore",
   minimum_age: 0,
   policies: "Please inform us for rescheduling in the event you are unwell",
   user: test_user16
@@ -717,7 +717,7 @@ activity_17 = Activity.create(
   description: "Learn to play guitar with chord progressions and strumming techniques.",
   price: 70,
   max_capacity: 1,
-  meeting_location: "Admiralty",
+  meeting_location: "Admiralty, Singapore",
   minimum_age: 0,
   policies: "You can bring your own guitar or use the teacher's guitar ranging from classical, acoustic to electric",
   user: test_user17
@@ -751,7 +751,7 @@ activity_18 = Activity.create(
   description: "We are seeking for like-minded people to join us to deliver food to elderly staying nearby.",
   price: 0,
   max_capacity: 4,
-  meeting_location: "Khatib",
+  meeting_location: "Khatib, Singapore",
   minimum_age: 0,
   policies: "Please inform us for rescheduling in the event you are unwell",
   user: test_user18
