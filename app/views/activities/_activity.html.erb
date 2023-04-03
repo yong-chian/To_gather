@@ -1,5 +1,49 @@
-<div id="<%= dom_id activity %>" class="activity-card col-sm-3">
+<div id="myModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <p id="activity-description"></p>
+    <p id="activity-meeting-location"></p>
+    <p id="activity-policies"></p>
+  </div>
+</div>
 
+<script>
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// Get the activity description, meeting location, and policies elements in the modal
+var activityDescription = document.getElementById("activity-description");
+var activityMeetingLocation = document.getElementById("activity-meeting-location");
+var activityPolicies = document.getElementById("activity-policies");
+
+// When the user clicks the button, open the modal and set the activity description, meeting location, and policies
+function showPopup(description, meetingLocation, policies) {
+  modal.style.display = "block";
+  activityDescription.innerHTML = description;
+  activityMeetingLocation.innerHTML = "Meeting Location: " + meetingLocation;
+  activityPolicies.innerHTML = "Policies: " + policies;
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function () {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function (event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
+</script>
+
+
+
+<div id="<%= dom_id activity %>" class="activity-card col-sm-3">
   <div class="activity-image-container">
     <% if user_signed_in? %>
       <div data-controller="favorite">
@@ -10,9 +54,14 @@
     <% else %>
     <% end %>
 
-    <div class="activity-card-image" style="background-image: url(<%= cl_image_path activity.photos.sample.key %>)"></div>
-
+    <div class="activity-card-image" style="background-image: url(<%= cl_image_path activity.photos.sample.key %>)">
+      <i class="fa fa-calendar" aria-hidden="true" onclick="showPopup('<%= activity.description %>',
+      '<%= activity.meeting_location %>',
+      '<%= activity.policies %>')">
+      </i>
+    </div>
   </div>
+</div>
 
   <div class="activity-details">
 
