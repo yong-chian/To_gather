@@ -13,9 +13,10 @@
   </div>
   <% counter += 1 %>
   <%= link_to "Show this booking", activity_booking_path(booking.availability.activity, booking), class: "btn btn-primary" if policy(booking).show? %>
+  <%= link_to "Chat With Host", chatroom_path(@chatroom) , class: "btn btn-primary" %>
 <% end %>
 
-<h3 class="text-black">These are your activity's bookings</h3>
+<h3 class="text-black">These are your activity bookings as host</h3>
 
 <% counter = 1 %>
 <% @my_hostings.each do |booking| %>
@@ -30,8 +31,12 @@
     <p><strong>Comment:</strong> <%= booking.comment %></p>
   </div>
   <%= link_to "Show this booking", activity_booking_path(booking.availability.activity, booking), class: "btn btn-primary" if policy(booking).show? %>
+
+  <%= link_to "Chat With Client", chatroom_path(@chatroom) , class: "btn btn-primary" %>
+  
   <%# <%= link_to "Destroy this booking", activity_booking_destroy_path(booking.availability.activity, booking), data: { turbo_method: :delete, turbo_confirm: "Are you sure?"} if policy(booking).destroy? %>
   <% counter += 1 %>
 <% end %>
 
 <%# add a button to look into each booking %>
+

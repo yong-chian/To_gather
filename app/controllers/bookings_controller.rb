@@ -4,6 +4,7 @@ class BookingsController < ApplicationController
   def index
     @bookings = policy_scope(Booking.where(user_id: current_user))
     @my_hostings = current_user.bookings_as_host
+    @chatroom = Chatroom.find(3)
   end
 
   def show
