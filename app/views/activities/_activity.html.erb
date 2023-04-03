@@ -1,9 +1,11 @@
 <div id="myModal" class="modal">
   <div class="modal-content">
     <span class="close">&times;</span>
+    <h1 id="activity-name"></h1>
     <p id="activity-description"></p>
     <p id="activity-meeting-location"></p>
     <p id="activity-policies"></p>
+    <%= link_to "View Activity", activity_path(activity), class: "btn btn-primary" %>
   </div>
 </div>
 
@@ -15,6 +17,7 @@ var modal = document.getElementById("myModal");
 var span = document.getElementsByClassName("close")[0];
 
 // Get the activity description, meeting location, and policies elements in the modal
+var activityName = document.getElementById("activity-name");
 var activityDescription = document.getElementById("activity-description");
 var activityMeetingLocation = document.getElementById("activity-meeting-location");
 var activityPolicies = document.getElementById("activity-policies");
@@ -47,7 +50,7 @@ window.onclick = function (event) {
 
 <div class="activity-image-container">
   <div class="activity-card-image" style="background-image: url(<%= cl_image_path activity.photos.sample.key %>)">
-    <i class="fa fa-calendar" aria-hidden="true" onclick="showPopup('<%= activity.description %>', '<%= activity.meeting_location %>', '<%= activity.policies %>')"></i>
+    <i class="fa fa-calendar" aria-hidden="true" onclick="showPopup('<%= activity.name %>','<%= activity.description %>', '<%= activity.meeting_location %>', '<%= activity.policies %>')"></i>
 
   </div>
 </div>
