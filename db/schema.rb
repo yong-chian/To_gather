@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_02_130320) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_03_045341) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -89,6 +89,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_02_130320) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "booking_id"
+    t.index ["booking_id"], name: "index_chatrooms_on_booking_id"
   end
 
   create_table "faqs", force: :cascade do |t|
@@ -200,6 +202,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_02_130320) do
   add_foreign_key "activities", "users"
   add_foreign_key "availabilities", "activities"
   add_foreign_key "bookings", "users"
+  add_foreign_key "chatrooms", "bookings"
   add_foreign_key "faqs", "activities"
   add_foreign_key "host_reviews", "bookings"
   add_foreign_key "messages", "chatrooms"

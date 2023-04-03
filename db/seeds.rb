@@ -866,7 +866,7 @@ p "Created #{ParticipantReview.count} participant_reviews"
 
 #Chatroom
 current_timestamp = Time.now
-chatroom_1 = Chatroom.new(name: "general", created_at: current_timestamp.to_s, updated_at: current_timestamp.to_s)
+chatroom_1 = Chatroom.new(name: "general", created_at: current_timestamp.to_s, updated_at: current_timestamp.to_s, booking_id: booking_1.id )
 chatroom_1.save!
 # current_timestamp = Time.now
 # chatroom_1 = Chatroom.create(name: "general", booking_id: booking_1, created_at: current_timestamp.to_s, updated_at: current_timestamp.to_s)
