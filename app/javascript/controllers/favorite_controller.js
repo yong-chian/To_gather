@@ -4,6 +4,7 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   static targets = ["bookmark"]
   connect() {
+    console.log("favorite connected")
   }
   update() {
     if (this.bookmarkTarget.classList.value.includes("fa-regular")) {
