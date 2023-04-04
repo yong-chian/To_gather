@@ -56,8 +56,10 @@ window.onclick = function (event) {
 
 <div class="activity-image-container">
   <div class="activity-card-image" style="background-image: url(<%= cl_image_path activity.photos.sample.key %>)">
-    <i class="fa fa-calendar" aria-hidden="true" onclick="showPopup('<%= activity.name %>', '<%= activity.description %>', '<%= activity.meeting_location %>', '<%= activity.policies %>', '<%= activity_path(activity) %>')"
-></i>
+    <span class="fa-stack fa-lg" onclick="showPopup('<%= activity.name %>', '<%= activity.description %>', '<%= activity.meeting_location %>', '<%= activity.policies %>', '<%= activity_path(activity) %>')">
+      <i class="fa fa-circle fa-stack-2x"></i>
+      <i class="fa fa-calendar fa-stack-1x fa-inverse"></i>
+    </span>
   </div>
 </div>
 
