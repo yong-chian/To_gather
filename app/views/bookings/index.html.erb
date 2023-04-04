@@ -1,4 +1,4 @@
-#TODO show bookings
+
 <h1 class="text-black"><%="#{current_user.first_name} #{current_user.last_name}"%></h1>
 <h3 class="text-black">These are your bookings</h3>
 <% if @bookings.any? %>
@@ -13,12 +13,13 @@
     </div>
     <% counter += 1 %>
     <%= link_to "Show this booking", activity_booking_path(booking.availability.activity, booking), class: "btn btn-primary" if policy(booking).show? %>
+    <%= link_to "Chat with Host", chatroom_path(@chatroom), class: "btn btn-primary" %>
   <% end %>
 <% else %>
   <em>There's no bookings found.</em>
 <% end %>
 
-<h3 class="text-black">These are your activity's bookings</h3>
+<h3 class="text-black">These are your hosted activity's bookings</h3>
 <% if @my_hostings.any? %>
   <% counter = 1 %>
   <% @my_hostings.each do |booking| %>
@@ -33,6 +34,7 @@
       <p><strong>Comment:</strong> <%= booking.comment %></p>
     </div>
     <%= link_to "Show this booking", activity_booking_path(booking.availability.activity, booking), class: "btn btn-primary" if policy(booking).show? %>
+    <%= link_to "Chat with Participant", chatroom_path(@chatroom), class: "btn btn-primary" %>
     <%# <%= link_to "Destroy this booking", activity_booking_destroy_path(booking.availability.activity, booking), data: { turbo_method: :delete, turbo_confirm: "Are you sure?"} if policy(booking).destroy? %>
     <% counter += 1 %>
   <% end %>
@@ -41,4 +43,5 @@
 <% end %>
 
 <%# add a button to look into each booking %>
+
 
