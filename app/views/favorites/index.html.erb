@@ -3,23 +3,33 @@
     <div class="col"></div>
     <div class="col-5">
       <h1>My favourites!</h1>
-      <% counter = 1 %>
-      <% @favorites.each do |favorite| %>
-        <div>
-          <%= "#{counter}. #{favorite.favoritable.name}" %>
-        </div>
+      <% if @favorites.any? %>
+        <% counter = 1 %>
+        <% @favorites.each do |favorite| %>
+          <div>
+            <%= "#{counter}. #{favorite.favoritable.name}" %>
+          </div>
 
-        <div>
-          <%= favorite.favoritable.description %>
-        </div>
+          <div>
+            <%= favorite.favoritable.description %>
+          </div>
 
-        <div>
-          #TODO SHOW PHOTOS
-        </div>
+          <div>
+            #TODO SHOW PHOTOS
+          </div>
+
+          <div data-controller="favorite">
+            <%= link_to favorite_activity_path(favorite.favoritable), data: {turbo_method: :post, action: "click->favorite#update"} do %>
+              <i class="fa-heart <%= current_user.favorited?(favorite.favoritable) ? "fa-solid" : "fa-regular" %>" data-favorite-target="bookmark"></i>
+            <% end %>
+          </div>
 
 
-        <% counter += 1 %>
-        <%= link_to "Show this activity", favorite.favoritable %>
+          <% counter += 1 %>
+          <%= link_to "Show this activity", favorite.favoritable %>
+        <% end %>
+      <% else %>
+        <em>your watchlist is empty.</em>
       <% end %>
     </div>
   </div>
