@@ -70,18 +70,17 @@ window.onclick = function (event) {
      <%# <%= activity.user.first_name %>
     <%#</p> %>
 
-    <h4 class="activity-name">
-
-    <% if user_signed_in? %>
-        <div data-controller="favorite">
+    <h4 class="activity-name" style="display: flex; align-items: center;">
+      <%= activity.name %>
+      <% if user_signed_in? %>
+        <div data-controller="favorite" style="margin-left: 50px;">
           <%= link_to favorite_activity_path(activity), data: {turbo_method: :post, action: "click->favorite#update"} do %>
             <i class="fa-heart <%= current_user.favorited?(activity) ? "fa-solid" : "fa-regular" %>" data-favorite-target="bookmark"></i>
           <% end %>
         </div>
-      <% else %>
       <% end %>
-      <%= activity.name %>
-      </h4>
+    </h4>
+
 
     <p class="activity-price">
       <strong>From:</strong> <%= humanized_money_with_symbol(activity.price) %></p>
