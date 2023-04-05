@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_03_045341) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_04_142450) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -170,6 +170,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_03_045341) do
     t.index ["booking_id"], name: "index_participant_reviews_on_booking_id"
   end
 
+  create_table "participants", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "chatroom_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["chatroom_id"], name: "index_participants_on_chatroom_id"
+    t.index ["user_id"], name: "index_participants_on_user_id"
+  end
+
   create_table "user_interests", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "interest_id", null: false
@@ -210,6 +219,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_03_045341) do
   add_foreign_key "orders", "activities"
   add_foreign_key "orders", "users"
   add_foreign_key "participant_reviews", "bookings"
+  add_foreign_key "participants", "chatrooms"
+  add_foreign_key "participants", "users"
   add_foreign_key "user_interests", "interests"
   add_foreign_key "user_interests", "users"
 end

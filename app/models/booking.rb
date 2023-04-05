@@ -5,4 +5,5 @@ class Booking < ApplicationRecord
   # has_one :participant_review
   belongs_to :availability
   has_many :participant_reviews, dependent: :destroy
+  has_one :chatroom
 end

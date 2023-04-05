@@ -9,6 +9,13 @@ Rails.application.routes.draw do
   root to: "pages#home"
   get "/about", to: "pages#about"
   get "/contact_us", to: "pages#contact_us"
+  # post "/chatrooms/:chatroom_id/messages",  to: "messages#create"
+
+  resources :activities, only: [:show] do 
+    resources :bookings, only: [:show] do
+      resources :chatrooms, only: [:show]
+    end
+  end
 
   resources :activities do
     resources :bookings, only: [:show, :new, :create, :edit, :update]

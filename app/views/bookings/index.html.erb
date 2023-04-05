@@ -23,7 +23,7 @@
                       <% counter += 1 %>
                       <div style="display: flex; gap: 10px;">
                         <%= link_to "Show this booking", activity_booking_path(booking.availability.activity, booking), class: "btn btn-primary" if policy(booking).show? %> 
-                        <%= link_to "Chat with Host", chatroom_path(@chatroom), class: "btn btn-primary" %>
+                       
                       </div>
                       <br>
                       <br>
@@ -55,7 +55,7 @@
 
                     <div style="display: flex; gap: 10px;">
                       <%= link_to "Show this booking", activity_booking_path(booking.availability.activity, booking), method: :get, class: "btn btn-primary" if policy(booking).show? %>
-                      <%= link_to  "Chat with Participant", chatroom_path(@chatroom), class: "btn btn-primary" %>
+        
                     </div>
 
                     <br>
