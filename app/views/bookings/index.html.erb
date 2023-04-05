@@ -30,9 +30,7 @@
               </div>
         </div>
     </div>
-             <%# </div> %>
-    
-             <%# <div class="row booking-card"> %>
+
     <div class="card w-80">
       <div id="div2">
           <h3 class="text-black text-center">Your Hosted Booking Activities</h3>
@@ -49,8 +47,8 @@
                       <p class="card-text"><strong>Number of Pax:</strong> <%= booking.number_of_pax %></p>
                       <p class="card-text"><strong>Booking Status:</strong> <%= booking.status %></p>
                       <p class="card-text"><strong>Comment:</strong> <%= booking.comment %></p>
-                    <%= link_to "Show this booking", activity_booking_path(booking.availability.activity, booking), class: "btn btn-primary" if policy(booking).show? %>
-                    <%= link_to "Chat with Participant", chatroom_path(@chatroom), class: "btn btn-primary" %> <br>
+                    <%= button_to "Show this booking", activity_booking_path(booking.availability.activity, booking), method: :get, class: "btn btn-primary" if policy(booking).show? %>
+                    <%= button_to "Chat with Participant", chatroom_path(@chatroom), class: "btn btn-primary" %> <br>
                     <br>
                       <%# <%= link_to "Destroy this booking", activity_booking_destroy_path(booking.availability.activity, booking), data: { turbo_method: :delete, turbo_confirm: "Are you sure?"} if policy(booking).destroy? %>
                     <% counter += 1 %>
@@ -65,6 +63,8 @@
   </div>
 </div>
 
+
+<%# toggle for the button %>
 <script>
 function toggleDiv1() {
   var x = document.getElementById("div1");

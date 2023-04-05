@@ -45,7 +45,7 @@
     <%= link_to "Back to bookings", bookings_path %>
     <% if @booking.participant_reviews.present? %>
       <%= link_to "View review", booking_participant_reviews_path(@booking, @booking.participant_reviews.first) %>
-      <%= link_to "Edit review", edit_activity_booking_review_path(@activity, @booking, @review) if policy(@review).update? %>
+      <%# <%= link_to "Edit review", edit_activity_booking_review_path(@activity, @booking, @review) if policy(@review).update? %> %>
     <% end %>
   <% else %>
     <%= link_to "Back to bookings", bookings_path %>
