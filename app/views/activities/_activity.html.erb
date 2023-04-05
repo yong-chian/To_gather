@@ -31,7 +31,7 @@ function showPopup(name, description, meetingLocation, policies, activityPath) {
   activityName.innerHTML = name;
   activityDescription.innerHTML = description;
   activityMeetingLocation.innerHTML = "Meeting Location: " + meetingLocation;
-  activityPolicies.innerHTML = "Policies: " + policies;
+  activityPolicies.innerHTML = "Things to note: " + policies;
   viewActivityLink.href = activityPath;
 }
 
@@ -70,7 +70,18 @@ window.onclick = function (event) {
      <%# <%= activity.user.first_name %>
     <%#</p> %>
 
-    <h2 class="activity-name"><%= activity.name %></h2>
+    <h4 class="activity-name">
+
+    <% if user_signed_in? %>
+        <div data-controller="favorite">
+          <%= link_to favorite_activity_path(activity), data: {turbo_method: :post, action: "click->favorite#update"} do %>
+            <i class="fa-heart <%= current_user.favorited?(activity) ? "fa-solid" : "fa-regular" %>" data-favorite-target="bookmark"></i>
+          <% end %>
+        </div>
+      <% else %>
+      <% end %>
+      <%= activity.name %>
+      </h4>
 
     <p class="activity-price">
       <strong>From:</strong> <%= humanized_money_with_symbol(activity.price) %></p>
@@ -79,14 +90,7 @@ window.onclick = function (event) {
     <div class="activity-buttons">
 
       <%= link_to "View Activity", activity_path(activity), class: "btn btn-primary" %>
-      <% if user_signed_in? %>
-        <div data-controller="favorite">
-          <%= link_to favorite_activity_path(activity), data: {turbo_method: :post, action: "click->favorite#update"} do %>
-            <i class="fa-heart <%= current_user.favorited?(activity) ? "fa-solid" : "fa-regular" %>" data-favorite-target="bookmark"></i>
-          <% end %>
-        </div>
-      <% else %>
-      <% end %>
+
 
     </div>
 
