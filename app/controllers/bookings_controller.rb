@@ -9,6 +9,7 @@ class BookingsController < ApplicationController
   def show
     @booking = Booking.find(params[:id])
     authorize(@booking)
+    @participant_review = @booking.participant_reviews.first
   end
 
   def new
