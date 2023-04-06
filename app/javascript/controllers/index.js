@@ -7,6 +7,9 @@ import { application } from "./application"
 import ActivityFlatpickrController from "./activity_flatpickr_controller"
 application.register("activity-flatpickr", ActivityFlatpickrController)
 
+import ChatroomSubscriptionController from "./chatroom_subscription_controller"
+application.register("chatroom-subscription", ChatroomSubscriptionController)
+
 import FavoriteController from "./favorite_controller"
 application.register("favorite", FavoriteController)
 
