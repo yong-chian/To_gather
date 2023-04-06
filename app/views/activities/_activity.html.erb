@@ -53,15 +53,6 @@ window.onclick = function (event) {
 
 
 <div id="<%= dom_id activity %>" class="activity-card col-sm-3">
-  <div class="activity-image-container">
-    <% if user_signed_in? %>
-      <div data-controller="favorite">
-        <%= link_to favorite_activity_path(activity), data: {turbo_method: :post, action: "click->favorite#update"} do %>
-          <i class="fa-heart <%= current_user.favorited?(activity) ? "fa-solid" : "fa-regular" %>" data-favorite-target="bookmark"></i>
-        <% end %>
-      </div>
-    <% else %>
-    <% end %>
 
 <div class="activity-image-container">
   <div class="activity-card-image" style="background-image: url(<%= cl_image_path activity.photos.sample.key %>)">
@@ -69,8 +60,8 @@ window.onclick = function (event) {
       <i class="fa fa-circle fa-stack-2x"></i>
       <i class="fa fa-calendar fa-stack-1x fa-inverse"></i>
     </span>
-    <div class="activity-card-image" style="background-image: url(<%= cl_image_path activity.photos.sample.key %>)"></div>
   </div>
+</div>
 
   <div class="activity-details">
 
