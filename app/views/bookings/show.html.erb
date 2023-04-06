@@ -2,7 +2,7 @@
   <% if policy(@booking).host?%>
     <div>
       <% if !@booking.completed && Date.today < @booking.availability.start_time %>
-        <% if @booking.status == "Pending" %> <%#SHOULD CHANGE TO PENDING AND PAID#%>
+        <% if @booking.status == "Paid & Pending" %>
           <h1>You have a new booking! Please review.</h1>
           <%= render @booking %>
           <%= form_with url: [@activity, @booking], method: :patch do |form| %>
@@ -23,14 +23,15 @@
           <h1>This booking has been cancelled!</h1>
           <%= render @booking %>
           <%= link_to "Back to bookings", bookings_path %>
-        <% else @booking.status == "Rejected" %>
+        <% elsif @booking.status == "Rejected" %>
           <h1>You've rejected this booking!</h1>
           <%= render @booking %>
           <%= link_to "Back to bookings", bookings_path %>
+        <% elsif @booking.status == "Pending" %>
         <% end %>
 
-      <% elsif !@booking.completed && Date.today > @booking.availability.start_time %>
-        <% if @booking.status == "Pending" %>
+      <% elsif !@booking.completed && Date.today >= @booking.availability.start_time %>
+        <% if @booking.status == "Paid & Pending" %>
           <h1>The date of booking has passed. You've overlooked this booking!</h1>
           <%= render @booking %>
           <%= link_to "Back to bookings", bookings_path %>
@@ -43,13 +44,14 @@
           <h1>This booking has been cancelled!</h1>
           <%= render @booking %>
           <%= link_to "Back to bookings", bookings_path %>
-        <% else @booking.status == "Rejected" %>
+        <% elsif @booking.status == "Rejected" %>
           <h1>You've rejected this booking!</h1>
           <%= render @booking %>
           <%= link_to "Back to bookings", bookings_path %>
+        <% elsif @booking.status == "Pending" %>
         <% end %>
 
-      <% elsif @booking.completed && Date.today > @booking.availability.start_time %>
+      <% elsif @booking.completed && Date.today >= @booking.availability.start_time %>
         <% if @booking.status == "Confirmed" %>
           <h1>The booking is completed!</h1>
           <%= render @booking %>
@@ -58,8 +60,7 @@
         <% end %>
 
       <% else %>
-        <%= render @booking %>
-        <%= link_to "Back to bookings", bookings_path %>
+      <%# show nothing when the user booking is pending and not paid %>
       <% end %>
     </div>
 
@@ -71,13 +72,14 @@
           <%= render @booking %>
           <%= form_with url: orders_path do %>
             <%= hidden_field_tag 'activity_id', @activity.id %>
+            <%= hidden_field_tag 'booking_id', @booking.id %>
             <%= submit_tag 'Checkout', class: 'btn btn-primary' %>
           <% end %>
           <%= link_to "Modify your booking", edit_activity_booking_path(@activity, @booking) if policy(@booking).edit? %>
           <%= link_to "Cancel your booking", activity_booking_destroy_path, data: { turbo_method: :delete, turbo_confirm: "Are you sure?"} if policy(@booking).destroy? %>
           <%= link_to "Back to bookings", bookings_path %>
 
-        <% elsif @booking.status == "Paid & Pending" %> <%# THE STATUS SHOULD BE PAID & PENDING #%>
+        <% elsif @booking.status == "Paid & Pending" %>
           <h1>Booking Payment Received and Request Sent!</h1>
           <p>We have reserved your slot, but your booking has <strong>not been confirmed yet<strong> by the host.</p>
           <%= render @booking %>
@@ -92,14 +94,14 @@
           <h1>Your booking has been cancelled!</h1>
           <%= render @booking %>
           <%= link_to "Back to bookings", bookings_path %>
-        <% else @booking.status == "Rejected" %>
+        <% elsif @booking.status == "Rejected" %>
           <h1>Unfortunately, your booking has been rejected!</h1>
           <%= render @booking %>
           <%= link_to "Back to bookings", bookings_path %>
         <% end %>
 
-      <% elsif !@booking.completed && Date.today > @booking.availability.start_time %>
-        <% if @booking.status == "Pending" %>
+      <% elsif !@booking.completed && Date.today >= @booking.availability.start_time %>
+        <% if @booking.status == "Paid & Pending" %>
           <h1>The date of booking has passed. The host has overlooked this booking!</h1>
           <%= render @booking %>
           <%= link_to "Back to bookings", bookings_path %>
@@ -111,13 +113,17 @@
           <h1>Your booking has been cancelled!</h1>
           <%= render @booking %>
           <%= link_to "Back to bookings", bookings_path %>
-        <% else @booking.status == "Rejected" %>
+        <% elsif @booking.status == "Rejected" %>
           <h1>Unfortunately, your booking has been rejected!</h1>
+          <%= render @booking %>
+          <%= link_to "Back to bookings", bookings_path %>
+        <% elsif @booking.status == "Pending" %>
+          <h1>You have not make the payment. The booking is expired...</h1>
           <%= render @booking %>
           <%= link_to "Back to bookings", bookings_path %>
         <% end %>
 
-      <% elsif @booking.completed && Date.today > @booking.availability.start_time %>
+      <% elsif @booking.completed && Date.today >= @booking.availability.start_time %>
         <% if @booking.status == "Confirmed" %>
           <h1>Your booking is completed! You may leave a review for the activity</h1>
           <%= render @booking %>
@@ -131,6 +137,7 @@
         <% end %>
 
       <% else %>
+        <h1>You have not make the payment. The booking is expired...</h1>
         <%= render @booking %>
         <%= link_to "Back to bookings", bookings_path %>
       <% end %>
