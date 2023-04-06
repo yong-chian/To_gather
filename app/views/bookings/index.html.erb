@@ -1,38 +1,39 @@
 <%# <h1 class="text-black"><%="#{current_user.first_name} #{current_user.last_name}"%></h1> 
 <div class="text-center">
-      <button id="button1" class="btn btn-primary button-toggle text-center" onclick="toggleDiv1()" >My Booking</button>
-      <button id="button2" class="btn btn-primary button-toggle text-center" onclick="toggleDiv2()">My Booking: Host</button>
+      <button id="button1" class="btn btn-primary button-toggle" onclick="toggleDiv1()" >My Booking</button>
+      <button id="button2" class="btn button-toggle" onclick="toggleDiv2()">My Booking: Host</button>
 </div>
 <br>
 
 <div class="container">
   <div class="row">
     <div class="card w-80">
-        <div id="div1" style="display: block;">
-            <h3 class="text-black text-center">Your Booking Activites</h3>
-              <div class="card booking-host">
-                <div class="card-body booking-card">
-                  <% if @bookings.any? %>
-                    <% counter = 1 %>
-                    <% @bookings.each do |booking| %>
-                      <h5 class="card-title">Booking <%= counter %></h5>
-                        <p class="card-text"><strong>Activity Name:</strong> <%= booking.availability.activity.name %></p>
-                        <p class="card-text"><strong>Booking Date:</strong> <%= "#{booking.availability.start_time} to #{booking.availability.end_time}" %></p>
-                        <p class="card-text"><strong>Number of Pax:</strong> <%= booking.number_of_pax %></p>
-                        <p class="card-text"><strong>Booking Status:</strong> <%= booking.status %></p>
-                      <% counter += 1 %>
-                      <div style="display: flex; gap: 10px;">
-                        <%= link_to "Show this booking", activity_booking_path(booking.availability.activity, booking), class: "btn btn-primary" if policy(booking).show? %> 
-                        <%= link_to "Chat with Host", chatroom_path(@chatroom), class: "btn btn-primary" %>
-                      </div>
-                      <br>
-                      <br>
-                    <% end %>
-                  <% else %>
-                    <em>There's no bookings found.</em>
-                  <% end %>
+      <div id="div1" style="display: block;">
+        <h3 class="text-black text-center" style=""
+>Your Booking Activites</h3>
+        <div class="card booking-host">
+          <div class="card-body booking-card">
+            <% if @bookings.any? %>
+              <% counter = 1 %>
+              <% @bookings.each do |booking| %>
+                <h5 class="card-title">Booking <%= counter %></h5>
+                  <p class="card-text"><strong>Activity Name:</strong> <%= booking.availability.activity.name %></p>
+                  <p class="card-text"><strong>Booking Date:</strong> <%= "#{booking.availability.start_time} to #{booking.availability.end_time}" %></p>
+                  <p class="card-text"><strong>Number of Pax:</strong> <%= booking.number_of_pax %></p>
+                  <p class="card-text"><strong>Booking Status:</strong> <%= booking.status %></p>
+                <% counter += 1 %>
+                <div style="display: flex; gap: 10px;">
+                  <%= link_to "Show this booking", activity_booking_path(booking.availability.activity, booking), class: "btn btn-primary" if policy(booking).show? %> 
+                  <%= link_to "Chat with Host", chatroom_path(@chatroom), class: "btn btn-primary" %>
                 </div>
-              </div>    
+                <br>
+                <br>
+              <% end %>
+            <% else %>
+              <em>There's no bookings found.</em>
+            <% end %>
+          </div>
+        </div>    
         </div>
     </div>
 
@@ -89,6 +90,13 @@ function toggleDiv1(button) {
   }
 }
 
+button1.addEventListener('click', function() {
+  button1.classList.toggle('btn-primary');
+  button2.classList.remove('btn-primary');
+});
+
+
+
 function toggleDiv2(button) {
   var div1 = document.getElementById("div1");
   var div2 = document.getElementById("div2");
@@ -98,6 +106,12 @@ function toggleDiv2(button) {
     div1.style.display = "none";
   }
 }
+
+button2.addEventListener('click', function() {
+  button2.classList.toggle('btn-primary');
+  button1.classList.remove('btn-primary');
+});
+
 
 function toggleButtons() {
   button1Disabled = !button1Disabled;
