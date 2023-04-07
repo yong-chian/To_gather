@@ -1,14 +1,6 @@
 <div class="activity-details">
-
-<div class="map">
-  <div data-controller="map"
-        id='map'
-        data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
-        data-map-markers-value="<%= @marker.to_json %>"
-        style='width: 100%; height: 400px;'></div>
-
 <div class="container">
-  <div class="row actiivity-details-each">
+  <div class="row activity-details-each">
     <h2 class="activity-title"><%= @activity.name %></h2>
     <p class="activity-description"><%= @activity.description %></p>
     <p class="activity-host"><strong>Host name:</strong><%= @activity.user.first_name %></p>
@@ -26,7 +18,7 @@
   </div>
 
 <div class="container">
-  <div class="row booking-actiivity-form">
+  <div class="row booking-activity-form">
       <div class="col">
       <h1>New booking</h1>
       <%= render "/bookings/form", activity: @activity, booking: @booking %>
@@ -34,6 +26,16 @@
   </div>
 </div>
 <br>
+
+<div class="map">
+  <h3>Where to meet?</h3>
+  <div data-controller="map"
+        id='map'
+        data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
+        data-map-markers-value="<%= @marker.to_json %>"
+        style='width: 100%; height: 400px;'>
+</div>
+
 <div class="container">
   <div class="row faqs">
       <div class="faqs-each">
