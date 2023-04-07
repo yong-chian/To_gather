@@ -1,0 +1,27 @@
+/* Styles for Webkit-based browsers */
+::-webkit-scrollbar{
+  width: 15px;
+}
+
+::-webkit-scrollbar-track{
+  background: #ced4da;
+}
+
+::-webkit-scrollbar-thumb{
+  background: linear-gradient(#EC481F, #f97f00);
+  border-radius: 10px;
+}
+
+body {
+overflow-x: hidden;
+overflow-y: scroll;
+}
+
+/* Styles for Firefox */
+::-moz-scrollbar{
+  width: 15px;
+}
+
+::-moz-scrollbar-track{
+  background: #d1e5ff;
+}
