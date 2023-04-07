@@ -23,18 +23,25 @@
 
 
 
-    <div style="margin-top: 99px;">
-        <div class="container">
-            <h1>What is popular near you</h1>
-        </div>
-        <div class="container">
-            <div class="row justify-content-center">
-               <% @activities_near_you.shuffle.each do |activity| %>
-                <%= render "activities/activity", activity: activity %>
-               <% end %>
+<div style="margin-top: 99px;">
+  <div class="container">
+    <h1>
+      <% if user_signed_in? %>
+        Popular near you
+      <% else %>
+        What's popular near you
+      <% end %>
+    </h1>
+  </div>
+  <div class="container">
+    <div class="row justify-content-center">
+      <% @activities_near_you.shuffle.each do |activity| %>
+        <%= render "activities/activity", activity: activity %>
+      <% end %>
+    </div>
+  </div>
+</div>
 
-            </div>
-        </div>
     </div>
     <div style="margin-top: 40px;">
         <div class="container">
