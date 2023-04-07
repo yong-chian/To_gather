@@ -267,7 +267,7 @@ end
 activity_3.save!
 
 activity_4 = Activity.create(
-  name: "Peranakan Cooking",
+  name: "Peranakan Nomz",
   description: "Learn to cook 3 traditional Peranakan dishes with authentic ingredients in our cozy home. The dishes include Ayam Buah Keluak, Babi Pongteh and Kueh Lapis.",
   price: 100,
   max_capacity: 5,
@@ -337,7 +337,7 @@ end
 activity_5.save!
 
 activity_6 = Activity.create(
-  name: "Let's Bake Together!",
+  name: "Let's Bake!",
   description: "Introduction to basic baking techniques",
   price: 50,
   max_capacity: 5,
@@ -519,7 +519,6 @@ activity_11 = Activity.create(
 )
 
 image_urls_11 = ["https://res.cloudinary.com/ddk4z9ypx/image/upload/v1680284664/ricemedia-heartland-bird-uncle-9_vwfwjn.jpg",
-                "https:c:\Users\evonn\AppData\Local\Programs\Microsoft VS Code\resources\app\out\vs\code\electron-sandbox\workbench\workbench.html//res.cloudinary.com/ddk4z9ypx/image/upload/v1680284647/download_1_qadgun.jpg",
                 "https://res.cloudinary.com/ddk4z9ypx/image/upload/v1680284671/e45ba262750474788e4c37b0e303dd12-scaled_pky4sh.jpg"]
 
 image_urls_11.each do |url|
@@ -579,7 +578,7 @@ end
 activity_12.save!
 
 activity_13 = Activity.create(
-  name: "Perfume Making Workshop",
+  name: "Perfume Making",
   description: "Create custom scents using high-quality ingredients and expert guidance.",
   price: 80,
   max_capacity: 4,
@@ -717,7 +716,7 @@ end
 activity_16.save!
 
 activity_17 = Activity.create(
-  name: "Strum & Sing",
+  name: "Strum + Sing",
   description: "Learn to play guitar with chord progressions and strumming techniques.",
   price: 70,
   max_capacity: 1,
@@ -751,7 +750,7 @@ end
 activity_17.save!
 
 activity_18 = Activity.create(
-  name: "Elderly Support!",
+  name: "Elderly Care",
   description: "We are seeking for like-minded people to join us to deliver food to elderly staying nearby.",
   price: 0,
   max_capacity: 4,
@@ -785,80 +784,6 @@ end
 
 activity_18.save!
 
-image_urls_18 = ["https://res.cloudinary.com/ddk4z9ypx/image/upload/v1680287085/7.-Image-by-TOUCH-Community-Services_h12x8y.jpg",
-  "https://res.cloudinary.com/ddk4z9ypx/image/upload/v1680287090/ME7_kozwmf.jpg",
-  "https://res.cloudinary.com/ddk4z9ypx/image/upload/v1680287096/Rini_3_mcvfpq.jpg"]
-
-image_urls_18.each do |url|
-file = URI.open(url)
-activity_18.photos.attach(io: file, filename: "#{activity_18.name}.png", content_type: "image/png")
-end
-
-availabilities = []
-date = Date.today
-30.times do
-availabilities << date.strftime("%Y-%m-%d")
-date += 1.day
-end
-
-availabilities.each do |time|
-activity_18.availabilities.build(
-start_time: time,
-end_time: time
-)
-end
-
-activity_18.save!
-
-image_urls_19 = ["https://res.cloudinary.com/ddk4z9ypx/image/upload/v1680287085/7.-Image-by-TOUCH-Community-Services_h12x8y.jpg",
-  "https://res.cloudinary.com/ddk4z9ypx/image/upload/v1680287090/ME7_kozwmf.jpg",
-  "https://res.cloudinary.com/ddk4z9ypx/image/upload/v1680287096/Rini_3_mcvfpq.jpg"]
-
-image_urls_18.each do |url|
-file = URI.open(url)
-activity_18.photos.attach(io: file, filename: "#{activity_18.name}.png", content_type: "image/png")
-end
-
-availabilities = []
-date = Date.today
-30.times do
-availabilities << date.strftime("%Y-%m-%d")
-date += 1.day
-end
-
-availabilities.each do |time|
-activity_18.availabilities.build(
-start_time: time,
-end_time: time
-)
-end
-
-activity_18.save!
-
-image_urls_20 = ["https://res.cloudinary.com/ddk4z9ypx/image/upload/v1680287085/7.-Image-by-TOUCH-Community-Services_h12x8y.jpg",
-  "https://res.cloudinary.com/ddk4z9ypx/image/upload/v1680287090/ME7_kozwmf.jpg",
-  "https://res.cloudinary.com/ddk4z9ypx/image/upload/v1680287096/Rini_3_mcvfpq.jpg"]
-
-image_urls_18.each do |url|
-file = URI.open(url)
-activity_18.photos.attach(io: file, filename: "#{activity_18.name}.png", content_type: "image/png")
-end
-
-availabilities = []
-date = Date.today
-30.times do
-availabilities << date.strftime("%Y-%m-%d")
-date += 1.day
-end
-
-availabilities.each do |time|
-activity_18.availabilities.build(
-start_time: time,
-end_time: time
-)
-end
-
-activity_18.save!
 
 p "Created #{Activity.count} activities"
 

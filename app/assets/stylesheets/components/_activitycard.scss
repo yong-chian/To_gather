@@ -16,7 +16,7 @@
 
 //Heart shape
 .activity-card .fa-heart {
-    color: #D23333;
+    color: $red;
 }
 
 //dot
@@ -25,7 +25,7 @@
   width: 5px;
   height: 5px;
   border-radius: 50%;
-  background-color: gray;
+  background-color: $red;
   margin-left: 3px;
   margin-right: 3px;
   vertical-align: bottom;
