@@ -92,8 +92,8 @@ image_urls_1.each do |url|
 end
 
 availabilities = []
-date = Date.today
-30.times do
+date = Date.today - 2
+32.times do
   availabilities << date.strftime("%Y-%m-%d")
   date += 1.day
 end
@@ -869,7 +869,7 @@ p "Created #{ParticipantReview.count} participant_reviews"
 #Chatroom
 
 chatroom = Chatroom.new(name: booking_1.user_id)
-chatroom.booking = booking_1 
+chatroom.booking = booking_1
 chatroom.save!
 # current_timestamp = Time.now
 # chatroom_1 = Chatroom.create(name: "general", booking_id: booking_1, created_at: current_timestamp.to_s, updated_at: current_timestamp.to_s)
