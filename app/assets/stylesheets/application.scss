@@ -12,3 +12,9 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+
+// global styles (for navbar to be sticky top)
+body {
+  padding-top: 80px;
+}
