@@ -11,9 +11,12 @@ puts "Cleaning up database..."
 UserInterest.destroy_all
 Interest.destroy_all
 ParticipantReview.destroy_all
+Message.destroy_all
+Chatroom.destroy_all
 Booking.destroy_all
 Faq.destroy_all
 Availability.destroy_all
+Order.destroy_all
 Activity.destroy_all
 User.destroy_all
 puts "Database cleaned"
@@ -862,3 +865,13 @@ p "Created #{ParticipantReview.count} participant_reviews"
 # # # TODO: Host Reviews for Each Booking
 # # Host_review.create(user_rating: 4.5, booking_id: 1)
 # # Host_review.create(user_rating: 2, booking_id: 2)
+
+#Chatroom
+
+chatroom = Chatroom.new(name: booking_1.user_id)
+chatroom.booking = booking_1 
+chatroom.save!
+# current_timestamp = Time.now
+# chatroom_1 = Chatroom.create(name: "general", booking_id: booking_1, created_at: current_timestamp.to_s, updated_at: current_timestamp.to_s)
+
+p "is chatroom created? chatroom id: #{chatroom.id}"

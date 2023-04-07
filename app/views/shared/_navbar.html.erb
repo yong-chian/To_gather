@@ -1,6 +1,9 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-togather">
   <div class="container-fluid">
-    <%= link_to "ToGather", root_path, class: "navbar-brand"  %>
+    <%= link_to root_path, class: "navbar-brand" do %>
+      <%= "ToGather" %>
+    <% end %>
+    
     <%# do %>
       <%# <%= image_tag "ToGather.png" %>
     <%# <% end %>
@@ -16,20 +19,21 @@
             <%= link_to "About Us", about_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
-            <%= link_to "Find activity", activities_path, class: "nav-link" %>
+            <%= link_to "Find Activity", activities_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
             <%= link_to "Share Moments", "#", class: "nav-link" %>
           </li>
           <li class="nav-item">
-            <%= link_to "Host an activity", new_activity_path(@activity), class: "btn btn-primary" %>
+            <%= link_to "Host An Activity", new_activity_path(@activity), class: "btn btn-primary" %>
           </li>
 
           <li class="nav-item dropdown">
-            <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <%= image_tag "https://www.citypng.com/public/uploads/preview/download-profile-user-round-orange-icon-symbol-png-11639594360ksf6tlhukf.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%= link_to "Action", "#", class: "dropdown-item" %>
-              <%= link_to "Another action", "#", class: "dropdown-item" %>
+              <%=link_to "Profile", edit_user_registration_path, class: "dropdown-item" %>
+              <%=link_to "Favourite", favorites_path, class: "dropdown-item" %>
+              <%= link_to "Reservation", bookings_path, class: "dropdown-item" %> 
               <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
             </div>
           </li>
@@ -42,3 +46,4 @@
     </div>
   </div>
 </div>
+
