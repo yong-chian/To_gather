@@ -77,6 +77,6 @@
   <% if policy(@activity).edit? %>
     <%= link_to "Edit this activity", edit_activity_path(@activity) %>
   <% end %>
-  <%= link_to "Back to activities", activities_path, class: "btn btn-warning" %>
+  <%= link_to "Back to activities", activities_path, class: "btn btn-primary" %>
   <%= button_to "Destroy this activity", @activity, method: :delete if policy(@activity).destroy? %>
 </div>
