@@ -234,7 +234,7 @@ end
 activity_2.save!
 
 activity_3 = Activity.create(
-  name: "Organic Soap-making",
+  name: "Soap-making",
   description: "Create your own handmade soap using natural ingredients and essential oils!",
   price: 80,
   max_capacity: 5,
@@ -337,7 +337,7 @@ end
 activity_5.save!
 
 activity_6 = Activity.create(
-  name: "Let's Bake!",
+  name: "Let's Bake Together!",
   description: "Introduction to basic baking techniques",
   price: 50,
   max_capacity: 5,
@@ -437,7 +437,7 @@ availabilities.map { |time| activity_8.availabilities.build(
 activity_8.save!
 
 activity_9 = Activity.create(
-  name: "Watercolour Painting",
+  name: "Paint and Relax",
   description: "Explore watercolour techniques to create beautiful and vibrant paintings with your family members or friends.",
   price: 40,
   max_capacity: 6,
@@ -508,7 +508,7 @@ end
 activity_10.save!
 
 activity_11 = Activity.create(
-  name: "Art of Bird Watching",
+  name: "Bird Watching",
   description: "Discover the art of birdwatching through guided observation!.",
   price: 30,
   max_capacity: 3,
@@ -544,7 +544,7 @@ end
 activity_11.save!
 
 activity_12 = Activity.create(
-  name: "How to Cycle",
+  name: "On 2 wheels",
   description: "3-hour beginner-friendly indoor cycling sessions guided by Coach John with 10 years experience.",
   price: 50,
   max_capacity: 5,
@@ -717,7 +717,7 @@ end
 activity_16.save!
 
 activity_17 = Activity.create(
-  name: "Learn Guitar!",
+  name: "Strum & Sing",
   description: "Learn to play guitar with chord progressions and strumming techniques.",
   price: 70,
   max_capacity: 1,

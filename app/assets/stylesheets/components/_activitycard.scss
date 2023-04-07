@@ -18,3 +18,15 @@
 .activity-card .fa-heart {
     color: #D23333;
 }
+
+//dot
+.circle {
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: gray;
+  margin-left: 3px;
+  margin-right: 3px;
+  vertical-align: bottom;
+}

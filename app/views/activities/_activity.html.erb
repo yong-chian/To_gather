@@ -13,27 +13,25 @@
   </div>
 
   <div class="activity-details">
-
-    <p class="activity-host">
-      <strong>Host name:</strong>
-      <%= activity.user.first_name %>
-    </p>
-
     <h2 class="activity-name"><%= activity.name %></h2>
+      <p class="activity-host" style="display: inline-block;">
+      <strong>Hosted by</strong>
+      <%= activity.user.first_name %>
+    <span class="circle circle--4 circle--gray ml-1 mr-1 align-middle"></span>
+    <strong>Located at</strong> <%= activity.meeting_location.sub(/,\s*Singapore$/, '') %>
+    </p>
 
     <p class="activity-description"><%= activity.description %></p>
 
-    <p class="activity-meeting-location">
-      <strong>Meeting Location:</strong> <%= activity.meeting_location %>
-    </p>
 
     <p class="activity-policies">
       <strong>Policies:</strong> <%= activity.policies %>
     </p>
 
-    <p class="activity-price">
-      <strong>Price:</strong> <%= humanized_money_with_symbol(activity.price) %></p>
+    <p class="activity-price" style="font-size: 18px; color: grey;">
+      <strong>Price:</strong> <%= humanized_money_with_symbol(activity.price) %>
     </p>
+
 
     <div class="activity-buttons">
 
