@@ -87,17 +87,19 @@ window.onclick = function (event) {
 
     <p class="activity-description" style="color: grey"><%= activity.description %></p>
 
+    <Div>
 
-    <p class="activity-price" style="font-size: 18px; color: grey;">
+     <p class="activity-price" style="font-size: 18px; color: grey;">
       <strong>From <%= humanized_money_with_symbol(activity.price) %></strong>
-    </p>
-
-    <div class="activity-buttons">
 
       <%= link_to "View Activity", activity_path(activity), class: "btn btn-primary" %>
 
+    </p>
 
-    </div>
+
+
+    </Div>
+
 
   </div>
 
