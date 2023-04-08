@@ -27,4 +27,8 @@ class Activity < ApplicationRecord
     using: {
       tsearch: { prefix: true } # <-- now `mahj` will return something!
     }
+
+  def average_rating
+    participant_reviews.average(:activity_rating) || 5
+  end
 end

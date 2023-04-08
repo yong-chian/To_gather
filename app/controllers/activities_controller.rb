@@ -34,14 +34,12 @@ class ActivitiesController < ApplicationController
   def create
     @activity = Activity.new(activity_params)
     @activity.user = current_user
-
     availabilities = availability_params[:availabilities_start_time].split(", ")
     availabilities.map { |time| @activity.availabilities.build(
       start_time: time,
       end_time: time
       )
     }
-
     authorize(@activity)
     if @activity.save!
       redirect_to activity_path(@activity), notice: "Activity was successfully created."
