@@ -21,7 +21,7 @@
 
   <p>
     <strong>Booking Date:</strong>
-    <%= "#{booking.availability.start_time} to #{booking.availability.end_time}" %>
+    <%= booking.availability.start_time.strftime("%A, %B %e, %Y") %>
   </p>
 
   <p>
