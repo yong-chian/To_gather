@@ -27,7 +27,7 @@ class BookingsController < ApplicationController
     @booking.user_name = "#{current_user.first_name} #{current_user.last_name}"
     @booking.availability = Availability.find(params[:booking][:availability_id].to_i)
     @booking.activity = @activity
-    @booking.status = "Pending"
+    @booking.status = "Pending Payment"
 
     authorize(@booking)
 
