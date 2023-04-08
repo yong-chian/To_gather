@@ -6,17 +6,6 @@
     <title>Untitled</title>
 </head>
 <body>
-  <div data-controller="map"
-    id='map'
-    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
-    data-map-markers-value="<%= @markers.to_json %>"
-    style='width: 100%; height: 300px;'>
-  </div>
-    <div>
-        <div class="top-banner-image" style="margin-left: 300px">
-          <img src="https://hivelife.com/wp-content/uploads/2020/03/Haji-Lane-Hive-Life-Banner.jpg">
-        </div>
-    </div>
     <div style="margin-top: 99px;">
       <div class="container">
         <h1>What is popular near you </h1>
@@ -31,6 +20,37 @@
             <% end %>
             </div>
         </div>
+
+<div class="top-banner-image" style="position: relative;">
+  <!-- The image tag displays the image from Unsplash and is resized to make it look like a Facebook banner -->
+  <img src= "https://images.unsplash.com/photo-1608911807240-ce199bfbdb64?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" style="width: 100%; height: auto; object-fit: cover; object-position: 50% 50%; max-height: 400px;">
+
+  <!-- The heading and text are centered on top of the image in white text -->
+  <div class="banner-text" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+    <h1 style="color: white; text-align: center; font-size: 48px;">Explore the <span style="color: red;">Hidden Gems</span> of Your Neighbourhood: Uncover the Best Local Secrets</h1>
+    <p style="color: white; text-align: center; font-size: 24px;">Discover your neighbourhood's hidden gems! Find the best local secrets, from cafes and boutiques to galleries and outdoor spaces. Immerse yourself in the community and experience your neighbourhood's true essence. Start exploring today!</p>
+  </div>
+</div>
+
+<div style="margin-top: 99px;">
+  <div class="container">
+    <h1>
+      <% if user_signed_in? %>
+        Popular near you
+      <% else %>
+        What's popular near you
+      <% end %>
+    </h1>
+     <div class="horizontal-line"></div>
+</div>
+
+  <div class="container">
+    <div class="row justify-content-center">
+      <% @activities_near_you.shuffle.each do |activity| %>
+        <%= render "activities/activity", activity: activity %>
+      <% end %>
+    </div>
+  </div>
     </div>
 
     <div style="margin-top: 40px;">
@@ -43,7 +63,7 @@
         <div class="container">
             <div class="row">
                <div class="row justify-content-center">
-               <% @activities.shuffle.each do |activity| %>
+               <% @activities.first(6).shuffle.each do |activity| %>
                 <%= render "activities/activity", activity: activity %>
                <% end %>
             </div>
