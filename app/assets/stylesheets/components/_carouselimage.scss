@@ -1,0 +1,16 @@
+.carousel-image {
+  animation: carousel 5s infinite;
+  cursor: pointer;
+}
+
+@keyframes carousel {
+  0% {
+    content: url('https://www.hdb.gov.sg/-/media/HDBContent/Images/CCG/dw2001hancommunity.ashx');
+  }
+  50% {
+    content: url('https://assets.ohmyhome.com/wp-content/uploads/2021/07/26135452/5cf67c9c278a4437773154.jpg');
+  }
+  100% {
+    content: url('https://www.asiaone.com/sites/default/files/original_images/Jul2013/20130718.090557_20130718_promotingneighbourliness.jpg');
+  }
+}
