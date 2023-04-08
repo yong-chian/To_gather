@@ -50,9 +50,6 @@ window.onclick = function (event) {
 
 </script>
 
-
-
-
 <div id="<%= dom_id activity %>" class="activity-card col-sm-3">
 
 <div class="activity-image-container">
@@ -66,7 +63,10 @@ window.onclick = function (event) {
 
   <div class="activity-details">
   <div style="display: flex; justify-content: space-between;">
-   <h2 class="activity-name"><%= activity.name %></h2>
+   <a href="<%= activity_path(activity) %>" style="text-decoration: none;">
+      <h2 class="activity-name"><%= activity.name %></h2>
+    </a>
+
 
    <% if user_signed_in? %>
         <div data-controller="favorite" style="margin-left: 50px;">
