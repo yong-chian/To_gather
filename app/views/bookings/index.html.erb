@@ -26,16 +26,16 @@
                     <%= link_to "Show this booking", activity_booking_path(booking.availability.activity, booking), class: "btn btn-primary", data: { chatroom_target: "booking" } if policy(booking).show? %> 
                     <button class="btn btn-primary" data-chatroom-target="button" data-action="click->chatroom#getChatroom">Chat with Host</button>
                   </div>
-                  <br>
-                  <br>
+                  <br><br>
                 </div>
+                
               <% end %>
             <% else %>
               <em>There's no bookings found.</em>
             <% end %>
           </div>
         </div>    
-        </div>
+      </div>
     </div>
 
     <div class="card w-80">
@@ -60,7 +60,6 @@
                         <%= link_to "Show this booking", activity_booking_path(booking.availability.activity, booking), method: :get, class: "btn btn-primary", data: { chatroom_target: "booking" } if policy(booking).show? %>       
                         <button class="btn btn-primary" data-chatroom-target="button" data-action="click->chatroom#getChatroom">Chat with Participant</button>
                       </div>
-
                       <br>
                       <br>
                       <%# <%= link_to "Destroy this booking", activity_booking_destroy_path(booking.availability.activity, booking), data: { turbo_method: :delete, turbo_confirm: "Are you sure?"} if policy(booking).destroy? %>
@@ -124,5 +123,3 @@ function toggleButtons() {
   document.getElementById("button2").disabled = button2Disabled;
 }
 </script>
-
-
