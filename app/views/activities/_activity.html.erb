@@ -64,16 +64,17 @@ window.onclick = function (event) {
 </div>
 
   <div class="activity-details">
-  <div>
-
+  <div style="display: flex; justify-content: space-between;">
    <h2 class="activity-name"><%= activity.name %></h2>
-    <% if user_signed_in? %>
+
+   <% if user_signed_in? %>
         <div data-controller="favorite" style="margin-left: 50px;">
           <%= link_to favorite_activity_path(activity), data: {turbo_method: :post, action: "click->favorite#update"} do %>
             <i class="fa-heart <%= current_user.favorited?(activity) ? "fa-solid" : "fa-regular" %>" data-favorite-target="bookmark"></i>
           <% end %>
         </div>
       <% end %>
+
   </div>
 
       <p class="activity-host" style="display: inline-block">
