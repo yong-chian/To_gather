@@ -7,7 +7,7 @@ class ParticipantReviewPolicy < ApplicationPolicy
   end
 
   def show?
-    user.admin? || record.booking.user == user
+    return true
   end
 
   def new?
