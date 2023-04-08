@@ -9,6 +9,11 @@ application.register("activity-flatpickr", ActivityFlatpickrController)
 
 import AnimationController from "./animation_controller"
 application.register("animation", AnimationController)
+import ChatroomController from "./chatroom_controller"
+application.register("chatroom", ChatroomController)
+import AnimationController from "./animation_controller"
+application.register("animation", AnimationController)
+
 import AddressAutocompleteController from "./address_autocomplete_controller"
 application.register("address-autocomplete", AddressAutocompleteController)
 

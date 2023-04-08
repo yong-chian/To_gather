@@ -2,8 +2,21 @@
 .btn-primary {
     font-family: 'IM Fell Great Primer', "sans-serif";
     background: $orange;
-    border-radius: 30px;
+    border-radius: 5px;
     color: $white;
+}
+
+/*Secondary Button */
+.btn-secondary {
+  font-family: 'IM Fell Great Primer', "sans-serif";
+  background: transparent;
+  border: 1px solid $red;
+  border-radius: 5px;
+  color: $red;
+}
+
+.btn-secondary:hover {
+  color: $red; /* Change this to the desired hover color */
 }
 
 /* Button Edit */
@@ -23,6 +36,13 @@
     display: flex;
     align-items: center;
     color: $red;
+}
+
+/* outline primary Booking */
+.btn-outline-primary {
+    font-family: 'IM Fell Great Primer', "sans-serif";
+    color: $black;
+    border-radius: 30px;
 }
 
 /* Cancel Booking */
