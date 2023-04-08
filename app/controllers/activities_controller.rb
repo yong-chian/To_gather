@@ -40,6 +40,10 @@ class ActivitiesController < ApplicationController
       end_time: time
       )
     }
+    interests = params["activity"]["interest_ids"]
+    interests.each do |interest|
+      @activity.interests << Interest.find(interest.to_i)
+    end
     authorize(@activity)
     if @activity.save!
       redirect_to activity_path(@activity), notice: "Activity was successfully created."
@@ -68,6 +72,20 @@ class ActivitiesController < ApplicationController
     current_user.favorited?(@activity) ? current_user.unfavorite(@activity) : current_user.favorite(@activity)
   end
 
+  # def add_interest
+
+  #   interests = params["user"]["interest_ids"] # array of selected interest ids
+  #   interests.each do |interest_id|
+  #     unless current_user.interests.exists?(id: interest_id.to_i)
+  #       UserInterest.create(user: current_user, interest_id: interest_id.to_i)
+  #     end
+  #   end
+  #   respond_to do |format|
+  #     format.html { redirect_to root_path, notice: "Interests have been updated" }
+  #     format.text { render partial: "update_interest", formats: [:html]}
+  #   end
+  # end
+
   private
 
   def set_activity
@@ -76,7 +94,7 @@ class ActivitiesController < ApplicationController
   end
 
   def activity_params
-    params.require(:activity).permit(:name, :description, :price, :max_capacity, :meeting_location, :minimum_age, :policies, photos: [])
+    params.require(:activity).permit(:name, :description, :price, :max_capacity, :meeting_location, :minimum_age, :policies, interests: [], photos: [])
   end
 
   def availability_params
