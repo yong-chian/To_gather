@@ -7,7 +7,14 @@
 @import "bootstrap/scss/bootstrap";
 @import "font-awesome";
 @import "flatpickr/dist/flatpickr.css";
+@import "@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder";
 
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+
+// global styles (for navbar to be sticky top)
+body {
+  padding-top: 80px;
+}
