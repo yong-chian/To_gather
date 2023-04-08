@@ -2,12 +2,7 @@
 <div class="container">
   <div class="row activity-details-each">
     <h1 class="activity-title"><%= @activity.name %></h1>
-    <p class="activity-description"><%= @activity.description %></p>
-    <p class="activity-host"><strong>Hosted by </strong><%= @activity.user.first_name %></p>
-    <p class="activity-policies"><strong>Things to note </strong><%= @activity.policies %></p>
-    <p class="activity-price"><strong>Price: </strong> <%= humanized_money_with_symbol(@activity.price) %></p>
-  </div>
-</div>
+    <div class="horizontal-line"></div>
 
 <div class="gallery-wrap">
   <%= image_tag 'back.png', id: 'backBtn' %>
@@ -19,6 +14,14 @@
     </div>
   </div>
    <%= image_tag 'next.png', id: 'nextBtn' %>
+</div>
+
+<div class="normal-line"></div>
+        <p class="activity-host"><strong>Hosted by </strong><%= @activity.user.first_name %></p>
+    <p class="activity-description"><%= @activity.description %></p>
+    <p class="activity-policies"><strong>Things to note </strong><%= @activity.policies %></p>
+    <p class="activity-price"><strong>Price: </strong> <%= humanized_money_with_symbol(@activity.price) %></p>
+  </div>
 </div>
 
 <script>
