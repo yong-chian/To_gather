@@ -16,6 +16,19 @@
 
 //Heart shape
 .activity-card .fa-heart {
+    color: $red;
+}
+
+//dot
+.circle {
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: $red;
+  margin-left: 3px;
+  margin-right: 3px;
+  vertical-align: bottom;
   color: #D23333;
 }
 

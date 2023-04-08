@@ -4,11 +4,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Serif+Pro:wght@600&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lemon&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;800;900&family=Source+Sans+Pro:wght@700&display=swap');
+
 
 // Define fonts for body and headers
-$body-font: 'Montserrat Alternates', "sans-serif";
+$body-font: 'Playfair Display', sans-serif;
 //$headers-font: "Nunito", "Helvetica", "sans-serif";
-$headers-font: 'IM Fell Great Primer', "sans-serif";
+$headers-font: 'Playfair Display', sans-serif;
+// Added this line to define the font weight for headers
+$headers-font-weight: 800;
+
 
 // To use a font file (.woff) uncomment following lines
 // @font-face {
@@ -19,3 +24,32 @@ $headers-font: 'IM Fell Great Primer', "sans-serif";
 //        font-url('FontFile.ttf') format('truetype')
 // }
 // $my-font: "Font Name";
+
+h1 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 1200;
+
+}
+
+.activity-name{
+  font-size: 34px;
+  color: black;
+  font-family: 'Playfair Display', serif;
+  font-weight: 800;
+}
+.activity-name:hover{
+  color: #EC481F;
+  cursor: pointer;
+}
+
+
+.activity-name{
+  font-size: 1.5rem;
+  color: black;
+  font-family: 'Playfair Display', serif;
+  font-weight: 800;
+}
+.activity-name:hover{
+  color: #EC481F;
+  cursor: pointer;
+}

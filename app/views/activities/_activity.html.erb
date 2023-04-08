@@ -64,21 +64,30 @@ window.onclick = function (event) {
 </div>
 
   <div class="activity-details">
+  <div>
 
-    <h4 class="activity-name" style="display: flex; align-items: center;">
-      <%= activity.name %>
-      <% if user_signed_in? %>
+   <h2 class="activity-name"><%= activity.name %></h2>
+    <% if user_signed_in? %>
         <div data-controller="favorite" style="margin-left: 50px;">
           <%= link_to favorite_activity_path(activity), data: {turbo_method: :post, action: "click->favorite#update"} do %>
             <i class="fa-heart <%= current_user.favorited?(activity) ? "fa-solid" : "fa-regular" %>" data-favorite-target="bookmark"></i>
           <% end %>
         </div>
       <% end %>
-    </h4>
+  </div>
+
+      <p class="activity-host" style="display: inline-block">
+      Hosted by
+      <strong><%= activity.user.first_name %></strong>
+    <span class="circle circle--4 circle--gray ml-1 mr-1 align-middle"></span>
+    At <strong><%= activity.meeting_location.sub(/,\s*Singapore$/, '') %></strong>
+    </p>
+
+    <p class="activity-description" style="color: grey"><%= activity.description %></p>
 
 
-    <p class="activity-price">
-      <strong>From:</strong> <%= humanized_money_with_symbol(activity.price) %></p>
+    <p class="activity-price" style="font-size: 18px; color: grey;">
+      <strong>From <%= humanized_money_with_symbol(activity.price) %></strong>
     </p>
 
     <div class="activity-buttons">
