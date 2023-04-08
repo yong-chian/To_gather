@@ -5,21 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
     <title>Untitled</title>
 </head>
-<body>
-    <div style="margin-top: 99px;">
-      <div class="container">
-        <h1>What is popular near you </h1>
-          <div class="horizontal-line"></div>
-      </div>
-    </div>
 
-        <div class="container">
-          <div class="row justify-content-center">
-            <% @activities_near_you.shuffle.each do |activity| %>
-                <%= render "activities/activity", activity: activity %>
-            <% end %>
-            </div>
-        </div>
+<body>
 
 <div class="top-banner-image" style="position: relative;">
   <!-- The image tag displays the image from Unsplash and is resized to make it look like a Facebook banner -->
@@ -70,27 +57,7 @@
         </div>
     </div>
 
-        <div class="container">
-            <div class="normal-line"></div>
-            <section class="py-4 py-xl-5">
-                <div class="container">
-                    <div class="container" style="margin-left: -10px;margin-right: -12px;; background: url('https://i.redd.it/ardut9g5b8t51.jpg'), rgba(58,138,218,0.7);">
-                        <h2 class="fw-bold text-white mb-3">Build a community with us!</h2>
-                        <p class="mb-4">Earn extra just by hosting activities!</p>
-                        <div class="my-3"><a class="btn btn-primary btn-lg me-2" role="button" href="#">Button</a></div>
-                    </div>
-                </div>
-            </section>
-        </div>
-    </div>
-    <div style="padding-bottom: 0px;margin-bottom: 82px;">
-        <div class="container">
-            <div class="row">
-              <% @activities.each do |activity| %>
-              <%= render "activities/activity", activity: activity %>
-              <% end %>
-          </div>
-      </div>
+
   </div>
   <div>
       <div class="container">
