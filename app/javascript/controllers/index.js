@@ -7,8 +7,13 @@ import { application } from "./application"
 import ActivityFlatpickrController from "./activity_flatpickr_controller"
 application.register("activity-flatpickr", ActivityFlatpickrController)
 
+<<<<<<< HEAD
 import AnimationController from "./animation_controller"
 application.register("animation", AnimationController)
+=======
+import AddressAutocompleteController from "./address_autocomplete_controller"
+application.register("address-autocomplete", AddressAutocompleteController)
+>>>>>>> master
 
 import ChatroomSubscriptionController from "./chatroom_subscription_controller"
 application.register("chatroom-subscription", ChatroomSubscriptionController)
