@@ -1,16 +1,22 @@
 <!-- app/views/payments/new.html.erb -->
-<div class="container">
-    <div class="row py-4">
-        <div class="col-md-3">
-            <% @order.activity.photos.each do |photo| %>
-                <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill , class: "card-img-top" %>
-            <% end %>
-        </div>
-        <div class="col">
-        <h1>Checkout summary</h1>
-        <p>Purchase of <strong><%= @order.activity.name %></strong> for <strong><%= humanized_money_with_symbol @order.amount %></strong></p>
-        <button id="pay" class="btn btn-primary">Pay</button>
 
+
+<body>
+  <div class="payment-new" style="display: flex;justify-content: center;background: var(--bs-black);">
+    <div class="payment-post">
+        <h1 class="text-center"><br />Checkout summary<br /><br /></h1>
+        <p>Purchase of <strong><%= @order.activity.name %></strong> for <strong><%= humanized_money_with_symbol @order.amount %></strong></p>
+      <div class="row text-center" style="background: var(--bs-white);">
+        <div class="col-md-12">
+          <div class="activity-photos">
+            <% @order.activity.photos.each do |photo| %>
+              <%= cl_image_tag photo.key, height: 150, width: 250, crop: :fill %>
+              <%# remove the  class: "card-img-top" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="form-group"> <button id="pay" class="btn btn-primary" style="width: 100%;margin: 30px 0px 0px;" type="submit">Pay</button></div>
         <script src="https://js.stripe.com/v3/"></script>
         <script>
         const paymentButton = document.getElementById('pay');
@@ -21,6 +27,7 @@
         });
         });
         </script>
-        </div>
+      <br /><br />
     </div>
-</div>
+  </div>
+</body>

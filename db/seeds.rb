@@ -19,8 +19,10 @@ Availability.destroy_all
 Order.destroy_all
 Activity.destroy_all
 User.destroy_all
+
 puts "Database cleaned"
 puts "Creating test user..."
+
 test_user = User.new(
   first_name: "John",
   last_name: "Doe",
@@ -31,7 +33,6 @@ test_user = User.new(
 )
 test_user.save!
 puts "Test user created!"
-
 
 #other 18 Users that created the Activities, will add in user_name after that
 test_user2 = User.create(email: "test1@gmail.com", password: "123456a", first_name: "Jane", last_name: "Smith", home_address: "759160", phone_no: "12345678")
@@ -70,7 +71,6 @@ Interest.create!(name: "Social Clubs", icon:'<i class="fas fa-user-friends"></i>
 Interest.create!(name: "Professional Development", icon:'<i class="fas fa-chalkboard-teacher"></i>')
 
 p "Created #{Interest.count} interests"
-
 # TODO: Created activities
 # Activities for H2 - What's Popular Near You
 activity_1 = Activity.create(
@@ -785,7 +785,6 @@ end
 
 activity_18.save!
 
-
 p "Created #{Activity.count} activities"
 
 # # # TODO: Created FAQs
@@ -800,7 +799,6 @@ Activity.all.each do |activity|
     activity.faqs.create(question: faq[0], answer: faq[1])
   end
 end
-
 
 # TODO: Created booking
 # booking_1 = Booking.create(
@@ -870,10 +868,10 @@ p "Created #{ParticipantReview.count} participant_reviews"
 
 #Chatroom
 
-chatroom = Chatroom.new(name: booking_1.user_id)
-chatroom.booking = booking_1
-chatroom.save!
+# chatroom = Chatroom.new(name: booking_1.user_id)
+# chatroom.booking = booking_1
+# chatroom.save!
 # current_timestamp = Time.now
 # chatroom_1 = Chatroom.create(name: "general", booking_id: booking_1, created_at: current_timestamp.to_s, updated_at: current_timestamp.to_s)
 
-p "is chatroom created? chatroom id: #{chatroom.id}"
+# p "is chatroom created? chatroom id: #{chatroom.id}"
