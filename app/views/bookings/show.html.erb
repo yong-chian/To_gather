@@ -83,6 +83,7 @@
         <% if @booking.status == "Pending" %>
           <h1>Hi, thank you for your booking! Please check out to reserve your spot!</h1>
           <%= render @booking %>
+          
           <%= form_with url: orders_path do %>
             <%= hidden_field_tag 'activity_id', @activity.id %>
             <%= hidden_field_tag 'booking_id', @booking.id %>
