@@ -5,74 +5,68 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
     <title>Untitled</title>
 </head>
-<body>
-  <div data-controller="map"
-    id='map'
-    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
-    data-map-markers-value="<%= @markers.to_json %>"
-    style='width: 100%; height: 300px;'>
-  </div>
-    <div>
-        <div class="top-banner-image" style="margin-left: 300px">
-          <img src="https://hivelife.com/wp-content/uploads/2020/03/Haji-Lane-Hive-Life-Banner.jpg">
-        </div>
-    </div>
-    <div style="margin-top: 99px;">
-        <div class="container">
-            <h1>What is popular near you</h1>
-        </div>
-        <div class="container">
-            <div class="row justify-content-center">
-               <% @activities_near_you.shuffle.each do |activity| %>
-                <%= render "activities/activity", activity: activity %>
-               <% end %>
 
-            </div>
-        </div>
+<body>
+
+<div class="top-banner-image" style="position: relative;">
+  <!-- The image tag displays the image from Unsplash and is resized to make it look like a Facebook banner -->
+  <img src= "https://images.unsplash.com/photo-1608911807240-ce199bfbdb64?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" style="width: 100%; height: auto; object-fit: cover; object-position: 50% 50%; max-height: 400px;">
+
+  <!-- The heading and text are centered on top of the image in white text -->
+  <div class="banner-text" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+    <h1 style="color: white; text-align: center; font-size: 48px;">Explore the <span style="color: red;">Hidden Gems</span> of Your Neighbourhood: Uncover the Best Local Secrets</h1>
+    <p style="color: white; text-align: center; font-size: 24px;">Discover your neighbourhood's hidden gems! Find the best local secrets, from cafes and boutiques to galleries and outdoor spaces. Immerse yourself in the community and experience your neighbourhood's true essence. Start exploring today!</p>
+  </div>
+</div>
+
+<div style="margin-top: 99px;">
+  <div class="container">
+    <h1>
+      <% if user_signed_in? %>
+        Popular near you
+      <% else %>
+        What's popular near you
+      <% end %>
+    </h1>
+     <div class="horizontal-line"></div>
+</div>
+
+  <div class="container">
+    <div class="row justify-content-center">
+      <% @activities_near_you.shuffle.each do |activity| %>
+        <%= render "activities/activity", activity: activity %>
+      <% end %>
     </div>
+  </div>
+    </div>
+
     <div style="margin-top: 40px;">
         <div class="container">
-            <h1 style="padding-left: 0px;">Browse all options</h1>
+          <h1 style="padding-left: 0px;">Browse all options</h1>
+            <div class="horizontal-line"></div>
         </div>
+    </div>
+
         <div class="container">
             <div class="row">
                <div class="row justify-content-center">
-               <% @activities.shuffle.each do |activity| %>
+               <% @activities.first(6).shuffle.each do |activity| %>
                 <%= render "activities/activity", activity: activity %>
                <% end %>
             </div>
         </div>
     </div>
-    <div>
-        <div class="container">
-            <section class="py-4 py-xl-5">
-                <div class="container">
-                    <div class="container-banner-image1 text-white bg-dark border rounded border-0 p-4 p-md-5" style="margin-left: -10px;margin-right: -12px;; background: url('https://www.psd.gov.sg/images/default-source/challenge-library/ideas/deep-dive/singapore-together-citizen-engagement-projects/deep_dive_thumb.jpg'), rgb(58,138,218);">
-                        <h2 class="fw-bold text-white mb-3">Build a community with us!</h2>
-                        <p class="mb-4">Earn extra just by hosting activities!</p>
-                        <div class="my-3"><a class="btn btn-primary btn-lg me-2" role="button" href="#">Button</a></div>
-                    </div>
-                </div>
-            </section>
-        </div>
-    </div>
-    <div style="padding-bottom: 0px;margin-bottom: 82px;">
-        <div class="container">
-            <div class="row">
-              <% @activities.each do |activity| %>
-              <%= render "activities/activity", activity: activity %>
-              <% end %>
-          </div>
-      </div>
+
+
   </div>
   <div>
       <div class="container">
           <section class="py-4 py-xl-5">
               <div class="container">
-                  <div class="container-banner-image1 text-white bg-dark border rounded border-0 p-4 p-md-5" style="margin-left: -10px;margin-right: -12px;; background: url('https://www.psd.gov.sg/images/default-source/challenge-library/ideas/deep-dive/singapore-together-citizen-engagement-projects/deep_dive_thumb.jpg'), rgb(58,138,218);">
+                  <div class="container-banner-image1 text-white bg-dark border rounded border-0 p-4 p-md-5" style="margin-left: -10px;margin-right: -12px;; background: url('https://www.dbs.com/documents/297834311/299395518/5-easy-ways-to-convert-your-hdb-flat-into-a-smart-green-home-main.jpg/e0059cd6-f7d8-cd3c-5829-6e2516ed6d3a?version=1.0&t=1629774476582&imagePreview=1');">
                       <h2 class="fw-bold text-white mb-3">Build a community with us!</h2>
-                      <p class="mb-4">Earn extra just by hosting activities!</p>
-                      <div class="my-3"><a class="btn btn-primary btn-lg me-2" role="button" href="#">Button</a></div>
+                      <p class="mb-4">Earn points by participating in activities</p>
+                      <div class="my-3"><a class="btn btn-primary btn-lg me-2" role="button" href="#">Find out more!</a></div>
                   </div>
               </div>
           </section>
@@ -80,17 +74,30 @@
   </div>
   <div style="padding-bottom: 0px;margin-bottom: 82px;">
       <div class="container">
+          <div class="normal-line"></div>
           <div class="row">
               <div class="col-md-6" style="padding-left: 40px;">
-                  <h1>Discover moments shared by ToGatherers!</h1>
-                  <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.</p><a class="btn btn-primary btn-lg me-2" role="button" href="#">Button</a>
+                  <h1><strong>Discover moments shared by ToGatherers!</strong></h1>
+                  <span><p style="margin-top: 20px; text-align:justify; color:grey;">ToGatherers play an important role in building stronger connections within their local community, which can have a positive impact on the overall environment of their neighborhood. By creating opportunities for people to come together and participate in shared activities and moments, ToGatherers can help foster a greater sense of community and togetherness, which can lead to a more vibrant and supportive environment for everyone involved.</p></span>
+                  <a class="btn btn-primary btn-lg me-2" role="button" href="#">Visit Our Moments</a>
               </div>
               <div class="col-md-6">
-                  <picture><img width="" height="275" src="https://www.cf.org.sg/wp-content/uploads/2022/03/Assisting-individuals-with-disabilities-min.jpg" style="padding-left: 0px; margin-left: 223px;"></picture>
+                  <picture><img id="carouselImage" class="carousel-image" width="480" height="360" src="https://www.hdb.gov.sg/-/media/HDBContent/Images/CCG/dw2001hancommunity.ashx" style="padding-left: 0px; margin-left: 85px;"></picture>
               </div>
           </div>
       </div>
   </div>
+
+<script>
+  $(document).ready(function(){
+    $('#myCarousel').carousel({
+      interval: 2000
+    })
+  });
+</script>
+
 </body>
+
+
 
 </html>

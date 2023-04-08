@@ -1,0 +1,26 @@
+/* Style for the booking box container */
+.booking-box {
+  background-color: $light-orange;
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+}
+
+/* Style for the booking box title */
+.booking-box h2 {
+  font-size: 24px;
+  margin-top: 0;
+}
+
+/* Style for the booking form */
+.booking-form {
+  margin-top: 20px;
+}
+
+/* Style for the form labels */
+.booking-form label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 16px;
+}

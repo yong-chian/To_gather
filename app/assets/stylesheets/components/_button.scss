@@ -1,7 +1,7 @@
 /*Primary Button */
 .btn-primary {
     font-family: 'IM Fell Great Primer', "sans-serif";
-    background: $red;
+    background: $orange;
     border-radius: 30px;
     color: $white;
 }
@@ -36,4 +36,9 @@
     font-family: 'IM Fell Great Primer', "sans-serif";
     color: $white;
     border-radius: 30px;
+}
+
+/*Style for the form submit button in booking*/
+.btn-book-now {
+  margin-top: 20px; /* Add margin-top to shift the button down */
 }
