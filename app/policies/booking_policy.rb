@@ -31,11 +31,15 @@ class BookingPolicy < ApplicationPolicy
     # user: the `current_user` signed in with Devise
   end
 
-  def status?
+  def host?
     record.availability.activity.user == user || user.admin?
   end
 
   def destroy?
     user.admin? || record.user == user || record.availability.activity.user == user
+  end
+
+  def participant?
+    user.admin? || record.user == user
   end
 end

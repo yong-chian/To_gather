@@ -93,8 +93,8 @@ image_urls_1.each do |url|
 end
 
 availabilities = []
-date = Date.today
-30.times do
+date = Date.today - 2
+32.times do
   availabilities << date.strftime("%Y-%m-%d")
   date += 1.day
 end

@@ -1,87 +1,152 @@
-<body style="background: var(--bs-white);">
-    <div class="container"><br /><br />
-      <div>
-          <h1 class="text-center"><span style="">Your booking will be submitted once you click  <h6 class="text-center">
+<div class="container">
+  <% if policy(@booking).host?%>
+    <div>
+      <% if !@booking.completed && Date.today < @booking.availability.start_time %>
+        <% if @booking.status == "Paid & Pending" %>
+          <h1>You have a new booking! Please review.</h1>
+          <%= render @booking %>
+          <%= form_with url: [@activity, @booking], method: :patch do |form| %>
+            <%= form.text_field :comment, placeholder: "Add a comment", name: "booking[comment]" %>
+            <%= form.submit "Confirm the booking", class: "btn btn-primary", name: "booking[status]", value: "Confirmed" %>
+          <% end %>
+          <%= form_with url: [@activity, @booking], method: :patch do |form| %>
+            <%= form.text_field :comment, placeholder: "Add a comment", name: "booking[comment]" %>
+            <%= form.submit "Reject the booking", class: "btn btn-primary", name: "booking[status]", value: "Rejected" %>
+          <% end %>
+          <%= link_to "Back to bookings", bookings_path %>
+        <% elsif @booking.status == "Confirmed" %>
+          <h1>You have confirmed this booking!</h1>
+          <%= render @booking %>
+          <%= link_to "Back to bookings", bookings_path %>
+          <%= button_to "Approve cancellation", [@activity, @booking], params: {booking: {status: "Cancelled"}}, method: :patch if @booking.comment == "Cancellations Requested"%>
+        <% elsif @booking.status == "Cancelled" %>
+          <h1>This booking has been cancelled!</h1>
+          <%= render @booking %>
+          <%= link_to "Back to bookings", bookings_path %>
+        <% elsif @booking.status == "Rejected" %>
+          <h1>You've rejected this booking!</h1>
+          <%= render @booking %>
+          <%= link_to "Back to bookings", bookings_path %>
+        <% elsif @booking.status == "Pending" %>
+        <% end %>
+
+      <% elsif !@booking.completed && Date.today >= @booking.availability.start_time %>
+        <% if @booking.status == "Paid & Pending" %>
+          <h1>The date of booking has passed. You've overlooked this booking!</h1>
+          <%= render @booking %>
+          <%= link_to "Back to bookings", bookings_path %>
+        <% elsif @booking.status == "Confirmed" %>
+          <h1>You have completed the activity. Please mark the activity as completed!</h1>
+          <%= render @booking %>
+          <%= button_to "Mark as completed", [@activity, @booking], params: {booking: {completed: true, status: "Completed"}}, method: :patch if policy(@booking).status? %>
+          <%= link_to "Back to bookings", bookings_path %>
+        <% elsif @booking.status == "Cancelled" %>
+          <h1>This booking has been cancelled!</h1>
+          <%= render @booking %>
+          <%= link_to "Back to bookings", bookings_path %>
+        <% elsif @booking.status == "Rejected" %>
+          <h1>You've rejected this booking!</h1>
+          <%= render @booking %>
+          <%= link_to "Back to bookings", bookings_path %>
+        <% elsif @booking.status == "Pending" %>
+        <% end %>
+
+      <% elsif @booking.completed && Date.today >= @booking.availability.start_time %>
+        <% if @booking.status == "Confirmed" %>
+          <h1>The booking is completed!</h1>
+          <%= render @booking %>
+          <%= link_to "View review", booking_participant_review_path(@booking, @booking.participant_reviews.first) if @booking.participant_reviews.present? %>
+          <%= link_to "Back to bookings", bookings_path %>
+        <% end %>
+
+      <% else %>
+      <%# show nothing when the user booking is pending and not paid %>
+      <% end %>
+    </div>
+
+  <% elsif policy(@booking).participant? %>
+    <div>
+      <% if !@booking.completed && Date.today < @booking.availability.start_time %>
+        <% if @booking.status == "Pending" %>
+          <h1>Hi, thank you for your booking! Please check out to reserve your spot!</h1>
+          <%= render @booking %>
           <%= form_with url: orders_path do %>
             <%= hidden_field_tag 'activity_id', @activity.id %>
+            <%= hidden_field_tag 'booking_id', @booking.id %>
             <%= submit_tag 'Checkout', class: 'btn btn-primary' %>
           <% end %>
-          You can choose your payment method in the next step.
-        </h6></span><br /></h1>
-      </div>
+          <%= link_to "Modify your booking", edit_activity_booking_path(@activity, @booking) if policy(@booking).edit? %>
+          <%= link_to "Cancel your booking", activity_booking_destroy_path, data: { turbo_method: :delete, turbo_confirm: "Are you sure?"} if policy(@booking).destroy? %>
+          <%= link_to "Back to bookings", bookings_path %>
 
-    <div class="container" style="background: var(--bs-white);">
-      <div class="row text-center" style="background: var(--bs-white);">
-        <div class="col-md-12">
-          <div class="activity-photos">
-            <% @activity.photos.each do |photo| %>
-              <%= cl_image_tag photo.key, height: 250, width: 350, crop: :fill %>
-            <% end %>
-          </div><br />
-        </div>
-      </div>
-    </div>
-        
-    <div class="row">
-      <div class="col-md-4 col-lg-4 offset-lg-4"> 
+        <% elsif @booking.status == "Paid & Pending" %>
+          <h1>Booking Payment Received and Request Sent!</h1>
+          <p>We have reserved your slot, but your booking has <strong>not been confirmed yet<strong> by the host.</p>
+          <%= render @booking %>
+          <%= button_to "Request for cancellation and refund", [@activity, @booking], params: {booking: {comment: "Cancellations Requested"}}, method: :patch if policy(@booking).edit? %>
+          <%= link_to "Back to bookings", bookings_path %>
+        <% elsif @booking.status == "Confirmed" %>
+          <h1>Your booking is now confirmed!</h1>
+          <%= render @booking %>
+          <%= button_to "Request for cancellation and refund", [@activity, @booking], params: {booking: {comment: "Cancellations Requested"}}, method: :patch if policy(@booking).edit? %>
+          <%= link_to "Back to bookings", bookings_path %>
+        <% elsif @booking.status == "Cancelled" %>
+          <h1>Your booking has been cancelled!</h1>
+          <%= render @booking %>
+          <%= link_to "Back to bookings", bookings_path %>
+        <% elsif @booking.status == "Rejected" %>
+          <h1>Unfortunately, your booking has been rejected!</h1>
+          <%= render @booking %>
+          <%= link_to "Back to bookings", bookings_path %>
+        <% end %>
+
+      <% elsif !@booking.completed && Date.today >= @booking.availability.start_time %>
+        <% if @booking.status == "Paid & Pending" %>
+          <h1>The date of booking has passed. The host has overlooked this booking!</h1>
+          <%= render @booking %>
+          <%= link_to "Back to bookings", bookings_path %>
+        <% elsif @booking.status == "Confirmed" %>
+          <h1>You have completed the activity. Please wait while your booking is confirmed as completed!</h1>
+          <%= render @booking %>
+          <%= link_to "Back to bookings", bookings_path %>
+        <% elsif @booking.status == "Cancelled" %>
+          <h1>Your booking has been cancelled!</h1>
+          <%= render @booking %>
+          <%= link_to "Back to bookings", bookings_path %>
+        <% elsif @booking.status == "Rejected" %>
+          <h1>Unfortunately, your booking has been rejected!</h1>
+          <%= render @booking %>
+          <%= link_to "Back to bookings", bookings_path %>
+        <% elsif @booking.status == "Pending" %>
+          <h1>You have not make the payment. The booking is expired...</h1>
+          <%= render @booking %>
+          <%= link_to "Back to bookings", bookings_path %>
+        <% end %>
+
+      <% elsif @booking.completed && Date.today >= @booking.availability.start_time %>
+        <% if @booking.status == "Confirmed" %>
+          <h1>Your booking is completed! You may leave a review for the activity</h1>
+          <%= render @booking %>
+          <% if !@booking.participant_reviews.present?%>
+            <%= link_to "Leave a review", new_booking_participant_review_path(@booking) %>
+          <% else %>
+            <%= link_to "View review", booking_participant_review_path(@booking, @booking.participant_reviews.first) %>
+            <%= link_to "Edit review", edit_booking_participant_review_path(@booking, @participant_review) if policy(@participant_review).update? %>
+          <% end %>
+          <%= link_to "Back to bookings", bookings_path %>
+        <% end %>
+
+      <% else %>
+        <h1>You have not make the payment. The booking is expired...</h1>
         <%= render @booking %>
-      </div>
+        <%= link_to "Back to bookings", bookings_path %>
+      <% end %>
     </div>
 
-    <div class="container" style="background: var(--bs-white);">
-        <div class="row">
-          <div class="col-md-12 col-lg-7 offset-lg-2"> 
-            <% if !@booking.completed || Date.today < @booking.availability.start_time %>
-              <% if @booking.status == "Pending"%>
-                <%= link_to "Edit your booking",  edit_activity_booking_path(@activity, @booking), class: "btn btn-primary" if policy(@booking).edit? %>
-                <% if policy(@booking).status? %>
-                  <%= form_with url: [@activity, @booking], method: :patch do |form| %>
-                    <%= form.text_field :comment, placeholder: "Add a comment", name: "booking[comment]" %>
-                    <%= form.submit "Confirm the booking", class: "btn btn-primary", name: "booking[status]", value: "Confirmed" %>
-                  <% end %>
-                <% end %>
-                  <% if policy(@booking).status? %>
-                  <%= form_with url: [@activity, @booking], method: :patch do |form| %>
-                    <%= form.text_field :comment, placeholder: "Add a comment", name: "booking[comment]" %>
-                    <%= form.submit "Reject the booking", class: "btn btn-primary", name: "booking[status]", value: "Rejected" %>
-                  <% end %>
-                <% end %>
-                <%= link_to "Back to bookings", bookings_path, class: "btn btn-primary" %>
-                <%= link_to "Cancel your booking", activity_booking_destroy_path, class: "btn btn-primary", data: { turbo_method: :delete, turbo_confirm: "Are you sure?"} if policy(@booking).destroy? %>
-              <% elsif @booking.status == "Confirmed" %>
-                <%= link_to "Back to bookings", bookings_path, class: "btn btn-primary" %>
-                <%= button_to "Request for cancellation", [@activity, @booking], params: {booking: {comment: "Cancellations Requested"}}, method: :patch if policy(@booking).edit? %>
-                <%= button_to "Approve cancellation", [@activity, @booking], params: {booking: {status: "Cancelled"}}, method: :patch if policy(@booking).status? if @booking.comment == "Cancellations Requested"%>
-                <% if @booking.status == "Confirmed" && !@booking.completed %>
-                  <%= button_to "Mark as completed", [@activity, @booking], params: {booking: {completed: true, status: "Completed"}}, method: :patch if policy(@booking).status? %>
-                <% end %>
-              <% elsif @booking.status == "Rejected" %>
-                <%= link_to "Back to bookings", bookings_path %>
-              <% elsif @booking.status == "Cancelled" %>
-                <%= link_to "Back to bookings", bookings_path %>
-              <% else %>
-                <%= link_to "Back to bookings", bookings_path %>
-                <%# the cancel your booking is for cleaning data purposes, user is only allowed to cancel the booking when the booking is pending %>
-                <%= link_to "Cancel your booking", activity_booking_destroy_path, data: { turbo_method: :delete, turbo_confirm: "Are you sure?"} if policy(@booking).destroy? %>
-              <% end %>
-            <% elsif @booking.completed && Date.today > @booking.availability.start_time %>
-              <% if !@booking.participant_reviews.present?%>
-                <%= link_to "Leave a review", new_booking_review_path(@booking) %>
-              <% end %>
-              <%= link_to "Back to bookings", bookings_path %>
-              <% if @booking.participant_reviews.present? %>
-                <%= link_to "View review", booking_participant_reviews_path(@booking, @booking.participant_reviews.first) %>
-                <%= link_to "Edit review", edit_activity_booking_review_path(@activity, @booking, @review) if policy(@review).update? %>
-              <% end %>
-            <% else %>
-              <%= link_to "Back to bookings", bookings_path %>
-            <% end %>
-            <%= link_to "Leave a review", new_booking_participant_review_path(@booking), class: "btn btn-primary" %>
-          </div>  
-        </div>
-      </div> <br />
+  <% else %> <%# THIS IS FOR ADMIN #%>
+    <div>
+      <%= render @booking %>
+      <%= link_to "Back to bookings", bookings_path %>
     </div>
-</body>
-
-
-
+  <% end %>
+</div>
