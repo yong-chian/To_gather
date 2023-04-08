@@ -1,11 +1,7 @@
-<body>
-
 <div class="activity-details">
 <div class="container">
   <div class="row activity-details-each">
     <h1 class="activity-title"><%= @activity.name %></h1>
-  </div>
-  <div>
     <p class="activity-description"><%= @activity.description %></p>
     <p class="activity-host"><strong>Hosted by </strong><%= @activity.user.first_name %></p>
     <p class="activity-policies"><strong>Things to note </strong><%= @activity.policies %></p>
@@ -38,14 +34,15 @@
   });
 </script>
 
-<div class="container booking-box">
+<div class="container">
   <div class="row booking-activity-form">
-    <div class="col">
+      <div class="col">
       <h1>New booking</h1>
       <%= render "/bookings/form", activity: @activity, booking: @booking %>
-    </div>
+      </div>
   </div>
 </div>
+<br>
 
 <div class="container">
   <div class="row meeting">
@@ -105,5 +102,3 @@
   <%= link_to "Back to activities", activities_path, class: "btn btn-warning" %>
   <%= button_to "Destroy this activity", @activity, method: :delete if policy(@activity).destroy? %>
 </div>
-
-</body>

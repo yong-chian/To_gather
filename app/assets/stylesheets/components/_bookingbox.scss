@@ -2,8 +2,8 @@
 .booking-box {
   background-color: $light-orange;
   border: 1px solid #ddd;
-  padding: 20px;
-  margin-bottom: 20px;
+  padding: 10px;
+  margin-bottom: 10px;
   border-radius: 10px;
 }
 
@@ -23,31 +23,4 @@
   display: block;
   margin-bottom: 10px;
   font-size: 16px;
-}
-
-/* Style for the form input fields */
-.booking-form input[type=text], .booking-form input[type=email], .booking-form textarea {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-  margin-bottom: 20px;
-  font-size: 16px;
-}
-
-/* Style for the form submit button */
-.booking-form input[type=submit] {
-  background-color: #4CAF50;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 16px;
-}
-
-/* Style for the form submit button when hovering over it */
-.booking-form input[type=submit]:hover {
-  background-color: #45a049;
 }
