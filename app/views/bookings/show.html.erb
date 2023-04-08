@@ -2,7 +2,7 @@
   <% if policy(@booking).host?%>
     <div>
       <% if !@booking.completed && Date.today < @booking.availability.start_time %>
-        <% if @booking.status == "Paid & Pending" %>
+        <% if @booking.status == "Paid & Pending Confirmation" %>
           <h1>You have a new booking! Please review.</h1>
           <%= render @booking %>
           <%= form_with url: [@activity, @booking], method: :patch do |form| %>
@@ -27,11 +27,11 @@
           <h1>You've rejected this booking!</h1>
           <%= render @booking %>
           <%= link_to "Back to bookings", bookings_path %>
-        <% elsif @booking.status == "Pending" %>
+        <% elsif @booking.status == "Pending Payment" %>
         <% end %>
 
       <% elsif !@booking.completed && Date.today >= @booking.availability.start_time %>
-        <% if @booking.status == "Paid & Pending" %>
+        <% if @booking.status == "Paid & Pending Confirmation" %>
           <h1>The date of booking has passed. You've overlooked this booking!</h1>
           <%= render @booking %>
           <%= link_to "Back to bookings", bookings_path %>
@@ -48,7 +48,7 @@
           <h1>You've rejected this booking!</h1>
           <%= render @booking %>
           <%= link_to "Back to bookings", bookings_path %>
-        <% elsif @booking.status == "Pending" %>
+        <% elsif @booking.status == "Pending Payment" %>
         <% end %>
 
       <% elsif @booking.completed && Date.today >= @booking.availability.start_time %>
@@ -79,7 +79,7 @@
           <%= link_to "Cancel your booking", activity_booking_destroy_path, data: { turbo_method: :delete, turbo_confirm: "Are you sure?"} if policy(@booking).destroy? %>
           <%= link_to "Back to bookings", bookings_path %>
 
-        <% elsif @booking.status == "Paid & Pending" %>
+        <% elsif @booking.status == "Paid & Pending Confirmation" %>
           <h1>Booking Payment Received and Request Sent!</h1>
           <p>We have reserved your slot, but your booking has <strong>not been confirmed yet<strong> by the host.</p>
           <%= render @booking %>
@@ -101,7 +101,7 @@
         <% end %>
 
       <% elsif !@booking.completed && Date.today >= @booking.availability.start_time %>
-        <% if @booking.status == "Paid & Pending" %>
+        <% if @booking.status == "Paid & Pending Confirmation" %>
           <h1>The date of booking has passed. The host has overlooked this booking!</h1>
           <%= render @booking %>
           <%= link_to "Back to bookings", bookings_path %>
