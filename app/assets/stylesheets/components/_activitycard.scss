@@ -82,3 +82,22 @@
 .activity-card-image i.fa-calendar:hover {
   color: grey;
 }
+
+
+.fa-stack {
+  margin-top: 6px;
+}
+
+.fa-stack {
+  transform: translateY(6px);
+}
+
+.activities {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.fa-heart {
+  font-size: 1.5em;
+}
