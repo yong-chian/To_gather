@@ -31,6 +31,7 @@
           <li class="nav-item dropdown">
             <%= image_tag "https://www.citypng.com/public/uploads/preview/download-profile-user-round-orange-icon-symbol-png-11639594360ksf6tlhukf.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+              <a class="nav-link" href="#" data-bs-toggle="dropdown"><%= current_user.first_name%></a>
               <%=link_to "Profile", edit_user_registration_path, class: "dropdown-item" %>
               <%=link_to "Favourite", favorites_path, class: "dropdown-item" %>
               <%= link_to "Reservation", bookings_path, class: "dropdown-item" %>
