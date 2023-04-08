@@ -78,7 +78,9 @@ window.onclick = function (event) {
 
   </div>
 
-      <p class="activity-host" style="display: inline-block">
+      <p class="activity-info" style="display: inline-block">
+       <strong><%= activity.average_rating %></strong>
+         <span class="circle circle--4 circle--gray ml-1 mr-1 align-middle"></span>
       Hosted by
       <strong><%= activity.user.first_name %></strong>
     <span class="circle circle--4 circle--gray ml-1 mr-1 align-middle"></span>
