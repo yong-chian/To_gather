@@ -91,3 +91,9 @@
 .fa-stack {
   transform: translateY(6px);
 }
+
+.activities {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
