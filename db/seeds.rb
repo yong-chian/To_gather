@@ -84,7 +84,8 @@ activity_1 = Activity.create(
 )
 image_urls_1 = ["https://res.cloudinary.com/ddk4z9ypx/image/upload/c_scale,e_art:refresh,w_1170/v1679720473/photo-1660099789632-ed5fae6189af_hwqji8.jpg",
                 "https://res.cloudinary.com/ddk4z9ypx/image/upload/v1680256999/MAHJONG-8-800x511_pb9nd0.jpg",
-                "https://res.cloudinary.com/ddk4z9ypx/image/upload/v1680256996/4651e7bd-6533-4aac-996e-b9f920d822ac_n4nik4.webp"]
+                "https://res.cloudinary.com/ddk4z9ypx/image/upload/v1680256996/4651e7bd-6533-4aac-996e-b9f920d822ac_n4nik4.webp",
+                "https://res.cloudinary.com/ddk4z9ypx/image/upload/v1680869531/mahjong-lesson-sheet_to5gge.jpg"]
 
 image_urls_1.each do |url|
   file = URI.open(url)
@@ -233,7 +234,7 @@ end
 activity_2.save!
 
 activity_3 = Activity.create(
-  name: "Organic Soap-making",
+  name: "Soap-making",
   description: "Create your own handmade soap using natural ingredients and essential oils!",
   price: 80,
   max_capacity: 5,
@@ -266,7 +267,7 @@ end
 activity_3.save!
 
 activity_4 = Activity.create(
-  name: "Peranakan Cooking Course",
+  name: "Peranakan Nomz",
   description: "Learn to cook 3 traditional Peranakan dishes with authentic ingredients in our cozy home. The dishes include Ayam Buah Keluak, Babi Pongteh and Kueh Lapis.",
   price: 100,
   max_capacity: 5,
@@ -336,7 +337,7 @@ end
 activity_5.save!
 
 activity_6 = Activity.create(
-  name: "Let's Bake Together Old School Favourites!",
+  name: "Let's Bake!",
   description: "Introduction to basic baking techniques",
   price: 50,
   max_capacity: 5,
@@ -405,7 +406,7 @@ end
 activity_7.save!
 
 activity_8 = Activity.create(
-  name: "Green Fingers: Introducing How to Plant 101",
+  name: "Green Fingers",
   description: "Join me to discover gardening basics, plant care, and sustainable practices!",
   price: 10,
   max_capacity: 5,
@@ -436,7 +437,7 @@ availabilities.map { |time| activity_8.availabilities.build(
 activity_8.save!
 
 activity_9 = Activity.create(
-  name: "Watercolour Painting",
+  name: "Paint and Relax",
   description: "Explore watercolour techniques to create beautiful and vibrant paintings with your family members or friends.",
   price: 40,
   max_capacity: 6,
@@ -473,7 +474,7 @@ activity_9.save!
 # Activities for H2 - Browse Other Options
 
 activity_10 = Activity.create(
-  name: "Basketball for Children",
+  name: "Kids' Basketball",
   description: "Fun basketball program for kids from 6 years old onwards to learn and develop skills." ,
   price: 10,
   max_capacity: 10,
@@ -507,7 +508,7 @@ end
 activity_10.save!
 
 activity_11 = Activity.create(
-  name: "Art of Bird Watching",
+  name: "Bird Watching",
   description: "Discover the art of birdwatching through guided observation!.",
   price: 30,
   max_capacity: 3,
@@ -518,7 +519,6 @@ activity_11 = Activity.create(
 )
 
 image_urls_11 = ["https://res.cloudinary.com/ddk4z9ypx/image/upload/v1680284664/ricemedia-heartland-bird-uncle-9_vwfwjn.jpg",
-                "https://res.cloudinary.com/ddk4z9ypx/image/upload/v1680284647/download_1_qadgun.jpg",
                 "https://res.cloudinary.com/ddk4z9ypx/image/upload/v1680284671/e45ba262750474788e4c37b0e303dd12-scaled_pky4sh.jpg"]
 
 image_urls_11.each do |url|
@@ -543,7 +543,7 @@ end
 activity_11.save!
 
 activity_12 = Activity.create(
-  name: "How to Cycle for Beginners",
+  name: "On 2 wheels",
   description: "3-hour beginner-friendly indoor cycling sessions guided by Coach John with 10 years experience.",
   price: 50,
   max_capacity: 5,
@@ -578,7 +578,7 @@ end
 activity_12.save!
 
 activity_13 = Activity.create(
-  name: "Perfume Making Workshop",
+  name: "Perfume Making",
   description: "Create custom scents using high-quality ingredients and expert guidance.",
   price: 80,
   max_capacity: 4,
@@ -716,7 +716,7 @@ end
 activity_16.save!
 
 activity_17 = Activity.create(
-  name: "Learn Guitar!",
+  name: "Strum + Sing",
   description: "Learn to play guitar with chord progressions and strumming techniques.",
   price: 70,
   max_capacity: 1,
@@ -750,7 +750,7 @@ end
 activity_17.save!
 
 activity_18 = Activity.create(
-  name: "Social Support for Elderly!",
+  name: "Elderly Care",
   description: "We are seeking for like-minded people to join us to deliver food to elderly staying nearby.",
   price: 0,
   max_capacity: 4,
@@ -783,6 +783,7 @@ availabilities.each do |time|
 end
 
 activity_18.save!
+
 
 p "Created #{Activity.count} activities"
 
@@ -869,7 +870,7 @@ p "Created #{ParticipantReview.count} participant_reviews"
 #Chatroom
 
 chatroom = Chatroom.new(name: booking_1.user_id)
-chatroom.booking = booking_1 
+chatroom.booking = booking_1
 chatroom.save!
 # current_timestamp = Time.now
 # chatroom_1 = Chatroom.create(name: "general", booking_id: booking_1, created_at: current_timestamp.to_s, updated_at: current_timestamp.to_s)
