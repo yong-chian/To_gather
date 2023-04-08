@@ -38,3 +38,13 @@
 .nav-item {
   padding-left: 1rem;
 }
+
+
+//Host Activity Button//
+.host-activity:hover {
+  font-family: 'IM Fell Great Primer', "sans-serif";
+  background: $red;
+  border-radius: 5px;
+  color: $white !important;
+  /* Change this to the desired hover color */
+}
