@@ -1,36 +1,64 @@
+<style>
+  .card-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+  }
+  .card-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  .activity-card-image {
+    width: 100%;
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    margin-bottom: 10px;
+  }
+  .card-body {
+    font-size: 14px;
+  }
+  .card-link {
+    color: #007bff;
+    text-decoration: none;
+  }
+  .card-link:hover {
+    text-decoration: underline;
+  }
+</style>
+
 <div class="container">
   <div class="row">
-    <div class="col"></div>
-    <div class="col-5">
-      <h1>My favourites!</h1>
-      <% if @favorites.any? %>
-        <% counter = 1 %>
-        <% @favorites.each do |favorite| %>
-          <div>
-            <%= "#{counter}. #{favorite.favoritable.name}" %>
-          </div>
-
-          <div>
-            <%= favorite.favoritable.description %>
-          </div>
-
-          <div>
-            #TODO SHOW PHOTOS
-          </div>
-
-          <div data-controller="favorite">
-            <%= link_to favorite_activity_path(favorite.favoritable), data: {turbo_method: :post, action: "click->favorite#update"} do %>
-              <i class="fa-heart <%= current_user.favorited?(favorite.favoritable) ? "fa-solid" : "fa-regular" %>" data-favorite-target="bookmark"></i>
-            <% end %>
-          </div>
-
-
-          <% counter += 1 %>
-          <%= link_to "Show this activity", favorite.favoritable %>
+    <div>
+      <br>
+      <h1>My Favorites</h1>
+      <br>
+      <br>
+      <div class="card-container">
+        <% if @favorites.any? %>
+          <% @favorites.each_with_index do |favorite, index| %>
+            <div class="card">
+              <div class="card-title"><%= "#{favorite.favoritable.name}" %></div>
+              <div class="activity-card-image" style="background-image: url(<%= cl_image_path favorite.favoritable.photos.sample.key %>)"></div>
+              <div class="card-body"><%= favorite.favoritable.description %></div>
+              <div class="card-link"><%= link_to "View activity", favorite.favoritable, class: "btn btn-primary" %></div>
+            </div>
+          <% end %>
+        <% else %>
+          <p class="empty-favorites">Your watchlist is empty.</p>
         <% end %>
-      <% else %>
-        <em>your watchlist is empty.</em>
-      <% end %>
+      </div>
     </div>
   </div>
 </div>
+<br>
+<br>
+<br>
