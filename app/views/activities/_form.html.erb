@@ -37,12 +37,17 @@
   </div>
 
   <div class="form-inputs">
-    <%= f.input :policies %>
+    <%= f.input :policies, input_html: { placeholder: "No pets allowed" } %>
+  </div>
+
+  <div>
+    <%= f.association "interests", as: :check_boxes, multiple: true, collection: Interest.all, include_hidden:false, label: "Categories" %>
   </div>
 
   <div class="form-inputs ">
     <%= f.input :photos, as: :file, input_html: { multiple: true } %>
   </div>
+
 
   <div class="form-actions ">
     <%= f.button :submit,class: "btn-primary" %>

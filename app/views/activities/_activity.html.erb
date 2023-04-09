@@ -6,6 +6,7 @@
     <p id="activity-description"></p>
     <p id="activity-meeting-location"></p>
     <p id="activity-policies"></p>
+    <p id="activity-availabilities"></p>
     <%= link_to "View Activity", "#", id: "view-activity-link", class: "btn btn-primary" %>
   </div>
 </div>
@@ -23,15 +24,17 @@ var activityName = document.getElementById("activity-name");
 var activityDescription = document.getElementById("activity-description");
 var activityMeetingLocation = document.getElementById("activity-meeting-location");
 var activityPolicies = document.getElementById("activity-policies");
+var activityAvailabilities = document.getElementById("activity-availabilities");
 var modalTitle = document.getElementById("modal-title");
 
 // When the user clicks the button, open the modal and set the title, activity name, description, meeting location, and policies
-function showPopup(name, description, meetingLocation, policies, activityPath) {
+function showPopup(name, description, meetingLocation, policies, availabilities, activityPath) {
   modal.style.display = "block";
   activityName.innerHTML = name;
   activityDescription.innerHTML = description;
   activityMeetingLocation.innerHTML = "Meeting Location: " + meetingLocation;
   activityPolicies.innerHTML = "Things to note: " + policies;
+  activityAvailabilities.innerHTML = "Upcoming available date: " + availabilities;
   viewActivityLink.href = activityPath;
 }
 
@@ -50,11 +53,15 @@ window.onclick = function (event) {
 
 </script>
 
+<% availabilities = activity.availabilities.map {|availability| availability.start_time.strftime("%A, %B %e, %Y") }.take(7).join(", ") %>
+
+
 <div id="<%= dom_id activity %>" class="activity-card col-sm-3">
 
 <div class="activity-image-container">
   <div class="activity-card-image" style="background-image: url(<%= cl_image_path activity.photos.sample.key %>)">
-    <span class="fa-stack fa-lg" onclick="showPopup('<%= activity.name %>', '<%= activity.description %>', '<%= activity.meeting_location %>', '<%= activity.policies %>', '<%= activity_path(activity) %>')">
+    <span class="fa-stack fa-lg" onclick='showPopup("<%= activity.name %>", "<%= activity.description %>", "<%= activity.meeting_location %>", "<%= activity.policies %>",
+      "<%= availabilities %>","<%= activity_path(activity) %>")'>
       <i class="fa fa-circle fa-stack-2x"></i>
       <i class="fa fa-calendar fa-stack-1x fa-inverse"></i>
     </span>

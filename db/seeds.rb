@@ -27,6 +27,7 @@ test_user = User.new(
   first_name: "John",
   last_name: "Doe",
   phone_no: "88888888",
+  home_address: "Singapore 761674",
   email: "johndoe@example.com",
   password: "password"
 )
