@@ -79,7 +79,7 @@
   <% elsif policy(@booking).participant? %>
     <div>
       <% if !@booking.completed && Date.today < @booking.availability.start_time %>
-        <% if @booking.status == "Pending" %>
+        <% if @booking.status == "Pending Payment" %>
           <h1>Hi, thank you for your booking! Please check out to reserve your spot!</h1>
           <%= render @booking %>
           
@@ -130,7 +130,7 @@
           <h1>Unfortunately, your booking has been rejected!</h1>
           <%= render @booking %>
           <%= link_to "Back to bookings", bookings_path %>
-        <% elsif @booking.status == "Pending" %>
+        <% elsif @booking.status == " Payment" %>
           <h1>You have not make the payment. The booking is expired...</h1>
           <%= render @booking %>
           <%= link_to "Back to bookings", bookings_path %>
@@ -150,7 +150,7 @@
       <% elsif policy(@booking).participant? %>
         <div>
           <% if !@booking.completed && Date.today < @booking.availability.start_time %>
-            <% if @booking.status == "Pending" %>
+            <% if @booking.status == "Pending Payment" %>
               <h1>Hi, thank you for your booking! Please check out to reserve your spot!</h1>
               <%= render @booking %>
               
@@ -201,7 +201,7 @@
               <h1>Unfortunately, your booking has been rejected!</h1>
               <%= render @booking %>
               <%= link_to "Back to bookings", bookings_path %>
-            <% elsif @booking.status == "Pending" %>
+            <% elsif @booking.status == "Pending Payment" %>
               <h1>You have not make the payment. The booking is expired...</h1>
               <%= render @booking %>
               <%= link_to "Back to bookings", bookings_path %>
