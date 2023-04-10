@@ -78,7 +78,7 @@ activity_1 = Activity.create(
   description: "Learn and play Mahjong with experienced players for all levels." ,
   price: 60,
   max_capacity: 4,
-  meeting_location: "Yio Chu Kang, Singapore",
+  meeting_location: "Yishun, Singapore",
   minimum_age: 0,
   policies: "Please inform us for rescheduling in the event you are unwell",
   user: test_user
@@ -578,7 +578,7 @@ end
 activity_12.save!
 
 activity_13 = Activity.create(
-  name: "Perfume Making",
+  name: "The Art of Scent",
   description: "Create custom scents using high-quality ingredients and expert guidance.",
   price: 80,
   max_capacity: 4,
@@ -751,10 +751,10 @@ activity_17.save!
 
 activity_18 = Activity.create(
   name: "Elderly Care",
-  description: "We are seeking for like-minded people to join us to deliver food to elderly staying nearby.",
+  description: "Elderly Care is a community initiative that aims to provide assistance to the elderly population living in the local area. As people age, they often require additional support to maintain their health and wellbeing. This is where Elderly Care comes in - we are a group of like-minded individuals who are passionate about making a positive impact in the lives of our elderly neighbors.",
   price: 0,
   max_capacity: 4,
-  meeting_location: "Khatib, Singapore",
+  meeting_location: "Bishan, Singapore",
   minimum_age: 0,
   policies: "Please inform us for rescheduling in the event you are unwell",
   user: test_user18
@@ -784,6 +784,111 @@ end
 
 activity_18.save!
 
+activity_19 = Activity.create(
+  name: "Grandma's Nasi Lemak",
+  description: "Nasi Lemak is a traditional Malaysian dish that is popular throughout Southeast Asia. It is typically made with coconut rice, fried chicken or fish, sambal sauce, boiled eggs, cucumber slices, and roasted peanuts. Join us in this session to learn our Grandma's recipe!",
+  price: 0,
+  max_capacity: 5,
+  meeting_location: "Canberra, Singapore",
+  minimum_age: 0,
+  policies: "No cancellation is allowed",
+  user: test_user19
+)
+image_urls_19 = ["https://res.cloudinary.com/ddk4z9ypx/image/upload/v1681121040/shutterstock_648976399_yqgnwi.webp",
+                "https://res.cloudinary.com/ddk4z9ypx/image/upload/v1681121058/fun-in-class_t1jsn3.jpg",
+                "https://res.cloudinary.com/ddk4z9ypx/image/upload/v1681138426/download_6_pxz6ce.jpg"]
+
+image_urls_19.each do |url|
+file = URI.open(url)
+activity_19.photos.attach(io: file, filename: "#{activity_19.name}.png", content_type: "image/png")
+end
+
+availabilities = []
+date = Date.today
+30.times do
+  availabilities << date.strftime("%Y-%m-%d")
+  date += 1.day
+end
+
+availabilities.each do |time|
+  activity_19.availabilities.build(
+    start_time: time,
+    end_time: time
+  )
+end
+
+activity_19.save!
+
+activity_20 = Activity.create(
+  name: "Hari Raya Delights",
+  description: "Hari Raya is a festive occasion celebrated by Muslims around the world. It marks the end of Ramadan, a month-long period of fasting, and is a time of joy, gratitude, and celebration. Traditional dishes play an important role in Hari Raya festivities, and some of the most popular dishes are Ketupat, Rendang, and Lemang.",
+  price: 0,
+  max_capacity: 4,
+  meeting_location: "Canberra, Singapore",
+  minimum_age: 0,
+  policies: "Please inform us for rescheduling in the event you are unwell",
+  user: test_user20
+)
+image_urls_20 = ["https://res.cloudinary.com/ddk4z9ypx/image/upload/v1681138679/AH_Pui_Satay_b54n4y.jpg",
+                "https://res.cloudinary.com/ddk4z9ypx/image/upload/v1681138689/sun-may-hiong-satay-house_xwjcrw.jpg",
+                "https://res.cloudinary.com/ddk4z9ypx/image/upload/v1681138966/3086f0ef5c58e30c1c9a1876487_original__zhylvf.avif"]
+
+image_urls_20.each do |url|
+file = URI.open(url)
+activity_18.photos.attach(io: file, filename: "#{activity_20.name}.png", content_type: "image/png")
+end
+
+availabilities = []
+date = Date.today
+30.times do
+  availabilities << date.strftime("%Y-%m-%d")
+  date += 1.day
+end
+
+availabilities.each do |time|
+  activity_20.availabilities.build(
+    start_time: time,
+    end_time: time
+  )
+end
+
+activity_20.save!
+
+activity_21 = Activity.create(
+  name: "Debunk Common Myths at Yishun",
+  description: "There have been reports of criminal activity in Yishun, a suburban town in the northern part of Singapore, which has led to it being labeled as a "dangerous" or "cursed" town by some people. Let us show you around the beauty of Yishun as it is not what the media has depicted!",
+  price: 0,
+  max_capacity: 4,
+  meeting_location: "Yishun, Singapore",
+  minimum_age: 0,
+  policies: "Please inform us for rescheduling in the event you are unwell",
+  user: test_user21
+)
+image_urls_21 = ["https://res.cloudinary.com/ddk4z9ypx/image/upload/v1681139907/yishun-block-666_zed7u2.jpg",
+                "https://res.cloudinary.com/ddk4z9ypx/image/upload/v1681139945/Street-talk-yishun-6_l8znst.jpg",
+                "https://res.cloudinary.com/ddk4z9ypx/image/upload/v1681139940/Cover-Places-To-Visit-Yishunepb0310_qmmvji.webp"]
+
+image_urls_21.each do |url|
+file = URI.open(url)
+activity_18.photos.attach(io: file, filename: "#{activity_18.name}.png", content_type: "image/png")
+end
+
+availabilities = []
+date = Date.today
+30.times do
+  availabilities << date.strftime("%Y-%m-%d")
+  date += 1.day
+end
+
+availabilities.each do |time|
+  activity_21.availabilities.build(
+    start_time: time,
+    end_time: time
+  )
+end
+
+activity_21.save!
+
 
 p "Created #{Activity.count} activities"
 
@@ -794,16 +899,146 @@ faqs = [
   ["What is the price for student?", "Hi, the price rate will be similar - there is no discount at the moment but do check back!"]
 ]
 
+
 Activity.all.each do |activity|
   faqs.each do |faq|
     activity.faqs.create(question: faq[0], answer: faq[1])
-  end
 end
 
-interests = ["Name1", "Name2", "Name3"]
-interests.each do |interest|
+Interest.create!(name: "Arts and Crafts", icon:'<i class="fas fa-palette"></i>')
+Interest.create!(name: "Book Clubs", icon:'<i class="fas fa-book-open"></i>')
+Interest.create!(name: "Cultural Celebrations", icon:'<i class="fas fa-theater-masks"></i>')
+Interest.create!(name: "Charity Drives", icon: '<i class="fas fa-hand-holding-heart"></i>')
+Interest.create!(name: "Education", icon:'<i class="fas fa-graduation-cap"></i>')
+Interest.create!(name: "Entertainment", icon:'<i class="fas fa-gamepad"></i>')
+Interest.create!(name: "Food", icon:'<i class="fas fa-hamburger"></i>')
+Interest.create!(name: "Gardening", icon:'<i class="fas fa-seedling"></i>')
+Interest.create!(name: "Technology", icon:'<i class="fas fa-laptop-code"></i>')
+Interest.create!(name: "Music", icon:'<i class="fas fa-music"></i>')
+Interest.create!(name: "Sports & Wellness", icon:'<i class="fas fa-biking"></i>')
+Interest.create!(name: "SG Heritage Tours", icon:'<i class="fas fa-binoculars"></i>')
+Interest.create!(name: "Social Clubs", icon:'<i class="fas fa-user-friends"></i>')
+Interest.create!(name: "Professional Development", icon:'<i class="fas fa-chalkboard-teacher"></i>')
+
+interests_1 = ["Entertainment"]
+interests_1.each do |interest|
   activity_1.interests << Interest.find_by(name: interest)
-end (edited)
+end
+
+interests_2 = ["Sports & Wellness"]
+interests_2.each do |interest|
+  activity_2.interests << Interest.find_by(name: interest)
+end
+
+interests_3 = ["Entertainment"]
+interests_3.each do |interest|
+  activity_3.interests << Interest.find_by(name: interest)
+end
+
+interests_4 = ["Cultural Celebrations", "Food"]
+interests_4.each do |interest|
+  activity_4.interests << Interest.find_by(name: interest)
+  activity_4.interests << Interest.find_by(name: interest)
+end
+
+interests_5 = ["Food", "Name2", "Name3"]
+interests_5.each do |interest|
+  activity_5.interests << Interest.find_by(name: interest)
+end
+
+interests_6 = ["Food", "Name2", "Name3"]
+interests_6.each do |interest|
+  activity_6.interests << Interest.find_by(name: interest)
+end
+
+interests_7 = ["Food", "Name2", "Name3"]
+interests_7.each do |interest|
+  activity_7.interests << Interest.find_by(name: interest)
+end
+
+interests_8 = ["Food", "Name2", "Name3"]
+interests_8.each do |interest|
+  activity_8.interests << Interest.find_by(name: interest)
+end
+
+interests_9 = ["Food", "Name2", "Name3"]
+interests_9.each do |interest|
+  activity_9.interests << Interest.find_by(name: interest)
+end
+
+interests_10 = ["Food", "Name2", "Name3"]
+interests_10.each do |interest|
+  activity_10.interests << Interest.find_by(name: interest)
+end
+
+interests_11 = ["Food", "Name2", "Name3"]
+interests_11.each do |interest|
+  activity_11.interests << Interest.find_by(name: interest)
+end
+
+
+interests_11 = ["Food", "Name2", "Name3"]
+interests_11.each do |interest|
+  activity_11.interests << Interest.find_by(name: interest)
+end
+
+
+interests_12 = ["Food", "Name2", "Name3"]
+interests_12.each do |interest|
+  activity_12.interests << Interest.find_by(name: interest)
+end
+
+
+interests_13 = ["Food", "Name2", "Name3"]
+interests_13.each do |interest|
+  activity_13.interests << Interest.find_by(name: interest)
+end
+
+
+interests_14 = ["Food", "Name2", "Name3"]
+interests_14.each do |interest|
+  activity_14.interests << Interest.find_by(name: interest)
+end
+
+
+interests_15 = ["Food", "Name2", "Name3"]
+interests_15.each do |interest|
+  activity_15.interests << Interest.find_by(name: interest)
+end
+
+
+interests_16 = ["Food", "Name2", "Name3"]
+interests_16.each do |interest|
+  activity_16.interests << Interest.find_by(name: interest)
+end
+
+
+interests_17 = ["Food", "Name2", "Name3"]
+interests_17.each do |interest|
+  activity_17.interests << Interest.find_by(name: interest)
+end
+
+
+interests_18 = ["Food", "Name2", "Name3"]
+interests_18.each do |interest|
+  activity_18.interests << Interest.find_by(name: interest)
+end
+
+
+interests_19 = ["Food", "Name2", "Name3"]
+interests_19.each do |interest|
+  activity_19.interests << Interest.find_by(name: interest)
+end
+
+interests_20 = ["Food", "Name2", "Name3"]
+interests_20.each do |interest|
+  activity_20.interests << Interest.find_by(name: interest)
+end
+
+interests_21 = ["Food", "Name2", "Name3"]
+interests_21.each do |interest|
+  activity_21.interests << Interest.find_by(name: interest)
+end
 
 # TODO: Created booking
 # booking_1 = Booking.create(
