@@ -1,101 +1,105 @@
-<br>
-  <h1 class="text-center"><br /><span><%= @booking.availability.activity.name %></span><br /></h1>
-<br><br/>
-<div class="container text-center booking-show" style="background-color: white">
+<br/>
+<div class="d-flex justify-content-start">
+</div><br/>
+  <h1 class="text-center"><span><%= @booking.availability.activity.name %></span></h1>
+  <br/><%= link_to "Back to bookings", bookings_path, class: "btn btn-primary back-to-booking" %>
+<br/>
+<div class="container text-center booking-show" style="background: var(--bs-white);">
+
   <% if policy(@booking).host?%>
     <div>
       <% if !@booking.completed && Date.today < @booking.availability.start_time %>
         <% if @booking.status == "Paid & Pending Confirmation" %>
-          <h1>You have a new booking! Please review.</h1>
+          <h3>A new booking has been made. Please review it.</h3>
           <div class="activity-photos">
             <% photo = @activity.photos.first %>
-              <%= cl_image_tag photo.key, height: 250, width: 350, crop: :fill %>
-          </div><br />
+              <%= cl_image_tag photo.key, height: 150, width: 250, crop: :fill %>
+          </div>
           <%= render @booking %>
           <%= form_with url: [@activity, @booking], method: :patch do |form| %>
             <%= form.text_field :comment, placeholder: "Add a comment", name: "booking[comment]" %>
-            <%= form.submit "Confirm the booking", class: "btn btn-primary", name: "booking[status]", value: "Confirmed" %>
+            <%= form.submit "Confirm the booking", class: "btn btn-primary w-50", name: "booking[status]", value: "Confirmed" %>
           <% end %>
           <%= form_with url: [@activity, @booking], method: :patch do |form| %>
             <%= form.text_field :comment, placeholder: "Add a comment", name: "booking[comment]" %>
-            <%= form.submit "Reject the booking", class: "btn btn-primary", name: "booking[status]", value: "Rejected" %>
+            <%= form.submit "Reject the booking", class: "btn btn-primary w-50", name: "booking[status]", value: "Rejected" %>
           <% end %>
-          <%= link_to "Back to bookings", bookings_path %>
+
         <% elsif @booking.status == "Confirmed" %>
-          <h1>You have confirmed this booking!</h1>
+          <h3>This booking has been confirmed by you!</h3>
           <div class="activity-photos">
             <% photo = @activity.photos.first %>
-            <%= cl_image_tag photo.key, height: 250, width: 350, crop: :fill %>
+            <%= cl_image_tag photo.key, height: 150, width: 250, crop: :fill %>
           </div><br />
           <%= render @booking %>
-          <%= link_to "Back to bookings", bookings_path %>
-          <%= button_to "Approve cancellation", [@activity, @booking], params: {booking: {status: "Cancelled"}}, method: :patch if @booking.comment == "Cancellations Requested"%>
+
+          <%= button_to "Approve cancellation", [@activity, @booking], params: {booking: {status: "Cancelled"}}, method: :patch, class: "btn btn-primary w-50" if @booking.comment == "Cancellations Requested"%>
         <% elsif @booking.status == "Cancelled" %>
-          <h1>This booking has been cancelled!</h1>
+          <h3>This booking has been cancelled!</h3>
           <div class="activity-photos">
             <% photo = @activity.photos.first %>
-            <%= cl_image_tag photo.key, height: 250, width: 350, crop: :fill %>
+            <%= cl_image_tag photo.key, height: 150, width: 250, crop: :fill %>
           </div><br />
           <%= render @booking %>
-          <%= link_to "Back to bookings", bookings_path %>
+
         <% elsif @booking.status == "Rejected" %>
-          <h1>You've rejected this booking!</h1>
+          <h3>You've rejected this booking!</h3>
           <div class="activity-photos">
             <% photo = @activity.photos.first %>
-            <%= cl_image_tag photo.key, height: 250, width: 350, crop: :fill %>
+            <%= cl_image_tag photo.key, height: 150, width: 250, crop: :fill %>
           </div><br />
           <%= render @booking %>
-          <%= link_to "Back to bookings", bookings_path %>
+
         <% elsif @booking.status == "Pending Payment" %>
         <% end %>
 
       <% elsif !@booking.completed && Date.today >= @booking.availability.start_time %>
         <% if @booking.status == "Paid & Pending Confirmation" %>
-          <h1>The date of booking has passed. You've overlooked this booking!</h1>
+          <h3>The date of booking has passed. You've overlooked this booking!</h3>
           <div class="activity-photos">
             <% photo = @activity.photos.first %>
-            <%= cl_image_tag photo.key, height: 250, width: 350, crop: :fill %>
+            <%= cl_image_tag photo.key, height: 150, width: 250, crop: :fill %>
           </div><br />
           <%= render @booking %>
-          <%= link_to "Back to bookings", bookings_path %>
+
         <% elsif @booking.status == "Confirmed" %>
-          <h1>You have completed the activity. Please mark the activity as completed!</h1>
+          <h3>You have completed the activity. Please mark the activity as completed!</h3>
           <div class="activity-photos">
             <% photo = @activity.photos.first %>
-            <%= cl_image_tag photo.key, height: 250, width: 350, crop: :fill %>
+            <%= cl_image_tag photo.key, height: 150, width: 250, crop: :fill %>
           </div><br />
           <%= render @booking %>
-          <%= button_to "Mark as completed", [@activity, @booking], params: {booking: {completed: true, status: "Completed"}}, method: :patch if policy(@booking).status? %>
-          <%= link_to "Back to bookings", bookings_path %>
+          <%= button_to "Mark as completed", [@activity, @booking], params: {booking: {completed: true, status: "Completed"}}, method: :patch, class: "btn btn-primary w-50" if policy(@booking).status? %>
+
         <% elsif @booking.status == "Cancelled" %>
-          <h1>This booking has been cancelled!</h1>
+          <h3>This booking has been cancelled!</h3>
           <div class="activity-photos">
             <% photo = @activity.photos.first %>
-            <%= cl_image_tag photo.key, height: 250, width: 350, crop: :fill %>
+            <%= cl_image_tag photo.key, height: 150, width: 250, crop: :fill %>
           </div><br />
           <%= render @booking %>
-          <%= link_to "Back to bookings", bookings_path %>
+
         <% elsif @booking.status == "Rejected" %>
-          <h1>You've rejected this booking!</h1>
+          <h3>You've rejected this booking!</h3>
           <div class="activity-photos">
             <% photo = @activity.photos.first %>
-            <%= cl_image_tag photo.key, height: 250, width: 350, crop: :fill %>
+            <%= cl_image_tag photo.key, height: 150, width: 250, crop: :fill %>
           </div><br />
           <%= render @booking %>
-          <%= link_to "Back to bookings", bookings_path %>
+
         <% elsif @booking.status == "Pending Payment" %>
         <% end %>
 
           <% elsif @booking.completed && Date.today >= @booking.availability.start_time %>
             <% if @booking.status == "Confirmed" %>
-              <h1>The booking is completed!</h1>
+              <h3>Booking has been confirmed!</h3>
               <div class="activity-photos">
                 <% photo = @activity.photos.first %>
-                <%= cl_image_tag photo.key, height: 250, width: 350, crop: :fill %>
+                <%= cl_image_tag photo.key, height: 150, width: 250, crop: :fill %>
               </div><br />
               <%= render @booking %>
-              <%= link_to "View review", booking_participant_review_path(@booking, @booking.participant_reviews.first) if @booking.participant_reviews.present? %>
-              <%= link_to "Back to bookings", bookings_path %>
+              <%= link_to "View review", booking_participant_review_path(@booking, @booking.participant_reviews.first), class: "btn btn-primary" %>
+
             <% end %>
 
       <% else %>
@@ -107,112 +111,112 @@
     <div>
       <% if !@booking.completed && Date.today < @booking.availability.start_time %>
         <% if @booking.status == "Pending Payment" %>
-          <h1>Hi, thank you for your booking! Please check out to reserve your spot!</h1>
+          <h3>Greetings, we appreciate your reservation!</h3> 
+          <h3>Kindly proceed to checkout in order to confirm your spot.</h3>
           <div class="activity-photos">
             <% photo = @activity.photos.first %>
-            <%= cl_image_tag photo.key, height: 250, width: 350, crop: :fill %>
-          </div><br />
+            <%= cl_image_tag photo.key, height: 200, width: 250, crop: :fill %>
+          </div>
           <%= render @booking %>
           
           <%= form_with url: orders_path do %>
             <%= hidden_field_tag 'activity_id', @activity.id %>
             <%= hidden_field_tag 'booking_id', @booking.id %>
             <%= submit_tag 'Checkout', class: 'btn btn-primary w-50' %>
-          <% end %>
-          <%= link_to "Modify your booking", edit_activity_booking_path(@activity, @booking) if policy(@booking).edit? %>
-          <%= link_to "Cancel your booking", activity_booking_destroy_path, data: { turbo_method: :delete, turbo_confirm: "Are you sure?"} if policy(@booking).destroy? %>
-          <%= link_to "Back to bookings", bookings_path %>
+          <% end %><br/>
+          <%= link_to "Modify your booking", edit_activity_booking_path(@activity, @booking), class: 'btn btn-primary w-50' if policy(@booking).edit? %><br/><br/>
+          <%= link_to "Cancel your booking", activity_booking_destroy_path, data: { turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: 'btn btn-primary w-50' if policy(@booking).destroy? %><br/><br/>
 
         <% elsif @booking.status == "Paid & Pending Confirmation" %>
-          <h1>Booking Payment Received and Request Sent!</h1>
-          <p>We have reserved your slot, but your booking has <strong>not been confirmed yet<strong> by the host.</p>
+          <h3>Booking Payment Received and Request Sent!</h3>
+          <p>We have reserved your slot, but your booking has <strong>not been confirmed yet</strong> by the host.</p>
           <div class="activity-photos">
             <% photo = @activity.photos.first %>
-            <%= cl_image_tag photo.key, height: 250, width: 350, crop: :fill %>
+            <%= cl_image_tag photo.key, height: 150, width: 250, crop: :fill %>
           </div><br />
           <%= render @booking %>
-          <%= button_to "Request for cancellation and refund", [@activity, @booking], params: {booking: {comment: "Cancellations Requested"}}, method: :patch if policy(@booking).edit? %>
-          <%= link_to "Back to bookings", bookings_path %>
+          <%= button_to "Request for cancellation and refund", [@activity, @booking], params: {booking: {comment: "Cancellations Requested"}}, method: :patch, class: 'btn btn-primary w-50' if policy(@booking).edit? %>
+
         <% elsif @booking.status == "Confirmed" %>
-          <h1>Your booking is now confirmed!</h1>
+          <h3>Your booking is now confirmed!</h3>
           <div class="activity-photos">
             <% photo = @activity.photos.first %>
-            <%= cl_image_tag photo.key, height: 250, width: 350, crop: :fill %>
+            <%= cl_image_tag photo.key, height: 150, width: 250, crop: :fill %>
           </div><br />
           <%= render @booking %>
-          <%= button_to "Request for cancellation and refund", [@activity, @booking], params: {booking: {comment: "Cancellations Requested"}}, method: :patch if policy(@booking).edit? %>
-          <%= link_to "Back to bookings", bookings_path %>
+          <%= button_to "Request for cancellation and refund", [@activity, @booking], params: {booking: {comment: "Cancellations Requested"}}, method: :patch, class: 'btn btn-primary w-50' if policy(@booking).edit? %>
+
         <% elsif @booking.status == "Cancelled" %>
-          <h1>Your booking has been cancelled!</h1>
+          <h3>Your booking has been cancelled!</h3>
           <div class="activity-photos">
             <% photo = @activity.photos.first %>
-            <%= cl_image_tag photo.key, height: 250, width: 350, crop: :fill %>
+            <%= cl_image_tag photo.key, height: 150, width: 250, crop: :fill %>
           </div><br />
           <%= render @booking %>
-          <%= link_to "Back to bookings", bookings_path %>
+
         <% elsif @booking.status == "Rejected" %>
-          <h1>Unfortunately, your booking has been rejected!</h1>
+          <h3>Unfortunately, your booking has been rejected!</h3>
           <div class="activity-photos">
             <% photo = @activity.photos.first %>
-            <%= cl_image_tag photo.key, height: 250, width: 350, crop: :fill %>
+            <%= cl_image_tag photo.key, height: 150, width: 250, crop: :fill %>
           </div><br />
           <%= render @booking %>
-          <%= link_to "Back to bookings", bookings_path %>
+
         <% end %>
 
       <% elsif !@booking.completed && Date.today >= @booking.availability.start_time %>
         <% if @booking.status == "Paid & Pending Confirmation" %>
-          <h1>The date of booking has passed. The host has overlooked this booking!</h1>
+          <h3>The date of booking has passed. The host has overlooked this booking!</h3>
           <div class="activity-photos">
             <% photo = @activity.photos.first %>
-            <%= cl_image_tag photo.key, height: 250, width: 350, crop: :fill %>
+            <%= cl_image_tag photo.key, height: 150, width: 250, crop: :fill %>
           </div><br />
           <%= render @booking %>
-          <%= link_to "Back to bookings", bookings_path %>
+
         <% elsif @booking.status == "Confirmed" %>
-          <h1>You have completed the activity. Please wait while your booking is confirmed as completed!</h1>
+          <h3>You have completed the activity. Please wait while your booking is confirmed as completed!</h3>
           <div class="activity-photos">
             <% photo = @activity.photos.first %>
-            <%= cl_image_tag photo.key, height: 250, width: 350, crop: :fill %>
+            <%= cl_image_tag photo.key, height: 150, width: 250, crop: :fill %>
           </div><br />
           <%= render @booking %>
-          <%= link_to "Back to bookings", bookings_path %>
+
         <% elsif @booking.status == "Cancelled" %>
-          <h1>Your booking has been cancelled!</h1>
+          <h3>Your booking has been cancelled!</h3>
           <div class="activity-photos">
             <% photo = @activity.photos.first %>
-            <%= cl_image_tag photo.key, height: 250, width: 350, crop: :fill %>
+            <%= cl_image_tag photo.key, height: 150, width: 250, crop: :fill %>
           </div><br />
           <%= render @booking %>
-          <%= link_to "Back to bookings", bookings_path %>
+
         <% elsif @booking.status == "Rejected" %>
-          <h1>Unfortunately, your booking has been rejected!</h1>
+          <h3>Unfortunately, your booking has been rejected!</h3>
           <div class="activity-photos">
             <% photo = @activity.photos.first %>
-            <%= cl_image_tag photo.key, height: 250, width: 350, crop: :fill %>
+            <%= cl_image_tag photo.key, height: 150, width: 250, crop: :fill %>
           </div><br />
           <%= render @booking %>
-          <%= link_to "Back to bookings", bookings_path %>
+
         <% elsif @booking.status == " Payment" %>
-          <h1>You have not make the payment. The booking is expired...</h1>
+          <h3>The booking has expired as payment has not been made yet.</h3>
           <div class="activity-photos">
             <% photo = @activity.photos.first %>
-            <%= cl_image_tag photo.key, height: 250, width: 350, crop: :fill %>
+            <%= cl_image_tag photo.key, height: 150, width: 250, crop: :fill %>
           </div><br />
           <%= render @booking %>
-          <%= link_to "Back to bookings", bookings_path %>
+
         <% end %>
 
       <% elsif @booking.completed && Date.today >= @booking.availability.start_time %>
         <% if @booking.status == "Confirmed" %>
-          <h1>Your booking is completed! You may leave a review for the activity</h1>
+          <h3>Your booking is completed! You may leave a review for the activity</h3>
           <div class="activity-photos">
             <% photo = @activity.photos.first %>
-            <%= cl_image_tag photo.key, height: 250, width: 350, crop: :fill %>
+            <%= cl_image_tag photo.key, height: 150, width: 250, crop: :fill %>
           </div><br />
           <%= render @booking %>
           <% if !@booking.participant_reviews.present?%>
-            <%= link_to "Leave a review", new_booking_participant_review_path(@booking) %>
+            <%= link_to "Leave a review", new_booking_participant_review_path(@booking), class: 'btn btn-primary w-50' %>
           <% else %>
           <%# show nothing when the user booking is pending and not paid %>
           <% end %>
@@ -222,10 +226,10 @@
         <div>
           <% if !@booking.completed && Date.today < @booking.availability.start_time %>
             <% if @booking.status == "Pending Payment" %>
-              <h1>Hi, thank you for your booking! Please check out to reserve your spot!</h1>
+              <h3>Hi, thank you for your booking! Please check out to reserve your spot!</h3>
               <div class="activity-photos">
                 <% photo = @activity.photos.first %>
-                <%= cl_image_tag photo.key, height: 250, width: 350, crop: :fill %>
+                <%= cl_image_tag photo.key, height: 150, width: 250, crop: :fill %>
               </div><br />
               <%= render @booking %>
               
@@ -236,97 +240,97 @@
               <% end %>
               <%= link_to "Modify your booking", edit_activity_booking_path(@activity, @booking) if policy(@booking).edit? %>
               <%= link_to "Cancel your booking", activity_booking_destroy_path, data: { turbo_method: :delete, turbo_confirm: "Are you sure?"} if policy(@booking).destroy? %>
-              <%= link_to "Back to bookings", bookings_path %>
 
-            <% elsif @booking.status == "Paid & Pending" %>
-              <h1>Booking Payment Received and Request Sent!</h1>
-              <p>We have reserved your slot, but your booking has <strong>not been confirmed yet<strong> by the host.</p>
+
+            <% elsif @booking.status == "Paid & Pending Confirmation" %>
+              <h3>Booking Payment Received and Request Sent!</h3>
+              <p>We have reserved your slot, but your booking has <strong>not been confirmed yet</strong> by the host.</p>
               <%= render @booking %>
               <%= button_to "Request for cancellation and refund", [@activity, @booking], params: {booking: {comment: "Cancellations Requested"}}, method: :patch if policy(@booking).edit? %>
-              <%= link_to "Back to bookings", bookings_path %>
+
             <% elsif @booking.status == "Confirmed" %>
-              <h1>Your booking is now confirmed!</h1>
+              <h3>Your booking is now confirmed!</h3>
               <div class="activity-photos">
                 <% photo = @activity.photos.first %>
-                <%= cl_image_tag photo.key, height: 250, width: 350, crop: :fill %>
+                <%= cl_image_tag photo.key, height: 150, width: 250, crop: :fill %>
               </div><br />
               <%= render @booking %>
               <%= button_to "Request for cancellation and refund", [@activity, @booking], params: {booking: {comment: "Cancellations Requested"}}, method: :patch if policy(@booking).edit? %>
-              <%= link_to "Back to bookings", bookings_path %>
+
             <% elsif @booking.status == "Cancelled" %>
-              <h1>Your booking has been cancelled!</h1>
+              <h3>Your booking has been cancelled!</h3>
               <%= render @booking %>
-              <%= link_to "Back to bookings", bookings_path %>
+
             <% elsif @booking.status == "Rejected" %>
-              <h1>Unfortunately, your booking has been rejected!</h1>
+              <h3>Unfortunately, your booking has been rejected!</h3>
               <%= render @booking %>
-              <%= link_to "Back to bookings", bookings_path %>
+
             <% end %>
 
           <% elsif !@booking.completed && Date.today >= @booking.availability.start_time %>
             <% if @booking.status == "Paid & Pending" %>
-              <h1>The date of booking has passed. The host has overlooked this booking!</h1>
+              <h3>The date of booking has passed. The host has overlooked this booking!</h3>
                 <div class="activity-photos">
                   <% photo = @activity.photos.first %>
-                  <%= cl_image_tag photo.key, height: 250, width: 350, crop: :fill %>
+                  <%= cl_image_tag photo.key, height: 150, width: 250, crop: :fill %>
                 </div><br />
               <%= render @booking %>
-              <%= link_to "Back to bookings", bookings_path %>
+
             <% elsif @booking.status == "Confirmed" %>
-              <h1>You have completed the activity. Please wait while your booking is confirmed as completed!</h1>
+              <h3>You have completed the activity. Please wait while your booking is confirmed as completed!</h3>
               <div class="activity-photos">
                 <% photo = @activity.photos.first %>
-                <%= cl_image_tag photo.key, height: 250, width: 350, crop: :fill %>
+                <%= cl_image_tag photo.key, height: 150, width: 250, crop: :fill %>
               </div><br />
               <%= render @booking %>
-              <%= link_to "Back to bookings", bookings_path %>
+
             <% elsif @booking.status == "Cancelled" %>
-              <h1>Your booking has been cancelled!</h1>
+              <h3>Your booking has been cancelled!</h3>
                 <div class="activity-photos">
                   <% photo = @activity.photos.first %>
-                  <%= cl_image_tag photo.key, height: 250, width: 350, crop: :fill %>
+                  <%= cl_image_tag photo.key, height: 150, width: 250, crop: :fill %>
                 </div><br />
               <%= render @booking %>
-              <%= link_to "Back to bookings", bookings_path %>
+
             <% elsif @booking.status == "Rejected" %>
-              <h1>Unfortunately, your booking has been rejected!</h1>
+              <h3>Unfortunately, your booking has been rejected!</h3>
                 <div class="activity-photos">
                   <% photo = @activity.photos.first %>
-                  <%= cl_image_tag photo.key, height: 250, width: 350, crop: :fill %>
+                  <%= cl_image_tag photo.key, height: 150, width: 250, crop: :fill %>
                 </div><br />
               <%= render @booking %>
-              <%= link_to "Back to bookings", bookings_path %>
+
             <% elsif @booking.status == "Pending Payment" %>
-              <h1>You have not make the payment. The booking is expired...</h1>
+              <h3>You have not make the payment. The booking is expired...</h3>
               <div class="activity-photos">
                 <% photo = @activity.photos.first %>
-                <%= cl_image_tag photo.key, height: 250, width: 350, crop: :fill %>
+                <%= cl_image_tag photo.key, height: 150, width: 250, crop: :fill %>
               </div><br />
               <%= render @booking %>
-              <%= link_to "Back to bookings", bookings_path %>
+
             <% end %>
 
           <% elsif @booking.completed && Date.today >= @booking.availability.start_time %>
             <% if @booking.status == "Confirmed" %>
-              <h1>Your booking is completed! You may leave a review for the activity</h1>
+              <h3>Congratulations, your booking is now complete! As a valued participant, we would like to invite you to share your feedback by leaving a review for the activity.</h3>
               <%= render @booking %>
               <% if !@booking.participant_reviews.present?%>
                 <%= link_to "Leave a review", new_booking_participant_review_path(@booking) %>
               <% else %>
-                <%= link_to "View review", booking_participant_review_path(@booking, @booking.participant_reviews.first) %>
-                <%= link_to "Edit review", edit_booking_participant_review_path(@booking, @participant_review) if policy(@participant_review).update? %>
+                <%= link_to "View review", booking_participant_review_path(@booking, @booking.participant_reviews.first), class: "btn btn-primary" %>
+                <%= link_to "Edit review", edit_booking_participant_review_path(@booking, @participant_review), class: 'btn btn-primary w-50' if policy(@participant_review).update? %>
               <% end %>
-              <%= link_to "Back to bookings", bookings_path %>
+
             <% end %>
 
           <% else %>
-            <h1>You have not make the payment. The booking is expired...</h1>
+            <h3>You have not make the payment. The booking is expired...</h3>
             <div class="activity-photos">
               <% photo = @activity.photos.first %>
-              <%= cl_image_tag photo.key, height: 250, width: 350, crop: :fill %>
+              <%= cl_image_tag photo.key, height: 150, width: 250, crop: :fill %>
             </div><br />
             <%= render @booking %>
-            <%= link_to "Back to bookings", bookings_path %>
+
           <% end %>
         </div>
 
@@ -334,10 +338,10 @@
         <div>
           <div class="activity-photos">
             <% photo = @activity.photos.first %>
-            <%= cl_image_tag photo.key, height: 250, width: 350, crop: :fill %>
+            <%= cl_image_tag photo.key, height: 150, width: 250, crop: :fill %>
           </div><br />
           <%= render @booking %>
-          <%= link_to "Back to bookings", bookings_path %>
+
         </div>
       <% end %>
     </div>
