@@ -273,7 +273,7 @@ activity_3.save!
 activity_4 = Activity.create(
   name: "Peranakan Nomz",
   description: "Learn to cook 3 traditional Peranakan dishes with authentic ingredients in our cozy home. The dishes include Ayam Buah Keluak, Babi Pongteh and Kueh Lapis.",
-  price: 100,
+  price: 99,
   max_capacity: 5,
   meeting_location: "Khatib, Singapore",
   minimum_age: 0,
@@ -412,7 +412,7 @@ activity_7.save!
 activity_8 = Activity.create(
   name: "Green Fingers",
   description: "Join me to discover gardening basics, plant care, and sustainable practices!",
-  price: 10,
+  price: 25,
   max_capacity: 5,
   meeting_location: "Khatib, Singapore",
   minimum_age: 0,
@@ -756,7 +756,7 @@ activity_17.save!
 activity_18 = Activity.create(
   name: "Elderly Care",
   description: "Elderly Care is a community initiative that aims to provide assistance to the elderly population living in the local area. As people age, they often require additional support to maintain their health and wellbeing. This is where Elderly Care comes in - we are a group of like-minded individuals who are passionate about making a positive impact in the lives of our elderly neighbors.",
-  price: 0,
+  price: 5,
   max_capacity: 4,
   meeting_location: "Bishan, Singapore",
   minimum_age: 0,
@@ -789,9 +789,9 @@ end
 activity_18.save!
 
 activity_19 = Activity.create(
-  name: "Grandma's Nasi Lemak",
+  name: "Granny Nasi Lemak",
   description: "Nasi Lemak is a traditional Malaysian dish that is popular throughout Southeast Asia. It is typically made with coconut rice, fried chicken or fish, sambal sauce, boiled eggs, cucumber slices, and roasted peanuts. Join us in this session to learn our Grandma's recipe!",
-  price: 0,
+  price: 60,
   max_capacity: 5,
   meeting_location: "Canberra, Singapore",
   minimum_age: 0,
@@ -826,7 +826,7 @@ activity_19.save!
 activity_20 = Activity.create(
   name: "Hari Raya Delights",
   description: "Hari Raya is a festive occasion celebrated by Muslims around the world. It marks the end of Ramadan, a month-long period of fasting, and is a time of joy, gratitude, and celebration. Traditional dishes play an important role in Hari Raya festivities, and some of the most popular dishes are Ketupat, Rendang, and Lemang.",
-  price: 0,
+  price: 75,
   max_capacity: 4,
   meeting_location: "Canberra, Singapore",
   minimum_age: 0,
@@ -861,7 +861,7 @@ activity_20.save!
 activity_21 = Activity.create(
   name: "Dangerous Yishun?",
   description: "There have been reports of criminal activity in Yishun, a suburban town in the northern part of Singapore, which has led to it being labeled as a dangerous  town by some people. Let us show you around the beauty of Yishun as it is not what the media has depicted!",
-  price: 0,
+  price: 15,
   max_capacity: 4,
   meeting_location: "Yishun, Singapore",
   minimum_age: 0,
