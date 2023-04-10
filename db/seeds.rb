@@ -156,7 +156,7 @@ booking_4 = Booking.new(
   user_id: test_user5.id,
   availability_id: selected_availability.id,
   activity_id: selected_availability.activity_id,
-  user_name: "Christopher Ng",
+  user_name: "Chris Ng",
   number_of_pax: 2,
   status: "Confirmed",
   comment: "",
@@ -195,7 +195,7 @@ review_3.save!
 review_4 = ParticipantReview.new(
   booking_id: booking_4.id,
   activity_id: booking_4.activity_id,
-  user_name: "Christopher Ng",
+  user_name: "Chris Ng",
   content: "It was exciting to challenge with the pros",
   activity_rating: 4
 )
