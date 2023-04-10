@@ -1,8 +1,18 @@
 <div class="activity-details">
 <div class="container">
   <div class="row activity-details-each">
-    <h1 class="activity-title"><%= @activity.name %></h1>
+    <h2 class="activity-title"><%= @activity.name %></h2>
     <div class="horizontal-line"></div>
+
+<div>
+  <p class="activity-host" style="display: inline-block;margin-bottom: 1px">
+  <strong>Hosted by </strong><%= @activity.user.first_name %>
+  <span class="circle circle--4 circle--gray ml-1 mr-1 align-middle"></span>
+  <%= @activity.average_rating %>
+  <span class="fa fa-star"></span>
+  <span class="circle circle--4 circle--gray ml-1 mr-1 align-middle"></span>
+  <strong>Posted on </strong></p>
+</div>
 
 <div class="gallery-wrap">
   <%= image_tag 'back.png', id: 'backBtn' %>
@@ -17,7 +27,6 @@
 </div>
 
 <div class="normal-line"></div>
-        <p class="activity-host"><strong>Hosted by </strong><%= @activity.user.first_name %></p>
     <p class="activity-description"><%= @activity.description %></p>
     <p class="activity-policies"><strong>Things to note </strong><%= @activity.policies %></p>
     <p class="activity-price"><strong>Price: </strong> <%= humanized_money_with_symbol(@activity.price) %> per pax </p>
@@ -40,7 +49,7 @@
 <div class="container">
   <div class="row booking-activity-form">
       <div class="col">
-      <h1>New booking</h1>
+      <h2>New booking</h2>
       <%= render "/bookings/form", activity: @activity, booking: @booking %>
       </div>
   </div>
@@ -58,11 +67,10 @@
         style='width: 100%; height: 400px;'>
 </div>
 </div>
-
 <div class="container">
   <div class="row faqs">
       <div class="faqs-each">
-        <h1>FAQs from the Community</h1>
+        <h1>Common FAQs from the Community</h1>
         <ul class="faqs-list">
           <% @activity.faqs.each do |faq| %>
             <li>
