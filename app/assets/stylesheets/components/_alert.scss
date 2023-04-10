@@ -3,4 +3,37 @@
   bottom: 16px;
   right: 16px;
   z-index: 1000;
+  padding: 16px 24px 16px 16px;
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #eee8de;
+  box-shadow: 0 0 8px rgba(0,0,0,0.2);
+  border-radius: 4px;
+  margin: 8px;
+  width: 27%
+}
+
+.alert2 {
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  z-index: 1000;
+  padding: 16px 24px 16px 16px;
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #eee8de;
+  box-shadow: 0 0 8px rgba(0,0,0,0.2);
+  border-radius: 4px;
+  margin: 8px;
+  width: 22%
+}
+
+.alert-success {
+  border: 2px solid #3a926b;
+}
+
+.alert-warning {
+  border: 2px solid #FD1015;
 }
