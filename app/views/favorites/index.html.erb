@@ -33,6 +33,11 @@
   .card-link:hover {
     text-decoration: underline;
   }
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
 </style>
 
 <div class="container">
@@ -42,15 +47,12 @@
       <h1>My Favorites</h1>
       <br>
       <br>
-      <div class="card-container">
+      <div style= "display: flex">
         <% if @favorites.any? %>
-          <% @favorites.each_with_index do |favorite, index| %>
-            <div class="card">
-              <div class="card-title"><%= "#{favorite.favoritable.name}" %></div>
-              <div class="activity-card-image" style="background-image: url(<%= cl_image_path favorite.favoritable.photos.sample.key %>)"></div>
-              <div class="card-body"><%= favorite.favoritable.description %></div>
-              <div class="card-link"><%= link_to "View activity", favorite.favoritable, class: "btn btn-primary" %></div>
-            </div>
+          <% @favorites.each do |favorite| %>
+          <br>
+          <%= render partial: 'activities/activity', locals: { activity: Activity.find(favorite.favoritable_id.to_i) } %>
+
           <% end %>
         <% else %>
           <p class="empty-favorites">Your watchlist is empty.</p>

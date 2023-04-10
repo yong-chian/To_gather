@@ -749,117 +749,6 @@ end
 
 activity_17.save!
 
-activity_18 = Activity.create(
-  name: "Elderly Care",
-  description: "We are seeking for like-minded people to join us to deliver food to elderly staying nearby.",
-  price: 0,
-  max_capacity: 4,
-  meeting_location: "Khatib, Singapore",
-  minimum_age: 0,
-  policies: "Please inform us for rescheduling in the event you are unwell",
-  user: test_user18
-)
-image_urls_18 = ["https://res.cloudinary.com/ddk4z9ypx/image/upload/v1680287085/7.-Image-by-TOUCH-Community-Services_h12x8y.jpg",
-                "https://res.cloudinary.com/ddk4z9ypx/image/upload/v1680287090/ME7_kozwmf.jpg",
-                "https://res.cloudinary.com/ddk4z9ypx/image/upload/v1680287096/Rini_3_mcvfpq.jpg"]
-
-image_urls_18.each do |url|
-file = URI.open(url)
-activity_18.photos.attach(io: file, filename: "#{activity_18.name}.png", content_type: "image/png")
-end
-
-availabilities = []
-date = Date.today
-30.times do
-  availabilities << date.strftime("%Y-%m-%d")
-  date += 1.day
-end
-
-availabilities.each do |time|
-  activity_18.availabilities.build(
-    start_time: time,
-    end_time: time
-  )
-end
-
-activity_18.save!
-
-image_urls_19 = ["https://res.cloudinary.com/ddk4z9ypx/image/upload/v1680287085/7.-Image-by-TOUCH-Community-Services_h12x8y.jpg",
-  "https://res.cloudinary.com/ddk4z9ypx/image/upload/v1680287090/ME7_kozwmf.jpg",
-  "https://res.cloudinary.com/ddk4z9ypx/image/upload/v1680287096/Rini_3_mcvfpq.jpg"]
-
-image_urls_19.each do |url|
-file = URI.open(url)
-activity_19.photos.attach(io: file, filename: "#{activity_18.name}.png", content_type: "image/png")
-end
-
-availabilities = []
-date = Date.today
-30.times do
-availabilities << date.strftime("%Y-%m-%d")
-date += 1.day
-end
-
-availabilities.each do |time|
-activity_19.availabilities.build(
-start_time: time,
-end_time: time
-)
-end
-
-activity_19.save!
-
-image_urls_20 = ["https://res.cloudinary.com/ddk4z9ypx/image/upload/v1680287085/7.-Image-by-TOUCH-Community-Services_h12x8y.jpg",
-  "https://res.cloudinary.com/ddk4z9ypx/image/upload/v1680287090/ME7_kozwmf.jpg",
-  "https://res.cloudinary.com/ddk4z9ypx/image/upload/v1680287096/Rini_3_mcvfpq.jpg"]
-
-image_urls_20.each do |url|
-file = URI.open(url)
-activity_18.photos.attach(io: file, filename: "#{activity_18.name}.png", content_type: "image/png")
-end
-
-availabilities = []
-date = Date.today
-30.times do
-availabilities << date.strftime("%Y-%m-%d")
-date += 1.day
-end
-
-availabilities.each do |time|
-activity_20.availabilities.build(
-start_time: time,
-end_time: time
-)
-end
-
-activity_20.save!
-
-image_urls_21 = ["https://res.cloudinary.com/ddk4z9ypx/image/upload/v1680287085/7.-Image-by-TOUCH-Community-Services_h12x8y.jpg",
-  "https://res.cloudinary.com/ddk4z9ypx/image/upload/v1680287090/ME7_kozwmf.jpg",
-  "https://res.cloudinary.com/ddk4z9ypx/image/upload/v1680287096/Rini_3_mcvfpq.jpg"]
-
-image_urls_21.each do |url|
-file = URI.open(url)
-activity_21.photos.attach(io: file, filename: "#{activity_18.name}.png", content_type: "image/png")
-end
-
-availabilities = []
-date = Date.today
-30.times do
-availabilities << date.strftime("%Y-%m-%d")
-date += 1.day
-end
-
-availabilities.each do |time|
-activity_21.availabilities.build(
-start_time: time,
-end_time: time
-)
-end
-
-activity_21.save!
-
-
 p "Created #{Activity.count} activities"
 
 # # # TODO: Created FAQs
@@ -875,10 +764,6 @@ Activity.all.each do |activity|
   end
 end
 
-interests = ["Name1", "Name2", "Name3"]
-interests.each do |interest|
-  activity_1.interests << Interest.find_by(name: interest)
-end (edited)
 
 # TODO: Created booking
 # booking_1 = Booking.create(
