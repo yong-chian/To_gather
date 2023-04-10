@@ -1,50 +1,45 @@
 
-<head>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
-</head>
-
-<div class="row">
-    <div class="row">
-        <div class="col-md-6 col-lg-1 offset-lg-0 login-screen" style="margin-right: 8px;padding-right: 308px;">
-        </div>
-        <div class="col-md-6 offset-lg-5 login-form" style="padding-bottom: 26px;padding-left: 264px;padding-right: 0px;padding-top: 0px;margin-left: 48px;">
-            <section class="py-4 py-xl-5">
-                <div class="container">
-                    <div class="row mb-5">
-                        <div class="col-md-8 col-xl-6 text-center mx-auto">
-                        <h3 class="login-logo">ToGather</h3>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card-body-login d-flex flex-column align-items-center">
-                    <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name),
-                    data: { turbo: :false }) do |f| %>
-                    <div class="login-form-inputs">
-                    <%= f.input :email, required: false, autofocus: true, input_html: {
-                    autocomplete: "email" , placeholder: "Example@example.com", class: "login-email-field"  } %>
-                    <%= f.input :password, required: false, input_html: {
-                    autocomplete: "current-password",
-                    placeholder: "Enter password",
-                    class: "login-password-field",
-                    type: "password"
-                    }, id: "password-field" %>
-
-                    <%= f.input :remember_me, as: :boolean if
-                    devise_mapping.rememberable? %>
-                </div>
-
-                <div class="form-actions center">
-                    <%= f.button :submit, "Login" , class: "btn btn-primary login-btn-login" %>
-                </div>
-                    <% end %>
-                    <br />
-                <%= render "devise/shared/links" %>
-            </section>
-        </div>
+<div class="container-fluid">
+  <div class="row mh-100vh">
+    <div id="bg-block" class="col-lg-3 col-xxl-3 offset-lg-0 d-flex align-items-end" style="background-image: url('https://images.unsplash.com/photo-1648365304143-9aa30adbf8e4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80');background-size: cover;background-position: center center;">
     </div>
-</div>
 
+    <div id="login-block" class="col-10 col-sm-8 col-md-6 col-lg-9 col-xxl-9 offset-1 offset-sm-2 offset-md-3 offset-lg-0 align-self-center d-lg-flex align-items-lg-center align-self-lg-stretch bg-white p-5 rounded rounded-lg-0 my-5 my-lg-0">
+
+      <div class="col-md-8 col-xl-6 text-center mx-auto">
+        <h3 class="login-logo">ToGather</h3>
+
+          <div class="m-auto w-lg-75 w-xl-50">
+
+            <div class="card-body-login d-flex flex-column">
+              <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name),
+              data: { turbo: :false }) do |f| %>
+
+              <div class="login-form-inputs">
+                <%= f.input :email, required: false, autofocus: true, input_html: {
+                autocomplete: "email" , placeholder: "Example@example.com", class: "login-email-field"  } %>
+                <%= f.input :password, required: false, input_html: {
+                autocomplete: "current-password",
+                placeholder: "Enter password",
+                class: "login-password-field",
+                type: "password"
+                }, id: "password-field" %>
+
+                <%= f.input :remember_me, as: :boolean if
+                devise_mapping.rememberable? %>
+              </div>   
+            </div>
+
+            <div class="form-actions center">
+              <%= f.button :submit, "Login" , class: "btn btn-primary login-btn-login" %>
+            </div>
+                <% end %><br />
+                <%= render "devise/shared/links" %>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
 <%# <i class="far fa-eye toggle-password"></i>
 <script>
 function togglePasswordVisibility() {

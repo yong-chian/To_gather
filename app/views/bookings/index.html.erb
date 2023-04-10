@@ -1,4 +1,5 @@
-<%# <h1 class="text-black"><%="#{current_user.first_name} #{current_user.last_name}"%></h1> 
+<%# <h1 class="text-black"><%="#{current_user.first_name} #{current_user.last_name}"%>
+<br><br>
 <div class="text-center">
       <button id="button1" class="btn btn-primary button-toggle" onclick="toggleDiv1()" >My Booking</button>
       <button id="button2" class="btn button-toggle" onclick="toggleDiv2()">My Booking: Host</button>
@@ -18,7 +19,7 @@
                 <div data-controller="chatroom">
                   <h5 class="card-title">Booking <%= counter %></h5>
                   <p class="card-text"><strong>Activity Name:</strong> <%= booking.availability.activity.name %></p>
-                  <p class="card-text"><strong>Booking Date:</strong> <%= "#{booking.availability.start_time} to #{booking.availability.end_time}" %></p>
+                  <p class="card-text"><strong>Booking Date:</strong> <%= "#{booking.availability.start_time}" %></p>
                   <p class="card-text"><strong>Number of Pax:</strong> <%= booking.number_of_pax %></p>
                   <p class="card-text"><strong>Booking Status:</strong> <%= booking.status %></p>
                   <% counter += 1 %>

@@ -1,12 +1,17 @@
 <div id="<%= dom_id booking %>">
   <p>
-    <strong>Name:</strong>
-    <%= booking.availability.activity.name %>
+    <%# <strong>Name:</strong>
+    <%= booking.availability.activity.name %> 
   </p>
 
   <p>
-    <strong>Description:</strong>
+    <%# <strong>Description:</strong>
     <%= booking.availability.activity.description %>
+  </p>
+
+  <p>
+    <strong>Booking Date:</strong>
+    <%= booking.availability.start_time.strftime("%A, %B %e, %Y") %>
   </p>
 
   <p>
@@ -15,14 +20,10 @@
   </p>
 
   <p>
-    <strong>User:</strong>
+    <strong>Host:</strong>
     <%= booking.user_name %>
   </p>
 
-  <p>
-    <strong>Booking Date:</strong>
-    <%= booking.availability.start_time.strftime("%A, %B %e, %Y") %>
-  </p>
 
   <p>
     <strong>Number of Pax:</strong>

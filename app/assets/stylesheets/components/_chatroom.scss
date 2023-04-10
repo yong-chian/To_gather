@@ -2,7 +2,7 @@
   background: white;
   margin-top: 9px;
   margin-bottom: 15px;
-  height: calc(80vh - 75px);
+  height: calc(90vh - 75px);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -19,18 +19,17 @@
     height: 100%;
     overflow: scroll;
     padding: 1rem;
+    background-color: #EFF0F2;
 
 
 
-  }
-
-  #message-input {
-    background-color: rgb(17, 17, 16);
   }
 
   #new_message {
     border-top: 1px solid $gray-200;
     padding: 1rem;
+    background-color: white;
+
 
 
     .form-group {
@@ -47,4 +46,15 @@
     border-radius: 50%;
     margin-right: 10px;
   }
+
+}
+
+.main-container {
+  padding: 48px 200px 61px 200px;
+}
+
+.message-box {}
+
+#message_content {
+  background-color: white;
 }
