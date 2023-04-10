@@ -95,14 +95,13 @@ window.onclick = function (event) {
     At <strong><%= activity.meeting_location.sub(/,\s*Singapore$/, '') %></strong>
     </p>
 
-    <p class="activity-description" style="color: grey"><%= activity.description %></p>
+    <%# <p class="activity-description" style="color: grey"><%= activity.description %>
 
     <Div>
 
      <p class="activity-price" style="font-size: 18px; color: grey;">
       <strong>From <%= humanized_money_with_symbol(activity.price) %></strong>
-
-      <%= link_to "View Activity", activity_path(activity), class: "btn btn-primary" %>
+      <%= link_to "View Activity", activity_path(activity), class: "btn btn-primary", style: "margin-left: 95px;" %>
 
     </p>
 
