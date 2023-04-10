@@ -99,7 +99,7 @@ window.onclick = function (event) {
 
     <Div>
 
-     <p class="activity-price" style="font-size: 18px; color: grey;">
+     <p class="activity-price" style="font-size: 18px; color: grey; justify-content: space-between;display: flex;">
       <strong>From <%= humanized_money_with_symbol(activity.price) %></strong>
       <%= link_to "View Activity", activity_path(activity), class: "btn btn-primary", style: "margin-left: 95px;" %>
 
