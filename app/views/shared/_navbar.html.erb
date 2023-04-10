@@ -1,8 +1,18 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-togather fixed-top">
   <div class="container-fluid">
-    <%= link_to root_path, class: "navbar-brand" do %>
-      <%= "ToGather" %>
-    <% end %>
+    <div class="navbar logo-search">
+      <%= link_to root_path, class: "navbar-brand" do %>
+        <%= "ToGather" %>
+      <% end %>
+      <%= form_with url: activities_path, method: :get, class: "d-flex" do %>
+        <%= text_field_tag :query,
+            params[:query],
+            class: "form-control",
+            placeholder: "Type a keyword"
+          %>
+        <%= submit_tag "Search", name: "", class: "btn btn-primary my-2 my-sm-0"%>
+      <% end %>
+    </div>
 
     <%# do %>
       <%# <%= image_tag "ToGather.png" %>
@@ -14,14 +24,6 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
-      <%= form_with url: activities_path, method: :get, class: "d-flex" do %>
-          <%= text_field_tag :query,
-              params[:query],
-              class: "form-control",
-              placeholder: "Type a keyword"
-            %>
-          <%= submit_tag "Search", name: "", class: "btn btn-primary mx-3"%>
-        <% end %>
         <% if user_signed_in? %>
           <li class="nav-item active">
             <%= link_to "About Us", about_path, class: "nav-link" %>
@@ -39,6 +41,7 @@
           <li class="nav-item dropdown">
             <%= image_tag "https://www.citypng.com/public/uploads/preview/download-profile-user-round-orange-icon-symbol-png-11639594360ksf6tlhukf.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+              <a class="nav-link" href="#" data-bs-toggle="dropdown"><%= current_user.first_name%></a>
               <%=link_to "Profile", edit_user_registration_path, class: "dropdown-item" %>
               <%=link_to "Favourite", favorites_path, class: "dropdown-item" %>
               <%= link_to "Reservation", bookings_path, class: "dropdown-item" %>

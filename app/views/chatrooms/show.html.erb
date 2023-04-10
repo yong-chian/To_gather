@@ -1,31 +1,36 @@
-<div class="container chatroom"
-  data-controller="chatroom-subscription"
-  data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>"
->
-  <h1>#<%= @chatroom.name %></h1>
+<div class="main-container">
+  <div class="container chatroom"
+    data-controller="chatroom-subscription"
+    data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>"
+  >
+    <h2 class="text-center">#<%= @chatroom.name %></h2>
 
-  <div class="messages" data-chatroom-subscription-target="messages">
-    <% @chatroom.messages.each do |message| %>
-      <%= render "messages/message", message: message %>
-    <% end %>
-      <div id="message-<%= @message.id %>">
-        <small>
-          <strong><%= @message.user %></strong>
-          <i><%= @message.created_at %></i>
-        </small>
-        <p><%= @message.content %></p>
-      </div>
+    <div class="messages" data-chatroom-subscription-target="messages">
+      <% @chatroom.messages.each do |message| %>
+        <%= render "messages/message", message: message %>
+      <% end %>
+        <div id="message-<%= @message.id %>">
+          <small>
+            <strong><%= @message.user %></strong>
+            <i><%= @message.created_at %></i>
+          </small>
+          <p><%= @message.content %></p>
+        </div>
+    </div>
   </div>
-</div>
 
-<%= simple_form_for [@chatroom, @message],
-  html: { data: { action: "turbo:submit-end->chatroom-subscription#resetForm" }, class: "d-flex" } do |f|
-%>
-  <%= f.input :content,
-    label: false,
-    placeholder: "Message ##{@chatroom.name}",
-    wrapper_html: {class: "flex-grow-1"}
-  %>
-  <%= f.submit "Send", class: "btn btn-primary mb-3" %>
-<% end %>
+  <div class="message-box ">
+    <%= simple_form_for [@chatroom, @message],
+      html: { data: { action: "turbo:submit-end->chatroom-subscription#resetForm" }, class: "d-flex" } do |f|
+    %>
+      <%= f.input :content,
+        label: false,
+        placeholder: "Message ##{@chatroom.name}",
+        wrapper_html: {class: "flex-grow-1"}
+      %>
+      <%= f.submit "Send", class: "btn btn-primary message-button mb-3" %>
+    <% end %>
+  </div>
+ </div>
+
 
