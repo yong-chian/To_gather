@@ -32,7 +32,7 @@ class OrdersController < ApplicationController
     # success_url: order_url(order)
     @order = current_user.orders.find(params[:id])
     @booking = @order.booking
-    @booking.status = "Paid & Pending"
+    @booking.status = "Paid & Pending Confirmation"
     @booking.save!
     authorize(@order)
   end
