@@ -7,10 +7,13 @@
 <br>
 
 <div class="container">
-  <div class="row">
+  <div class="row booking-index">
     <div class="card w-80">
       <div id="div1" style="display: block;">
         <h3 class="text-black text-center" style="">Your Booking Activities</h3>
+          <button id="buttonPending1" class="btn btn-primary button-toggle" onclick="toggle()" >Pending</button>
+          <button id="buttonConfirmed1" class="btn button-toggle" onclick="toggle()">Confirmed</button>
+          <button id="buttonPast1" class="btn button-toggle" onclick="toggle()">Past/Canceled</button>
         <div class="card booking-host">
           <div class="card-body booking-card">
             <% if @bookings.any? %>
@@ -42,6 +45,9 @@
     <div class="card w-80">
       <div id="div2" style="display: none;">
           <h3 class="text-black text-center">Your Hosted Booking Activities</h3>
+            <button id="buttonPending2" class="button-toggle" onclick="toggle(this)" >Pending</button>
+            <button id="buttonConfirmed2" class="btn button-toggle" onclick="toggle(this)">Confirmed</button>
+            <button id="buttonPast2" class="btn button-toggle" onclick="toggle(this)">Past/Canceled</button>
             <div class="card booking-host">
               <div class="card-body booking-card">
                 <% if @my_hostings.any? %>
@@ -78,8 +84,26 @@
   </div>
 </div>
 
-
-<%# toggle for the button %>
+<%# toggle for the pending , confirmed & past/canceled My Booking and My Booking:Host button %>
+<script>
+function toggle(button) {
+  const buttonValue = button.innerText;
+  if (buttonValue === "Paid & Pending Confirmation") {
+      document.getElementById("buttonPending1").classList.add("btn-primary");
+      document.getElementById("buttonConfirmed1").classList.remove("btn-primary");
+      document.getElementById("buttonPast1").classList.remove("btn-primary");
+  } else if (buttonValue === "Confirmed") {
+      document.getElementById("buttonPending1").classList.remove("btn-primary");
+      document.getElementById("buttonConfirmed1").classList.add("btn-primary");
+      document.getElementById("buttonPast1").classList.remove("btn-primary");
+  } else {
+      document.getElementById("buttonPending1").classList.remove("btn-primary");
+      document.getElementById("buttonConfirmed1").classList.remove("btn-primary");
+      document.getElementById("buttonPast1").classList.add("btn-primary");
+  }
+}
+</script>
+<%# toggle for the My Booking and My Booking:Host button %>
 <script>
 var button1Disabled = false;
 var button2Disabled = true;
