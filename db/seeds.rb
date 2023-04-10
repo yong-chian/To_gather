@@ -38,7 +38,7 @@ puts "Test user created!"
 test_user2 = User.create(email: "test1@gmail.com", password: "123456a", first_name: "Jane", last_name: "Smith", home_address: "759160", phone_no: "12345678")
 test_user3 = User.create(email: "test2@gmail.com", password: "123456b", first_name: "Michelle", home_address: "759160", last_name: "Lim", phone_no: "12345678")
 test_user4 = User.create(email: "test3@gmail.com", password: "123456c", first_name: "Aisyah", home_address: "759160", last_name: "N", phone_no: "12345678")
-test_user5 = User.create(email: "test4@gmail.com", password: "123456d", first_name: "Christopher", home_address: "759160", last_name: "Ng", phone_no: "12345678")
+test_user5 = User.create(email: "test4@gmail.com", password: "123456d", first_name: "Chris", home_address: "759160", last_name: "Ng", phone_no: "12345678")
 test_user6 = User.create(email: "test5@gmail.com", password: "123456e", first_name: "Sarah", last_name: "Yeo", phone_no: "12345678")
 test_user7 = User.create(email: "test6@gmail.com", password: "123456f", first_name: "Jamie", last_name: "Koh", phone_no: "12345678")
 test_user8 = User.create(email: "test7@gmail.com", password: "123456g", first_name: "Olivia", last_name: "Ong", phone_no: "12345678")
@@ -53,6 +53,10 @@ test_user16 = User.create(email: "test15@gmail.com", password: "123456o", first_
 test_user17 = User.create(email: "test16@gmail.com", password: "123456p", first_name: "Reuben", last_name: "Koo", phone_no: "12345678")
 test_user18 = User.create(email: "test17@gmail.com", password: "123456q", first_name: "Fiona", last_name: "Sim", phone_no: "12345678")
 test_user19 = User.create(email: "test18@gmail.com", password: "123456r", first_name: "Jared", last_name: "Koh", phone_no: "12345678")
+test_user19 = User.create(email: "test19@gmail.com", password: "123456s", first_name: "Zul", last_name: "Razali", phone_no: "12345678")
+test_user20 = User.create(email: "test20@gmail.com", password: "123456t", first_name: "Siti", last_name: "Sara", phone_no: "12345678")
+test_user21 = User.create(email: "test21@gmail.com", password: "123456u", first_name: "Mike", last_name: "Su", phone_no: "12345678")
+
 
 # TODO: Created interests
 Interest.create!(name: "Arts and Crafts", icon:'<i class="fas fa-palette"></i>')
@@ -303,7 +307,7 @@ activity_4.save!
 
 activity_5 = Activity.create(
   name: "Chinese Tuition",
-  description: "Tailored Chinese language coaching for all orimary levels and ages.",
+  description: "Tailored Chinese language coaching for all primary levels and ages.",
   price: 25,
   max_capacity: 1,
   meeting_location: "Yishun, Singapore",
@@ -478,7 +482,7 @@ activity_10 = Activity.create(
   description: "Fun basketball program for kids from 6 years old onwards to learn and develop skills." ,
   price: 10,
   max_capacity: 10,
-  meeting_location: "Bishan Park, Singapore",
+  meeting_location: "Marymount, Singapore",
   minimum_age: 6,
   policies: "Please inform us for rescheduling in the event you are unwell",
   user: test_user10
@@ -509,7 +513,7 @@ activity_10.save!
 
 activity_11 = Activity.create(
   name: "Bird Watching",
-  description: "Discover the art of birdwatching through guided observation!.",
+  description: "Discover the art of birdwatching through guided observation!",
   price: 30,
   max_capacity: 3,
   meeting_location: "Canberra, Singapore",
@@ -582,7 +586,7 @@ activity_13 = Activity.create(
   description: "Create custom scents using high-quality ingredients and expert guidance.",
   price: 80,
   max_capacity: 4,
-  meeting_location: "Ang Mo Kio, Singapore",
+  meeting_location: "Jurong, Singapore",
   minimum_age: 0,
   policies: "Please inform us for rescheduling in the event you are unwell",
   user: test_user13
@@ -651,7 +655,7 @@ activity_15 = Activity.create(
   description: "Introduction to coding concepts and skills for beginners. Notes will be provided!" ,
   price: 88,
   max_capacity: 5,
-  meeting_location: "Yio Chu Kang, Singapore",
+  meeting_location: "Woodlands, Singapore",
   minimum_age: 0,
   policies: "Please bring your own laptop.",
   user: test_user15
@@ -794,9 +798,9 @@ activity_19 = Activity.create(
   policies: "No cancellation is allowed",
   user: test_user19
 )
-image_urls_19 = ["https://res.cloudinary.com/ddk4z9ypx/image/upload/v1681121040/shutterstock_648976399_yqgnwi.webp",
+image_urls_19 = ["https://res.cloudinary.com/ddk4z9ypx/image/upload/v1681138444/shutterstock_648976399_p7l5yt.webp",
                 "https://res.cloudinary.com/ddk4z9ypx/image/upload/v1681121058/fun-in-class_t1jsn3.jpg",
-                "https://res.cloudinary.com/ddk4z9ypx/image/upload/v1681138426/download_6_pxz6ce.jpg"]
+                "https://res.cloudinary.com/ddk4z9ypx/image/upload/v1681138423/nasi-lemak-cooking_bmqdfp.webp"]
 
 image_urls_19.each do |url|
 file = URI.open(url)
@@ -835,7 +839,7 @@ image_urls_20 = ["https://res.cloudinary.com/ddk4z9ypx/image/upload/v1681138679/
 
 image_urls_20.each do |url|
 file = URI.open(url)
-activity_18.photos.attach(io: file, filename: "#{activity_20.name}.png", content_type: "image/png")
+activity_20.photos.attach(io: file, filename: "#{activity_20.name}.png", content_type: "image/png")
 end
 
 availabilities = []
@@ -855,8 +859,8 @@ end
 activity_20.save!
 
 activity_21 = Activity.create(
-  name: "Debunk Common Myths at Yishun",
-  description: "There have been reports of criminal activity in Yishun, a suburban town in the northern part of Singapore, which has led to it being labeled as a "dangerous" or "cursed" town by some people. Let us show you around the beauty of Yishun as it is not what the media has depicted!",
+  name: "Dangerous Yishun?",
+  description: "There have been reports of criminal activity in Yishun, a suburban town in the northern part of Singapore, which has led to it being labeled as a dangerous  town by some people. Let us show you around the beauty of Yishun as it is not what the media has depicted!",
   price: 0,
   max_capacity: 4,
   meeting_location: "Yishun, Singapore",
@@ -870,7 +874,7 @@ image_urls_21 = ["https://res.cloudinary.com/ddk4z9ypx/image/upload/v1681139907/
 
 image_urls_21.each do |url|
 file = URI.open(url)
-activity_18.photos.attach(io: file, filename: "#{activity_18.name}.png", content_type: "image/png")
+activity_21.photos.attach(io: file, filename: "#{activity_21.name}.png", content_type: "image/png")
 end
 
 availabilities = []
@@ -903,141 +907,6 @@ faqs = [
 Activity.all.each do |activity|
   faqs.each do |faq|
     activity.faqs.create(question: faq[0], answer: faq[1])
-end
-
-Interest.create!(name: "Arts and Crafts", icon:'<i class="fas fa-palette"></i>')
-Interest.create!(name: "Book Clubs", icon:'<i class="fas fa-book-open"></i>')
-Interest.create!(name: "Cultural Celebrations", icon:'<i class="fas fa-theater-masks"></i>')
-Interest.create!(name: "Charity Drives", icon: '<i class="fas fa-hand-holding-heart"></i>')
-Interest.create!(name: "Education", icon:'<i class="fas fa-graduation-cap"></i>')
-Interest.create!(name: "Entertainment", icon:'<i class="fas fa-gamepad"></i>')
-Interest.create!(name: "Food", icon:'<i class="fas fa-hamburger"></i>')
-Interest.create!(name: "Gardening", icon:'<i class="fas fa-seedling"></i>')
-Interest.create!(name: "Technology", icon:'<i class="fas fa-laptop-code"></i>')
-Interest.create!(name: "Music", icon:'<i class="fas fa-music"></i>')
-Interest.create!(name: "Sports & Wellness", icon:'<i class="fas fa-biking"></i>')
-Interest.create!(name: "SG Heritage Tours", icon:'<i class="fas fa-binoculars"></i>')
-Interest.create!(name: "Social Clubs", icon:'<i class="fas fa-user-friends"></i>')
-Interest.create!(name: "Professional Development", icon:'<i class="fas fa-chalkboard-teacher"></i>')
-
-interests_1 = ["Entertainment"]
-interests_1.each do |interest|
-  activity_1.interests << Interest.find_by(name: interest)
-end
-
-interests_2 = ["Sports & Wellness"]
-interests_2.each do |interest|
-  activity_2.interests << Interest.find_by(name: interest)
-end
-
-interests_3 = ["Entertainment"]
-interests_3.each do |interest|
-  activity_3.interests << Interest.find_by(name: interest)
-end
-
-interests_4 = ["Cultural Celebrations", "Food"]
-interests_4.each do |interest|
-  activity_4.interests << Interest.find_by(name: interest)
-  activity_4.interests << Interest.find_by(name: interest)
-end
-
-interests_5 = ["Food", "Name2", "Name3"]
-interests_5.each do |interest|
-  activity_5.interests << Interest.find_by(name: interest)
-end
-
-interests_6 = ["Food", "Name2", "Name3"]
-interests_6.each do |interest|
-  activity_6.interests << Interest.find_by(name: interest)
-end
-
-interests_7 = ["Food", "Name2", "Name3"]
-interests_7.each do |interest|
-  activity_7.interests << Interest.find_by(name: interest)
-end
-
-interests_8 = ["Food", "Name2", "Name3"]
-interests_8.each do |interest|
-  activity_8.interests << Interest.find_by(name: interest)
-end
-
-interests_9 = ["Food", "Name2", "Name3"]
-interests_9.each do |interest|
-  activity_9.interests << Interest.find_by(name: interest)
-end
-
-interests_10 = ["Food", "Name2", "Name3"]
-interests_10.each do |interest|
-  activity_10.interests << Interest.find_by(name: interest)
-end
-
-interests_11 = ["Food", "Name2", "Name3"]
-interests_11.each do |interest|
-  activity_11.interests << Interest.find_by(name: interest)
-end
-
-
-interests_11 = ["Food", "Name2", "Name3"]
-interests_11.each do |interest|
-  activity_11.interests << Interest.find_by(name: interest)
-end
-
-
-interests_12 = ["Food", "Name2", "Name3"]
-interests_12.each do |interest|
-  activity_12.interests << Interest.find_by(name: interest)
-end
-
-
-interests_13 = ["Food", "Name2", "Name3"]
-interests_13.each do |interest|
-  activity_13.interests << Interest.find_by(name: interest)
-end
-
-
-interests_14 = ["Food", "Name2", "Name3"]
-interests_14.each do |interest|
-  activity_14.interests << Interest.find_by(name: interest)
-end
-
-
-interests_15 = ["Food", "Name2", "Name3"]
-interests_15.each do |interest|
-  activity_15.interests << Interest.find_by(name: interest)
-end
-
-
-interests_16 = ["Food", "Name2", "Name3"]
-interests_16.each do |interest|
-  activity_16.interests << Interest.find_by(name: interest)
-end
-
-
-interests_17 = ["Food", "Name2", "Name3"]
-interests_17.each do |interest|
-  activity_17.interests << Interest.find_by(name: interest)
-end
-
-
-interests_18 = ["Food", "Name2", "Name3"]
-interests_18.each do |interest|
-  activity_18.interests << Interest.find_by(name: interest)
-end
-
-
-interests_19 = ["Food", "Name2", "Name3"]
-interests_19.each do |interest|
-  activity_19.interests << Interest.find_by(name: interest)
-end
-
-interests_20 = ["Food", "Name2", "Name3"]
-interests_20.each do |interest|
-  activity_20.interests << Interest.find_by(name: interest)
-end
-
-interests_21 = ["Food", "Name2", "Name3"]
-interests_21.each do |interest|
-  activity_21.interests << Interest.find_by(name: interest)
 end
 
 # TODO: Created booking
@@ -1105,13 +974,4 @@ p "Created #{ParticipantReview.count} participant_reviews"
 # # # TODO: Host Reviews for Each Booking
 # # Host_review.create(user_rating: 4.5, booking_id: 1)
 # # Host_review.create(user_rating: 2, booking_id: 2)
-
-#Chatroom
-
-# chatroom = Chatroom.new(name: booking_1.user_id)
-# chatroom.booking = booking_1
-# chatroom.save!
-# current_timestamp = Time.now
-# chatroom_1 = Chatroom.create(name: "general", booking_id: booking_1, created_at: current_timestamp.to_s, updated_at: current_timestamp.to_s)
-
-# p "is chatroom created? chatroom id: #{chatroom.id}"
+end
