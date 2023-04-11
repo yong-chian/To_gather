@@ -17,7 +17,7 @@
   <%= image_tag 'back.png', id: 'backBtn' %>
   <div class="gallery">
     <div>
-        <span><% @activity.photos.each do |p oto| %>
+        <span><% @activity.photos.each do |photo| %>
         <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %></span>
         <% end %>
     </div>
