@@ -907,7 +907,9 @@ faqs = [
 Activity.all.each do |activity|
   faqs.each do |faq|
     activity.faqs.create(question: faq[0], answer: faq[1])
+  end
 end
+
 
 # TODO: Created booking
 # booking_1 = Booking.create(
@@ -974,4 +976,123 @@ p "Created #{ParticipantReview.count} participant_reviews"
 # # # TODO: Host Reviews for Each Booking
 # # Host_review.create(user_rating: 4.5, booking_id: 1)
 # # Host_review.create(user_rating: 2, booking_id: 2)
+
+interests_1 = ["Entertainment"]
+interests_1.each do |interest|
+  activity_1.interests << Interest.find_by(name: interest)
+end
+
+interests_2 = ["Sports & Wellness"]
+interests_2.each do |interest|
+  activity_2.interests << Interest.find_by(name: interest)
+end
+
+interests_3 = ["Entertainment"]
+interests_3.each do |interest|
+  activity_3.interests << Interest.find_by(name: interest)
+end
+
+interests_4 = ["Cultural Celebrations", "Food"]
+interests_4.each do |interest|
+  activity_4.interests << Interest.find_by(name: interest)
+  activity_4.interests << Interest.find_by(name: interest)
+end
+
+interests_5 = ["Professional Development","Education"]
+interests_5.each do |interest|
+  activity_5.interests << Interest.find_by(name: interest)
+end
+
+interests_6 = ["Food","Entertainment"]
+interests_6.each do |interest|
+  activity_6.interests << Interest.find_by(name: interest)
+end
+
+interests_7 = ["Food", "Entertainment","Cultural Celebrations"]
+interests_7.each do |interest|
+  activity_7.interests << Interest.find_by(name: interest)
+end
+
+interests_8 = ["Gardening","Entertainment"]
+interests_8.each do |interest|
+  activity_8.interests << Interest.find_by(name: interest)
+end
+
+interests_9 = ["Entertainment","Arts and Crafts"]
+interests_9.each do |interest|
+  activity_9.interests << Interest.find_by(name: interest)
+end
+
+interests_10 = ["Sports & Wellness", "Entertainment"]
+interests_10.each do |interest|
+  activity_10.interests << Interest.find_by(name: interest)
+end
+
+interests_11 = ["Cultural Celebrations","Social Clubs","Entertainment"]
+interests_11.each do |interest|
+  activity_11.interests << Interest.find_by(name: interest)
+end
+
+
+interests_11 = ["Cultural Celebrations", "SG Heritage Tours"]
+interests_11.each do |interest|
+  activity_11.interests << Interest.find_by(name: interest)
+end
+
+
+interests_12 = ["Sports & Wellness"]
+interests_12.each do |interest|
+  activity_12.interests << Interest.find_by(name: interest)
+end
+
+
+interests_13 = ["Entertainment"]
+interests_13.each do |interest|
+  activity_13.interests << Interest.find_by(name: interest)
+end
+
+
+interests_14 = ["Professional Development","Education"]
+interests_14.each do |interest|
+  activity_14.interests << Interest.find_by(name: interest)
+end
+
+
+interests_15 = ["Technology", "Professional Development","Education"]
+interests_15.each do |interest|
+  activity_15.interests << Interest.find_by(name: interest)
+end
+
+
+interests_16 = ["Entertainment","Arts and Crafts"]
+interests_16.each do |interest|
+  activity_16.interests << Interest.find_by(name: interest)
+end
+
+
+interests_17 = ["Entertainment","Music"]
+interests_17.each do |interest|
+  activity_17.interests << Interest.find_by(name: interest)
+end
+
+
+interests_18 = ["Charity Drives"]
+interests_18.each do |interest|
+  activity_18.interests << Interest.find_by(name: interest)
+end
+
+
+interests_19 = ["Cultural Celebrations", "Food"]
+interests_19.each do |interest|
+  activity_19.interests << Interest.find_by(name: interest)
+end
+
+interests_20 = ["Cultural Celebrations", "Food"]
+interests_20.each do |interest|
+  activity_20.interests << Interest.find_by(name: interest)
+end
+
+interests_21 = ["SG Heritage Tours"]
+interests_21.each do |interest|
+  activity_21.interests << Interest.find_by(name: interest)
 end
