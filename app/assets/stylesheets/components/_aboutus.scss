@@ -1,0 +1,17 @@
+//this is for the About Us page
+.aboutus-card {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.aboutus-card .name {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.activity-card .img-thumbnail {
+  border-radius: 50%;
+}
