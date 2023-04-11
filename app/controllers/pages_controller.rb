@@ -8,7 +8,7 @@ class PagesController < ApplicationController
       radius_in_km = 5
       @activities_near_you = Activity.near([user_latitude, user_longitude], radius_in_km).limit(3)
     else
-      @activities_near_you = Activity.all.sample(3) #too add geo location
+      @activities_near_you = Activity.all.sample(3)
     end
     @activities = Activity.all
     @markers = @activities.geocoded.map do |activity|
@@ -26,7 +26,11 @@ class PagesController < ApplicationController
                                          .order('RANDOM()')
                                          .limit(3)
     else
-      # Handle the case where the user is not signed in or has no interests
+      #without signing in or interests selected, it will show the top activities in the page
+      @interests_based_activities = Activity.left_joins(:participant_reviews) #user left_joins such that activity without reviews are included too
+                                     .group(:id)
+                                     .order('AVG(participant_reviews.activity_rating) DESC')
+                                     .limit(3)
     end
   end
 
