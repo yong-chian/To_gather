@@ -13,9 +13,6 @@ application.register("address-autocomplete", AddressAutocompleteController)
 import AnimationController from "./animation_controller"
 application.register("animation", AnimationController)
 
-import BookingStatusToggleButtonController from "./booking_status_toggle_button_controller"
-application.register("booking-status-toggle-button", BookingStatusToggleButtonController)
-
 import ChatroomController from "./chatroom_controller"
 application.register("chatroom", ChatroomController)
 
