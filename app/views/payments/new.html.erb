@@ -12,7 +12,7 @@
         <div class="col-md-12">
           <div class="activity-photos">
             <% @order.activity.photos.each do |photo| %>
-              <%= cl_image_tag photo.key, height: 150, width: 250, crop: :fill %>
+              <%= cl_image_tag photo.key, height: 250, width: 350, crop: :fill %>
               <%# remove the  class: "card-img-top" %>
             <% end %>
           </div>
