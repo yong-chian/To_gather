@@ -1,9 +1,9 @@
 <!-- app/views/payments/new.html.erb -->
-<body>
+
 <div class = "container">
 <br>
 <br>
-  <div class="payment-new" style="display: flex;justify-content: center;background: var(--bs-white);">
+  <div class="payment-new payment-check-out" style="display: flex;justify-content: center;background: var(--bs-white);">
     <div class="payment-post text-center">
         <h1 class="text-center"><br />Checkout summary<br /><br /></h1>
         <p>Purchase of <strong><%= @order.activity.name %></strong> for <strong><%= humanized_money_with_symbol (@order.amount * @order.booking.number_of_pax) %></strong></p>
@@ -36,4 +36,3 @@
   <br>
   <br>
 </div>
-</body>
