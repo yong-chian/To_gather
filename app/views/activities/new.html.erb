@@ -7,22 +7,27 @@
   </head>
 
   <body>
-    <div>
+    <div class="background-image"></div>
     <div class="container mt-5">
       <div class="row justify-content-center">
         <div class="col-md-8">
-          <h1 class="text-center mb-5">Host an Activity with us!</h1>
-          <p class= "heading-text">Togather has something for everyone. We believe that everyone has something to offer, and we encourage all members of our community to get involved and share their talents and passions. Through Togather, you can discover new hobbies, meet new people, and build relationships that will last a lifetime.</p>
-          <br>
-          <%= render "form", activity: @activity %>
-          <!-- Add a container div for the buttons and center them using Bootstrap classes -->
-          <%# <div class="btn-container text-center mt-5"> %>
-            <%# <%= link_to "Back", activities_path, class: "btn btn-secondary" %>
-          <%# </div> %>
+          <div class="host-container-box">
+            <h1 class="text-center mb-5">Host an Activity with us!</h1>
+            <p class="heading-text">Togather has something for everyone. We believe that everyone has something to offer, and we encourage all members of our community to get involved and share their talents and passions. Through Togather, you can discover new hobbies, meet new people, and build relationships that will last a lifetime.</p>
+            <br>
+            <%= render "form", activity: @activity %>
+            <!-- Add a container div for the buttons and center them using Bootstrap classes -->
+            <%# <div class="btn-container text-center mt-5"> %>
+              <%# <%= link_to "Back", activities_path, class: "btn btn-secondary" %>
+            <%# </div> %>
+          </div>
         </div>
       </div>
     </div>
-    </div>
+
+    <br>
+    <br>
+    <br>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
