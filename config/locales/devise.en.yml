@@ -46,8 +46,8 @@ en:
       updated: "Your account has been updated successfully."
       updated_but_not_signed_in: "Your account has been updated successfully, but since your password was changed, you need to sign in again."
     sessions:
-      signed_in: "Yay!🎉 You've successfully signed in to our service."
-      signed_out: "Goodbye!👋 You've signed out successfully."
+      signed_in: "Oh, yay!🎉 You successfully signed in to our service."
+      signed_out: "You signed out successfully. See ya and goodbye!👋"
       already_signed_out: "You're already signed out.👋"
     unlocks:
       send_instructions: "You will receive an email with instructions for how to unlock your account in a few minutes."
