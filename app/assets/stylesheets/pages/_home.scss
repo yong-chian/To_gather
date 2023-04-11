@@ -1,10 +1,21 @@
 // Specific CSS for your home-page
 
 
-.container-banner-image1{
- background-size: cover;
+.container-banner-image1 {
+  position: relative; /* Make the container positioned */
+  background-size: cover; /* Resize the background image to cover the container */
+  background-position: center; /* Center the background image within the container */
 }
 
+.container-banner-image1::before {
+  content: ""; /* Add content to the pseudo-element */
+  position: absolute; /* Make the pseudo-element positioned */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Add a semi-transparent black layer */
+}
 
 .activity-card{
   margin-bottom: 30px;
@@ -12,8 +23,6 @@
 }
 
 .row{
-
-
   flex-wrap: wrap;
   justify-content: center;
 }
