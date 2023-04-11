@@ -11,9 +11,9 @@
     <div class="card w-80">
       <div id="div1" style="display: block;">
         <h3 class=" text-center" style="">Your Booking Activities</h3>
-          <button id="buttonPending1" class="btn button-toggle" onclick="toggle()" >Pending</button>
+          <%# <button id="buttonPending1" class="btn button-toggle" onclick="toggle()" >Pending</button>
           <button id="buttonConfirmed1" class="btn button-toggle" onclick="toggle()">Confirmed</button>
-          <button id="buttonPast1" class="btn button-toggle" onclick="toggle()">Past/Canceled</button>
+          <button id="buttonPast1" class="btn button-toggle" onclick="toggle()">Past/Canceled</button> %>
         <div class="card booking-host">
           <div class="card-body booking-card">
             <% if @bookings.any? %>
@@ -87,7 +87,7 @@
 </div>
 
 <%# toggle for the (pending , confirmed & past/canceled) My Booking button %>
-<script>
+<%# <script>
 function toggle(button) {
   const buttonValue = button.innerText;
   const buttonPending1 = document.getElementById("buttonPending1");
@@ -131,7 +131,7 @@ buttonPast1.addEventListener('click', function() {
   buttonConfirmed1.classList.remove('btn-primary');
 });
 
-</script>
+</script> %>
 
 <%# toggle for the (pending , confirmed & past/canceled) My Booking:Host button %>
 
