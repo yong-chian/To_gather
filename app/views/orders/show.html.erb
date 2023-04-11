@@ -22,7 +22,7 @@
           <%# [<%= @order.activity_sku we do not have sku%>
           <li><strong>TOTAL</strong> <%= humanized_money_with_symbol @order.amount %></li>
           </li>
-          <%= link_to "Show booking details", bookings_path,  class: 'btn btn-primary' %>
+          <%= link_to "Show booking details", activity_booking_path(@booking.activity,@booking),  class: 'btn btn-primary' %>
         </ul>
       </div> <br />
     </div>

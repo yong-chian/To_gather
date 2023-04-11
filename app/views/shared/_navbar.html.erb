@@ -41,10 +41,10 @@
           <li class="nav-item dropdown">
             <%= image_tag "https://www.citypng.com/public/uploads/preview/download-profile-user-round-orange-icon-symbol-png-11639594360ksf6tlhukf.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <a class="nav-link" href="#" data-bs-toggle="dropdown"><%= current_user.first_name%></a>
+              <a class="nav-link text-center user-name" href="#" data-bs-toggle="dropdown">Welcome <%= current_user.first_name%>!</a>
               <%=link_to "Profile", edit_user_registration_path, class: "dropdown-item" %>
-              <%=link_to "Favourite", favorites_path, class: "dropdown-item" %>
-              <%= link_to "Reservation", bookings_path, class: "dropdown-item" %>
+              <%=link_to "Favourites", favorites_path, class: "dropdown-item" %>
+              <%= link_to "Reservations", bookings_path, class: "dropdown-item" %>
               <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
             </div>
           </li>

@@ -19,18 +19,18 @@
     </div>
   </div>
 
-  <div class="message-box ">
-    <%= simple_form_for [@chatroom, @message],
-      html: { data: { action: "turbo:submit-end->chatroom-subscription#resetForm" }, class: "d-flex" } do |f|
-    %>
-      <%= f.input :content,
-        label: false,
-        placeholder: "Message ##{@chatroom.name}",
-        wrapper_html: {class: "flex-grow-1"}
+  <div class="d-flex">
+    <div class="message-box flex-grow-1">
+      <%= simple_form_for [@chatroom, @message],
+        html: { data: { action: "turbo:submit-end->chatroom-subscription#resetForm" }, class: "d-flex" } do |f|
       %>
-      <%= f.submit "Send", class: "btn btn-primary message-button mb-3" %>
-    <% end %>
+        <%= f.input :content,
+          label: false,
+          placeholder: "Message ##{@chatroom.name}",
+          wrapper_html: {class: "flex-grow-1"}
+        %>
+        <%= f.submit "Send", class: "btn btn-primary message-button mb-3" %>
+      <% end %>
+    </div>
   </div>
- </div>
-
-
+</div>
