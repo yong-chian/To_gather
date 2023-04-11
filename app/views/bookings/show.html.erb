@@ -1,9 +1,8 @@
 <br/>
-  <div class="d-flex justify-content-start">
-  </div>
+  <div>
     <h1 class="text-center"><span><%= @booking.availability.activity.name %></span></h1>
-    <br/><%= link_to "Back to bookings", bookings_path, class: "btn btn-primary back-to-booking" %>
-    <br/>
+  </div>
+    <div class="container"><%= link_to "Back to bookings", bookings_path, class: "btn btn-primary back-to-booking" %>
       <div class="container text-center booking-show" style="background: var(--bs-white);">
         <% if policy(@booking).host?%>
           <div>
@@ -157,3 +156,4 @@
           </div>
         <% end %>
       </div>
+    </div>
