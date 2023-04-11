@@ -1,13 +1,9 @@
 <div id="<%= dom_id booking %>">
-  <p>
-    <%# <strong>Name:</strong>
-    <%= booking.availability.activity.name %> 
-  </p>
 
-  <p>
-    <%# <strong>Description:</strong>
-    <%= booking.availability.activity.description %>
-  </p>
+  <div class="activity-photos">
+    <% photo = @activity.photos.first %>
+    <%= cl_image_tag photo.key, height: 150, width: 250, crop: :fill %>
+  </div>
 
   <p>
     <strong>Booking Date:</strong>
@@ -20,8 +16,8 @@
   </p>
 
   <p>
-    <strong>Host:</strong>
-    <%= booking.user_name %>
+  <strong>Hosted by </strong>
+  <%= @activity.user.first_name %>
   </p>
 
 
@@ -41,3 +37,15 @@
   </p>
 
 </div>
+
+<%# booking activity name %>
+<%# <strong>Name:</strong>
+<%= booking.availability.activity.name %> 
+
+<%# booking activity name %>
+<%# <strong>Description:</strong>
+<%= booking.availability.activity.description %>
+
+<%# Participant name %>
+<%# <strong>Participant:</strong>
+<%= booking.user_name %> 

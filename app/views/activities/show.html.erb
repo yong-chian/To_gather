@@ -1,73 +1,76 @@
 <div class="activity-details">
 <div class="container">
+<br><br>
   <div class="row activity-details-each">
     <h2 class="activity-title" style="font-weight: bold;"><%= @activity.name %></h2>
     <div class="horizontal-line"></div>
-<div>
-  <p class="activity-host" style="display: inline-block;margin-bottom: 1px">
-  <strong>Hosted by </strong><%= @activity.user.first_name %>
-  <span class="circle circle--4 circle--gray ml-1 mr-1 align-middle"></span>
-  <%= @activity.average_rating %>
-  <span class="fa fa-star"></span>
-  <span class="circle circle--4 circle--gray ml-1 mr-1 align-middle"></span>
-  <strong>Posted on </strong></p>
-</div>
-
-<div class="gallery-wrap">
-  <%= image_tag 'back.png', id: 'backBtn' %>
-  <div class="gallery">
     <div>
-        <span><% @activity.photos.each do |photo| %>
-        <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %></span>
-        <% end %>
+      <p class="activity-host" style="display: inline-block;margin-bottom: 1px">
+      <strong>Hosted by </strong><%= @activity.user.first_name %>
+      <span class="circle circle--4 circle--gray ml-1 mr-1 align-middle"></span>
+      <%= @activity.average_rating %>
+      <span class="fa fa-star"></span>
+      <span class="circle circle--4 circle--gray ml-1 mr-1 align-middle"></span>
+      <strong>Posted on </strong></p>
+    </div>
+
+    <div class="gallery-wrap">
+      <%= image_tag 'back.png', id: 'backBtn' %>
+      <div class="gallery">
+        <div>
+            <span><% @activity.photos.each do |photo| %>
+            <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %></span>
+            <% end %>
+        </div>
+      </div>
+      <%= image_tag 'next.png', id: 'nextBtn' %>
+  </div>
+
+  <div class="normal-line"></div>
+      <p class="activity-description"><%= @activity.description %></p>
+      <p class="activity-policies"><strong>Things to note </strong><%= @activity.policies %></p>
+      <p class="activity-price"><strong>Price: </strong> <%= humanized_money_with_symbol(@activity.price) %> per pax </p>
     </div>
   </div>
-   <%= image_tag 'next.png', id: 'nextBtn' %>
-</div>
 
-<div class="normal-line"></div>
-    <p class="activity-description"><%= @activity.description %></p>
-    <p class="activity-policies"><strong>Things to note </strong><%= @activity.policies %></p>
-    <p class="activity-price"><strong>Price: </strong> <%= humanized_money_with_symbol(@activity.price) %> per pax </p>
-  </div>
-</div>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      let scrollContainer = document.querySelector(".gallery");
+      let backBtn = document.getElementById("backBtn");
+      let nextBtn = document.getElementById("nextBtn");
 
-<script>
-  document.addEventListener("DOMContentLoaded", function() {
-    let scrollContainer = document.querySelector(".gallery");
-    let backBtn = document.getElementById("backBtn");
-    let nextBtn = document.getElementById("nextBtn");
-
-    scrollContainer.addEventListener("wheel", (evt) => {
-      evt.preventDefault();
-      scrollContainer.scrollLeft += evt.deltaY;
+      scrollContainer.addEventListener("wheel", (evt) => {
+        evt.preventDefault();
+        scrollContainer.scrollLeft += evt.deltaY;
+      });
     });
-  });
-</script>
+  </script>
 
-<div class="container">
-  <div class="row booking-activity-form">
-      <div class="col">
-      <h2>New booking</h2>
-      <%= render "/bookings/form", activity: @activity, booking: @booking %>
+  <div class="container">
+    <div class="row booking-activity-form">
+      <div class="col new-booking">
+        <h1>New booking</h1>
+        <%= render "/bookings/form", activity: @activity, booking: @booking %>
       </div>
+    </div>
   </div>
-</div>
-<br>
+  <br>
 
-<div class="container">
-  <div class="row meeting">
-  <h1>Where to meet?</h1>
-  <p>Let's meet at <u><strong><%= @activity.meeting_location %></strong></u></p>
-  <div data-controller="map"
-        id='map'
-        data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
-        data-map-markers-value="<%= @marker.to_json %>"
-        style='width: 100%; height: 400px;'>
-</div>
-</div>
-<div class="container">
-  <div class="row faqs">
+  <div class="container">
+    <div class="row meeting">
+      <h1>Where to meet?</h1>
+      <p>Let's meet at <u><strong><%= @activity.meeting_location %></strong></u></p>
+        <div data-controller="map"
+          id='map'
+          data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
+          data-map-markers-value="<%= @marker.to_json %>"
+          style='width: 100%; height: 400px;'>
+        </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row faqs">
       <div class="faqs-each">
         <h1>Common FAQs from the Community</h1>
         <ul class="faqs-list">
@@ -84,31 +87,33 @@
         </ul>
       </div>
     </div>
-</div>
+  </div>
 
-<div class="container">
-  <div class="row faqs">
-    <h1>Reviews</h1>
-    <% if @participant_reviews.present? %>
-      <% @participant_reviews.each do |review| %>
-        <div class="review">
-          <p><strong>User Name:</strong> <%= review.user_name %></p>
-          <p><strong>Rating:</strong> <%= review.activity_rating %></p>
-          <p><strong>Content:</strong> <%= review.content %></p>
-          <%# <p><%= link_to "Edit", edit_booking_review_path(@booking, review) %></p>
-          <%# <p><%= link_to "Delete", booking_review_path(@booking, review), method: :delete, data: { confirm: "Are you sure you want to delete this review?" } %></p>
-        </div>
+  <div class="container">
+    <div class="row faqs">
+      <h1>Reviews</h1>
+      <% if @participant_reviews.present? %>
+        <% @participant_reviews.each do |review| %>
+          <div class="review">
+            <p><strong>User Name:</strong> <%= review.user_name %></p>
+            <p><strong>Rating:</strong> <%= review.activity_rating %></p>
+            <p><strong>Content:</strong> <%= review.content %></p>
+            <%# <p><%= link_to "Edit", edit_booking_review_path(@booking, review) %></p>
+            <%# <p><%= link_to "Delete", booking_review_path(@booking, review), method: :delete, data: { confirm: "Are you sure you want to delete this review?" } %></p>
+          </div>
+        <% end %>
+      <% else %>
+        <p>No reviews yet.</p>
       <% end %>
-    <% else %>
-      <p>No reviews yet.</p>
-    <% end %>
+    </div>
+    <div>
+      <% if policy(@activity).edit? %>
+        <%= link_to "Edit this activity", edit_activity_path(@activity), class: "btn btn-primary" %>
+      <% end %>
+      <%= link_to "Back to activities", activities_path, class: "btn btn-primary" %><br><br>
+      <%= button_to "Destroy this activity", @activity,class: "btn btn-primary", method: :delete if policy(@activity).destroy? %>
+    </div>
   </div>
 </div>
 
-<div>
-  <% if policy(@activity).edit? %>
-    <%= link_to "Edit this activity", edit_activity_path(@activity) %>
-  <% end %>
-  <%= link_to "Back to activities", activities_path, class: "btn btn-primary" %>
-  <%= button_to "Destroy this activity", @activity, method: :delete if policy(@activity).destroy? %>
-</div>
+<br>
