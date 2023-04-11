@@ -44,7 +44,7 @@
               <% elsif @booking.status == "Confirmed" %>
                 <h3>You have completed the activity. Please mark the activity as completed!</h3>
                 <%= render @booking %>
-                <%= button_to "Mark as completed", [@activity, @booking], params: {booking: {completed: true, status: "Completed"}}, method: :patch, class: "btn btn-primary w-50" if policy(@booking).status? %>
+                <%= button_to "Mark as completed", [@activity, @booking], params: {booking: {completed: true, status: "Completed"}}, method: :patch, class: "btn btn-primary w-50" if policy(@booking).status? %><br/><br/>
                 <%# <%= link_to "Back to bookings", bookings_path %>
               <% elsif @booking.status == "Cancelled" %>
                 <h3>This booking has been cancelled!</h3>
@@ -61,7 +61,7 @@
               <% if @booking.status == "Confirmed" %>
                 <h3>The booking is completed!</h3>
                 <%= render @booking %>
-                <%= link_to "View review", booking_participant_review_path(@booking, @booking.participant_reviews.first), class: "btn btn-primary w-50" if @booking.participant_reviews.present? %>
+                <%= link_to "View review", booking_participant_review_path(@booking, @booking.participant_reviews.first), class: "btn btn-primary w-50" if @booking.participant_reviews.present? %><br/><br/>
                 <%# <%= link_to "Back to bookings", bookings_path %>
               <% end %>
 
@@ -89,17 +89,17 @@
                 <h3>Booking Payment Received and Request Sent!</h3>
                 <p>We have reserved your slot, but your booking has <strong>not been confirmed yet</strong> by the host.</p>
                 <%= render @booking %>
-                <%= button_to "Request for cancellation and refund", [@activity, @booking], params: {booking: {comment: "Cancellations Requested"}}, method: :patch, class: 'btn btn-primary w-50' if policy(@booking).edit? %>
+                <%= button_to "Request for cancellation and refund", [@activity, @booking], params: {booking: {comment: "Cancellations Requested"}}, method: :patch, class: 'btn btn-primary w-50' if policy(@booking).edit? %><br/><br/>
                 <%# <%= link_to "Back to bookings", bookings_path, class: "btn btn-primary w-50", style: "margin: 10px;" %>
               <% elsif @booking.status == "Confirmed" %>
                 <h3>Your booking has been confirmed by the host!</h3>
                 <%= render @booking %>
-                <%= button_to "Request for cancellation and refund", [@activity, @booking], params: {booking: {comment: "Cancellations Requested"}}, method: :patch, class: 'btn btn-primary w-50' if policy(@booking).edit? %>
+                <%= button_to "Request for cancellation and refund", [@activity, @booking], params: {booking: {comment: "Cancellations Requested"}}, method: :patch, class: 'btn btn-primary w-50' if policy(@booking).edit? %><br/><br/>
                 <%# <%= link_to "Back to bookings", bookings_path %>
               <% elsif @booking.status == "Cancelled" %>
                 <h3>Your booking has been cancelled!</h3>
                 <%= render @booking %>
-                <%= link_to "Back to bookings", bookings_path %>
+                <%# <%= link_to "Back to bookings", bookings_path %>
               <% elsif @booking.status == "Rejected" %>
                 <h3>Unfortunately, your booking has been rejected!</h3>
                 <%= render @booking %>
@@ -135,10 +135,10 @@
                 <h3>Congratulations, your booking is now complete! We would like you to share your moment with us by leaving a review for the activity</h3>
                 <%= render @booking %>
                 <% if !@booking.participant_reviews.present?%>
-                  <%= link_to "Leave a review", new_booking_participant_review_path(@booking), class: 'btn btn-primary w-50' %>
+                  <%= link_to "Leave a review", new_booking_participant_review_path(@booking), class: 'btn btn-primary w-50' %><br/><br/>
                 <% else %>
-                  <%= link_to "View review", booking_participant_review_path(@booking, @booking.participant_reviews.first), class: 'btn btn-primary w-50' %>
-                  <%= link_to "Edit review", edit_booking_participant_review_path(@booking, @participant_review), class: 'btn btn-primary w-50' if policy(@participant_review).update? %>
+                  <%= link_to "View review", booking_participant_review_path(@booking, @booking.participant_reviews.first), class: 'btn btn-primary w-50' %><br/><br/>
+                  <%= link_to "Edit review", edit_booking_participant_review_path(@booking, @participant_review), class: 'btn btn-primary w-50' if policy(@participant_review).update? %><br/><br/>
                 <% end %>
                 <%# <%= link_to "Back to bookings", bookings_path %>
               <% end %>

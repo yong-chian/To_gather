@@ -1,8 +1,18 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-togather fixed-top">
   <div class="container-fluid">
-    <%= link_to root_path, class: "navbar-brand" do %>
-      <%= "ToGather" %>
-    <% end %>
+    <div class="navbar logo-search">
+      <%= link_to root_path, class: "navbar-brand" do %>
+        <%= "ToGather" %>
+      <% end %>
+      <%= form_with url: activities_path, method: :get, class: "d-flex" do %>
+        <%= text_field_tag :query,
+            params[:query],
+            class: "form-control",
+            placeholder: "Type a keyword"
+          %>
+        <%= submit_tag "Search", name: "", class: "btn btn-primary search-bar-nav my-2 my-sm-0"%>
+      <% end %>
+    </div>
 
     <%# do %>
       <%# <%= image_tag "ToGather.png" %>
@@ -14,245 +24,6 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
-
-      <form class="nav-item position-relative" id="" action="<% activities_path %>" accept-charset="UTF-8" method="get">
-        <div class="input-group input-group-search tw-hidden md:tw-flex">
-          <input type="text" name="query" value="<%= params[:query].to_s %>" placeholder="Type a keyword" class="form-control tw-text-xs md:tw-text-sm input-search tw-rounded-tl tw-rounded-bl" aria-label="Where are you going?" autocomplete="off">
-          <input type="text" name="location" id="js-select-num-guest-header" placeholder="HDB Towns" class="form-control tw-text-xs md:tw-text-sm input-guest" readonly="readonly">
-          <input type="text" name="category" id="js-input-start-date-nav" placeholder="Categories" class="form-control tw-text-xs md:tw-text-sm input-date" readonly="readonly">
-          <button type="submit" class="btn btn-primary tw-px-1.5 tw-rounded-tr tw-rounded-br" id="">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search tw-text-white"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-          </button>
-        </div>
-
-        <div class="search-box__popup search-box__popup--date d-none" id="js-header-popup-stacked-input-filter">
-          <div class="position-relative h-100">
-            <div class="d-flex d-lg-none align-items-start justify-content-between">
-              <div class="js-btn-close-stacked-popup">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-
-              </div>
-              <div class="text-center pt-1">
-                <div class="font-weight-bold tw-text-lg tw-leading-none">Search</div>
-              </div>
-              <div>&nbsp;</div>
-            </div>
-
-            <div class="w-100 pt-32 pt-lg-12 stacked-input-group">
-              <div class="stacked-input-group__item">
-                <div class="input-group js-btn-open-search-popup" data-popup="search">
-                  <div class="input-group-prepend">
-                    <div class="input-group-text pl-2 pr-1">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-
-                    </div>
-                  </div>
-                  <input type="text" class="form-control px-1 tw-text-sm" placeholder="Search Activity">
-                </div>
-              </div>
-              <div class="stacked-input-group__item">
-                <div class="input-group js-btn-open-search-popup" data-popup="guest">
-                  <div class="input-group-prepend">
-                    <div class="input-group-text pl-2 pr-1">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none">
-      <path d="M13.5 9C13.5 9.82843 12.8284 10.5 12 10.5C11.1716 10.5 10.5 9.82843 10.5 9C10.5 8.17157 11.1716 7.5 12 7.5C12.8284 7.5 13.5 8.17157 13.5 9Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path>
-      <path d="M21.5 12C21.5 17.2467 17.2467 21.5 12 21.5C6.75329 21.5 2.5 17.2467 2.5 12C2.5 6.75329 6.75329 2.5 12 2.5C17.2467 2.5 21.5 6.75329 21.5 12Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path>
-      <path d="M12 12.5C13.7632 12.5 15.2219 13.8039 15.4646 15.5H8.53544C8.77806 13.8039 10.2368 12.5 12 12.5Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path>
-      </svg>
-
-                    </div>
-                  </div>
-                  <input type="text" class="form-control px-1 tw-text-sm" placeholder="Guest">
-                </div>
-                <div class="input-group js-btn-open-search-popup" data-popup="start_date">
-                  <div class="input-group-prepend">
-                    <div class="input-group-text pl-2 pr-1">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none">
-      <rect x="2.5" y="5.5" width="19" height="15" rx="0.5" stroke="currentColor"></rect>
-      <rect x="3" y="8" width="18" height="1" fill="currentColor"></rect>
-      <rect x="5.5" y="11.5" width="2" height="2" stroke="currentColor"></rect>
-      <rect x="9.5" y="11.5" width="2" height="2" stroke="currentColor"></rect>
-      <rect x="5.5" y="15.5" width="2" height="2" stroke="currentColor"></rect>
-      <rect x="6" y="3" width="1" height="3" fill="currentColor"></rect>
-      <rect x="17" y="3" width="1" height="3" fill="currentColor"></rect>
-      </svg>
-
-                    </div>
-                  </div>
-                  <input type="text" class="form-control px-1 tw-text-sm" placeholder="Start date">
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="search-box__popup search-box__popup--select d-none" id="js-header-popup-select">
-          <div class="position-relative h-100">
-            <div class="d-flex d-lg-none align-items-start justify-content-between">
-              <div class="js-btn-close-popup-select">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-
-              </div>
-              <div class="text-center pt-1">
-                <div class="font-weight-bold tw-text-lg tw-leading-none mb-1">Who's coming?</div>
-                <span class="tw-text-grey-light">Add Guests to see exact price</span>
-              </div>
-              <div class="tw-underline js-btn-clear-num-guest">
-                Clear
-              </div>
-            </div>
-
-            <div class="d-flex align-items-center w-100 pt-32 pt-lg-12 px-32 px-lg-0">
-              <div class="tw-text-lg lg:tw-text-sm font-weight-bold"><span class="d-inline d-md-none">Add </span>Guest</div>
-              <div class="ml-auto">
-                <button type="button" class="btn btn-operator js-btn-minus-quantity mr-1" disabled=""><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather feather-minus"><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-      </button>
-                <input type="number" id="js-input-num-guest" value="0" class="form-control-quantity">
-                <button type="button" class="btn btn-operator js-btn-plus-quantity ml-1"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-      </button>
-              </div>
-            </div>
-
-            <div class="search-box__footer">
-              <button type="button" class="btn btn-primary btn-block js-btn-close-popup-select">Search</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="search-box__popup search-box__popup--date d-none" id="js-header-popup-date">
-          <div class="position-relative h-100">
-            <div class="d-flex d-lg-none align-items-start justify-content-between">
-              <div class="js-btn-close-header-date">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-
-              </div>
-              <div class="text-center pt-1">
-                <div class="font-weight-bold tw-text-lg tw-leading-none">Select Start Date</div>
-              </div>
-              <div class="tw-underline js-btn-clear-header-date">
-                Clear
-              </div>
-            </div>
-
-            <div class="w-100 pt-32 pt-lg-12">
-              <div class="d-none d-lg-flex justify-content-between align-items-center mb-2">
-                <div class="tw-text-lg tw-text-grey-light font-weight-bold">Select Start Date</div>
-
-                <div class="tw-cursor-pointer tw-underline js-btn-clear-header-date">
-                  Clear
-                </div>
-              </div>
-              <div class="flatpickr-custom flatpickr-header-date">
-                <div class="flatpickr-wrapper"><div id="js-header-datepicker" class="flatpickr-input" readonly="readonly"></div><div class="flatpickr-calendar rangeMode animate inline" tabindex="-1"><div class="flatpickr-months"><span class="flatpickr-prev-month flatpickr-disabled"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 17 17"><g></g><path d="M5.207 8.471l7.146 7.147-0.707 0.707-7.853-7.854 7.854-7.853 0.707 0.707-7.147 7.146z"></path></svg></span><div class="flatpickr-month"><div class="flatpickr-current-month"><select class="flatpickr-monthDropdown-months" aria-label="Month" tabindex="-1" disabled=""><option class="flatpickr-monthDropdown-month" value="3" tabindex="-1">April</option><option class="flatpickr-monthDropdown-month" value="4" tabindex="-1">May</option><option class="flatpickr-monthDropdown-month" value="5" tabindex="-1">June</option><option class="flatpickr-monthDropdown-month" value="6" tabindex="-1">July</option><option class="flatpickr-monthDropdown-month" value="7" tabindex="-1">August</option><option class="flatpickr-monthDropdown-month" value="8" tabindex="-1">September</option><option class="flatpickr-monthDropdown-month" value="9" tabindex="-1">October</option><option class="flatpickr-monthDropdown-month" value="10" tabindex="-1">November</option><option class="flatpickr-monthDropdown-month" value="11" tabindex="-1">December</option></select><div class="numInputWrapper"><input class="numInput cur-year" type="number" tabindex="-1" aria-label="Year" min="2023" max="2024" disabled=""></div></div></div><span class="flatpickr-next-month"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 17 17"><g></g><path d="M13.207 8.472l-7.854 7.854-0.707-0.707 7.146-7.146-7.146-7.148 0.707-0.707 7.854 7.854z"></path></svg></span></div><div class="flatpickr-innerContainer"><div class="flatpickr-rContainer"><div class="flatpickr-weekdays"><div class="flatpickr-weekdaycontainer">
-            <span class="flatpickr-weekday">
-              Sun</span><span class="flatpickr-weekday">Mon</span><span class="flatpickr-weekday">Tue</span><span class="flatpickr-weekday">Wed</span><span class="flatpickr-weekday">Thu</span><span class="flatpickr-weekday">Fri</span><span class="flatpickr-weekday">Sat
-            </span>
-            </div></div><div class="flatpickr-days" tabindex="-1"><div class="dayContainer"><span class="flatpickr-day prevMonthDay flatpickr-disabled" aria-label="March 26, 2023">26</span><span class="flatpickr-day prevMonthDay flatpickr-disabled" aria-label="March 27, 2023">27</span><span class="flatpickr-day prevMonthDay flatpickr-disabled" aria-label="March 28, 2023">28</span><span class="flatpickr-day prevMonthDay flatpickr-disabled" aria-label="March 29, 2023">29</span><span class="flatpickr-day prevMonthDay flatpickr-disabled" aria-label="March 30, 2023">30</span><span class="flatpickr-day prevMonthDay flatpickr-disabled" aria-label="March 31, 2023">31</span><span class="flatpickr-day flatpickr-disabled" aria-label="April 1, 2023">1</span><span class="flatpickr-day flatpickr-disabled" aria-label="April 2, 2023">2</span><span class="flatpickr-day flatpickr-disabled" aria-label="April 3, 2023">3</span><span class="flatpickr-day flatpickr-disabled" aria-label="April 4, 2023">4</span><span class="flatpickr-day flatpickr-disabled" aria-label="April 5, 2023">5</span><span class="flatpickr-day flatpickr-disabled" aria-label="April 6, 2023">6</span><span class="flatpickr-day flatpickr-disabled" aria-label="April 7, 2023">7</span><span class="flatpickr-day today" aria-label="April 8, 2023" aria-current="date" tabindex="-1">8</span><span class="flatpickr-day " aria-label="April 9, 2023" tabindex="-1">9</span><span class="flatpickr-day " aria-label="April 10, 2023" tabindex="-1">10</span><span class="flatpickr-day " aria-label="April 11, 2023" tabindex="-1">11</span><span class="flatpickr-day " aria-label="April 12, 2023" tabindex="-1">12</span><span class="flatpickr-day " aria-label="April 13, 2023" tabindex="-1">13</span><span class="flatpickr-day " aria-label="April 14, 2023" tabindex="-1">14</span><span class="flatpickr-day " aria-label="April 15, 2023" tabindex="-1">15</span><span class="flatpickr-day " aria-label="April 16, 2023" tabindex="-1">16</span><span class="flatpickr-day " aria-label="April 17, 2023" tabindex="-1">17</span><span class="flatpickr-day " aria-label="April 18, 2023" tabindex="-1">18</span><span class="flatpickr-day " aria-label="April 19, 2023" tabindex="-1">19</span><span class="flatpickr-day " aria-label="April 20, 2023" tabindex="-1">20</span><span class="flatpickr-day " aria-label="April 21, 2023" tabindex="-1">21</span><span class="flatpickr-day " aria-label="April 22, 2023" tabindex="-1">22</span><span class="flatpickr-day " aria-label="April 23, 2023" tabindex="-1">23</span><span class="flatpickr-day " aria-label="April 24, 2023" tabindex="-1">24</span><span class="flatpickr-day " aria-label="April 25, 2023" tabindex="-1">25</span><span class="flatpickr-day " aria-label="April 26, 2023" tabindex="-1">26</span><span class="flatpickr-day " aria-label="April 27, 2023" tabindex="-1">27</span><span class="flatpickr-day " aria-label="April 28, 2023" tabindex="-1">28</span><span class="flatpickr-day " aria-label="April 29, 2023" tabindex="-1">29</span><span class="flatpickr-day " aria-label="April 30, 2023" tabindex="-1">30</span><span class="flatpickr-day nextMonthDay" aria-label="May 1, 2023" tabindex="-1">1</span><span class="flatpickr-day nextMonthDay" aria-label="May 2, 2023" tabindex="-1">2</span><span class="flatpickr-day nextMonthDay" aria-label="May 3, 2023" tabindex="-1">3</span><span class="flatpickr-day nextMonthDay" aria-label="May 4, 2023" tabindex="-1">4</span><span class="flatpickr-day nextMonthDay" aria-label="May 5, 2023" tabindex="-1">5</span><span class="flatpickr-day nextMonthDay" aria-label="May 6, 2023" tabindex="-1">6</span></div></div></div></div></div></div>
-              </div>
-            </div>
-
-            <div class="search-box__footer">
-              <button type="button" class="btn btn-primary btn-block js-btn-close-popup-date">Search</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="search-box__popup js-popup-search d-none" id="js-header-popup-search">
-          <div class="search-box__popup-inner">
-            <div class="d-flex d-lg-none align-items-center justify-content-between">
-              <div class="js-btn-close-popup-search">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-
-              </div>
-              <div class="font-weight-bold tw-text-lg tw-leading-none">
-                What do you want to do?
-              </div>
-              <div class="tw-underline js-btn-clear-search">
-                Clear
-              </div>
-            </div>
-
-            <div class="d-flex d-lg-none input-group mt-32">
-              <div class="input-group-prepend">
-                <div class="input-group-text tw-rounded-tl-lg tw-rounded-bl-lg">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search tw-text-cyan"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-
-                </div>
-              </div>
-              <input type="text" name="" class="form-control search-box__input js-input-search-popup" placeholder="Search Singapore" value="">
-              <div class="input-group-append">
-                <div class="input-group-text tw-rounded-tr-lg tw-rounded-br-lg search-box__btn-clear js-btn-search-clear">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x-circle"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
-
-                </div>
-              </div>
-            </div>
-
-            <div class="d-block d-lg-none tw-border-t tw-border-grey-lighter tw-border-solid my-4"></div>
-
-            <div class="search-box__body">
-              <div class="js-popup-search-filter w-100 h-100 ">
-                <div class="search-box__result">
-                  <div class="tw-text-lg tw-text-grey-light font-weight-bold mb-2">Featured Activities</div>
-                  <div class="tw-text-lg tw-text-grey-light font-weight-bold mb-2"></div>
-                    <a class="search-box__result-item" href="/adventures/best-kayaking-in-singapore">
-                      <div class="search-box__result-item-icon">
-                        <img class="blur-up ls-is-cached lazyloaded" alt="Kayaking Trips" src="https://d18sx48tl6nre5.cloudfront.net/assets/marker/pinpoint-fda8281ce5c7f5834b15fdacb41b8d7c5252acf79e9da3f4b8437dc6dd627144.png">
-                      </div>
-                      <div>
-                        <div class="search-box__result-item-title">Kayaking Trips</div>
-                        <div class="search-box__result-item-subtitle">13 options</div>
-                      </div>
-                    </a>
-                    <a class="search-box__result-item" href="/adventures/singapore-nature-trails">
-                      <div class="search-box__result-item-icon">
-                        <img class="blur-up ls-is-cached lazyloaded" alt="Nature &amp; Wildlife Trails" src="https://d18sx48tl6nre5.cloudfront.net/assets/marker/pinpoint-fda8281ce5c7f5834b15fdacb41b8d7c5252acf79e9da3f4b8437dc6dd627144.png">
-                      </div>
-                      <div>
-                        <div class="search-box__result-item-title">Nature &amp; Wildlife Trails</div>
-                        <div class="search-box__result-item-subtitle">36 options</div>
-                      </div>
-                    </a>
-                    <a class="search-box__result-item" href="/adventures/best-pottery-workshops-in-singapore">
-                      <div class="search-box__result-item-icon">
-                        <img class="blur-up ls-is-cached lazyloaded" alt="Pottery Workshops" src="https://d18sx48tl6nre5.cloudfront.net/assets/marker/pinpoint-fda8281ce5c7f5834b15fdacb41b8d7c5252acf79e9da3f4b8437dc6dd627144.png">
-                      </div>
-                      <div>
-                        <div class="search-box__result-item-title">Pottery Workshops</div>
-                        <div class="search-box__result-item-subtitle">18 options</div>
-                      </div>
-                    </a>
-                    <a class="search-box__result-item" href="/adventures/best-cooking-baking-classes-singapore">
-                      <div class="search-box__result-item-icon">
-                        <img class="blur-up ls-is-cached lazyloaded" alt="Cooking &amp; Baking Classes" src="https://d18sx48tl6nre5.cloudfront.net/assets/marker/pinpoint-fda8281ce5c7f5834b15fdacb41b8d7c5252acf79e9da3f4b8437dc6dd627144.png">
-                      </div>
-                      <div>
-                        <div class="search-box__result-item-title">Cooking &amp; Baking Classes</div>
-                        <div class="search-box__result-item-subtitle">20 options</div>
-                      </div>
-                    </a>
-                    <a class="search-box__result-item" href="/adventures/best-art-jamming-in-singapore">
-                      <div class="search-box__result-item-icon">
-                        <img class="blur-up ls-is-cached lazyloaded" alt="Art Jamming" src="https://d18sx48tl6nre5.cloudfront.net/assets/marker/pinpoint-fda8281ce5c7f5834b15fdacb41b8d7c5252acf79e9da3f4b8437dc6dd627144.png">
-                      </div>
-                      <div>
-                        <div class="search-box__result-item-title">Art Jamming</div>
-                        <div class="search-box__result-item-subtitle">54 options</div>
-                      </div>
-                    </a>
-                </div>
-              </div>
-              <div class="d-none w-100 h-100 js-popup-search-result">
-              </div>
-            </div>
-
-            <div class="search-box__footer">
-              <button type="button" class="btn btn-primary btn-block js-btn-submit-search-popup">Show Results</button>
-            </div>
-          </div>
-        </div>
-      </form>
-
         <% if user_signed_in? %>
           <li class="nav-item active">
             <%= link_to "About Us", about_path, class: "nav-link" %>
@@ -270,9 +41,10 @@
           <li class="nav-item dropdown">
             <%= image_tag "https://www.citypng.com/public/uploads/preview/download-profile-user-round-orange-icon-symbol-png-11639594360ksf6tlhukf.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+              <a class="nav-link text-center user-name" href="#" data-bs-toggle="dropdown">Welcome <%= current_user.first_name%>!</a>
               <%=link_to "Profile", edit_user_registration_path, class: "dropdown-item" %>
-              <%=link_to "Favourite", favorites_path, class: "dropdown-item" %>
-              <%= link_to "Reservation", bookings_path, class: "dropdown-item" %>
+              <%=link_to "Favourites", favorites_path, class: "dropdown-item" %>
+              <%= link_to "Reservations", bookings_path, class: "dropdown-item" %>
               <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
             </div>
           </li>

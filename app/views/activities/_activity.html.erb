@@ -1,13 +1,15 @@
 <div id="myModal" class="modal">
   <div class="modal-content">
-    <span class="close">&times;</span>
+    <div class="modal-header">
     <h2 id="activity-name"></h2>
-    <hr>
+    <span class="close">&times;</span>
+  </div>
     <p id="activity-description"></p>
     <p id="activity-meeting-location"></p>
     <p id="activity-policies"></p>
     <p id="activity-availabilities"></p>
-    <%= link_to "View Activity", "#", id: "view-activity-link", class: "btn btn-primary" %>
+  <div class="container" style="text-align: center;">
+    <%= link_to "View Activity", "#", id: "view-activity-link", class: "btn btn-primary w-30" %></div>
   </div>
 </div>
 
@@ -31,10 +33,10 @@ var modalTitle = document.getElementById("modal-title");
 function showPopup(name, description, meetingLocation, policies, availabilities, activityPath) {
   modal.style.display = "block";
   activityName.innerHTML = name;
-  activityDescription.innerHTML = description;
-  activityMeetingLocation.innerHTML = "Meeting Location: " + meetingLocation;
-  activityPolicies.innerHTML = "Things to note: " + policies;
-  activityAvailabilities.innerHTML = "Upcoming available date: " + availabilities;
+  activityDescription.innerHTML = "<span style='text-decoration: underline;'><strong>About Activity</span></strong><ul><li>" + description;
+  activityMeetingLocation.innerHTML = "<span style='text-decoration: underline;'><strong>Meeting Location</span></strong><ul><li>" + meetingLocation;
+  activityPolicies.innerHTML = "<span style='text-decoration: underline;'><strong>Things to Note</span></strong><ul><li>" + policies;
+  activityAvailabilities.innerHTML = "<span style='text-decoration: underline;'><strong>Upcoming Available Date</span></strong><ul><li>" + availabilities;
   viewActivityLink.href = activityPath;
 }
 
@@ -95,14 +97,13 @@ window.onclick = function (event) {
     At <strong><%= activity.meeting_location.sub(/,\s*Singapore$/, '') %></strong>
     </p>
 
-    <p class="activity-description" style="color: grey"><%= activity.description %></p>
+    <%# <p class="activity-description" style="color: grey"><%= activity.description %>
 
     <Div>
 
-     <p class="activity-price" style="font-size: 18px; color: grey;">
+     <p class="activity-price" style="font-size: 18px; color: grey; justify-content: space-between;display: flex;">
       <strong>From <%= humanized_money_with_symbol(activity.price) %></strong>
-
-      <%= link_to "View Activity", activity_path(activity), class: "btn btn-primary" %>
+      <%= link_to "View Activity", activity_path(activity), class: "btn btn-primary", style: "margin-left: 95px;" %>
 
     </p>
 

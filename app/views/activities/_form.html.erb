@@ -1,57 +1,72 @@
-<div class="form-inputs centered-form">
-  <%= simple_form_for(activity, data: { controller: "activity-flatpickr" }) do |f| %>
-  <%= f.error_notification %>
-  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+          <%= simple_form_for(activity, data: { controller: "activity-flatpickr" }, html: {class: "form-horizontal"}) do |f| %>
+            <%= f.error_notification %>
+            <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-  <div class="form-inputs">
-    <%= f.input :name %>
-  </div>
+            <div class="form-group">
+              <%= f.input :name, class: "form-control", placeholder: "Enter activity name" %>
+            </div>
 
-  <div class="form-inputs">
-    <%= f.input :description %>
-  </div>
+            <div class="form-group">
+              <%= f.input :description, as: :text, input_html: { class: "form-control", rows: 4, placeholder: "Enter activity description" } %>
+            </div>
 
-  <div class="form-inputs">
-    <%= f.input :price %>
-  </div>
+            <div class="form-group">
+              <%= f.input :price, class: "form-control", placeholder: "Enter price" %>
+            </div>
 
-  <div class="form-inputs">
-    <%= f.input :max_capacity %>
-  </div>
+            <div class="form-group">
+              <%= f.input :max_capacity, class: "form-control", placeholder: "Enter maximum capacity" %>
+            </div>
 
-  <div class="form-inputs">
-    <%= f.input :availabilities_start_time, multiple: true,
-    input_html: { data: { activity_flatpickr_target: "availabilities" } } %>
-  </div>
+            <div class="form-group">
+              <%= f.input :availabilities_start_time, as: :string, input_html: { class: "form-control", data: { activity_flatpickr_target: "availabilities" }, placeholder: "Select availability" } %>
+            </div>
 
-  <div class="form-inputs">
-    <%= f.input :meeting_location,
-                input_html: {data: {address_autocomplete_target: "address"}, class: "d-none"},
-                wrapper_html: {data: {controller: "address-autocomplete",
-                address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}
-    %>
-  </div>
+            <div class="form-group">
+              <%= f.input :meeting_location, class: "form-control", input_html: {data: {address_autocomplete_target: "address"}, class: "d-none"}, wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}, class: "position-relative"} %>
+            </div>
 
-  <div class="form-inputs">
-    <%= f.input :minimum_age %>
-  </div>
+            <div class="form-group">
+              <%= f.input :minimum_age, class: "form-control", placeholder: "Enter minimum age" %>
+            </div>
 
-  <div class="form-inputs">
-    <%= f.input :policies, input_html: { placeholder: "No pets allowed" } %>
-  </div>
+            <div class="form-group">
+              <%= f.input :policies, class: "form-control", input_html: { placeholder: "Enter policies", rows: 2 } %>
+            </div>
 
-  <div>
-    <%= f.association "interests", as: :check_boxes, multiple: true, collection: Interest.all, include_hidden:false, label: "Categories" %>
-  </div>
+            <div class="form-group">
+              <%= f.association :interests, as: :check_boxes, label: "Select categories", collection: Interest.all, include_hidden:false, input_html: { class: "form-check-input" } %>
+            </div>
 
-  <div class="form-inputs ">
-    <%= f.input :photos, as: :file, input_html: { multiple: true } %>
-  </div>
+            <div class="form-group">
+              <%= f.input :photos, as: :file, input_html: { multiple: true, class: "form-control-file" } %>
+            </div>
 
-
-  <div class="form-actions ">
-    <%= f.button :submit,class: "btn-primary" %>
-  </div>
-
-<% end %>
-</div>
+            <div class="form-group text-center">
+              <div>
+                <%= f.button :submit, class: "btn btn-primary btn-form" %>
+              </div>
+              <div class="btn-back text-center mt-5">
+                <%= link_to "Back", activities_path, class: "btn btn-secondary" %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <br>
+      <br>
+    </div>
+  </body>
+</html>

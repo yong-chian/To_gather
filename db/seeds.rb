@@ -39,7 +39,7 @@ puts "Test user created!"
 test_user2 = User.create(email: "test1@gmail.com", password: "123456a", first_name: "Jane", last_name: "Smith", home_address: "759160", phone_no: "12345678")
 test_user3 = User.create(email: "test2@gmail.com", password: "123456b", first_name: "Michelle", home_address: "759160", last_name: "Lim", phone_no: "12345678")
 test_user4 = User.create(email: "test3@gmail.com", password: "123456c", first_name: "Aisyah", home_address: "759160", last_name: "N", phone_no: "12345678")
-test_user5 = User.create(email: "test4@gmail.com", password: "123456d", first_name: "Christopher", home_address: "759160", last_name: "Ng", phone_no: "12345678")
+test_user5 = User.create(email: "test4@gmail.com", password: "123456d", first_name: "Chris", home_address: "759160", last_name: "Ng", phone_no: "12345678")
 test_user6 = User.create(email: "test5@gmail.com", password: "123456e", first_name: "Sarah", last_name: "Yeo", phone_no: "12345678")
 test_user7 = User.create(email: "test6@gmail.com", password: "123456f", first_name: "Jamie", last_name: "Koh", phone_no: "12345678")
 test_user8 = User.create(email: "test7@gmail.com", password: "123456g", first_name: "Olivia", last_name: "Ong", phone_no: "12345678")
@@ -54,6 +54,10 @@ test_user16 = User.create(email: "test15@gmail.com", password: "123456o", first_
 test_user17 = User.create(email: "test16@gmail.com", password: "123456p", first_name: "Reuben", last_name: "Koo", phone_no: "12345678")
 test_user18 = User.create(email: "test17@gmail.com", password: "123456q", first_name: "Fiona", last_name: "Sim", phone_no: "12345678")
 test_user19 = User.create(email: "test18@gmail.com", password: "123456r", first_name: "Jared", last_name: "Koh", phone_no: "12345678")
+test_user19 = User.create(email: "test19@gmail.com", password: "123456s", first_name: "Zul", last_name: "Razali", phone_no: "12345678")
+test_user20 = User.create(email: "test20@gmail.com", password: "123456t", first_name: "Siti", last_name: "Sara", phone_no: "12345678")
+test_user21 = User.create(email: "test21@gmail.com", password: "123456u", first_name: "Mike", last_name: "Su", phone_no: "12345678")
+
 
 # TODO: Created hdb towns
 hdb_towns = [["Ang Mo Kio", "Ang Mo Kio, Singapore"],
@@ -115,14 +119,13 @@ activity_1 = Activity.create(
   description: "Learn and play Mahjong with experienced players for all levels." ,
   price: 60,
   max_capacity: 4,
-  meeting_location: "Yio Chu Kang, Singapore",
+  meeting_location: "Yishun, Singapore",
   minimum_age: 0,
   policies: "Please inform us for rescheduling in the event you are unwell",
   user: test_user
 )
 image_urls_1 = ["https://res.cloudinary.com/ddk4z9ypx/image/upload/c_scale,e_art:refresh,w_1170/v1679720473/photo-1660099789632-ed5fae6189af_hwqji8.jpg",
                 "https://res.cloudinary.com/ddk4z9ypx/image/upload/v1680256999/MAHJONG-8-800x511_pb9nd0.jpg",
-                "https://res.cloudinary.com/ddk4z9ypx/image/upload/v1680256996/4651e7bd-6533-4aac-996e-b9f920d822ac_n4nik4.webp",
                 "https://res.cloudinary.com/ddk4z9ypx/image/upload/v1680869531/mahjong-lesson-sheet_to5gge.jpg"]
 
 image_urls_1.each do |url|
@@ -190,7 +193,7 @@ booking_4 = Booking.new(
   user_id: test_user5.id,
   availability_id: selected_availability.id,
   activity_id: selected_availability.activity_id,
-  user_name: "Christopher Ng",
+  user_name: "Chris Ng",
   number_of_pax: 2,
   status: "Confirmed",
   comment: "",
@@ -229,7 +232,7 @@ review_3.save!
 review_4 = ParticipantReview.new(
   booking_id: booking_4.id,
   activity_id: booking_4.activity_id,
-  user_name: "Christopher Ng",
+  user_name: "Chris Ng",
   content: "It was exciting to challenge with the pros",
   activity_rating: 4
 )
@@ -307,7 +310,7 @@ activity_3.save!
 activity_4 = Activity.create(
   name: "Peranakan Nomz",
   description: "Learn to cook 3 traditional Peranakan dishes with authentic ingredients in our cozy home. The dishes include Ayam Buah Keluak, Babi Pongteh and Kueh Lapis.",
-  price: 100,
+  price: 99,
   max_capacity: 5,
   meeting_location: "Khatib, Singapore",
   minimum_age: 0,
@@ -341,7 +344,7 @@ activity_4.save!
 
 activity_5 = Activity.create(
   name: "Chinese Tuition",
-  description: "Tailored Chinese language coaching for all orimary levels and ages.",
+  description: "Tailored Chinese language coaching for all primary levels and ages.",
   price: 25,
   max_capacity: 1,
   meeting_location: "Yishun, Singapore",
@@ -446,7 +449,7 @@ activity_7.save!
 activity_8 = Activity.create(
   name: "Green Fingers",
   description: "Join me to discover gardening basics, plant care, and sustainable practices!",
-  price: 10,
+  price: 25,
   max_capacity: 5,
   meeting_location: "Khatib, Singapore",
   minimum_age: 0,
@@ -516,7 +519,7 @@ activity_10 = Activity.create(
   description: "Fun basketball program for kids from 6 years old onwards to learn and develop skills." ,
   price: 10,
   max_capacity: 10,
-  meeting_location: "Bishan Park, Singapore",
+  meeting_location: "Marymount, Singapore",
   minimum_age: 6,
   policies: "Please inform us for rescheduling in the event you are unwell",
   user: test_user10
@@ -547,7 +550,7 @@ activity_10.save!
 
 activity_11 = Activity.create(
   name: "Bird Watching",
-  description: "Discover the art of birdwatching through guided observation!.",
+  description: "Discover the art of birdwatching through guided observation!",
   price: 30,
   max_capacity: 3,
   meeting_location: "Canberra, Singapore",
@@ -616,11 +619,11 @@ end
 activity_12.save!
 
 activity_13 = Activity.create(
-  name: "Perfume Making",
+  name: "The Art of Scent",
   description: "Create custom scents using high-quality ingredients and expert guidance.",
   price: 80,
   max_capacity: 4,
-  meeting_location: "Ang Mo Kio, Singapore",
+  meeting_location: "Jurong, Singapore",
   minimum_age: 0,
   policies: "Please inform us for rescheduling in the event you are unwell",
   user: test_user13
@@ -689,7 +692,7 @@ activity_15 = Activity.create(
   description: "Introduction to coding concepts and skills for beginners. Notes will be provided!" ,
   price: 88,
   max_capacity: 5,
-  meeting_location: "Yio Chu Kang, Singapore",
+  meeting_location: "Woodlands, Singapore",
   minimum_age: 0,
   policies: "Please bring your own laptop.",
   user: test_user15
@@ -789,10 +792,10 @@ activity_17.save!
 
 activity_18 = Activity.create(
   name: "Elderly Care",
-  description: "We are seeking for like-minded people to join us to deliver food to elderly staying nearby.",
-  price: 0,
+  description: "Elderly Care is a community initiative that aims to provide assistance to the elderly population living in the local area. As people age, they often require additional support to maintain their health and wellbeing. This is where Elderly Care comes in - we are a group of like-minded individuals who are passionate about making a positive impact in the lives of our elderly neighbors.",
+  price: 5,
   max_capacity: 4,
-  meeting_location: "Khatib, Singapore",
+  meeting_location: "Bishan, Singapore",
   minimum_age: 0,
   policies: "Please inform us for rescheduling in the event you are unwell",
   user: test_user18
@@ -822,6 +825,112 @@ end
 
 activity_18.save!
 
+activity_19 = Activity.create(
+  name: "Granny Nasi Lemak",
+  description: "Nasi Lemak is a traditional Malaysian dish that is popular throughout Southeast Asia. It is typically made with coconut rice, fried chicken or fish, sambal sauce, boiled eggs, cucumber slices, and roasted peanuts. Join us in this session to learn our Grandma's recipe!",
+  price: 60,
+  max_capacity: 5,
+  meeting_location: "Canberra, Singapore",
+  minimum_age: 0,
+  policies: "No cancellation is allowed",
+  user: test_user19
+)
+image_urls_19 = ["https://res.cloudinary.com/ddk4z9ypx/image/upload/v1681138444/shutterstock_648976399_p7l5yt.webp",
+                "https://res.cloudinary.com/ddk4z9ypx/image/upload/v1681121058/fun-in-class_t1jsn3.jpg",
+                "https://res.cloudinary.com/ddk4z9ypx/image/upload/v1681138423/nasi-lemak-cooking_bmqdfp.webp"]
+
+image_urls_19.each do |url|
+file = URI.open(url)
+activity_19.photos.attach(io: file, filename: "#{activity_19.name}.png", content_type: "image/png")
+end
+
+availabilities = []
+date = Date.today
+30.times do
+  availabilities << date.strftime("%Y-%m-%d")
+  date += 1.day
+end
+
+availabilities.each do |time|
+  activity_19.availabilities.build(
+    start_time: time,
+    end_time: time
+  )
+end
+
+activity_19.save!
+
+activity_20 = Activity.create(
+  name: "Hari Raya Delights",
+  description: "Hari Raya is a festive occasion celebrated by Muslims around the world. It marks the end of Ramadan, a month-long period of fasting, and is a time of joy, gratitude, and celebration. Traditional dishes play an important role in Hari Raya festivities, and some of the most popular dishes are Ketupat, Rendang, and Lemang.",
+  price: 75,
+  max_capacity: 4,
+  meeting_location: "Canberra, Singapore",
+  minimum_age: 0,
+  policies: "Please inform us for rescheduling in the event you are unwell",
+  user: test_user20
+)
+image_urls_20 = ["https://res.cloudinary.com/ddk4z9ypx/image/upload/v1681138679/AH_Pui_Satay_b54n4y.jpg",
+                "https://res.cloudinary.com/ddk4z9ypx/image/upload/v1681138689/sun-may-hiong-satay-house_xwjcrw.jpg",
+                "https://res.cloudinary.com/ddk4z9ypx/image/upload/v1681138966/3086f0ef5c58e30c1c9a1876487_original__zhylvf.avif"]
+
+image_urls_20.each do |url|
+file = URI.open(url)
+activity_20.photos.attach(io: file, filename: "#{activity_20.name}.png", content_type: "image/png")
+end
+
+availabilities = []
+date = Date.today
+30.times do
+  availabilities << date.strftime("%Y-%m-%d")
+  date += 1.day
+end
+
+availabilities.each do |time|
+  activity_20.availabilities.build(
+    start_time: time,
+    end_time: time
+  )
+end
+
+activity_20.save!
+
+activity_21 = Activity.create(
+  name: "Dangerous Yishun?",
+  description: "There have been reports of criminal activity in Yishun, a suburban town in the northern part of Singapore, which has led to it being labeled as a dangerous  town by some people. Let us show you around the beauty of Yishun as it is not what the media has depicted!",
+  price: 15,
+  max_capacity: 4,
+  meeting_location: "Yishun, Singapore",
+  minimum_age: 0,
+  policies: "Please inform us for rescheduling in the event you are unwell",
+  user: test_user21
+)
+image_urls_21 = ["https://res.cloudinary.com/ddk4z9ypx/image/upload/v1681139907/yishun-block-666_zed7u2.jpg",
+                "https://res.cloudinary.com/ddk4z9ypx/image/upload/v1681139945/Street-talk-yishun-6_l8znst.jpg",
+                "https://res.cloudinary.com/ddk4z9ypx/image/upload/v1681139940/Cover-Places-To-Visit-Yishunepb0310_qmmvji.webp"]
+
+image_urls_21.each do |url|
+file = URI.open(url)
+activity_21.photos.attach(io: file, filename: "#{activity_21.name}.png", content_type: "image/png")
+end
+
+availabilities = []
+date = Date.today
+30.times do
+  availabilities << date.strftime("%Y-%m-%d")
+  date += 1.day
+end
+
+availabilities.each do |time|
+  activity_21.availabilities.build(
+    start_time: time,
+    end_time: time
+  )
+end
+
+activity_21.save!
+
+
 p "Created #{Activity.count} activities"
 
 # # # TODO: Created FAQs
@@ -831,11 +940,13 @@ faqs = [
   ["What is the price for student?", "Hi, the price rate will be similar - there is no discount at the moment but do check back!"]
 ]
 
+
 Activity.all.each do |activity|
   faqs.each do |faq|
     activity.faqs.create(question: faq[0], answer: faq[1])
   end
 end
+
 
 # TODO: Created booking
 # booking_1 = Booking.create(
@@ -903,12 +1014,122 @@ p "Created #{ParticipantReview.count} participant_reviews"
 # # Host_review.create(user_rating: 4.5, booking_id: 1)
 # # Host_review.create(user_rating: 2, booking_id: 2)
 
-#Chatroom
+interests_1 = ["Entertainment"]
+interests_1.each do |interest|
+  activity_1.interests << Interest.find_by(name: interest)
+end
 
-# chatroom = Chatroom.new(name: booking_1.user_id)
-# chatroom.booking = booking_1
-# chatroom.save!
-# current_timestamp = Time.now
-# chatroom_1 = Chatroom.create(name: "general", booking_id: booking_1, created_at: current_timestamp.to_s, updated_at: current_timestamp.to_s)
+interests_2 = ["Sports & Wellness"]
+interests_2.each do |interest|
+  activity_2.interests << Interest.find_by(name: interest)
+end
 
-# p "is chatroom created? chatroom id: #{chatroom.id}"
+interests_3 = ["Entertainment"]
+interests_3.each do |interest|
+  activity_3.interests << Interest.find_by(name: interest)
+end
+
+interests_4 = ["Cultural Celebrations", "Food"]
+interests_4.each do |interest|
+  activity_4.interests << Interest.find_by(name: interest)
+  activity_4.interests << Interest.find_by(name: interest)
+end
+
+interests_5 = ["Professional Development","Education"]
+interests_5.each do |interest|
+  activity_5.interests << Interest.find_by(name: interest)
+end
+
+interests_6 = ["Food","Entertainment"]
+interests_6.each do |interest|
+  activity_6.interests << Interest.find_by(name: interest)
+end
+
+interests_7 = ["Food", "Entertainment","Cultural Celebrations"]
+interests_7.each do |interest|
+  activity_7.interests << Interest.find_by(name: interest)
+end
+
+interests_8 = ["Gardening","Entertainment"]
+interests_8.each do |interest|
+  activity_8.interests << Interest.find_by(name: interest)
+end
+
+interests_9 = ["Entertainment","Arts and Crafts"]
+interests_9.each do |interest|
+  activity_9.interests << Interest.find_by(name: interest)
+end
+
+interests_10 = ["Sports & Wellness", "Entertainment"]
+interests_10.each do |interest|
+  activity_10.interests << Interest.find_by(name: interest)
+end
+
+interests_11 = ["Cultural Celebrations","Social Clubs","Entertainment"]
+interests_11.each do |interest|
+  activity_11.interests << Interest.find_by(name: interest)
+end
+
+
+interests_11 = ["Cultural Celebrations", "SG Heritage Tours"]
+interests_11.each do |interest|
+  activity_11.interests << Interest.find_by(name: interest)
+end
+
+
+interests_12 = ["Sports & Wellness"]
+interests_12.each do |interest|
+  activity_12.interests << Interest.find_by(name: interest)
+end
+
+
+interests_13 = ["Entertainment"]
+interests_13.each do |interest|
+  activity_13.interests << Interest.find_by(name: interest)
+end
+
+
+interests_14 = ["Professional Development","Education"]
+interests_14.each do |interest|
+  activity_14.interests << Interest.find_by(name: interest)
+end
+
+
+interests_15 = ["Technology", "Professional Development","Education"]
+interests_15.each do |interest|
+  activity_15.interests << Interest.find_by(name: interest)
+end
+
+
+interests_16 = ["Entertainment","Arts and Crafts"]
+interests_16.each do |interest|
+  activity_16.interests << Interest.find_by(name: interest)
+end
+
+
+interests_17 = ["Entertainment","Music"]
+interests_17.each do |interest|
+  activity_17.interests << Interest.find_by(name: interest)
+end
+
+
+interests_18 = ["Charity Drives"]
+interests_18.each do |interest|
+  activity_18.interests << Interest.find_by(name: interest)
+end
+
+
+interests_19 = ["Cultural Celebrations", "Food"]
+interests_19.each do |interest|
+  activity_19.interests << Interest.find_by(name: interest)
+end
+
+interests_20 = ["Cultural Celebrations", "Food"]
+interests_20.each do |interest|
+  activity_20.interests << Interest.find_by(name: interest)
+end
+
+interests_21 = ["SG Heritage Tours"]
+interests_21.each do |interest|
+  activity_21.interests << Interest.find_by(name: interest)
+end

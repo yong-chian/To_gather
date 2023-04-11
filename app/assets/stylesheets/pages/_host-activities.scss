@@ -1,0 +1,29 @@
+
+.heading-text{
+  text-align: center;
+}
+
+
+.host-container-box {
+  border: 1px solid #fbfbfb;
+  border-radius: 5px;
+  padding: 20px;
+  background-color: #fff;
+  margin-top: 50px;
+  position: relative;
+  z-index: 1;
+}
+
+.background-image {
+  background-image: url("https://upload.wikimedia.org/wikipedia/commons/5/58/Bishan_HDB.JPG");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  opacity: 0.8;
+}

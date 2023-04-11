@@ -1,0 +1,73 @@
+/* General Styles */
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  height: 40px;
+  padding: 8px 12px;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+
+.form-control:focus {
+  border-color: #4d90fe;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(77, 144, 254, 0.25);
+}
+
+/* Specific Styles */
+
+.form-horizontal .form-group {
+  margin-right: 0;
+  margin-left: 0;
+}
+
+.form-horizontal .form-group:before,
+.form-horizontal .form-group:after {
+  display: table;
+  content: " ";
+}
+
+.form-horizontal .form-group:after {
+  clear: both;
+}
+
+.form-horizontal .form-control-label {
+  float: left;
+  width: 200px;
+  padding-top: 7px;
+  text-align: right;
+  font-weight: bold;
+}
+
+/* Buttons */
+
+.btn-form {
+  width: 100%;
+  height: 40px; /* Adjust this to match the input box height */
+  background-color: orange;
+  border-color: orange;
+}
+
+.btn-form:hover{
+  background-color: lightsalmon;
+}
+
+/* Media Queries */
+
+@media screen and (max-width: 768px) {
+  .form-horizontal .form-control-label {
+    width: auto;
+    text-align: left;
+  }
+}

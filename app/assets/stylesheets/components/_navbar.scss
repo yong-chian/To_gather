@@ -29,7 +29,8 @@
   font-family: 'Source Serif Pro', sans-serif;
 }
 
-//Avatar img circle//
+nav-link //Avatar img circle//
+
 .navbar-togather .navbar-brand img {
   width: 40px;
 }
@@ -40,6 +41,21 @@
 }
 
 
+//Dropdownj button//
+.dropdown-item {
+  color: $red;
+}
+
+.dropdown-item:hover {
+  background: $light-orange;
+  color: $white !important;
+}
+
+.user-name {
+  background: $red;
+  color: $white !important;
+}
+
 //Host Activity Button//
 .host-activity:hover {
   font-family: 'IM Fell Great Primer', "sans-serif";
@@ -47,4 +63,8 @@
   border-radius: 5px;
   color: $white !important;
   /* Change this to the desired hover color */
+}
+
+.search-bar-nav {
+  background: $red;
 }
