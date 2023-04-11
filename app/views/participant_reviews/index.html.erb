@@ -2,10 +2,22 @@
 <% counter = 1 %>
 <% @participant_reviews.each do |review| %>
   <div>
-    <h3>Review <%= counter %></h3>
+    <h3>My Moment <%= counter %></h3>
+      <div class="gallery-wrap">
+        <%= image_tag 'back.png', id: 'backBtn' %>
+        <div class="gallery">
+          <div>
+              <span><% review.photos.each do |photo| %>
+              <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %></span>
+              <% end %>
+          </div>
+        </div>
+        <%= image_tag 'next.png', id: 'nextBtn' %>
+      </div>
+    <p><strong>Happened on</strong> <%= review.booking.availability.start_time.strftime("%A, %B %e, %Y") %></p>
     <p><strong>Rating:</strong> <%= review.activity_rating %></p>
-  <p><strong>Description:</strong> <%= review.content %></p>
-  <p><strong>User:</strong> <%= review.user_name %></p>
+    <p><strong>Description:</strong> <%= review.content %></p>
+    <p><strong>User:</strong> <%= review.user_name %></p>
   </div>
   <% counter += 1 %>
 <% end %>

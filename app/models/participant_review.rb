@@ -1,6 +1,7 @@
 class ParticipantReview < ApplicationRecord
   belongs_to :booking
   belongs_to :activity
+  has_many_attached :photos
 
   validates :content, presence: true
   validates :user_name, presence: true

@@ -4,6 +4,7 @@ class Activity < ApplicationRecord
   monetize :price_cents
   validates :name, presence: true
   validates :description, presence: true
+  validates :photos, presence: true
   validates :price_cents, numericality: { greater_than_or_equal_to: 0 }
   validates :max_capacity, presence: true
   validates :meeting_location, presence: true

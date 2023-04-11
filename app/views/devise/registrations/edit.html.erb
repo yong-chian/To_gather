@@ -23,10 +23,12 @@
                   autofocus: true,
                   input_html: { autocomplete: "phone-no" }%>
       <%= f.input :home_address,
-                  label: "Postal Code",
                   required: true,
                   autofocus: true,
-                  input_html: { autocomplete: "postal-code" }%>
+                  label: "Home Address / Postal Code",
+                  input_html: {data: {address_autocomplete_target: "address"}, class: "d-none"},
+                  wrapper_html: {data: {controller: "address-autocomplete",
+                  address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}} %>
       <%= f.input :occupation_status,
                   required: true,
                   autofocus: true,
