@@ -19,8 +19,10 @@ Rails.application.routes.draw do
   end
 
   resources :bookings, only: :index do
-    resources :participant_reviews, only:  [:show, :index, :new, :create, :edit, :update]
+    resources :participant_reviews, only:  [:show, :new, :create, :edit, :update]
   end
+
+  resources :participant_reviews, only: :index
 
   resources :orders, only: [:show, :create] do
     resources :payments, only: :new
@@ -29,7 +31,7 @@ Rails.application.routes.draw do
   resources :chatrooms, only: :show do
     resources :messages, only: :create
   end
-  
+
   resources :favorites, only: [:index]
   # resources :users, only: :index do
   #   member do

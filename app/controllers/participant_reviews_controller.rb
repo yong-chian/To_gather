@@ -4,7 +4,7 @@ class ParticipantReviewsController < ApplicationController
 
   def index
     #code to display all reviews for an activity or a booking
-    @participant_reviews = policy_scope(ParticipantReview.all)
+    @participant_reviews = policy_scope(ParticipantReview.joins(:booking).where(bookings: { user_id: current_user }))
   end
 
   def show
@@ -68,6 +68,6 @@ class ParticipantReviewsController < ApplicationController
   end
 
   def participant_review_params
-    params.require(:participant_review).permit(:content, :activity_rating)
+    params.require(:participant_review).permit(:content, :activity_rating, photos: [])
   end
 end
