@@ -1,26 +1,14 @@
 <% if notice %>
-  <div class="alert2 alert-success alert-dismissible fade show m-1 alert" role="alert">
-    <span style="color: black"><strong>Yay!</strong> 🎉 You've successfully signed in to our service.</span>
-    <a data-bs-dismiss="alert" aria-label="Close">
-      <i class="fas fa-times"></i>
-    </a>
+  <div class="alert alert-success alert-dismissible fade show m-1" role="alert">
+    <%= notice %>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+    </button>
   </div>
 <% end %>
-
-<% if notice %>
-  <div class="alert2 alert-success alert-dismissible fade show m-1 alert" role="alert">
-    <span style="color: black"><strong>Goodbye!</strong>👋 You've successfully signed out of our service.</span>
-    <a data-bs-dismiss="alert" aria-label="Close">
-      <i class="fas fa-times"></i>
-    </a>
-  </div>
-<% end %>
-
 <% if alert %>
   <div class="alert alert-warning alert-dismissible fade show m-1" role="alert">
-    <span style="color: black"><strong>Mmh 🤔</strong> seems like you entered the wrong email or password.</span>
-     <a data-bs-dismiss="alert" aria-label="Close">
-      <i class="fas fa-times"></i>
-    </a>
+    <%= alert %>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+    </button>
   </div>
 <% end %>
