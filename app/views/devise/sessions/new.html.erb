@@ -11,14 +11,12 @@
                 <div class="login-form-inputs">
                   <%= f.input :email, required: false, autofocus: true, input_html: {
                   autocomplete: "email" , placeholder: "Example@example.com", class: "login-email-field"  } %>
-
                   <%= f.input :password, required: false, input_html: {
                   autocomplete: "current-password",
                   placeholder: "Enter password",
                   class: "login-password-field",
                   type: "password"
                   }, id: "password-field" %>
-
                   <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
                   <div class="form-actions center">
                     <%= f.button :submit, "Login" , class: "btn btn-primary login-btn-login" %>
@@ -26,16 +24,9 @@
               <% end %><br />
                 </div>
               </div>
-            </div>
-            <div class="form-actions center">
-              <%= f.button :submit, "Login" , class: "btn btn-primary login-btn-login" %>
-            </div>
-                <% end %><br />
 
                 <%= render "devise/shared/links" %><br><br><br><br>
             </div>
           </div>
       </div>
     </div>
-  </div>
-</div>
