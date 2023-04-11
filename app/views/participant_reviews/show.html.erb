@@ -1,6 +1,16 @@
 <div class="container">
   <h1>Review</h1>
-
+  <div class="gallery-wrap">
+    <%= image_tag 'back.png', id: 'backBtn' %>
+    <div class="gallery">
+      <div>
+          <span><% @participant_review.photos.each do |photo| %>
+          <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %></span>
+          <% end %>
+      </div>
+    </div>
+    <%= image_tag 'next.png', id: 'nextBtn' %>
+  </div>
   <p><strong>Rating:</strong> <%= @participant_review.activity_rating %></p>
   <p><strong>Description:</strong> <%= @participant_review.content %></p>
   <p><strong>User:</strong> <%= @participant_review.user_name %></p>

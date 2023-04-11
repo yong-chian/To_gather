@@ -299,7 +299,7 @@ DEPENDENCIES
   devise
   dotenv-rails
   font-awesome-sass (~> 6.1)
-  geocoder
+  geocoder (~> 1.4)
   jbuilder
   jsbundling-rails
   monetize

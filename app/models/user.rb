@@ -11,4 +11,6 @@ class User < ApplicationRecord
   has_many :bookings_as_host, through: :activities, source: :bookings
   has_many :orders
   acts_as_favoritor
+  geocoded_by :home_address
+  after_validation :geocode, if: :will_save_change_to_home_address?
 end
