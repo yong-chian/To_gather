@@ -8,6 +8,7 @@
 require "open-uri"
 
 puts "Cleaning up database..."
+HdbTown.destroy_all
 UserInterest.destroy_all
 Interest.destroy_all
 ParticipantReview.destroy_all
@@ -53,6 +54,42 @@ test_user16 = User.create(email: "test15@gmail.com", password: "123456o", first_
 test_user17 = User.create(email: "test16@gmail.com", password: "123456p", first_name: "Reuben", last_name: "Koo", phone_no: "12345678")
 test_user18 = User.create(email: "test17@gmail.com", password: "123456q", first_name: "Fiona", last_name: "Sim", phone_no: "12345678")
 test_user19 = User.create(email: "test18@gmail.com", password: "123456r", first_name: "Jared", last_name: "Koh", phone_no: "12345678")
+
+# TODO: Created hdb towns
+hdb_towns = [["Ang Mo Kio", "Ang Mo Kio, Singapore"],
+            ["Bedok", "Bedok, Singapore"],
+            ["Bishan", "Bishan, Singapore"],
+            ["Bukit Batok", "Bukit Batok, Singapore"],
+            ["Bukit Merah", "Bukit Merah, Singapore"],
+            ["Bukit Panjang", "Bukit Panjang, Singapore"],
+            ["Choa Chu Kang", "Choa Chu Kang, Singapore"],
+            ["Clementi", "Clementi, Singapore"],
+            ["Geylang", "Geylang, Singapore"],
+            ["Hougang", "Hougang, Singapore"],
+            ["Jurong East", "Jurong East, Singapore"],
+            ["Jurong West", "Jurong West, Singapore"],
+            ["Kallang Whampoa", "Kallang Whampoa, Singapore"],
+            ["Pasir Ris", "Pasir Ris, Singapore"],
+            ["Punggol", "Punggol, Singapore"],
+            ["Queenstown", "Queenstown, Singapore"],
+            ["Sembawang", "Sembawang, Singapore"],
+            ["Sengkang", "Sengkang, Singapore"],
+            ["Serangoon", "Serangoon, Singapore"],
+            ["Tampines", "Tampines, Singapore"],
+            ["Tengah", "Tengah, Singapore"],
+            ["Toa Payoh", "Toa Payoh, Singapore"],
+            ["Woodlands", "Woodlands, Singapore"],
+            ["Yishun", "Yishun, Singapore"],
+            ["Bukit Timah", "Bukit Timah, Singapore"],
+            ["Marine Parade", "Marine Parade, Singapore"],
+            ["Central Area", "Central Area, Singapore"]
+            ]
+
+hdb_towns.each do |town|
+  HdbTown.create!(name: town[0], address: town[1])
+end
+
+p "Created #{HdbTown.count} hdb towns"
 
 # TODO: Created interests
 Interest.create!(name: "Arts and Crafts", icon:'<i class="fas fa-palette"></i>')
