@@ -32,6 +32,18 @@
   color: #D23333;
 }
 
+.circle2 {
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: $red;
+  margin-left: 3px;
+  margin-right: 3px;
+  vertical-align: bottom;
+  color: #888;
+}
+
 // Icon on Image
 .activity-calendar-link {
   position: absolute;
@@ -100,4 +112,16 @@
 
 .fa-heart {
   font-size: 1.5em;
+}
+
+@media screen and (min-width: 576px) {
+  .activity-card {
+    width: calc(50% - 2rem);
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .activity-card {
+    width: calc(33.33% - 2rem);
+  }
 }
