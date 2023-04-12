@@ -13,4 +13,5 @@ class User < ApplicationRecord
   acts_as_favoritor
   geocoded_by :home_address
   after_validation :geocode, if: :will_save_change_to_home_address?
+  has_one_attached :avatar
 end

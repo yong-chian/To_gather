@@ -2,7 +2,7 @@
 
 class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
-  # before_action :configure_account_update_params, only: [:update]
+  before_action :configure_account_update_params, only: [:update]
   def add_interest
     @user = current_user
     @interests = Interest.all
@@ -23,8 +23,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # PUT /resource
-  # def update
-  # end
+  def configure_account_update_params
+    devise_parameter_sanitizer.permit(:account_update, keys: %i[name avatar])
+  end
 
   def update_interest
     interests = params["user"]["interest_ids"] # array of selected interest ids

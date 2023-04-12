@@ -1,5 +1,5 @@
 <div class="container"><br>
-  <h1>Leave a Review</h1>
+  <h1>Share Your Moment With Us</h1>
     <%= simple_form_for([@booking, @participant_review]) do |f| %>
       <% if @participant_review.errors.any? %>
         <div id="error_explanation">
@@ -27,6 +27,6 @@
       </div>
 
       <%= f.submit "Submit Review", class: "btn btn-primary" %><br><br>
-      <%= button_to 'Cancel', activity_booking_path(@activity, @booking), class: 'btn btn-primary' %><br>
     <% end %>
+  <%= link_to 'Cancel', activity_booking_path(@activity, @booking), class: 'btn btn-primary' %><br><br>
 </div>

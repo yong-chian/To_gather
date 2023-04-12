@@ -25,6 +25,7 @@ User.destroy_all
 puts "Database cleaned"
 puts "Creating test user..."
 
+
 test_user = User.new(
   first_name: "John",
   last_name: "Doe",
@@ -33,6 +34,7 @@ test_user = User.new(
   email: "johndoe@example.com",
   password: "password"
 )
+test_user.avatar.attach(io: File.open(Rails.root.join('app/assets/images/amir.png')), filename: 'amir.png', content_type: 'image/png')
 test_user.save!
 puts "Test user created!"
 
@@ -287,6 +289,25 @@ booking_5 = Booking.new(
   completed: true
 )
 booking_5.save!
+
+review_5 = ParticipantReview.new(
+  booking_id: booking_5.id,
+  activity_id: booking_5.activity_id,
+  user_name: "John Doe",
+  content: "Everyone is so friendly here!Kudos to the host as She was very enthusiastic and encouraging throughout the session",
+  activity_rating: 5
+)
+
+moment_urls_5 = ["https://static.thehoneycombers.com/wp-content/uploads/sites/2/2019/04/yoga-in-singapore-on-good-ground-900x643.png",
+                  "https://fittaactive.com/wp-content/uploads/2018/10/yoga-classes-yishun-1-1200x480.jpg",
+                  "https://workplacehealth.sg/wp-content/uploads/2019/06/IMG-20190404-WA0013.jpg"]
+
+moment_urls_5.each do |url|
+file = URI.open(url)
+review_5.photos.attach(io: file, filename: "#{review_5.activity.name}.png", content_type: "image/png")
+end
+
+review_5.save!
 
 activity_3 = Activity.create(
   name: "Soap-making",
@@ -929,8 +950,8 @@ activity_21.photos.attach(io: file, filename: "#{activity_21.name}.png", content
 end
 
 availabilities = []
-date = Date.today
-30.times do
+date = Date.today - 7
+37.times do
   availabilities << date.strftime("%Y-%m-%d")
   date += 1.day
 end
@@ -943,6 +964,19 @@ availabilities.each do |time|
 end
 
 activity_21.save!
+
+selected_availability = activity_21.availabilities[0]
+booking_6 = Booking.new(
+  user_id: test_user.id,
+  availability_id: selected_availability.id,
+  activity_id: selected_availability.activity_id,
+  user_name: "John Doe",
+  number_of_pax: 1,
+  status: "Confirmed",
+  comment: "Looks adventurous",
+  completed: true
+)
+booking_6.save!
 
 
 p "Created #{Activity.count} activities"
