@@ -25,27 +25,31 @@
         <%= image_tag 'next.png', id: 'nextBtn' %>
     </div>
 
-    <div class="container">
-      <h2 class="activity-title" style="font-weight: bold">Details</h1>
-      <div class="normal-line"></div>
-      <ul class="diamond-bullet">
-        <p>Description</p>
-        <li style="margin-top: 1rem; color:grey"><%= @activity.description %></li><br>
-        <p>Things to take note</p>
-        <li style="margin-top: 1rem; color:grey"><%= @activity.policies %></li><br>
-        <p>Price</p>
-        <li style="margin-top: 1rem; color:grey"><%= humanized_money_with_symbol(@activity.price) %> per pax</li>
-      </ul>
-    </div><br>
-    <div class="container">
-      <h1 class="activity-nam" style="font-weight: bold">Booking</h1>
-      <div class="normal-line"></div>
-        <div class="row booking-activity-form">
-          <div class="col new-booking;">
-          <%= render "/bookings/form", activity: @activity, booking: @booking %>
+    <div class="row">
+      <div class="col">
+        <h1 class="activity-title" style="font-weight: bold">Details</h1>
+        <div class="normal-line"></div>
+        <ul class="diamond-bullet">
+          <p>Description</p>
+          <li style="margin-top: 1rem; color:grey"><%= @activity.description %></li><br>
+          <p>Things to take note</p>
+          <li style="margin-top: 1rem; color:grey"><%= @activity.policies %></li><br>
+          <p>Price</p>
+          <li style="margin-top: 1rem; color:grey"><%= humanized_money_with_symbol(@activity.price) %> per pax</li>
+        </ul>
+      </div>
+      <div class="col booking-form text-center">
+        <h3 class="activity-name-booking" style="font-weight: bold">Booking</h3>
+        <div class="normal-line"></div>
+          <div class="booking-activity-form">
+            <div class="">
+              <%= render "/bookings/form", activity: @activity, booking: @booking %>
+            </div>
           </div>
-        </div>
-      </div><br><br>
+      </div>
+      
+    </div><br>
+
     <div class="container">
       <div class="row meeting">
         <h1 class="activity-title" style="font-weight: bold">Where to meet?</h1>

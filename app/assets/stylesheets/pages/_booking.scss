@@ -1,22 +1,36 @@
 //Booking Show//
 
 .booking-show {
-    margin-left: auto;
-    padding: 25px 100px 50px 100px;
-    box-shadow: 10px 5px 5px #D23333;
-    margin-bottom: 50px;
+  margin-left: auto;
+  padding: 25px 100px 50px 100px;
+  box-shadow: 10px 5px 5px #D23333;
+  margin-bottom: 50px;
 }
 
 .back-to-booking {
-    margin-bottom: 15px;
+  margin-bottom: 15px;
 }
 
 .booking-index {
-    box-shadow: 10px 5px 5px #D23333;
-    margin-bottom: 50px;
+  box-shadow: 10px 5px 5px #D23333;
+  margin-bottom: 50px;
+}
+
+.booking-form {
+
+  border-radius: 10px;
+  padding: 0px 55px 15px 55px;
+  margin: 10px 70px 75px 70px;
+
+  box-shadow: 0px 0px 16px rgba(194, 198, 204, 0.6);
+  // box-shadow: 0 2px 12px -3px $red;
+  // background-color: #FFFFF0;
+
 }
 
 #booking_comment {
-    width: 50%;
-    background-color: #FFFFF0;
+  text-align: center;
+  width: 100%;
+  background-color: #FFFFF0;
+
 }
