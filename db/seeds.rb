@@ -10,6 +10,7 @@ require "open-uri"
 puts "Cleaning up database..."
 HdbTown.destroy_all
 UserInterest.destroy_all
+ActivityInterest.destroy_all
 Interest.destroy_all
 ParticipantReview.destroy_all
 Message.destroy_all
