@@ -28,10 +28,30 @@
 <div style="margin-top: 50px;" data-controller="animation" data-animation-threshold-value="0.2">
   <div class="container">
     <h1 class="activity-title" data-animation-target="fadeInBottom" style="padding-left: 0px; font-weight: bold">
-      <% if user_signed_in? %>
-        Popular Near You
+      <% if user_signed_in? && current_user.interests.present? %>
+        Based On Your Interests
       <% else %>
+        Top Activities To Do
+      <% end %>
+    <h1 class="activity-title" data-animation-target="fadeInBottom" style="padding-left: 0px; font-weight: bold">
+     <div class="horizontal-line"></div>
+</div>
+
+  <div class="container">
+    <div class="row justify-content-center">
+      <% @interests_based_activities.each do |activity| %>
+        <%= render "activities/activity", activity: activity %>
+      <% end %>
+    </div>
+  </div>
+
+<div style="margin-top: 50px;" data-controller="animation" data-animation-threshold-value="0.2">
+  <div class="container">
+    <h1 class="activity-title" data-animation-target="fadeInBottom" style="padding-left: 0px; font-weight: bold">
+      <% if user_signed_in? %>
         What's Popular Near You
+      <% else %>
+        What's Popular In Singapore
       <% end %>
     <h1 class="activity-title" data-animation-target="fadeInBottom" style="padding-left: 0px; font-weight: bold">
      <div class="horizontal-line"></div>
