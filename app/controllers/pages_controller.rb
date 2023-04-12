@@ -27,10 +27,11 @@ class PagesController < ApplicationController
                                          .limit(3)
     else
       #without signing in or interests selected, it will show the top activities in the page
-      @interests_based_activities = Activity.left_joins(:participant_reviews) #user left_joins such that activity without reviews are included too
+      top_rated_activities = Activity.left_joins(:participant_reviews) #user left_joins such that activity without reviews are included too
                                      .group(:id)
                                      .order('AVG(participant_reviews.activity_rating) DESC')
-                                     .limit(3)
+                                     .limit(10)
+      @interests_based_activities = top_rated_activities.sample(3)
     end
   end
 
