@@ -39,7 +39,6 @@
   </ul>
 </div>
 <br>
-<br>
   <div class="container">
    <h1 class="activity-nam" style="font-weight: bold">Booking</h1>
    <div class="normal-line"></div>
@@ -70,18 +69,14 @@
       <div class="faqs-each">
         <h1 class="activity-title" style="font-weight: bold">Common FAQs from the Community</h1>
         <div class="normal-line" style="font-weight: bold"></div>
-        <ul class="faqs-list">
           <% @activity.faqs.each do |faq| %>
+          <ul class="diamond-bullet">
             <li>
-              <div class="question">
-                <strong>Question:</strong> <%= faq.question %>
-              </div>
-              <div class="answer">
-                <strong>Answer:</strong> <%= faq.answer %>
-              </div>
+              <%= faq.question %>
+              <p style="color:grey"><strong>Ans:</strong> <%= faq.answer %></p>
             </li>
+           </ul>
           <% end %>
-        </ul>
       </div>
     </div>
   </div>
