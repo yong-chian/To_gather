@@ -1,0 +1,21 @@
+.diamond-bullet {
+  list-style: none;
+  margin-left: 0;
+  padding-left: 1.5rem;
+}
+
+.diamond-bullet li:before {
+  content: "\2666";
+  display: inline-block;
+  width: 1em;
+  margin-right: 0.5rem;
+  color: orange;
+}
+
+.diamond-bullet li strong {
+  font-weight: bold;
+}
+
+.yellow-star {
+  color: #F5A623;
+}
