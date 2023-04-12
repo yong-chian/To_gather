@@ -116,6 +116,7 @@ p "Created #{Interest.count} interests"
 # Activities for H2 - What's Popular Near You
 activity_1 = Activity.create(
   name: "Mahjong with Pros",
+  posteddate: "2 January 2023",
   description: "Learn and play Mahjong with experienced players for all levels." ,
   price: 60,
   max_capacity: 4,
@@ -240,6 +241,7 @@ review_4.save!
 
 activity_2 = Activity.create(
   name: "Yoga Flow",
+  posteddate: "5 April 2023",
   description: "Gentle yoga practice with fluid movements and breath awareness.",
   price: 8,
   max_capacity: 10,
@@ -276,6 +278,7 @@ activity_2.save!
 
 activity_3 = Activity.create(
   name: "Soap-making",
+  posteddate: "19 January 2023",
   description: "Create your own handmade soap using natural ingredients and essential oils!",
   price: 80,
   max_capacity: 5,
@@ -309,6 +312,7 @@ activity_3.save!
 
 activity_4 = Activity.create(
   name: "Peranakan Nomz",
+  posteddate: "16 March 2023",
   description: "Learn to cook 3 traditional Peranakan dishes with authentic ingredients in our cozy home. The dishes include Ayam Buah Keluak, Babi Pongteh and Kueh Lapis.",
   price: 99,
   max_capacity: 5,
@@ -344,6 +348,7 @@ activity_4.save!
 
 activity_5 = Activity.create(
   name: "Chinese Tuition",
+  posteddate: "4 February 2023",
   description: "Tailored Chinese language coaching for all primary levels and ages.",
   price: 25,
   max_capacity: 1,
@@ -379,6 +384,7 @@ activity_5.save!
 
 activity_6 = Activity.create(
   name: "Let's Bake!",
+  posteddate: "19 March 2023",
   description: "Introduction to basic baking techniques",
   price: 50,
   max_capacity: 5,
@@ -413,6 +419,7 @@ activity_6.save!
 
 activity_7 = Activity.create(
   name: "Mooncake Making",
+  posteddate: "2 Jan 2023",
   description: "Learn to make traditional mooncakes with various fillings and designs.",
   price: 90,
   max_capacity: 5,
@@ -448,6 +455,7 @@ activity_7.save!
 
 activity_8 = Activity.create(
   name: "Green Fingers",
+  posteddate: "19 Jan 2023",
   description: "Join me to discover gardening basics, plant care, and sustainable practices!",
   price: 25,
   max_capacity: 5,
@@ -479,6 +487,7 @@ activity_8.save!
 
 activity_9 = Activity.create(
   name: "Paint and Relax",
+  posteddate: "2 Jan 2023",
   description: "Explore watercolour techniques to create beautiful and vibrant paintings with your family members or friends.",
   price: 40,
   max_capacity: 6,
@@ -516,6 +525,7 @@ activity_9.save!
 
 activity_10 = Activity.create(
   name: "Kids' Basketball",
+  posteddate: "2 Jan 2023",
   description: "Fun basketball program for kids from 6 years old onwards to learn and develop skills." ,
   price: 10,
   max_capacity: 10,
@@ -550,6 +560,7 @@ activity_10.save!
 
 activity_11 = Activity.create(
   name: "Bird Watching",
+  posteddate: "2 Jan 2023",
   description: "Discover the art of birdwatching through guided observation!",
   price: 30,
   max_capacity: 3,
@@ -585,6 +596,7 @@ activity_11.save!
 
 activity_12 = Activity.create(
   name: "On 2 wheels",
+  posteddate: "2 Jan 2023",
   description: "3-hour beginner-friendly indoor cycling sessions guided by Coach John with 10 years experience.",
   price: 50,
   max_capacity: 5,
@@ -620,6 +632,7 @@ activity_12.save!
 
 activity_13 = Activity.create(
   name: "The Art of Scent",
+  posteddate: "2 Jan 2023",
   description: "Create custom scents using high-quality ingredients and expert guidance.",
   price: 80,
   max_capacity: 4,
@@ -654,6 +667,7 @@ activity_13.save!
 
 activity_14 = Activity.create(
   name: "Maths Tuition",
+  posteddate: "2 Jan 2023",
   description: "Effective maths coaching for students to improve understanding and performance.",
   price: 30,
   max_capacity: 1,
@@ -689,6 +703,7 @@ activity_14.save!
 
 activity_15 = Activity.create(
   name: "How To Code 101",
+  posteddate: "2 Jan 2023",
   description: "Introduction to coding concepts and skills for beginners. Notes will be provided!" ,
   price: 88,
   max_capacity: 5,
@@ -723,6 +738,7 @@ activity_15.save!
 
 activity_16 = Activity.create(
   name: "Knitting Class",
+  posteddate: "2 Jan 2023",
   description: "Discover the art of knitting and create beautiful handmade pieces with various patterns and yarns. Invite your friends along!",
   price: 20,
   max_capacity: 10,
@@ -758,6 +774,7 @@ activity_16.save!
 
 activity_17 = Activity.create(
   name: "Strum + Sing",
+  posteddate: "2 Jan 2023",
   description: "Learn to play guitar with chord progressions and strumming techniques.",
   price: 70,
   max_capacity: 1,
@@ -792,6 +809,7 @@ activity_17.save!
 
 activity_18 = Activity.create(
   name: "Elderly Care",
+  posteddate: "20 Jan 2023",
   description: "Elderly Care is a community initiative that aims to provide assistance to the elderly population living in the local area. As people age, they often require additional support to maintain their health and wellbeing. This is where Elderly Care comes in - we are a group of like-minded individuals who are passionate about making a positive impact in the lives of our elderly neighbors.",
   price: 5,
   max_capacity: 4,
@@ -827,6 +845,7 @@ activity_18.save!
 
 activity_19 = Activity.create(
   name: "Granny Nasi Lemak",
+  posteddate: "29 Jan 2023",
   description: "Nasi Lemak is a traditional Malaysian dish that is popular throughout Southeast Asia. It is typically made with coconut rice, fried chicken or fish, sambal sauce, boiled eggs, cucumber slices, and roasted peanuts. Join us in this session to learn our Grandma's recipe!",
   price: 60,
   max_capacity: 5,
@@ -862,6 +881,7 @@ activity_19.save!
 
 activity_20 = Activity.create(
   name: "Hari Raya Delights",
+  posteddate: "2 April 2023",
   description: "Hari Raya is a festive occasion celebrated by Muslims around the world. It marks the end of Ramadan, a month-long period of fasting, and is a time of joy, gratitude, and celebration. Traditional dishes play an important role in Hari Raya festivities, and some of the most popular dishes are Ketupat, Rendang, and Lemang.",
   price: 75,
   max_capacity: 4,
@@ -897,6 +917,7 @@ activity_20.save!
 
 activity_21 = Activity.create(
   name: "Dangerous Yishun?",
+  posteddate: "2 February 2023",
   description: "There have been reports of criminal activity in Yishun, a suburban town in the northern part of Singapore, which has led to it being labeled as a dangerous  town by some people. Let us show you around the beauty of Yishun as it is not what the media has depicted!",
   price: 15,
   max_capacity: 4,
