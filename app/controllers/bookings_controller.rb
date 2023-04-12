@@ -1,9 +1,18 @@
 class BookingsController < ApplicationController
   before_action :set_activity, only: %i[new create show edit update destroy]
+  skip_after_action :verify_authorized, only: [:confirmed]
 
   def index
     @bookings = policy_scope(Booking.where(user_id: current_user))
     @my_hostings = current_user.bookings_as_host
+    # @chatroom = Chatroom.find(2)
+  end
+
+  def confirmed
+    @bookings = Booking.where(user_id: current_user, status: "Confirmed")
+    @my_hostings = current_user.bookings_as_host.filter do |my_hosting|
+      my_hosting.status = "Confirmed"
+    end
     # @chatroom = Chatroom.find(2)
   end
 
