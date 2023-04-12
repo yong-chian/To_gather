@@ -1,8 +1,6 @@
 <!-- app/views/payments/new.html.erb -->
-
 <div class = "container">
-<br>
-<br>
+<br><br>
   <div class="payment-new payment-check-out" style="display: flex;justify-content: center;background: var(--bs-white);">
     <div class="payment-post text-center">
         <h1 class="text-center"><br />Checkout summary<br /><br /></h1>
@@ -12,7 +10,7 @@
         <div class="col-md-12">
           <div class="activity-photos">
             <% @order.activity.photos.each do |photo| %>
-              <%= cl_image_tag photo.key, height: 150, width: 250, crop: :fill %>
+              <%= cl_image_tag photo.key, height: 250, width: 350, crop: :fill %>
               <%# remove the  class: "card-img-top" %>
             <% end %>
           </div>
@@ -31,8 +29,5 @@
         </script>
       <br /><br />
     </div>
-  </div>
-  <br>
-  <br>
-  <br>
+  </div><br><br><br>
 </div>
