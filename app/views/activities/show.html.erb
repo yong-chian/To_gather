@@ -6,12 +6,12 @@
     <div class="horizontal-line"></div>
     <div>
       <p class="activity-host" style="display: inline-block;margin-bottom: 1px">
-      <strong>Hosted by </strong><%= @activity.user.first_name %>
+       <strong>Hosted by <%= @activity.user.first_name %><strong>
       <span class="circle circle--4 circle--gray ml-1 mr-1 align-middle"></span>
       <%= @activity.average_rating %>
-      <span class="fa fa-star"></span>
+      <span class="fa fa-star yellow-star"></span>
       <span class="circle circle--4 circle--gray ml-1 mr-1 align-middle"></span>
-      <strong>Posted on </strong></p>
+      <strong>Posted on <%= @activity.posteddate %></strong>
     </div>
 
     <div class="gallery-wrap">
@@ -26,39 +26,38 @@
       <%= image_tag 'next.png', id: 'nextBtn' %>
   </div>
 
+<div class="container">
+  <h1>Details</h1>
   <div class="normal-line"></div>
+  <ul class="diamond-bullet">
+    <li>
       <p class="activity-description"><%= @activity.description %></p>
-      <p class="activity-policies"><strong>Things to note </strong><%= @activity.policies %></p>
-      <p class="activity-price"><strong>Price: </strong> <%= humanized_money_with_symbol(@activity.price) %> per pax </p>
-    </div>
-  </div>
-
-  <script>
-    document.addEventListener("DOMContentLoaded", function() {
-      let scrollContainer = document.querySelector(".gallery");
-      let backBtn = document.getElementById("backBtn");
-      let nextBtn = document.getElementById("nextBtn");
-
-      scrollContainer.addEventListener("wheel", (evt) => {
-        evt.preventDefault();
-        scrollContainer.scrollLeft += evt.deltaY;
-      });
-    });
-  </script>
-
+    </li>
+    <li>
+      <p class="activity-policies"><strong>Things to note:</strong><%= @activity.policies %></p>
+    </li>
+    <li>
+      <p class="activity-price"><strong>Price:</strong> <%= humanized_money_with_symbol(@activity.price) %> per pax </p>
+    </li>
+  </ul>
+</div>
+<br>
+<br>
   <div class="container">
+   <h1>New booking</h1>
+   <div class="normal-line"></div>
     <div class="row booking-activity-form">
       <div class="col new-booking">
-        <h1>New booking</h1>
         <%= render "/bookings/form", activity: @activity, booking: @booking %>
       </div>
     </div>
   </div>
   <br>
-
+  <br>
   <div class="container">
     <div class="row meeting">
       <h1>Where to meet?</h1>
+      <div class="normal-line"></div>
       <p>Let's meet at <u><strong><%= @activity.meeting_location %></strong></u></p>
         <div data-controller="map"
           id='map'
@@ -73,6 +72,7 @@
     <div class="row faqs">
       <div class="faqs-each">
         <h1>Common FAQs from the Community</h1>
+        <div class="normal-line"></div>
         <ul class="faqs-list">
           <% @activity.faqs.each do |faq| %>
             <li>
@@ -92,6 +92,7 @@
   <div class="container">
     <div class="row faqs">
       <h1>Reviews</h1>
+      <div class="horizontal-line"></div>
       <% if @participant_reviews.present? %>
         <% @participant_reviews.each do |review| %>
           <div class="review">
@@ -117,3 +118,15 @@
 </div>
 
 <br>
+ <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      let scrollContainer = document.querySelector(".gallery");
+      let backBtn = document.getElementById("backBtn");
+      let nextBtn = document.getElementById("nextBtn");
+
+      scrollContainer.addEventListener("wheel", (evt) => {
+        evt.preventDefault();
+        scrollContainer.scrollLeft += evt.deltaY;
+      });
+    });
+  </script>
