@@ -4,15 +4,16 @@
   padding-left: 1.5rem;
 }
 
-.diamond-bullet li::before {
-  content: "";
+.diamond-bullet li:before {
+  content: "\2666";
   display: inline-block;
-  width: 0.75em;
-  height: 0.75em;
+  width: 1em;
   margin-right: 0.5rem;
-  border: 0.1em solid #F5A623;
-  border-radius: 0.2em;
-  background-color: transparent;
+  color: orange;
+}
+
+.diamond-bullet li strong {
+  font-weight: bold;
 }
 
 .yellow-star {

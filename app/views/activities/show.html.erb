@@ -5,12 +5,12 @@
     <h2 class="activity-title" style="font-weight: bold;"><%= @activity.name %></h2>
     <div class="horizontal-line"></div>
     <div>
-      <p class="activity-host" style="display: inline-block;margin-bottom: 1px">
+      <p class="activity-host" style="display: inline-block;margin-bottom: 1px;">
        <strong>Hosted by <%= @activity.user.first_name %><strong>
-      <span class="circle circle--4 circle--gray ml-1 mr-1 align-middle"></span>
+      <span class="circle circle--4 circle--grey ml-1 mr-1 align-middle"></span>
       <%= @activity.average_rating %>
       <span class="fa fa-star yellow-star"></span>
-      <span class="circle circle--4 circle--gray ml-1 mr-1 align-middle"></span>
+      <span class="circle circle--4 circle--grey ml-1 mr-1 align-middle"></span>
       <strong>Posted on <%= @activity.posteddate %></strong>
     </div>
 
@@ -27,27 +27,24 @@
   </div>
 
 <div class="container">
-  <h1>Details</h1>
+  <h2 class="activity-title" style="font-weight: bold">Details</h1>
   <div class="normal-line"></div>
   <ul class="diamond-bullet">
-    <li>
-      <p class="activity-description"><%= @activity.description %></p>
-    </li>
-    <li>
-      <p class="activity-policies"><strong>Things to note:</strong><%= @activity.policies %></p>
-    </li>
-    <li>
-      <p class="activity-price"><strong>Price:</strong> <%= humanized_money_with_symbol(@activity.price) %> per pax </p>
-    </li>
+    <p>Description</p>
+    <li style="margin-top: 1rem; color:grey"><%= @activity.description %></li><br>
+    <p>Things to take note</p>
+    <li style="margin-top: 1rem; color:grey"><%= @activity.policies %></li><br>
+    <p>Price</p>
+    <li style="margin-top: 1rem; color:grey"><%= humanized_money_with_symbol(@activity.price) %> per pax</li>
   </ul>
 </div>
 <br>
 <br>
   <div class="container">
-   <h1>New booking</h1>
+   <h1 class="activity-nam" style="font-weight: bold">Booking</h1>
    <div class="normal-line"></div>
     <div class="row booking-activity-form">
-      <div class="col new-booking">
+      <div class="col new-booking;">
         <%= render "/bookings/form", activity: @activity, booking: @booking %>
       </div>
     </div>
@@ -56,9 +53,9 @@
   <br>
   <div class="container">
     <div class="row meeting">
-      <h1>Where to meet?</h1>
+      <h1 class="activity-title" style="font-weight: bold">Where to meet?</h1>
       <div class="normal-line"></div>
-      <p>Let's meet at <u><strong><%= @activity.meeting_location %></strong></u></p>
+      <p style="color:grey">Let's meet at <u><strong><%= @activity.meeting_location %></strong></u></p>
         <div data-controller="map"
           id='map'
           data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
@@ -67,12 +64,12 @@
         </div>
     </div>
   </div>
-
+<br>
   <div class="container">
     <div class="row faqs">
       <div class="faqs-each">
-        <h1>Common FAQs from the Community</h1>
-        <div class="normal-line"></div>
+        <h1 class="activity-title" style="font-weight: bold">Common FAQs from the Community</h1>
+        <div class="normal-line" style="font-weight: bold"></div>
         <ul class="faqs-list">
           <% @activity.faqs.each do |faq| %>
             <li>
@@ -88,11 +85,11 @@
       </div>
     </div>
   </div>
-
+  <br>
   <div class="container">
     <div class="row faqs">
-      <h1>Reviews</h1>
-      <div class="horizontal-line"></div>
+      <h1 class="activity-title" style="font-weight: bold">Reviews</h1>
+      <div class="normal-line"></div>
       <% if @participant_reviews.present? %>
         <% @participant_reviews.each do |review| %>
           <div class="review">
