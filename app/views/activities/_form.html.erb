@@ -31,7 +31,7 @@
             </div>
 
             <div class="form-group">
-              <%= f.input :availabilities_start_time, as: :string, input_html: { class: "form-control", data: { activity_flatpickr_target: "availabilities" }, placeholder: "Select availability" } %>
+              <%= f.input :availabilities_start_time, as: :string, input_html: { class: "form-control", data: { activity_flatpickr_target: "availabilities" }, placeholder: "You may select multiple dates" }, label: "Availabilities" %>
             </div>
 
             <div class="form-group">
@@ -43,7 +43,7 @@
             </div>
 
             <div class="form-group">
-              <%= f.input :policies, class: "form-control", input_html: { placeholder: "Enter policies", rows: 2 } %>
+              <%= f.input :policies, as: :text, class: "form-control", input_html: { placeholder: "Eg. No pets allowed", rows: 2 }, label: "Things to Note" %>
             </div>
 
             <div class="form-group">

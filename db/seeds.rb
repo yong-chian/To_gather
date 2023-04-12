@@ -258,9 +258,9 @@ activity_2.photos.attach(io: file, filename: "#{activity_2.name}.png", content_t
 end
 
 availabilities = []
-date = Date.today
+date = Date.today - 2
 
-30.times do
+32.times do
   availabilities << date.strftime("%Y-%m-%d")
   date += 1.day
 end
@@ -273,6 +273,19 @@ availabilities.each do |time|
 end
 
 activity_2.save!
+
+selected_availability = activity_2.availabilities[0]
+booking_5 = Booking.new(
+  user_id: test_user.id,
+  availability_id: selected_availability.id,
+  activity_id: selected_availability.activity_id,
+  user_name: "John Doe",
+  number_of_pax: 1,
+  status: "Confirmed",
+  comment: "Looking forward to it",
+  completed: true
+)
+booking_5.save!
 
 activity_3 = Activity.create(
   name: "Soap-making",
