@@ -1,38 +1,38 @@
 <div class="container" style="height: 900px;"><br>
     <div class="container rate-form" style="background: var(--bs-white)">
-  <h1>Share Your Moment With Us</h1>
-    <%= simple_form_for([@booking, @participant_review]) do |f| %>
-      <% if @participant_review.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(@participant_review.errors.count, "error") %> prohibited this participant_review from being saved:</h2>
-          <ul>
-          <% @participant_review.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-          </ul>
+      <h1>Share Your Moment With Us</h1>
+      <%= simple_form_for([@booking, @participant_review]) do |f| %>
+        <% if @participant_review.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(@participant_review.errors.count, "error") %> prohibited this participant_review from being saved:</h2>
+            <ul>
+            <% @participant_review.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+            </ul>
+          </div>
+        <% end %>
+        <div class="form-group">
+          <%= f.label :activity_rating %>
+          <div class="rating">
+            <% (1..5).each do |i| %>
+              <%= f.radio_button :activity_rating, i, id: "activity_rating_#{i}" %>
+              <%= label_tag "activity_rating_#{i}", "★" * i, class: "label-star btn btn-outline" %>
+            <% end %>
+          </div>
         </div>
+
+        <div class="form-group">
+          <%= f.label :comment %>
+          <%= f.text_area :content, class: "form-control", rows: 3 %>
+        </div>
+
+        <div class="form-group">
+          <%= f.input :photos, as: :file, input_html: { multiple: true, class: "form-control-file" } %>
+        </div>
+
+        <%= f.submit "Submit Review", class: "btn btn-primary" %><br><br>
       <% end %>
-      <div class="form-group">
-        <%= f.label :activity_rating %>
-        <div class="rating">
-          <% (1..5).each do |i| %>
-            <%= f.radio_button :activity_rating, i, id: "activity_rating_#{i}" %>
-            <%= label_tag "activity_rating_#{i}", "★" * i, class: "label-star btn btn-outline" %>
-          <% end %>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <%= f.label :comment %>
-        <%= f.text_area :content, class: "form-control", rows: 3 %>
-      </div>
-
-      <div class="form-group">
-        <%= f.input :photos, as: :file, input_html: { multiple: true, class: "form-control-file" } %>
-      </div>
-
-      <%= f.submit "Submit Review", class: "btn btn-primary" %><br><br>
-    <% end %>
-  <%= link_to 'Cancel', activity_booking_path(@activity, @booking), class: 'btn btn-primary' %><br><br>
+        <%= link_to 'Cancel', activity_booking_path(@activity, @booking), class: 'btn btn-primary' %><br><br>
     </div>
 </div>
