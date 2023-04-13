@@ -1,14 +1,14 @@
 <div class="container"><br>
   <div data-controller="map"
-       id='map'
-       data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
-       data-map-markers-value="<%= @markers.to_json %>"
-       style='width: 100%; height: 300px;'></div>
+      id='map'
+      data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
+      data-map-markers-value="<%= @markers.to_json %>"
+      style='width: 100%; height: 300px;'></div>
   </div>
 
   <div class="row justify-content-center">
     <div class="col-sm-9">
-       <div class="activities">
+      <div class="activities">
         <% if @activities.any? %>
           <% @activities.each do |activity| %>
           <br>

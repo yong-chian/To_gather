@@ -13,7 +13,7 @@ class OrdersController < ApplicationController
       line_items: [{
         price_data: {
           currency: 'sgd',
-          unit_amount: @activity.price_cents,
+          unit_amount: @activity.price_cents * order.booking.number_of_pax,
           product_data: {
             name: @activity.name
           }
