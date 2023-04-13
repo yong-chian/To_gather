@@ -19,13 +19,22 @@
 .booking-form {
 
   border-radius: 10px;
-  padding: 0px 55px 15px 55px;
-  margin: 10px 70px 75px 70px;
+  margin: 10px 70px 75px -50px;
 
-  box-shadow: 0px 0px 16px rgba(194, 198, 204, 0.6);
   // box-shadow: 0 2px 12px -3px $red;
   // background-color: #FFFFF0;
 
+}
+
+.booking-activity-form {
+  max-width: 300px;
+  /* adjust this value as needed */
+  margin: 0 auto;
+  /* center the box horizontally */
+  padding: 0px 55px 15px 55px;
+  /* add padding to the content */
+  box-shadow: 0px 0px 16px rgba(194, 198, 204, 0.6);
+  /* add a border around the box */
 }
 
 #booking_comment {

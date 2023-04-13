@@ -39,13 +39,11 @@
         </ul>
       </div>
       <div class="col booking-form text-center">
-        <h3 class="activity-name-booking" style="font-weight: bold">Booking</h3>
-        <div class="normal-line"></div>
-          <div class="booking-activity-form">
-            <div class="">
-              <%= render "/bookings/form", activity: @activity, booking: @booking %>
-            </div>
-          </div>
+        <div class="booking-activity-form">
+          <h5 class="activity-name-booking" style="font-weight: bold">Booking</h5>
+          <div class="normal-line"></div>
+          <%= render "/bookings/form", activity: @activity, booking: @booking %>
+        </div>
       </div>
       
     </div><br>

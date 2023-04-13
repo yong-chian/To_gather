@@ -22,7 +22,7 @@
         <ul class="list-unstyled">
           <li><strong>Issued on:</strong> <%= @order.created_at.to_date %></li>
           <li><strong>Activity:</strong> <%= @order.activity.name %></li>
-          <li><strong>Total:</strong> <%= humanized_money_with_symbol @order.amount %></li>
+          <li><strong>Total:</strong> <%= humanized_money_with_symbol(@order.amount * @order.booking.number_of_pax) %></li>
           <li><%= link_to "Show booking details", activity_booking_path(@booking.activity,@booking), class: 'btn btn-primary mt-3' %></li>
         </ul>
       </div>
