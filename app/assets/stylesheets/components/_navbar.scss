@@ -27,6 +27,7 @@
 .nav-link {
   color: $red;
   font-family: 'Source Serif Pro', sans-serif;
+  padding-top: 23px;
 }
 
 nav-link //Avatar img circle//
@@ -37,7 +38,7 @@ nav-link //Avatar img circle//
 
 //Individual link//
 .nav-item {
-  padding-left: 1rem;
+  padding: 10px;
 }
 
 
@@ -57,6 +58,10 @@ nav-link //Avatar img circle//
 }
 
 //Host Activity Button//
+.host-activity {
+  margin-top: 16px;
+}
+
 .host-activity:hover {
   font-family: 'IM Fell Great Primer', "sans-serif";
   background: $red;
