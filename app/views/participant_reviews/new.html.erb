@@ -1,6 +1,6 @@
-<div class="container">
-  <h1>Leave a Review</h1>
-    <%= form_for([@booking, @participant_review]) do |f| %>
+<div class="container"><br>
+  <h1>Share Your Moment With Us</h1>
+    <%= simple_form_for([@booking, @participant_review]) do |f| %>
       <% if @participant_review.errors.any? %>
         <div id="error_explanation">
           <h2><%= pluralize(@participant_review.errors.count, "error") %> prohibited this participant_review from being saved:</h2>
@@ -14,7 +14,7 @@
 
       <div class="form-group">
         <%= f.label :activity_rating %>
-        <%= f.number_field :activity_rating, class: "form-control", min: 1, max: 5 %>
+        <%= f.number_field :activity_rating, class: "form-control", min: 1, max: 5, placeholder: "Rate from 1 to 5" %>
       </div>
 
       <div class="form-group">
@@ -22,11 +22,11 @@
         <%= f.text_area :content, class: "form-control", rows: 3 %>
       </div>
 
-      <div class="form-inputs ">
-        <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+      <div class="form-group">
+        <%= f.input :photos, as: :file, input_html: { multiple: true, class: "form-control-file" } %>
       </div>
 
-      <%= f.submit "Submit Review", class: "btn btn-primary" %>
-      <%= link_to 'Cancel', activity_booking_path(@activity, @booking), class: 'btn-ghost' %>
+      <%= f.submit "Submit Review", class: "btn btn-primary" %><br><br>
     <% end %>
+  <%= link_to 'Cancel', activity_booking_path(@activity, @booking), class: 'btn btn-primary' %><br><br>
 </div>

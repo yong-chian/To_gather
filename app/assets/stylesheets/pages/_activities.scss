@@ -7,3 +7,16 @@
   padding: 25px 100px 50px 100px;
   box-shadow: 10px 10px 10px #D23333;
 }
+
+
+@media screen and (min-width: 576px) {
+  .activity-card {
+    width: calc(50% - 2rem);
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .activity-card {
+    width: calc(33.33% - 2rem);
+  }
+}
