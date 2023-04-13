@@ -9,8 +9,12 @@
   <div class="row booking-index">
     <div class="card w-80">
       <div id="div1" style="display: block;">
-        <h3 class=" text-center" style="">Your Booking Activities</h3>
-        <%= link_to "Confirmed", booking_confirmed_path, class: "btn btn-primary back-to-booking" %>
+        <h3 class=" text-center" style="">Your Booking Activities</h3><br>
+        <div class="buttons">
+          <%= link_to "Confirmed", booking_confirmed_path, class: "btn btn-outline-primary back-to-booking" %>
+          <%= link_to "Pending", booking_confirmed_path, class: "btn btn-outline-primary frozen-button" %>
+          <%= link_to "Past/Cancelled", booking_confirmed_path, class: "btn btn-outline-primary frozen-button" %>
+        </div>
         <div class="card booking-host">
           <div class="card-body booking-card">
             <% if @bookings.any? %>
@@ -44,6 +48,11 @@
     <div class="card w-80">
       <div id="div2" style="display: none;">
           <h3 class=" text-center">Your Hosted Booking Activities</h3>
+          <div class="buttons">
+            <%= link_to "Confirmed", booking_confirmed_path, class: "btn btn-outline-primary back-to-booking" %>
+            <%= link_to "Pending", booking_confirmed_path, class: "btn btn-outline-primary frozen-button" %>
+            <%= link_to "Past/Cancelled", booking_confirmed_path, class: "btn btn-outline-primary frozen-button" %>
+          </div>
             <div class="card booking-host">
               <div class="card-body booking-card">
                 <% if @my_hostings.any? %>

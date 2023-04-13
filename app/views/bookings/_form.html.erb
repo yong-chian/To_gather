@@ -11,7 +11,7 @@ data-flatpickr-availabilities-value="<%= activity.availabilities.map { |a| [a.st
     data-flatpickr-target="startTime"
     data-action="input->flatpickr#changeDateToAvailabilityId">
     <%= f.input :number_of_pax, as: :integer, input_html: { class:"number-of-pax-field" } %>
-    <%= f.input :comment, placeholder: "Add a comment", class: "booking-comment-field" %>
+    <%= f.input :comment, placeholder: "", class: "booking-comment-field" %>
     <br>
     <%= f.submit "Book Now", class: "btn btn-primary btn-book-now", onclick: "console.log('submit button clicked')" %>
   <% end %>
