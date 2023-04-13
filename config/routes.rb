@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   root to: "pages#home"
   get "/about", to: "pages#about"
   get "/contact_us", to: "pages#contact_us"
+  get "/bookings/confirmed", to: "bookings#confirmed", as: "booking_confirmed"
 
   resources :activities do
     resources :bookings, only: [:show, :new, :create, :edit, :update]
