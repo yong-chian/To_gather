@@ -4,13 +4,13 @@
       <%= link_to root_path, class: "navbar-brand" do %>
         <%= "ToGather" %>
       <% end %>
-      <%= form_with url: activities_path, method: :get, class: "d-flex" do %>
-        <%= text_field_tag :query,
-            params[:query],
-            class: "form-control",
-            placeholder: "Type a keyword"
-          %>
-        <%= submit_tag "Search", name: "", class: "btn btn-primary search-bar-nav my-2 my-sm-0"%>
+      <%= form_with url: activities_path, method: :get, class: "d-flex" do |f| %>
+        <div class="input-group input-group-search tw-hidden md:tw-flex">
+          <%= f.text_field :query, value: params[:query], placeholder: "Type a keyword", class: "form-control tw-text-xs md:tw-text-sm input-search tw-rounded-tl tw-rounded-bl", aria_label: "Where are you going?", autocomplete: "off" %>
+          <%= f.collection_select :location, HdbTown.order(:name), :id, :name, { include_blank: "HDB Towns" }, { id: "js-select-num-guest-header", class: "form-control tw-text-xs md:tw-text-sm input-guest", readonly: true } %>
+          <%= f.collection_select :category, Interest.all, :id, :name, {include_blank: "Categories"}, {id: "js-input-start-date-nav", class: "form-control tw-text-xs md:tw-text-sm input-date", readonly: true} %>
+          <%= f.submit "Search", class: "btn btn-primary tw-px-1.5 tw-rounded-tr tw-rounded-br", id: "" %>
+        </div>
       <% end %>
     </div>
 
@@ -23,7 +23,7 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto">
+      <ul class="navbar-nav me-auto align-items-center">
         <% if user_signed_in? %>
           <li class="nav-item active">
             <%= link_to "About Us", about_path, class: "nav-link" %>
