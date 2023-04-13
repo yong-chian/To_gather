@@ -1,4 +1,5 @@
-<div class="container"><br>
+<div class="container" style="height: 900px;"><br>
+    <div class="container rate-form" style="background: var(--bs-white)">
   <h1>Share Your Moment With Us</h1>
     <%= simple_form_for([@booking, @participant_review]) do |f| %>
       <% if @participant_review.errors.any? %>
@@ -11,10 +12,14 @@
           </ul>
         </div>
       <% end %>
-
       <div class="form-group">
         <%= f.label :activity_rating %>
-        <%= f.number_field :activity_rating, class: "form-control", min: 1, max: 5, placeholder: "Rate from 1 to 5" %>
+        <div class="rating">
+          <% (1..5).each do |i| %>
+            <%= f.radio_button :activity_rating, i, id: "activity_rating_#{i}" %>
+            <%= label_tag "activity_rating_#{i}", "★" * i, class: "label-star btn btn-outline" %>
+          <% end %>
+        </div>
       </div>
 
       <div class="form-group">
@@ -29,4 +34,5 @@
       <%= f.submit "Submit Review", class: "btn btn-primary" %><br><br>
     <% end %>
   <%= link_to 'Cancel', activity_booking_path(@activity, @booking), class: 'btn btn-primary' %><br><br>
+    </div>
 </div>
