@@ -5,7 +5,7 @@ class ActivitiesController < ApplicationController
     if params[:query].present?
       @activities = policy_scope(Activity.search_by_name_and_description(params[:query]))
     else
-      @activities = policy_scope(Activity)
+      @activities = policy_scope(Activity).order("RANDOM()")
     end
     @markers = @activities.geocoded.map do |activity|
       {
