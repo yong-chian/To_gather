@@ -1,24 +1,25 @@
 <div class="main-container">
-  <div class="container chatroom"
-    data-controller="chatroom-subscription"
-    data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>"
-  >
-    <h2 class="text-center">#<%= @chatroom.name %></h2>
+  <div class="container"> <%= link_to "Back to bookings", bookings_path, class: "btn btn-primary back-to-booking" %>
+    <div class="container chatroom"
+      data-controller="chatroom-subscription"
+      data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>"
+    >
+      <h2 class="text-center">#<%= @chatroom.name %></h2>
 
-    <div class="messages" data-chatroom-subscription-target="messages">
-      <% @chatroom.messages.each do |message| %>
-        <%= render "messages/message", message: message %>
-      <% end %>
-        <div id="message-<%= @message.id %>">
-          <small>
-            <strong><%= @message.user %></strong>
-            <i><%= @message.created_at %></i>
-          </small>
-          <p><%= @message.content %></p>
-        </div>
+      <div class="messages" data-chatroom-subscription-target="messages">
+        <% @chatroom.messages.each do |message| %>
+          <%= render "messages/message", message: message %>
+        <% end %>
+          <div id="message-<%= @message.id %>">
+            <small>
+              <strong><%= @message.user %></strong>
+              <i><%= @message.created_at %></i>
+            </small>
+            <p><%= @message.content %></p>
+          </div>
+      </div>
     </div>
   </div>
-
   <div class="d-flex">
     <div class="message-box flex-grow-1">
       <%= simple_form_for [@chatroom, @message],

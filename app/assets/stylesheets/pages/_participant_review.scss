@@ -1,0 +1,27 @@
+//container//
+.rate-form {
+  margin-left: auto;
+  padding: 25px 100px 50px 100px;
+  box-shadow: 10px 5px 5px #D23333;
+  margin-bottom: 50px;
+}
+
+//stars//
+.rating {
+  display: flex;
+  flex-direction: row;
+  margin: 1rem;
+}
+
+.rating input[type="radio"] {
+  display: none;
+}
+
+.label-star {
+  font-size: 30px;
+  color: #ccc;
+}
+
+.rating input[type="radio"]:checked+label.label-star {
+  color: #f9b42d;
+}
