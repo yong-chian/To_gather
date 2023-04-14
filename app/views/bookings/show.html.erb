@@ -33,6 +33,8 @@
                 <%= render @booking %>
                 <%# <%= link_to "Back to bookings", bookings_path %>
               <% elsif @booking.status == "Pending Payment" %>
+                <h3> You have booked your own activity! Please delete this </h3>
+                <%= link_to "Cancel your booking", activity_booking_destroy_path, data: { turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: 'btn btn-primary w-50' if policy(@booking).destroy? %><br/><br/>
               <% end %>
 
             <% elsif !@booking.completed && Date.today >= @booking.availability.start_time %>
@@ -57,7 +59,7 @@
               <% end %>
 
             <% elsif @booking.completed && Date.today >= @booking.availability.start_time %>
-              <% if @booking.status == "Confirmed" %>
+              <% if @booking.status == "Completed" %>
                 <h3>The booking is completed!</h3>
                 <%= render @booking %>
                 <%= link_to "View review", booking_participant_review_path(@booking, @booking.participant_reviews.first), class: "btn btn-primary w-50" if @booking.participant_reviews.present? %><br/><br/>
@@ -130,7 +132,7 @@
               <% end %>
 
             <% elsif @booking.completed && Date.today >= @booking.availability.start_time %>
-              <% if @booking.status == "Confirmed" %>
+              <% if @booking.status == "Completed" %>
                 <h3>Congratulations, your booking is now complete! We would like you to share your moment with us by leaving a review for the activity</h3>
                 <%= render @booking %>
                 <% if !@booking.participant_reviews.present?%>
