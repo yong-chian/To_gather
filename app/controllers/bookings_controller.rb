@@ -50,7 +50,7 @@ class BookingsController < ApplicationController
     authorize(@booking)
 
     if @booking.save!
-      redirect_to activity_booking_path(@activity, @booking), notice: "Booking was successfully placed."
+      redirect_to activity_booking_path(@activity, @booking), notice: "Woohoo!🎉 Your booking has been successfully placed."
     else
       render :new, status: :unprocessable_entity
     end
