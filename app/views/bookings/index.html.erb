@@ -13,7 +13,7 @@
           <div class="buttons">
             <%= link_to "Confirmed", booking_confirmed_path, class: "btn btn-outline-primary back-to-booking" %>
             <%= link_to "Pending", booking_confirmed_path, class: "btn btn-outline-primary frozen-button" %>
-            <%= link_to "Past/Cancelled", booking_confirmed_path, class: "btn btn-outline-primary frozen-button" %>
+            <%= link_to "Past/Cancelled", booking_completed_path, class: "btn btn-outline-primary frozen-button" %>
           </div>
           <div class="card booking-host">
             <div class="card-body booking-card">
@@ -30,7 +30,7 @@
                       <p class="card-text"><strong>Booking Status:</strong> <%= booking.status %></p>
                       <% counter += 1 %>
                       <div style="display: flex; gap: 10px;">
-                        <%= link_to "Show this booking", activity_booking_path(booking.availability.activity, booking), class: "btn btn-primary", data: { chatroom_target: "booking" } if policy(booking).show? %> 
+                        <%= link_to "Show this booking", activity_booking_path(booking.availability.activity, booking), class: "btn btn-primary", data: { chatroom_target: "booking" } if policy(booking).show? %>
                         <button class="btn btn-primary" data-chatroom-target="button" data-action="click->chatroom#getChatroom">Chat with Host</button>
                       </div>
                       <br><br>
@@ -44,7 +44,7 @@
 
               <% end %>
             </div>
-          </div>    
+          </div>
         </div>
       </div>
 
@@ -54,7 +54,7 @@
             <div class="buttons">
               <%= link_to "Confirmed", booking_confirmed_path, class: "btn btn-outline-primary back-to-booking" %>
               <%= link_to "Pending", booking_confirmed_path, class: "btn btn-outline-primary frozen-button" %>
-              <%= link_to "Past/Cancelled", booking_confirmed_path, class: "btn btn-outline-primary frozen-button" %>
+              <%= link_to "Past/Cancelled", booking_completed_path, class: "btn btn-outline-primary frozen-button" %>
             </div>
               <div class="card booking-host">
                 <div class="card-body booking-card">
@@ -72,7 +72,7 @@
                         <p class="card-text"><strong>Comment:</strong> <%= booking.comment %></p>
 
                         <div style="display: flex; gap: 10px;">
-                          <%= link_to "Show this booking", activity_booking_path(booking.availability.activity, booking), method: :get, class: "btn btn-primary", data: { chatroom_target: "booking" } if policy(booking).show? %>       
+                          <%= link_to "Show this booking", activity_booking_path(booking.availability.activity, booking), method: :get, class: "btn btn-primary", data: { chatroom_target: "booking" } if policy(booking).show? %>
                           <button class="btn btn-primary" data-chatroom-target="button" data-action="click->chatroom#getChatroom">Chat with Participant</button>
                         </div>
                         <br>
@@ -81,13 +81,13 @@
                         <% counter += 1 %>
                       </div>
                     <% end %>
-        
+
                   <% else %>
                     <em>There's no bookings found.</em>
                   <% end %>
                 </div>
               </div>
-        </div>    
+        </div>
       </div>
     </div>
   </div>

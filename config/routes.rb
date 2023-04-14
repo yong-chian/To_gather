@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get "/about", to: "pages#about"
   get "/contact_us", to: "pages#contact_us"
   get "/bookings/confirmed", to: "bookings#confirmed", as: "booking_confirmed"
+  get "/bookings/completed", to: "bookings#completed", as: "booking_completed"
 
   resources :activities do
     resources :bookings, only: [:show, :new, :create, :edit, :update]

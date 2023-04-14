@@ -160,7 +160,7 @@ booking_1 = Booking.new(
   activity_id: selected_availability.activity_id,
   user_name: "Jane Smith",
   number_of_pax: 2,
-  status: "Confirmed",
+  status: "Completed",
   comment: "Looking forward to it",
   completed: true
 )
@@ -173,7 +173,7 @@ booking_2 = Booking.new(
   activity_id: selected_availability.activity_id,
   user_name: "Michelle Lim",
   number_of_pax: 3,
-  status: "Confirmed",
+  status: "Completed",
   comment: "3 adults",
   completed: true
 )
@@ -186,7 +186,7 @@ booking_3 = Booking.new(
   activity_id: selected_availability.activity_id,
   user_name: "Aisyah N",
   number_of_pax: 4,
-  status: "Confirmed",
+  status: "Completed",
   comment: "",
   completed: true
 )
@@ -199,7 +199,7 @@ booking_4 = Booking.new(
   activity_id: selected_availability.activity_id,
   user_name: "Chris Ng",
   number_of_pax: 2,
-  status: "Confirmed",
+  status: "Completed",
   comment: "",
   completed: true
 )
@@ -286,7 +286,7 @@ booking_5 = Booking.new(
   activity_id: selected_availability.activity_id,
   user_name: "John Doe",
   number_of_pax: 1,
-  status: "Confirmed",
+  status: "Completed",
   comment: "Looking forward to it",
   completed: true
 )
@@ -950,6 +950,21 @@ end
 
 activity_20.save!
 
+selected_availability = activity_20.availabilities[5]
+booking_6 = Booking.new(
+  user_id: test_user.id,
+  availability_id: selected_availability.id,
+  activity_id: selected_availability.activity_id,
+  user_name: "John Doe",
+  number_of_pax: 1,
+  status: "Confirmed",
+  comment: "Looking forward to make some Malay friends!",
+  completed: false
+)
+booking_6.save!
+
+
+
 activity_21 = Activity.create(
   name: "Dangerous Yishun?",
   posteddate: "2 February 2023",
@@ -987,17 +1002,17 @@ end
 activity_21.save!
 
 selected_availability = activity_21.availabilities[0]
-booking_6 = Booking.new(
+booking_7 = Booking.new(
   user_id: test_user.id,
   availability_id: selected_availability.id,
   activity_id: selected_availability.activity_id,
   user_name: "John Doe",
   number_of_pax: 1,
-  status: "Confirmed",
+  status: "Completed",
   comment: "Looks adventurous",
   completed: true
 )
-booking_6.save!
+booking_7.save!
 
 
 p "Created #{Activity.count} activities"

@@ -9,7 +9,12 @@
           <%= f.text_field :query, value: params[:query], placeholder: "Type a keyword", class: "form-control tw-text-xs md:tw-text-sm input-search tw-rounded-tl tw-rounded-bl", aria_label: "Where are you going?", autocomplete: "off" %>
           <%= f.collection_select :location, HdbTown.order(:name), :id, :name, { include_blank: "HDB Towns" }, { id: "js-select-num-guest-header", class: "form-control tw-text-xs md:tw-text-sm input-guest", readonly: true } %>
           <%= f.collection_select :category, Interest.all, :id, :name, {include_blank: "Categories"}, {id: "js-input-start-date-nav", class: "form-control tw-text-xs md:tw-text-sm input-date", readonly: true} %>
-          <%= f.submit "Search", class: "btn btn-primary tw-px-1.5 tw-rounded-tr tw-rounded-br", id: "" %>
+          <%= button_tag type: 'submit', class: 'btn btn-primary tw-px-1.5 tw-rounded-tr tw-rounded-br' do %>
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="tw-text-white">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          <% end %>
         </div>
       <% end %>
     </div>
