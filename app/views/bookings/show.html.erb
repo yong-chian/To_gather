@@ -33,6 +33,8 @@
                 <%= render @booking %>
                 <%# <%= link_to "Back to bookings", bookings_path %>
               <% elsif @booking.status == "Pending Payment" %>
+                <h3> You have booked your own activity! Please delete this </h3>
+                <%= link_to "Cancel your booking", activity_booking_destroy_path, data: { turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: 'btn btn-primary w-50' if policy(@booking).destroy? %><br/><br/>
               <% end %>
 
             <% elsif !@booking.completed && Date.today >= @booking.availability.start_time %>
