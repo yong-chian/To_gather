@@ -1,9 +1,9 @@
 /*Primary Button */
 .btn-primary {
-    font-family: 'IM Fell Great Primer', "sans-serif";
-    background: $orange;
-    border-radius: 5px;
-    color: $white;
+  font-family: 'IM Fell Great Primer', "sans-serif";
+  background: $orange;
+  border-radius: 5px;
+  color: $white;
 }
 
 /*Secondary Button */
@@ -16,49 +16,50 @@
 }
 
 .btn-secondary:hover {
-  color: $red; /* Change this to the desired hover color */
+  color: $red;
+  /* Change this to the desired hover color */
 }
 
 /* Button Edit */
 //<%= link_to "Edit+", "#", class: "btn-link" %>//
 .btn-link {
-    position: absolute;
-    left: 0%;
-    right: 0%;
-    top: 0%;
-    bottom: 31.58%;
+  position: absolute;
+  left: 0%;
+  right: 0%;
+  top: 0%;
+  bottom: 31.58%;
 
-    font-family: 'Montserrat';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 18px;
-    line-height: 22px;
-    display: flex;
-    align-items: center;
-    color: $red;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+  display: flex;
+  align-items: center;
+  color: $red;
 }
 
 /* outline primary Booking */
 .btn-outline-primary {
-    font-family: 'IM Fell Great Primer', "sans-serif";
-    color: $black;
-    border-radius: 30px;
+  font-family: 'IM Fell Great Primer', "sans-serif";
+  color: $black;
 }
 
 /* Cancel Booking */
 .btn-warning {
-    font-family: 'IM Fell Great Primer', "sans-serif";
-    color: $white;
-    border-radius: 30px;
+  font-family: 'IM Fell Great Primer', "sans-serif";
+  color: $white;
+  border-radius: 30px;
 }
 
 .btn-success {
-    font-family: 'IM Fell Great Primer', "sans-serif";
-    color: $white;
-    border-radius: 30px;
+  font-family: 'IM Fell Great Primer', "sans-serif";
+  color: $white;
+  border-radius: 30px;
 }
 
 /*Style for the form submit button in booking*/
 .btn-book-now {
-  margin-top: 20px; /* Add margin-top to shift the button down */
+  margin-top: 20px;
+  /* Add margin-top to shift the button down */
 }

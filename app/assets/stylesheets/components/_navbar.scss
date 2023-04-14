@@ -36,9 +36,7 @@ nav-link //Avatar img circle//
 }
 
 //Individual link//
-.nav-item {
-  padding-left: 1rem;
-}
+.nav-item {}
 
 
 //Dropdownj button//
@@ -57,6 +55,8 @@ nav-link //Avatar img circle//
 }
 
 //Host Activity Button//
+.host-activity {}
+
 .host-activity:hover {
   font-family: 'IM Fell Great Primer', "sans-serif";
   background: $red;
