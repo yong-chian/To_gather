@@ -17,7 +17,7 @@ class BookingsController < ApplicationController
   end
 
   def completed
-    @bookings = Booking.where(user_id: current_user.id, status: "Confirmed", completed: true)
+    @bookings = Booking.where(user_id: current_user.id, status: "Completed", completed: true)
     @completed_bookings = current_user.bookings.filter do |booking|
       booking.status = "Confirmed"
       booking.completed? == true

@@ -160,7 +160,7 @@ booking_1 = Booking.new(
   activity_id: selected_availability.activity_id,
   user_name: "Jane Smith",
   number_of_pax: 2,
-  status: "Confirmed",
+  status: "Completed",
   comment: "Looking forward to it",
   completed: true
 )
@@ -173,7 +173,7 @@ booking_2 = Booking.new(
   activity_id: selected_availability.activity_id,
   user_name: "Michelle Lim",
   number_of_pax: 3,
-  status: "Confirmed",
+  status: "Completed",
   comment: "3 adults",
   completed: true
 )
@@ -186,7 +186,7 @@ booking_3 = Booking.new(
   activity_id: selected_availability.activity_id,
   user_name: "Aisyah N",
   number_of_pax: 4,
-  status: "Confirmed",
+  status: "Completed",
   comment: "",
   completed: true
 )
@@ -199,7 +199,7 @@ booking_4 = Booking.new(
   activity_id: selected_availability.activity_id,
   user_name: "Chris Ng",
   number_of_pax: 2,
-  status: "Confirmed",
+  status: "Completed",
   comment: "",
   completed: true
 )
@@ -286,7 +286,7 @@ booking_5 = Booking.new(
   activity_id: selected_availability.activity_id,
   user_name: "John Doe",
   number_of_pax: 1,
-  status: "Confirmed",
+  status: "Completed",
   comment: "Looking forward to it",
   completed: true
 )
@@ -1008,7 +1008,7 @@ booking_7 = Booking.new(
   activity_id: selected_availability.activity_id,
   user_name: "John Doe",
   number_of_pax: 1,
-  status: "Confirmed",
+  status: "Completed",
   comment: "Looks adventurous",
   completed: true
 )
