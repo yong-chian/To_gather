@@ -16,7 +16,7 @@
             <%= link_to "Past/Cancelled", booking_completed_path, class: "btn btn-outline-primary frozen-button" %>
           </div>
           <div class="card booking-host">
-            <div class="card-body booking-card">
+            <div class="card-body booking-card booking-border-confirmed">
               <% if @bookings.any? %>
                 <% counter = 1 %>
                 <% @bookings.each do |booking| %>
@@ -57,7 +57,7 @@
               <%= link_to "Past/Cancelled", booking_completed_path, class: "btn btn-outline-primary frozen-button" %>
             </div>
               <div class="card booking-host">
-                <div class="card-body booking-card">
+                <div class="card-body booking-card booking-border-confirmed">
                   <% if @confirmed_bookings.any? %>
                     <% counter = 1 %>
                     <% @confirmed_bookings.each do |booking| %>
