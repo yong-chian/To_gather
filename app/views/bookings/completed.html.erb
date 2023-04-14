@@ -58,9 +58,9 @@
             </div>
               <div class="card booking-host">
                 <div class="card-body booking-card">
-                  <% if @confirmed_bookings.any? %>
+                  <% if @completed_bookings.any? %>
                     <% counter = 1 %>
-                    <% @confirmed_bookings.each do |booking| %>
+                    <% @completed_bookings.each do |booking| %>
                       <div data-controller="chatroom">
                         <h5 class="card-title"><strong> Booking <%= counter %></strong></h5><br>
                         <p class="card-text"><strong>Booking Id:</strong> <%= booking.id %></p>

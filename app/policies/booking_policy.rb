@@ -8,7 +8,16 @@ class BookingPolicy < ApplicationPolicy
       end
     end
   end
+
   def confirmed?
+    if user.admin?
+      scope.all
+    else
+      scope.where(user_id: user.id).or(scope.where(activity: { user_id: user.id }))
+    end
+  end
+
+  def completed?
     if user.admin?
       scope.all
     else
